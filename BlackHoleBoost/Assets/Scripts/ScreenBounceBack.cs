@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScreenBounceBack : MonoBehaviour
+{
+    private float _rightBoundary;
+    private float _topBoundary;
+    [SerializeField] private float _boundBackDistance;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _rightBoundary = Camera.main.orthographicSize * Screen.width / Screen.height;
+        _topBoundary = Camera.main.orthographicSize;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.x > _rightBoundary)
+        {
+            float newX = transform.position.x - _boundBackDistance;
+            transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        else if (transform.position.x<-_rightBoundary)
+        {
+            float newX = transform.position.x + _boundBackDistance;
+            transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        }
+        else if (transform.position.y>_topBoundary)
+        {
+            float newY = transform.position.y - _boundBackDistance;
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        }
+        else if (transform.position.y<-_topBoundary+1)
+        {
+            float newY = transform.position.y +_boundBackDistance;
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        }
+    }
+}
