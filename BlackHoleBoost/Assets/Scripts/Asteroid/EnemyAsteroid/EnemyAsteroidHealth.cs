@@ -4,13 +4,14 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/07/2024]
+ * Last Updated: [09/08/2024]
  * [script for enemy health]
  */
 
 public class EnemyAsteroidHealth : BaseHealthScript
 {
     private EnemyAsteroid _enemyAsteroid;
+    private EnemyAsteroidEventBus _enemyAsteroidEventBus;
 
     [SerializeField] private int _bigHealth = 3;
     [SerializeField] private int _smallHealth = 1;
@@ -21,12 +22,26 @@ public class EnemyAsteroidHealth : BaseHealthScript
     private void Awake()
     {
         _enemyAsteroid = GetComponent<EnemyAsteroid>();
+        _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("1");
+        _enemyAsteroidEventBus.Subscribe(EnemyAsteroidSizeEnum.BIG, SetBig);
+        _enemyAsteroidEventBus.Subscribe(EnemyAsteroidSizeEnum.MEDIUM, SetMedium);
+    }
+
+    private void OnDisable()
+    {
+        _enemyAsteroidEventBus.Unsubscribe(EnemyAsteroidSizeEnum.BIG, SetBig);
+        _enemyAsteroidEventBus.Unsubscribe(EnemyAsteroidSizeEnum.MEDIUM, SetMedium);
     }
 
     /// <summary>
     /// sets health to big asteroid
     /// </summary>
-    public void SetBig()
+    private void SetBig()
     {
         _maxHealth = _bigHealth;
         ResetHealth();
@@ -35,7 +50,7 @@ public class EnemyAsteroidHealth : BaseHealthScript
     /// <summary>
     /// sets health to med asteroid
     /// </summary>
-    public void SetMedium()
+    private void SetMedium()
     {
         _maxHealth = _smallHealth;
         ResetHealth();

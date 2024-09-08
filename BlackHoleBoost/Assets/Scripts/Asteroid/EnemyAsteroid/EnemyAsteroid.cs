@@ -5,8 +5,9 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/07/2024]
- * [Script for enemy asteroids]
+ * Last Updated: [09/08/2024]
+ * [Script for enemy asteroids
+ * MAKE SURE THIS IS BOTTOM OF SCRIPT COPONENTS SO ON ENABLE WORKS RIGH]
  */
 
 public class EnemyAsteroid : MonoBehaviour
@@ -14,6 +15,8 @@ public class EnemyAsteroid : MonoBehaviour
     private EnemyAsteroidHealth _enemyAsteroidHealth;
     private EnemyAsteroidModel _enemyAsteroidModel;
     private EnemyAsteroidDamage _enemyAsteroidDamage;
+
+    private EnemyAsteroidEventBus _enemyAsteroidEventBus;
 
     public IObjectPool<EnemyAsteroid> Pool { get; set; }
 
@@ -28,6 +31,8 @@ public class EnemyAsteroid : MonoBehaviour
         _enemyAsteroidHealth = GetComponent<EnemyAsteroidHealth>();
         _enemyAsteroidModel = GetComponent<EnemyAsteroidModel>();
         _enemyAsteroidDamage = GetComponent<EnemyAsteroidDamage>();
+
+        _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
     }
 
     /// <summary>
@@ -40,22 +45,26 @@ public class EnemyAsteroid : MonoBehaviour
         //TODO: FIND BETTER WAY OF DOING THIS
         float size = Random.Range(0f, 1f);
         if (size <= _chanceForBig)
-        { 
+        {
+            Debug.Log("2");
             gameObject.name = "Big Asteroid";
-            Debug.Log("Big");
+            _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.BIG);
+            /*
             _enemyAsteroidHealth.SetBig();
             _enemyAsteroidModel.SetBig();
-            _enemyAsteroidDamage.SetBig();
+            _enemyAsteroidDamage.SetBig();*/
 
 
         }
         else
         {
+            Debug.Log("2");
             gameObject.name = "Medium Asteroid";
-            Debug.Log("Medium");
+            _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.MEDIUM);
+            /*
             _enemyAsteroidHealth.SetMedium();
             _enemyAsteroidModel.SetMedium();
-            _enemyAsteroidDamage.SetMedium();
+            _enemyAsteroidDamage.SetMedium();*/
         }
     }
 
