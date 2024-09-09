@@ -13,17 +13,37 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SpawnBlackHole",
+                    "type": "Button",
+                    "id": "4b8e8639-bc1b-462f-8ddb-fea662befcc5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "22eff12a-f54e-48af-bf80-f157924caa11",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da3d8b3c-8b30-4cfb-9c38-2d8c362a2c8a",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnBlackHole",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
