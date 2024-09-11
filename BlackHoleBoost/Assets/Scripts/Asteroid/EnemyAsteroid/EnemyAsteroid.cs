@@ -12,10 +12,6 @@ using UnityEngine.Pool;
 
 public class EnemyAsteroid : MonoBehaviour
 {
-    private EnemyAsteroidHealth _enemyAsteroidHealth;
-    private EnemyAsteroidModel _enemyAsteroidModel;
-    private EnemyAsteroidDamage _enemyAsteroidDamage;
-
     private EnemyAsteroidEventBus _enemyAsteroidEventBus;
 
     public IObjectPool<EnemyAsteroid> Pool { get; set; }
@@ -28,9 +24,6 @@ public class EnemyAsteroid : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _enemyAsteroidHealth = GetComponent<EnemyAsteroidHealth>();
-        _enemyAsteroidModel = GetComponent<EnemyAsteroidModel>();
-        _enemyAsteroidDamage = GetComponent<EnemyAsteroidDamage>();
 
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
     }
@@ -49,10 +42,6 @@ public class EnemyAsteroid : MonoBehaviour
             Debug.Log("2");
             gameObject.name = "Big Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.BIG);
-            /*
-            _enemyAsteroidHealth.SetBig();
-            _enemyAsteroidModel.SetBig();
-            _enemyAsteroidDamage.SetBig();*/
 
 
         }
@@ -61,10 +50,6 @@ public class EnemyAsteroid : MonoBehaviour
             Debug.Log("2");
             gameObject.name = "Medium Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.MEDIUM);
-            /*
-            _enemyAsteroidHealth.SetMedium();
-            _enemyAsteroidModel.SetMedium();
-            _enemyAsteroidDamage.SetMedium();*/
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/10/2024]
+ * Last Updated: [09/11/2024]
  * [pick up for when player flies over item]
  */
 
