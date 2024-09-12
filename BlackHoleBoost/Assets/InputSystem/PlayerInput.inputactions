@@ -6,70 +6,46 @@
             "id": "15fed385-5173-42bb-88ab-c36801990eeb",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Value",
+                    "name": "Acceleration",
+                    "type": "Button",
                     "id": "e7b3c0f7-686e-4dc0-9d02-9c838c21c7fd",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SpawnBlackHole",
+                    "type": "Button",
+                    "id": "4b8e8639-bc1b-462f-8ddb-fea662befcc5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "5096d1c3-d993-49c4-ae39-79af3cb4a4e7",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "22eff12a-f54e-48af-bf80-f157924caa11",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
+                    "action": "Acceleration",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "0fb70e22-8b6d-41a3-944c-5d5e9063a3a8",
-                    "path": "<Keyboard>/w",
+                    "name": "",
+                    "id": "da3d8b3c-8b30-4cfb-9c38-2d8c362a2c8a",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "SpawnBlackHole",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "e8438654-d835-4d75-9a6c-00117f693ff4",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b707e33a-68f9-4889-b2c7-8f940d10f5f6",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "5620f66a-50d2-4b9e-8942-32389ec5a460",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
