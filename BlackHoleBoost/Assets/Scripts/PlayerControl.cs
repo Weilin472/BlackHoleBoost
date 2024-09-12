@@ -31,12 +31,13 @@ public class PlayerControl : MonoBehaviour
         {
             rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
         }
+
+       
         Debug.Log(rigid.velocity);
     }
 
     private void FixedUpdate()
     {
-        rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
         if (isInBlackHole)
         {
             return;
@@ -45,7 +46,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (Mathf.Abs(rigid.velocity.y)<_maxSpeed)
             {
-                rigid.AddRelativeForce(Vector3.up * _curretMovementSpeed, ForceMode.Acceleration);
+                rigid.AddForce(transform.TransformDirection(Vector3.up) * _curretMovementSpeed, ForceMode.Acceleration);
             }               
         }
         else if (Input.GetKey(KeyCode.S))
@@ -53,7 +54,7 @@ public class PlayerControl : MonoBehaviour
 
             if (Mathf.Abs(rigid.velocity.y)>_curretMovementSpeed)
             {
-                rigid.AddRelativeForce(Vector3.down * _curretMovementSpeed, ForceMode.Acceleration);
+                rigid.AddForce(transform.TransformDirection(Vector3.down) * _curretMovementSpeed, ForceMode.Acceleration);
             }
             else
             {
@@ -63,14 +64,11 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            rigid.velocity = new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
-         //   rigid.AddRelativeForce(Vector3.left * _curretMovementSpeed, ForceMode.Acceleration);
+            rigid.velocity =new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-                rigid.velocity = new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
-           // rigid.AddRelativeForce(Vector3.right * _curretMovementSpeed, ForceMode.Acceleration);
-
+            rigid.velocity =new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
         }
     }
     

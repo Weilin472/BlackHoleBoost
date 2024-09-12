@@ -22,13 +22,25 @@ public class ScreenBounceBack : MonoBehaviour
         {
             float newX = transform.position.x - _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-          //  transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
+            if (vel.x>0)
+            {
+                vel.x *= -1;
+                transform.GetComponent<Rigidbody>().velocity = vel;
+            }
+            //  transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (transform.position.x < -_rightBoundary)
         {
             float newX = transform.position.x + _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-       //     transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
+            if (vel.x < 0)
+            {
+                vel.x *= -1;
+                transform.GetComponent<Rigidbody>().velocity = vel;
+            }
+            //     transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         }
         else if (transform.position.y > _topBoundary+0.5)
