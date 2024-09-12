@@ -24,7 +24,6 @@ public class EnemyAsteroid : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
     }
 
@@ -39,7 +38,6 @@ public class EnemyAsteroid : MonoBehaviour
         float size = Random.Range(0f, 1f);
         if (size <= _chanceForBig)
         {
-            Debug.Log("2");
             gameObject.name = "Big Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.BIG);
 
@@ -47,7 +45,6 @@ public class EnemyAsteroid : MonoBehaviour
         }
         else
         {
-            Debug.Log("2");
             gameObject.name = "Medium Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.MEDIUM);
         }

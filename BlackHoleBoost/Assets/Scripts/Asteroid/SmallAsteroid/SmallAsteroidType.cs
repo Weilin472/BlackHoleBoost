@@ -6,6 +6,7 @@
 
 public enum SmallAsteroidType
 {
+    NONE,
     NORMAL,
     BOUNCE,
     STICKY

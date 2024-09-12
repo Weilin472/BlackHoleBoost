@@ -5,15 +5,16 @@ using UnityEngine;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [09/11/2024]
- * [pick up for when player flies over item]
+ * [changes models depending on asteroid]
  */
 
-public class Pickup : MonoBehaviour
+public class PickupSmallAsteroidModel : MonoBehaviour
 {
     private PickupSmallAsteroidEventBus _pickupSmallAsteroidEventBus;
-    private PickupSmallAsteroid _pickupSmallAsteroid;
 
-    private SmallAsteroidType _type = SmallAsteroidType.NORMAL;
+    [SerializeField] private GameObject _normalModel;
+    [SerializeField] private GameObject _bounceModel;
+    [SerializeField] private GameObject _stickyModel;
 
     /// <summary>
     /// gets needed components
@@ -21,7 +22,6 @@ public class Pickup : MonoBehaviour
     private void Awake()
     {
         _pickupSmallAsteroidEventBus = GetComponent<PickupSmallAsteroidEventBus>();
-        _pickupSmallAsteroid = GetComponent<PickupSmallAsteroid>();
     }
 
     /// <summary>
@@ -39,42 +39,35 @@ public class Pickup : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
+        _normalModel.SetActive(false);
+        _bounceModel.SetActive(false);
+        _stickyModel.SetActive(false);
         _pickupSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.NORMAL, SetNormal);
         _pickupSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.BOUNCE, SetBounce);
         _pickupSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.STICKY, SetSticky);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.root.gameObject.GetComponent<PlayerAsteroidInventory>())
-        {
-            PlayerAsteroidInventory inventory = other.transform.root.gameObject.GetComponent<PlayerAsteroidInventory>();
-            inventory.AddAsteroid(_type);
-            _pickupSmallAsteroid.ReturnToPool();
-        }
-    }
-
     /// <summary>
-    /// sets type to normal asteroid
+    /// sets model to normal asteroid
     /// </summary>
     private void SetNormal()
     {
-        _type = SmallAsteroidType.NORMAL;
+        _normalModel.SetActive(true);
     }
 
     /// <summary>
-    /// sets type to bounce asteroid
+    /// sets model to bounce asteroid
     /// </summary>
     private void SetBounce()
     {
-        _type = SmallAsteroidType.BOUNCE;
+        _bounceModel.SetActive(true);
     }
 
     /// <summary>
-    /// sets type to sticky asteroid
+    /// sets model to sticky asteroid
     /// </summary>
     private void SetSticky()
     {
-        _type = SmallAsteroidType.STICKY;
+        _stickyModel.SetActive(true);
     }
 }

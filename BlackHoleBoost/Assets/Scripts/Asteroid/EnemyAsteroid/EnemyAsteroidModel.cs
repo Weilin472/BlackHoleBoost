@@ -15,6 +15,9 @@ public class EnemyAsteroidModel : MonoBehaviour
     [SerializeField] private GameObject _bigModel;
     [SerializeField] private GameObject _mediumModel;
 
+    /// <summary>
+    /// gets needed component
+    /// </summary>
     private void Awake()
     {
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
