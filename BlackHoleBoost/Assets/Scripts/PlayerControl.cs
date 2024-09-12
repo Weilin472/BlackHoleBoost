@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            GameObject.Instantiate(_blackHolePrefab, transform.position, Quaternion.identity);
+            GameObject.Instantiate(_blackHolePrefab, transform.position+transform.TransformDirection(Vector3.up)*2, Quaternion.identity);
             rigid.velocity = Vector3.zero;
             isInBlackHole = true;
         }
