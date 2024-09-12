@@ -7,10 +7,11 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _originalMovementSpeed;
     private float _curretMovementSpeed;
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _sideMoveSpeed;
     private Rigidbody rigid;
-
     [SerializeField] private GameObject _blackHolePrefab;
+    private bool isInBlackHole;
+    [SerializeField] private float _maxSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,70 +21,66 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKey(KeyCode.A))
+      
+        if (isInBlackHole)
         {
-            transform.Rotate(new Vector3(0, 0, 15) * Time.deltaTime*_rotationSpeed);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(new Vector3(0, 0, -15) * Time.deltaTime*_rotationSpeed);
+            return;
         }
 
-        //if (Input.GetKey(KeyCode.LeftShift))
-        //{
-        //    _curretMovementSpeed = _originalMovementSpeed*2;
-        //}
-        //else if (Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    _curretMovementSpeed = _originalMovementSpeed;
-        //}
-        
+        if (Input.GetKeyUp(KeyCode.A)||Input.GetKeyUp(KeyCode.D))
+        {
+            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+        }
+        Debug.Log(rigid.velocity);
     }
 
     private void FixedUpdate()
     {
-        rigid.velocity = Vector3.zero;
+        rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+        if (isInBlackHole)
+        {
+            return;
+        }
         if (Input.GetKey(KeyCode.W))
         {
-            //   rigid.AddRelativeForce(Vector3.up*_movementSpeed, ForceMode.Acceleration);
-            rigid.velocity =transform.TransformDirection(Vector3.up) * _curretMovementSpeed;
+            if (Mathf.Abs(rigid.velocity.y)<_maxSpeed)
+            {
+                rigid.AddRelativeForce(Vector3.up * _curretMovementSpeed, ForceMode.Acceleration);
+            }               
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            //  rigid.AddRelativeForce(Vector3.down* _movementSpeed, ForceMode.Acceleration);
-            rigid.velocity = transform.TransformDirection(Vector3.down) * _curretMovementSpeed;
+
+            if (Mathf.Abs(rigid.velocity.y)>_curretMovementSpeed)
+            {
+                rigid.AddRelativeForce(Vector3.down * _curretMovementSpeed, ForceMode.Acceleration);
+            }
+            else
+            {
+                rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rigid.velocity = new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+         //   rigid.AddRelativeForce(Vector3.left * _curretMovementSpeed, ForceMode.Acceleration);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+                rigid.velocity = new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+           // rigid.AddRelativeForce(Vector3.right * _curretMovementSpeed, ForceMode.Acceleration);
+
         }
     }
-
-    public void Acceleration(InputAction.CallbackContext input)
-    {
-        if (input.phase==InputActionPhase.Performed)
-        {
-            _curretMovementSpeed = _originalMovementSpeed * 2;
-
-        }
-        else if (input.phase==InputActionPhase.Canceled)
-        {
-            _curretMovementSpeed = _originalMovementSpeed;
-        }
-    }
-
     
     public void SpawnBlackHole(InputAction.CallbackContext input)
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            GameObject.Instantiate(_blackHolePrefab, (transform.position+ transform.TransformDirection(Vector3.up)) * 2, Quaternion.identity);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag=="BlackHole")
-        {
-            Vector3 blackholeForce = (other.transform.position - transform.position)*20;
-            rigid.AddForce(blackholeForce,ForceMode.Force);
+            GameObject.Instantiate(_blackHolePrefab, transform.position, Quaternion.identity);
+            rigid.velocity = Vector3.zero;
+            isInBlackHole = true;
         }
     }
 

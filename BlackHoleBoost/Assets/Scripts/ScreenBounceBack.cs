@@ -22,28 +22,34 @@ public class ScreenBounceBack : MonoBehaviour
         {
             float newX = transform.position.x - _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+          //  transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
-        else if (transform.position.x<-_rightBoundary)
+        else if (transform.position.x < -_rightBoundary)
         {
             float newX = transform.position.x + _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+       //     transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         }
-        else if (transform.position.y>_topBoundary)
+        else if (transform.position.y > _topBoundary+0.5)
         {
-            float newY = transform.position.y - _boundBackDistance;
-            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
+            transform.rotation = Quaternion.Euler(0, 0, 180);
+            Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
+            if (vel.y>0)
+            {
+                vel.y *= -1;
+                transform.GetComponent<Rigidbody>().velocity = vel;
+            }
         }
-        else if (transform.position.y<-_topBoundary+1)
+        else if (transform.position.y < -_topBoundary + 1)
         {
-            float newY = transform.position.y +_boundBackDistance;
-            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
+            if (vel.y < 0)
+            {
+                vel.y *= -1;
+                transform.GetComponent<Rigidbody>().velocity = vel;
+            }
         }
     }
 }
