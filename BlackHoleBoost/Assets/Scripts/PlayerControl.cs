@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _blackHolePrefab;
     private bool isInBlackHole;
     [SerializeField] private float _maxSpeed;
+    private GameObject _currentBlackHole;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,9 +77,14 @@ public class PlayerControl : MonoBehaviour
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            GameObject.Instantiate(_blackHolePrefab, transform.position+transform.TransformDirection(Vector3.up)*2, Quaternion.identity);
+            _currentBlackHole= GameObject.Instantiate(_blackHolePrefab, transform.position+transform.TransformDirection(Vector3.up)*2, Quaternion.identity);
             rigid.velocity = Vector3.zero;
             isInBlackHole = true;
+        }
+        else if (input.phase==InputActionPhase.Canceled)
+        {
+            GameObject.Destroy(_currentBlackHole);
+            _currentBlackHole = null;
         }
     }
 
