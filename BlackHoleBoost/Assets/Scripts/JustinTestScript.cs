@@ -6,11 +6,13 @@ public class JustinTestScript : MonoBehaviour
 {
     private EnemyAsteroidPool _enemyPool;
     private PickupSmallAsteroidPool _pickupPool;
+    private ShootSmallAsteroidPool _shootPool;
 
     private void Start()
     {
         _enemyPool = GetComponent<EnemyAsteroidPool>();
         _pickupPool = GetComponent<PickupSmallAsteroidPool>();
+        _shootPool = GetComponent<ShootSmallAsteroidPool>();
     }
 
     private void OnGUI()
@@ -22,6 +24,10 @@ public class JustinTestScript : MonoBehaviour
         if (GUILayout.Button("Spawn Pickup Asteroid"))
         {
             _pickupPool.Spawn();
+        }
+        if (GUILayout.Button("Spawn Shoot Asteroid"))
+        {
+            _shootPool.Spawn();
         }
     }
 }

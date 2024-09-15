@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6293287956820280494}
   - component: {fileID: 8729018691577860525}
   m_Layer: 0
-  m_Name: PickupAsteroid
+  m_Name: PickupAsteroidContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
