@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 8637601470956232730, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0.9999026
       objectReference: {fileID: 0}
     - target: {fileID: 8637601470956232730, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 8637601470956232730, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38268343
+      value: 0.013962198
       objectReference: {fileID: 0}
     - target: {fileID: 8637601470956232730, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
@@ -393,7 +393,7 @@ PrefabInstance:
     - target: {fileID: 8637601470956232730, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 9148963259565905819, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
@@ -414,6 +414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _originalMovementSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148963259565905819, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
+        type: 3}
+      propertyPath: _blackHoleModeRotateSpeed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

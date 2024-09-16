@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     private bool isInBlackHole;
     [SerializeField] private float _maxSpeed;
     private GameObject _currentBlackHole;
+    [SerializeField] private float _blackHoleModeRotateSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerControl : MonoBehaviour
       
         if (isInBlackHole)
         {
+            transform.Rotate(0, 0, -_blackHoleModeRotateSpeed * Time.deltaTime);//360/15=24s
             return;
         }
 
@@ -38,6 +40,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (isInBlackHole)
         {
+            float time = 360 / _blackHoleModeRotateSpeed;
+            float speed = Mathf.PI * _currentBlackHole.transform.localScale.x / time;
+            rigid.velocity = transform.TransformDirection(Vector3.up)*speed;
+            
             return;
         }
         if (Input.GetKey(KeyCode.W))
@@ -74,14 +80,18 @@ public class PlayerControl : MonoBehaviour
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            _currentBlackHole= GameObject.Instantiate(_blackHolePrefab, transform.position+transform.TransformDirection(Vector3.up)*2, Quaternion.identity);
-            rigid.velocity = Vector3.zero;
-            isInBlackHole = true;
-        }
-        else if (input.phase==InputActionPhase.Canceled)
-        {
-            GameObject.Destroy(_currentBlackHole);
-            _currentBlackHole = null;
+            if (!isInBlackHole)
+            {
+                _currentBlackHole = GameObject.Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right), Quaternion.identity);
+                rigid.velocity = Vector3.zero;
+                isInBlackHole = true;
+            }
+            else
+            {
+                Destroy(_currentBlackHole);
+                _currentBlackHole = null;
+                isInBlackHole = false;
+            }         
         }
     }
 
