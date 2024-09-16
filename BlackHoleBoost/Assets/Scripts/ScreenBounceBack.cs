@@ -22,30 +22,72 @@ public class ScreenBounceBack : MonoBehaviour
         {
             float newX = transform.position.x - _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            //if (currentRotation.z>=90)
+            //{
+            //    currentRotation.z += 90;
+            //}
+            //else if (currentRotation.z<90)
+            //{
+            //    currentRotation.z -= 90;
+            //}
+            currentRotation.z *= -1;
+            transform.rotation = Quaternion.Euler(currentRotation);
+
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.x>0)
             {
                 vel.x *= -1;
                 transform.GetComponent<Rigidbody>().velocity = vel;
             }
-            //  transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (transform.position.x < -_rightBoundary)
         {
+           
             float newX = transform.position.x + _boundBackDistance;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            //if (currentRotation.z>=90)
+            //{
+            //    currentRotation.z += 90;
+            //}
+            //else if (currentRotation.z<90)
+            //{
+            //    currentRotation.z -= 90;
+            //}
+            currentRotation.z *= -1;
+            transform.rotation = Quaternion.Euler(currentRotation);
+
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.x < 0)
             {
                 vel.x *= -1;
                 transform.GetComponent<Rigidbody>().velocity = vel;
             }
-            //     transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
         }
         else if (transform.position.y > _topBoundary+0.5)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
+            
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            if (currentRotation.z > 180)
+            {
+                currentRotation.z -= 360;
+            }
+            else if (currentRotation.z < -180)
+            {
+                currentRotation.z += 360;
+            }
+            if (currentRotation.z>=0&&currentRotation.z<=90)
+            {
+                currentRotation.z += 90;
+            }
+            else if (currentRotation.z<0&&currentRotation.z>=-90)
+            {
+                currentRotation.z -= 90;
+            }
+            transform.rotation =Quaternion.Euler(currentRotation);
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.y>0)
             {
@@ -55,7 +97,24 @@ public class ScreenBounceBack : MonoBehaviour
         }
         else if (transform.position.y < -_topBoundary + 1)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            if (currentRotation.z>180)
+            {
+                currentRotation.z -= 360;
+            }
+            else if (currentRotation.z<-180)
+            {
+                currentRotation.z += 360;
+            }
+            if (currentRotation.z >= 90 && currentRotation.z <= 180)
+            {
+                currentRotation.z -= 90;
+            }
+            else if (currentRotation.z> (-180) && currentRotation.z <= (-90))
+            {
+                currentRotation.z += 90;
+            }
+            transform.rotation = Quaternion.Euler(currentRotation);
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.y < 0)
             {

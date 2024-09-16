@@ -32,9 +32,6 @@ public class PlayerControl : MonoBehaviour
         {
             rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
         }
-
-       
-        Debug.Log(rigid.velocity);
     }
 
     private void FixedUpdate()
