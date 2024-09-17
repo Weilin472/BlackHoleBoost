@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/05/2024]
+ * Last Updated: [09/16/2024]
  * [movement script for asteroids]
  */
 
