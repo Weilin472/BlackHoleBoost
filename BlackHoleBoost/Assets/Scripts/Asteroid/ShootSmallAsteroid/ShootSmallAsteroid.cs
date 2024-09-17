@@ -5,13 +5,13 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/11/2024]
+ * Last Updated: [09/16/2024]
  * [script for pickupable small asteroids, make sure on bottom of component list]
  */
 
 public class ShootSmallAsteroid : MonoBehaviour
 {
-    private PickupSmallAsteroidEventBus _pickupSmallAsteroidEventBus;
+    private ShootSmallAsteroidEventBus _shootSmallAsteroidEventBus;
 
     public IObjectPool<ShootSmallAsteroid> Pool { get; set; }
 
@@ -20,26 +20,20 @@ public class ShootSmallAsteroid : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _pickupSmallAsteroidEventBus = GetComponent<PickupSmallAsteroidEventBus>();
+        _shootSmallAsteroidEventBus = GetComponent<ShootSmallAsteroidEventBus>();
     }
 
-    private void OnEnable()
+    public void SetAsteroid(SmallAsteroidType asteroidType)
     {
-        float size = Random.Range(0f, 1f);
-        if (size <= .33)
+        if (asteroidType == SmallAsteroidType.NONE)
         {
-            gameObject.name = "Shoot Normal Asteroid";
-            _pickupSmallAsteroidEventBus.Publish(SmallAsteroidType.NORMAL);
-        }
-        else if (size > .33 && size <= .66)
-        {
-            gameObject.name = "Shoot Bounce Asteroid";
-            _pickupSmallAsteroidEventBus.Publish(SmallAsteroidType.BOUNCE);
+            Debug.Log("cant shoot none");
+            return;
         }
         else
         {
-            gameObject.name = "Shoot Sticky Asteroid";
-            _pickupSmallAsteroidEventBus.Publish(SmallAsteroidType.STICKY);
+            gameObject.name = "Pickup "+ asteroidType + " Asteroid";
+            _shootSmallAsteroidEventBus.Publish(asteroidType);
         }
     }
 

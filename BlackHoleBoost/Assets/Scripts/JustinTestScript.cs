@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [09/14/2024]
+ * [test script to spawn asteroid]
+ */
+
 public class JustinTestScript : MonoBehaviour
 {
     private EnemyAsteroidPool _enemyPool;
@@ -25,9 +31,17 @@ public class JustinTestScript : MonoBehaviour
         {
             _pickupPool.Spawn();
         }
-        if (GUILayout.Button("Spawn Shoot Asteroid"))
+        if (GUILayout.Button("Spawn Normal Shoot Asteroid"))
         {
-            _shootPool.Spawn();
+            _shootPool.Spawn(SmallAsteroidType.NORMAL);
+        }
+        if (GUILayout.Button("Spawn Bounce Shoot Asteroid"))
+        {
+            _shootPool.Spawn(SmallAsteroidType.BOUNCE);
+        }
+        if (GUILayout.Button("Spawn Sticky Shoot Asteroid"))
+        {
+            _shootPool.Spawn(SmallAsteroidType.STICKY);
         }
     }
 }

@@ -27,7 +27,6 @@ public class EnemyAsteroidHealth : BaseHealthScript
 
     private void OnEnable()
     {
-        Debug.Log("1");
         _enemyAsteroidEventBus.Subscribe(EnemyAsteroidSizeEnum.BIG, SetBig);
         _enemyAsteroidEventBus.Subscribe(EnemyAsteroidSizeEnum.MEDIUM, SetMedium);
     }

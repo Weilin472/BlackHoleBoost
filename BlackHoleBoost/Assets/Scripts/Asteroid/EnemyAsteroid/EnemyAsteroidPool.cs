@@ -67,7 +67,9 @@ public class EnemyAsteroidPool : MonoBehaviour
     public void Spawn()
     {
         var asteroid = Pool.Get();
-        asteroid.transform.position = Vector3.zero;
-        //drone.transform.position = Random.insideUnitSphere * 10;
+        Debug.Log("REMEMBER TO ADD BACK ENEMY MOVE ADD BACK ZERO");
+        //asteroid.transform.position = Vector3.zero;
+        Vector3 pos = new Vector3(0, 5, 0);
+        asteroid.transform.position = pos;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/14/2024]
+ * Last Updated: [09/16/2024]
  * [object pooling for shooting asteroid]
  */
 
@@ -64,9 +64,10 @@ public class ShootSmallAsteroidPool : MonoBehaviour
     /// <summary>
     /// TODO: ASTEROID SPAWN location
     /// </summary>
-    public void Spawn()
+    public void Spawn(SmallAsteroidType asteroidType)
     {
         var asteroid = Pool.Get();
+        asteroid.GetComponent<ShootSmallAsteroid>().SetAsteroid(asteroidType);
         asteroid.transform.position = Vector3.zero;
     }
 }
