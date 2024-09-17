@@ -3,30 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//why 180 would turn into 90?
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private float _originalMovementSpeed;
-    private float _curretMovementSpeed;
+    [SerializeField] private float _accelerationMultipler;
     [SerializeField] private float _sideMoveSpeed;
     private Rigidbody rigid;
     [SerializeField] private GameObject _blackHolePrefab;
-    private bool isInBlackHole;
+    public bool isInBlackHole;
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _maxBlackHoleSpeed;
     private GameObject _currentBlackHole;
-    [SerializeField] private float _blackHoleModeRotateSpeed;
+    private float _currentBlachHoleSpeed;
+
+  
+    private float _currentBlackHoleModeRotateSpeed;
+
+    private static PlayerControl _instance;
+    public static PlayerControl Instance => _instance;
+
+    private void Awake()
+    {
+        if (_instance!=null )
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        _curretMovementSpeed = _originalMovementSpeed;
     }
 
     private void Update()
     {
       
         if (isInBlackHole)
-        {
-            transform.Rotate(0, 0, -_blackHoleModeRotateSpeed * Time.deltaTime);//360/15=24s
+        {            
+            if (_currentBlachHoleSpeed<_maxBlackHoleSpeed)
+            {
+                _currentBlachHoleSpeed +=  Time.deltaTime;
+            }
+            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x / _currentBlachHoleSpeed);
+            transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
             return;
         }
 
@@ -40,25 +64,31 @@ public class PlayerControl : MonoBehaviour
     {
         if (isInBlackHole)
         {
-            float time = 360 / _blackHoleModeRotateSpeed;
-            float speed = Mathf.PI * _currentBlackHole.transform.localScale.x / time;
-            rigid.velocity = transform.TransformDirection(Vector3.up)*speed;
+            rigid.velocity = transform.TransformDirection(Vector3.up)*_currentBlachHoleSpeed;
             
             return;
         }
+        if (!isInBlackHole&&rigid.velocity.magnitude>_maxSpeed)
+        {
+            rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
+        }
         if (Input.GetKey(KeyCode.W))
         {
-            if (Mathf.Abs(rigid.velocity.y)<_maxSpeed)
+            if (Mathf.Abs(rigid.velocity.magnitude)<_maxSpeed)
             {
-                rigid.AddForce(transform.TransformDirection(Vector3.up) * _curretMovementSpeed, ForceMode.Acceleration);
-            }               
+                rigid.AddForce(transform.TransformDirection(Vector3.up) * _accelerationMultipler, ForceMode.Acceleration);
+            }
+            else
+            {
+                rigid.velocity = transform.TransformDirection(Vector3.up) * _maxSpeed;
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
 
-            if (Mathf.Abs(rigid.velocity.y)>_curretMovementSpeed)
+            if (Mathf.Abs(rigid.velocity.magnitude)>_accelerationMultipler)
             {
-                rigid.AddForce(transform.TransformDirection(Vector3.down) * _curretMovementSpeed, ForceMode.Acceleration);
+                rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
             }
             else
             {
@@ -82,9 +112,9 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInBlackHole)
             {
-                _currentBlackHole = GameObject.Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right), Quaternion.identity);
-                rigid.velocity = Vector3.zero;
+                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right), Quaternion.identity);
                 isInBlackHole = true;
+                _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
             }
             else
             {
