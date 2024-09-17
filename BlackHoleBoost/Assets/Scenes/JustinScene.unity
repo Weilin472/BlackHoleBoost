@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1527436591}
   - component: {fileID: 1527436593}
   - component: {fileID: 1527436594}
+  - component: {fileID: 1527436595}
   m_Layer: 0
   m_Name: TestManager
   m_TagString: Untagged
@@ -482,6 +483,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _asteroidPrefab: {fileID: 5674186815812008647, guid: ebe9edba8e2744740a4c62936f68983f,
+    type: 3}
+  maxPoolSize: 10
+  stackDefaultCapacity: 10
+--- !u!114 &1527436595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527436590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d73fb206b945049b678187363689fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidPrefab: {fileID: 4476599835060194455, guid: ef0da3caf9d3459449e14a52617dd04a,
     type: 3}
   maxPoolSize: 10
   stackDefaultCapacity: 10
