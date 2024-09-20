@@ -19,7 +19,7 @@ public class AsteroidMove : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Debug.Log("teporary default is to move up change later");
+        //Debug.Log("teporary default is to move up change later");
         _rigidbody.velocity = _direction * _speed;
     }
 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7831237988079201339}
   - component: {fileID: 2543255211553108971}
   - component: {fileID: 3986341489127378086}
+  - component: {fileID: -1414381720877079274}
   m_Layer: 0
   m_Name: EnemyAsteroidContainer
   m_TagString: Asteroid
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3a613db98a89d49a9af5e6426ea851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceForBig: 0
+  _chanceForBig: 0.5
 --- !u!114 &3986341489127378086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c4935db0a372c4db410fa704584ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1414381720877079274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159866683361754084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf892153d3d8c224bb82269c64deb1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  _direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1306026421338877988
 PrefabInstance:
   m_ObjectHideFlags: 0

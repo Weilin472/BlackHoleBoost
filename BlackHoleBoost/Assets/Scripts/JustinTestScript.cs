@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/14/2024]
+ * Last Updated: [09/20/2024]
  * [test script to spawn asteroid]
  */
 
@@ -25,7 +25,7 @@ public class JustinTestScript : MonoBehaviour
     {
         if (GUILayout.Button("Spawn Enemy Asteroid"))
         {
-            _enemyPool.Spawn();
+            _enemyPool.TestSpawn();
         }
         if (GUILayout.Button("Spawn Pickup Asteroid"))
         {

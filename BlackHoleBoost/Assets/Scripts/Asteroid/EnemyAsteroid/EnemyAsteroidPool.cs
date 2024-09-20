@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/07/24]
+ * Last Updated: [09/20/24]
  * [object pool for big asteroids]
  */
 
@@ -64,12 +64,20 @@ public class EnemyAsteroidPool : MonoBehaviour
     /// <summary>
     /// TODO: ASTEROID SPAWN location
     /// </summary>
-    public void Spawn()
+    public void TestSpawn()
     {
         var asteroid = Pool.Get();
         Debug.Log("REMEMBER TO ADD BACK ENEMY MOVE ADD BACK ZERO");
         //asteroid.transform.position = Vector3.zero;
         Vector3 pos = new Vector3(0, 5, 0);
         asteroid.transform.position = pos;
+    }
+
+    public void Spawn(Vector3 spawnLoc, Vector3 dir)
+    {
+        var asteroid = Pool.Get();
+        asteroid.transform.position = spawnLoc;
+        asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
+
     }
 }
