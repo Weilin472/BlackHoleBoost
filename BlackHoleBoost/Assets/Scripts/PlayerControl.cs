@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//why 180 would turn into 90?
+
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _accelerationMultipler;
     [SerializeField] private float _sideMoveSpeed;
-    private Rigidbody rigid;
     [SerializeField] private GameObject _blackHolePrefab;
-    public bool isInBlackHole;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
+
+
     private GameObject _currentBlackHole;
     private float _currentBlachHoleSpeed;
-
-  
+    private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
-
     private static PlayerControl _instance;
+
+    public bool isInBlackHole;
     public static PlayerControl Instance => _instance;
 
     private void Awake()
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
             {
                 _currentBlachHoleSpeed +=  Time.deltaTime;
             }
-            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x / _currentBlachHoleSpeed);
+            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x*0.8f / _currentBlachHoleSpeed);
             transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
             return;
         }
@@ -112,7 +112,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInBlackHole)
             {
-                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right), Quaternion.identity);
+                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right)*0.8f, Quaternion.identity);
                 isInBlackHole = true;
                 _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
             }
@@ -124,7 +124,5 @@ public class PlayerControl : MonoBehaviour
             }         
         }
     }
-
-
 
 }
