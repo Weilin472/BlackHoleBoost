@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//why 180 would turn into 90?
+
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _accelerationMultipler;
     [SerializeField] private float _sideMoveSpeed;
-    private Rigidbody rigid;
     [SerializeField] private GameObject _blackHolePrefab;
-    public bool isInBlackHole;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private float _UnattackablePeriod;
+
+
     private GameObject _currentBlackHole;
     private float _currentBlachHoleSpeed;
-
-  
+    private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
-
+    private int _currentHealth;
+    private bool _isUnattackable;
     private static PlayerControl _instance;
+
+    public bool isInBlackHole;
     public static PlayerControl Instance => _instance;
 
     private void Awake()
@@ -38,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        _currentHealth = _maxHealth;
     }
 
     private void Update()
@@ -49,7 +54,7 @@ public class PlayerControl : MonoBehaviour
             {
                 _currentBlachHoleSpeed +=  Time.deltaTime;
             }
-            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x / _currentBlachHoleSpeed);
+            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x*0.8f / _currentBlachHoleSpeed);
             transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
             return;
         }
@@ -112,7 +117,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInBlackHole)
             {
-                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right), Quaternion.identity);
+                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right)*0.8f, Quaternion.identity);
                 isInBlackHole = true;
                 _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
             }
@@ -125,6 +130,45 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void Hurt(int damage)
+    {
+        if (!isInBlackHole&&!_isUnattackable)
+        {
+            _currentHealth -= damage;
+            if (_currentHealth<=0)
+            {
+                Destroy(gameObject);
+                Time.timeScale = 0;
+                return;
+            }
+            else
+            {
+                UIManager.Instance.SetLifeUI(_currentHealth);
+            }
+            StartCoroutine(HurtAnimation());
+        }
 
+    }
+
+    private IEnumerator HurtAnimation()
+    {
+        _isUnattackable = true;
+        float _currentUnattackTime = 0;
+        MeshRenderer[] mr = transform.GetComponentsInChildren<MeshRenderer>();
+        while (_currentUnattackTime<_UnattackablePeriod)
+        {
+            for (int i = 0; i < mr.Length; i++)
+            {
+                mr[i].enabled = !mr[i].enabled;
+            }
+            _currentUnattackTime += 0.5f;
+            yield return new WaitForSeconds(0.5f);
+        }
+        for (int i = 0; i < mr.Length; i++)
+        {
+            mr[i].enabled = true;
+        }
+        _isUnattackable = false;
+    }
 
 }
