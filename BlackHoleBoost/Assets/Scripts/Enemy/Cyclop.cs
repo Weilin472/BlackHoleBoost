@@ -16,11 +16,13 @@ public class Cyclop : EnemyBase
     {
         if (other.tag=="Player")
         {
-            PlayerControl.Instance.Hurt(1);
+            Debug.Log("buh");
+            PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
+            otherHealth.Damage(1);
         }
         if (other.tag=="BlackHole")
         {
-            Hurt(1);
+            _enemyHealthScript.Damage(1);
 
         }
     }
@@ -29,7 +31,7 @@ public class Cyclop : EnemyBase
     {
         if (other.tag == "BlackHole")
         {
-            Hurt(1);
+            _enemyHealthScript.Damage(1);
         }
     }
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5563537653542377191}
   - component: {fileID: 1364315030602972138}
   - component: {fileID: 6396538071087723757}
+  - component: {fileID: 7020249951829209705}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Untagged
@@ -147,10 +148,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ac73480ac0aae4e8d1b1ad2755cc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laser: {fileID: 1897070107577296333}
   _speed: 1
-  _rotateSpeed: 45
   _maxLife: 3
+  _laser: {fileID: 1897070107577296333}
+  _rotateSpeed: 45
+--- !u!114 &7020249951829209705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647422855487545507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fd2cdafb0626b4e86a63bbeb209316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
 --- !u!1 &6187280805525261798
 GameObject:
   m_ObjectHideFlags: 0

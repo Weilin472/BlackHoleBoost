@@ -11,16 +11,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _blackHolePrefab;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private float _UnattackablePeriod;
 
 
     private GameObject _currentBlackHole;
     private float _currentBlachHoleSpeed;
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
-    private int _currentHealth;
-    private bool _isUnattackable;
     private static PlayerControl _instance;
 
     public bool isInBlackHole;
@@ -42,7 +38,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        _currentHealth = _maxHealth;
     }
 
     private void Update()
@@ -128,47 +123,6 @@ public class PlayerControl : MonoBehaviour
                 isInBlackHole = false;
             }         
         }
-    }
-
-    public void Hurt(int damage)
-    {
-        if (!isInBlackHole&&!_isUnattackable)
-        {
-            _currentHealth -= damage;
-            if (_currentHealth<=0)
-            {
-                Destroy(gameObject);
-                Time.timeScale = 0;
-                return;
-            }
-            else
-            {
-                UIManager.Instance.SetLifeUI(_currentHealth);
-            }
-            StartCoroutine(HurtAnimation());
-        }
-
-    }
-
-    private IEnumerator HurtAnimation()
-    {
-        _isUnattackable = true;
-        float _currentUnattackTime = 0;
-        MeshRenderer[] mr = transform.GetComponentsInChildren<MeshRenderer>();
-        while (_currentUnattackTime<_UnattackablePeriod)
-        {
-            for (int i = 0; i < mr.Length; i++)
-            {
-                mr[i].enabled = !mr[i].enabled;
-            }
-            _currentUnattackTime += 0.5f;
-            yield return new WaitForSeconds(0.5f);
-        }
-        for (int i = 0; i < mr.Length; i++)
-        {
-            mr[i].enabled = true;
-        }
-        _isUnattackable = false;
     }
 
 }
