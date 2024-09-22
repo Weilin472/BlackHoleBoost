@@ -6,7 +6,7 @@ public class BaseDamageScript : MonoBehaviour
 {
     [SerializeField] protected int _damage = 1;
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.transform.root.gameObject.GetComponent<BaseHealthScript>())
         {

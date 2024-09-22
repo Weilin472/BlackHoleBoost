@@ -5,26 +5,26 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/20/24]
- * [object pool for big asteroids]
+ * Last Updated: [09/16/2024]
+ * [object pooling for shooting asteroid]
  */
 
-public class EnemyAsteroidPool : MonoBehaviour
+public class ShootSmallAsteroidPool : MonoBehaviour
 {
     [SerializeField] private GameObject _asteroidPrefab;
 
     public int maxPoolSize = 10;
     public int stackDefaultCapacity = 10;
-    private IObjectPool<EnemyAsteroid> _pool;
+    private IObjectPool<ShootSmallAsteroid> _pool;
 
-    public IObjectPool<EnemyAsteroid> Pool
+    public IObjectPool<ShootSmallAsteroid> Pool
     {
         get
         {
             if (_pool == null)
             {
                 _pool =
-                    new ObjectPool<EnemyAsteroid>(
+                    new ObjectPool<ShootSmallAsteroid>(
                         CreatedPooledItem,
                         OnTakeFromPool,
                         OnReturnedToPool,
@@ -38,25 +38,25 @@ public class EnemyAsteroidPool : MonoBehaviour
         }
     }
 
-    private EnemyAsteroid CreatedPooledItem()
+    private ShootSmallAsteroid CreatedPooledItem()
     {
         GameObject asteroid = Instantiate(_asteroidPrefab, Vector3.zero, Quaternion.identity);
-        EnemyAsteroid enemyAsteroid = asteroid.GetComponent<EnemyAsteroid>();
-        enemyAsteroid.Pool = Pool;
-        return enemyAsteroid;
+        ShootSmallAsteroid shootAsteroid = asteroid.GetComponent<ShootSmallAsteroid>();
+        shootAsteroid.Pool = Pool;
+        return shootAsteroid;
     }
 
-    private void OnReturnedToPool(EnemyAsteroid asteroid)
+    private void OnReturnedToPool(ShootSmallAsteroid asteroid)
     {
         asteroid.gameObject.SetActive(false);
     }
 
-    private void OnTakeFromPool(EnemyAsteroid asteroid)
+    private void OnTakeFromPool(ShootSmallAsteroid asteroid)
     {
         asteroid.gameObject.SetActive(true);
     }
 
-    private void OnDestroyPoolObject(EnemyAsteroid asteroid)
+    private void OnDestroyPoolObject(ShootSmallAsteroid asteroid)
     {
         Destroy(asteroid);
     }
@@ -64,20 +64,10 @@ public class EnemyAsteroidPool : MonoBehaviour
     /// <summary>
     /// TODO: ASTEROID SPAWN location
     /// </summary>
-    public void TestSpawn()
+    public void Spawn(SmallAsteroidType asteroidType)
     {
         var asteroid = Pool.Get();
-        Debug.Log("REMEMBER TO ADD BACK ENEMY MOVE ADD BACK ZERO");
-        //asteroid.transform.position = Vector3.zero;
-        Vector3 pos = new Vector3(0, 5, 0);
-        asteroid.transform.position = pos;
-    }
-
-    public void Spawn(Vector3 spawnLoc, Vector3 dir)
-    {
-        var asteroid = Pool.Get();
-        asteroid.transform.position = spawnLoc;
-        asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
-
+        asteroid.GetComponent<ShootSmallAsteroid>().SetAsteroid(asteroidType);
+        asteroid.transform.position = Vector3.zero;
     }
 }

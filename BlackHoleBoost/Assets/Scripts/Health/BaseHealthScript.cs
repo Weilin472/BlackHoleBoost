@@ -15,7 +15,8 @@ public class BaseHealthScript : MonoBehaviour
 
     protected virtual void OnDeath()
     {
-        Debug.LogError("using base version of health script, override OnDeath()");
+        Debug.Log("using base version of health script, override OnDeath() if item is in object pool");
+        Destroy(gameObject);
     }
 
     public virtual void Damage(int damage)
