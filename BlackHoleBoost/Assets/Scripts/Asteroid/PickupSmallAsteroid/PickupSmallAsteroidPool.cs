@@ -64,9 +64,14 @@ public class PickupSmallAsteroidPool : MonoBehaviour
     /// <summary>
     /// TODO: ASTEROID SPAWN location
     /// </summary>
-    public void Spawn()
+    public void TestSpawn()
     {
         var asteroid = Pool.Get();
         asteroid.transform.position = Vector3.zero;
+    }
+    public void Spawn(Vector3 pos)
+    {
+        var asteroid = Pool.Get();
+        asteroid.transform.position = pos;
     }
 }

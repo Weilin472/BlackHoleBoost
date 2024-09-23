@@ -29,7 +29,7 @@ public class JustinTestScript : MonoBehaviour
         }
         if (GUILayout.Button("Spawn Pickup Asteroid"))
         {
-            _pickupPool.Spawn();
+            _pickupPool.TestSpawn();
         }
         if (GUILayout.Button("Spawn Normal Shoot Asteroid"))
         {

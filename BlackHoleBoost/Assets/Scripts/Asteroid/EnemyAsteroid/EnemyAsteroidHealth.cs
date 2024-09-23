@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/08/2024]
+ * Last Updated: [09/22/2024]
  * [script for enemy health]
  */
 
@@ -12,6 +12,7 @@ public class EnemyAsteroidHealth : BaseHealthScript
 {
     private EnemyAsteroid _enemyAsteroid;
     private EnemyAsteroidEventBus _enemyAsteroidEventBus;
+    private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
 
     [SerializeField] private int _bigHealth = 3;
     [SerializeField] private int _smallHealth = 1;
@@ -23,6 +24,7 @@ public class EnemyAsteroidHealth : BaseHealthScript
     {
         _enemyAsteroid = GetComponent<EnemyAsteroid>();
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
+        _pickupSmallAsteroidPool = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PickupSmallAsteroidPool>();
     }
 
     private void OnEnable()
@@ -60,7 +62,8 @@ public class EnemyAsteroidHealth : BaseHealthScript
     /// </summary>
     protected override void OnDeath()
     {
-        Debug.Log("IMPLEMENT SMALL ASTEROID DROP");
+        //Debug.Log("IMPLEMENT SMALL ASTEROID DROP");
+        _pickupSmallAsteroidPool.Spawn(transform.position);
         _enemyAsteroid.ReturnToPool();
     }
 }
