@@ -33,15 +33,15 @@ public class JustinTestScript : MonoBehaviour
         }
         if (GUILayout.Button("Spawn Normal Shoot Asteroid"))
         {
-            _shootPool.Spawn(SmallAsteroidType.NORMAL);
+            _shootPool.TestSpawn(SmallAsteroidType.NORMAL);
         }
         if (GUILayout.Button("Spawn Bounce Shoot Asteroid"))
         {
-            _shootPool.Spawn(SmallAsteroidType.BOUNCE);
+            _shootPool.TestSpawn(SmallAsteroidType.BOUNCE);
         }
         if (GUILayout.Button("Spawn Sticky Shoot Asteroid"))
         {
-            _shootPool.Spawn(SmallAsteroidType.STICKY);
+            _shootPool.TestSpawn(SmallAsteroidType.STICKY);
         }
     }
 }

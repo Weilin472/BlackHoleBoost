@@ -49,7 +49,7 @@ public class ScreenBounceBack : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, vel);
             }
         }
-        if (transform.position.y > _topBoundary+0.5)
+        if (transform.position.y > _topBoundary)
         {
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.y>0)
@@ -59,7 +59,7 @@ public class ScreenBounceBack : MonoBehaviour
                 transform.rotation= Quaternion.LookRotation(Vector3.forward, vel);
             }
         }
-        else if (transform.position.y < -_topBoundary + 1)
+        else if (transform.position.y < -_topBoundary)
         {
             Vector3 vel = transform.GetComponent<Rigidbody>().velocity;
             if (vel.y < 0)

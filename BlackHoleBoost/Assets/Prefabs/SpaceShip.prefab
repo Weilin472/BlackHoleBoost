@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 6056557057473636322}
   - component: {fileID: 5116504414373414044}
   - component: {fileID: 7132723371863224009}
+  - component: {fileID: 8081387908008791036}
+  - component: {fileID: 7741658399658312972}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -105,7 +107,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -150,12 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b9c53f593f173479aa32b0864f3864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _accelerationMultipler: 0
-  _sideMoveSpeed: 0
+  _accelerationMultipler: 2
+  _sideMoveSpeed: 2
   _blackHolePrefab: {fileID: 5926682915721196415, guid: c1f112e16cef97c458c7bad428bcde43,
     type: 3}
-  _maxSpeed: 0
-  _maxBlackHoleSpeed: 0
+  _maxSpeed: 7
+  _maxBlackHoleSpeed: 13
   isInBlackHole: 0
 --- !u!114 &6056557057473636322
 MonoBehaviour:
@@ -184,10 +186,14 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7b3c0f7-686e-4dc0-9d02-9c838c21c7fd
+    m_ActionName: PlayerInput/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9148963259565905819}
         m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
-        m_MethodName: Acceleration
+        m_MethodName: SpawnBlackHole
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -197,12 +203,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e7b3c0f7-686e-4dc0-9d02-9c838c21c7fd
-    m_ActionName: PlayerInput/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 4b8e8639-bc1b-462f-8ddb-fea662befcc5
     m_ActionName: PlayerInput/SpawnBlackHole[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: ShootAsteroid
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 25bb13f0-0382-4961-ab2e-3b5e09902da5
+    m_ActionName: PlayerInput/ShootSmallAsteroid[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput
@@ -235,6 +253,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   _UnattackablePeriod: 3
+--- !u!114 &8081387908008791036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875590302239603435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b42fa031da8aa540b97ffb6c1717a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayInventory: 
+--- !u!114 &7741658399658312972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875590302239603435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af801377d52801c4699c13916f1a04a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireRate: 0.5
 --- !u!1 &3708426884533173729
 GameObject:
   m_ObjectHideFlags: 0
