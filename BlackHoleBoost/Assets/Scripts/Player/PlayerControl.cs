@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
     private float _currentBlackHoleModeRotateSpeed;
     private static PlayerControl _instance;
 
+    private PlayerShoot _playerShoot;
+
     public bool isInBlackHole;
     public static PlayerControl Instance => _instance;
 
@@ -38,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        _playerShoot = GetComponent<PlayerShoot>();
     }
 
     private void Update()
@@ -122,6 +125,14 @@ public class PlayerControl : MonoBehaviour
                 _currentBlackHole = null;
                 isInBlackHole = false;
             }         
+        }
+    }
+
+    public void ShootAsteroid(InputAction.CallbackContext input)
+    {
+        if (input.phase == InputActionPhase.Performed && !isInBlackHole)
+        {
+            _playerShoot.ShootAsteroid();
         }
     }
 

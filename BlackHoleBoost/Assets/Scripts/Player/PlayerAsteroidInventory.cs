@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/11/2024]
+ * Last Updated: [09/22/2024]
  * [inventory for player]
  */
 
@@ -43,5 +43,23 @@ public class PlayerAsteroidInventory : MonoBehaviour
         {
             _inventory.Add(asteroid);
         }
+    }
+
+    /// <summary>
+    /// gets next asteroid for shoot
+    /// takes out asteroid for shoot
+    /// </summary>
+    /// <returns></returns>
+    public SmallAsteroidType PopNextShootAsteroid()
+    {
+        if (_inventory.Count > 0)
+        {
+            SmallAsteroidType smallAsteroidType = _inventory[0];
+
+            _inventory.RemoveAt(0);
+
+            return smallAsteroidType;
+        }
+        return SmallAsteroidType.NONE;
     }
 }

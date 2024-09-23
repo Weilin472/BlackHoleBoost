@@ -62,12 +62,26 @@ public class ShootSmallAsteroidPool : MonoBehaviour
     }
 
     /// <summary>
-    /// TODO: ASTEROID SPAWN location
+    /// used to test spawn
     /// </summary>
-    public void Spawn(SmallAsteroidType asteroidType)
+    public void TestSpawn(SmallAsteroidType asteroidType)
     {
         var asteroid = Pool.Get();
         asteroid.GetComponent<ShootSmallAsteroid>().SetAsteroid(asteroidType);
         asteroid.transform.position = Vector3.zero;
+    }
+
+    /// <summary>
+    /// shoots asteroid
+    /// </summary>
+    /// <param name="asteroidType">what type of asteroid</param>
+    /// <param name="spawnLoc">where to spawn asteroid</param>
+    /// <param name="dir">what direction does the asteroid go</param>
+    public void Spawn(SmallAsteroidType asteroidType, Vector3 spawnLoc, Vector3 dir)
+    {
+        var asteroid = Pool.Get();
+        asteroid.GetComponent<ShootSmallAsteroid>().SetAsteroid(asteroidType);
+        asteroid.transform.position = spawnLoc;
+        asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
     }
 }
