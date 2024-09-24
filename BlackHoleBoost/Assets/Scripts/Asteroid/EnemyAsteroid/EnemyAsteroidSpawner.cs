@@ -48,7 +48,7 @@ public class EnemyAsteroidSpawner : MonoBehaviour
     public void StopSpawning()
     {
         _isSpawning = false;
-        StartCoroutine(_spawnCoroutine);
+        StopCoroutine(_spawnCoroutine);
     }
 
     public void SpawnAsteroid()

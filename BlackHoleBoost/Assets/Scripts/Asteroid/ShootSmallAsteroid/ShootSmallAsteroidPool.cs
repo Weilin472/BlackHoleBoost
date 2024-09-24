@@ -5,13 +5,14 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/16/2024]
+ * Last Updated: [09/23/2024]
  * [object pooling for shooting asteroid]
  */
 
 public class ShootSmallAsteroidPool : MonoBehaviour
 {
     [SerializeField] private GameObject _asteroidPrefab;
+    private List<ShootSmallAsteroid> _currentShootAsteroids;
 
     public int maxPoolSize = 10;
     public int stackDefaultCapacity = 10;
@@ -38,6 +39,11 @@ public class ShootSmallAsteroidPool : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _currentShootAsteroids = new List<ShootSmallAsteroid>();
+    }
+
     private ShootSmallAsteroid CreatedPooledItem()
     {
         GameObject asteroid = Instantiate(_asteroidPrefab, Vector3.zero, Quaternion.identity);
@@ -48,6 +54,7 @@ public class ShootSmallAsteroidPool : MonoBehaviour
 
     private void OnReturnedToPool(ShootSmallAsteroid asteroid)
     {
+        _currentShootAsteroids.Remove(asteroid);
         asteroid.gameObject.SetActive(false);
     }
 
@@ -83,5 +90,17 @@ public class ShootSmallAsteroidPool : MonoBehaviour
         asteroid.GetComponent<ShootSmallAsteroid>().SetAsteroid(asteroidType);
         asteroid.transform.position = spawnLoc;
         asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
+        _currentShootAsteroids.Add(asteroid);
+    }
+
+    /// <summary>
+    /// returns all asteroids
+    /// </summary>
+    public void ReturnAllShootAsteroids()
+    {
+        for (int i = _currentShootAsteroids.Count - 1; i >= 0; i--)
+        {
+            _currentShootAsteroids[i].ReturnToPool();
+        }
     }
 }

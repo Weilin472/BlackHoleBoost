@@ -25,7 +25,9 @@ public class PlayerHealthScript : BaseHealthScript
 
     protected override void OnDeath()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        Debug.Log("prototype game over here, remove later");
+        PrototypeGameManager.Instance.GameOver();
         Destroy(gameObject);
     }
 

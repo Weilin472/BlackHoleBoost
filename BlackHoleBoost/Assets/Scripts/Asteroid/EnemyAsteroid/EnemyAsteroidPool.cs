@@ -5,13 +5,14 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/20/24]
+ * Last Updated: [09/22/24]
  * [object pool for big asteroids]
  */
 
 public class EnemyAsteroidPool : MonoBehaviour
 {
     [SerializeField] private GameObject _asteroidPrefab;
+    private List<EnemyAsteroid> _currentEnemyAsteroids;
 
     public int maxPoolSize = 10;
     public int stackDefaultCapacity = 10;
@@ -38,6 +39,11 @@ public class EnemyAsteroidPool : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _currentEnemyAsteroids = new List<EnemyAsteroid>();
+    }
+
     private EnemyAsteroid CreatedPooledItem()
     {
         GameObject asteroid = Instantiate(_asteroidPrefab, Vector3.zero, Quaternion.identity);
@@ -48,6 +54,7 @@ public class EnemyAsteroidPool : MonoBehaviour
 
     private void OnReturnedToPool(EnemyAsteroid asteroid)
     {
+        _currentEnemyAsteroids.Remove(asteroid);
         asteroid.gameObject.SetActive(false);
     }
 
@@ -73,11 +80,28 @@ public class EnemyAsteroidPool : MonoBehaviour
         asteroid.transform.position = pos;
     }
 
+    /// <summary>
+    /// spawns asteroid
+    /// </summary>
+    /// <param name="spawnLoc">location of asteroid</param>
+    /// <param name="dir">move direction</param>
     public void Spawn(Vector3 spawnLoc, Vector3 dir)
     {
         var asteroid = Pool.Get();
         asteroid.transform.position = spawnLoc;
         asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
 
+        _currentEnemyAsteroids.Add(asteroid);
+    }
+
+    /// <summary>
+    /// returns all asteroids
+    /// </summary>
+    public void ReturnAllEnemyAsteroids()
+    {
+        for (int i = _currentEnemyAsteroids.Count-1; i >= 0; i--)
+        {
+            _currentEnemyAsteroids[i].ReturnToPool();
+        }
     }
 }

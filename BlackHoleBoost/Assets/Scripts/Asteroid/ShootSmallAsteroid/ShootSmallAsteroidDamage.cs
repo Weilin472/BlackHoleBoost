@@ -96,7 +96,6 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private void Bounce()
     {
         _asteroidMove.ChangeDirection(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0));
-        Debug.Log("Bounce");
     }
 
     /// <summary>

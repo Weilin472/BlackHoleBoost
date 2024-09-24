@@ -5,13 +5,14 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/11/2024]
+ * Last Updated: [09/23/2024]
  * [object pooling for asteroid pickups]
  */
 
 public class PickupSmallAsteroidPool : MonoBehaviour
 {
     [SerializeField] private GameObject _asteroidPrefab;
+    private List<PickupSmallAsteroid> _currentPickupAsteroids;
 
     public int maxPoolSize = 10;
     public int stackDefaultCapacity = 10;
@@ -38,6 +39,14 @@ public class PickupSmallAsteroidPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// makes list
+    /// </summary>
+    private void OnEnable()
+    {
+        _currentPickupAsteroids = new List<PickupSmallAsteroid>();
+    }
+
     private PickupSmallAsteroid CreatedPooledItem()
     {
         GameObject asteroid = Instantiate(_asteroidPrefab, Vector3.zero, Quaternion.identity);
@@ -48,6 +57,7 @@ public class PickupSmallAsteroidPool : MonoBehaviour
 
     private void OnReturnedToPool(PickupSmallAsteroid asteroid)
     {
+        _currentPickupAsteroids.Remove(asteroid);
         asteroid.gameObject.SetActive(false);
     }
 
@@ -69,9 +79,26 @@ public class PickupSmallAsteroidPool : MonoBehaviour
         var asteroid = Pool.Get();
         asteroid.transform.position = Vector3.zero;
     }
+
+    /// <summary>
+    /// spawns asteroid
+    /// </summary>
+    /// <param name="pos">position of asteroid</param>
     public void Spawn(Vector3 pos)
     {
         var asteroid = Pool.Get();
         asteroid.transform.position = pos;
+        _currentPickupAsteroids.Add(asteroid);
+    }
+
+    /// <summary>
+    /// returns all asteroids
+    /// </summary>
+    public void ReturnAllPickupAsteroids()
+    {
+        for (int i = _currentPickupAsteroids.Count - 1; i >= 0; i--)
+        {
+            _currentPickupAsteroids[i].ReturnToPool();
+        }
     }
 }
