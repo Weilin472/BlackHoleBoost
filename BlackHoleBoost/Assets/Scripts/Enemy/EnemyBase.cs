@@ -32,10 +32,11 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Movement()
     {
-       
+        if (PlayerControl.Instance != null)
+        {
             Vector3 playerPos = PlayerControl.Instance.transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
             _rigid.velocity = dir * _speed;
-        
+        }
     }
 }

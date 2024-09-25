@@ -16,7 +16,6 @@ public class Cyclop : EnemyBase
     {
         if (other.tag=="Player")
         {
-            Debug.Log("buh");
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
             otherHealth.Damage(1);
         }

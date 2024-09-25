@@ -31,6 +31,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
     [SerializeField] private EnemyAsteroidPool _enemyAsteroidPool;
     [SerializeField] private ShootSmallAsteroidPool _shootSmallAsteroidPool;
     [SerializeField] private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
+    [SerializeField] private PrototypeEnemySpawner _prototypeEnemySpawner;
     private bool _isPlaying = false;
     private int _time;
 
@@ -61,6 +62,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         StartCoroutine(Timer());
 
         _enemyAsteroidSpawner.StartSpawning();
+        _prototypeEnemySpawner.StartSpawning();
 
         Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
     }
@@ -71,6 +73,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         ShowGameOverUI();
 
         _enemyAsteroidSpawner.StopSpawning();
+        _prototypeEnemySpawner.StopSpawning();
         _enemyAsteroidPool.ReturnAllEnemyAsteroids();
         _shootSmallAsteroidPool.ReturnAllShootAsteroids();
         _pickupSmallAsteroidPool.ReturnAllPickupAsteroids();
