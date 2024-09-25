@@ -19,7 +19,7 @@ public class BaseHealthScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void GetHurt(int damage)
+    public virtual void Damage(int damage)
     {
         _currentHealth -= damage;
 

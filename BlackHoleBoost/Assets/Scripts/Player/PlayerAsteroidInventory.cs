@@ -29,7 +29,7 @@ public class PlayerAsteroidInventory : MonoBehaviour
     {
         for (int i = 0; i < _inventory.Count; i++)
         {
-            displayInventory[i] = _inventory[i];
+            //displayInventory[i] = _inventory[i];
         }
     }
 

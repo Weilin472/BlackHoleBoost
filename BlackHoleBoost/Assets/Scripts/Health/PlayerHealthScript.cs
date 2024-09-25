@@ -22,19 +22,21 @@ public class PlayerHealthScript : BaseHealthScript
     /// input a positive number to decrease its health
     /// </summary>
     /// <param name="damage"></param>
-    public override void GetHurt(int damage)
+    public override void Damage(int damage)
     {
         if ( !_isUnattackable)
         {
             StartCoroutine(HurtAnimation());
-            base.GetHurt(damage);
+            base.Damage(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
     }
 
     protected override void OnDeath()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        Debug.Log("prototype game over here, remove later");
+        PrototypeGameManager.Instance.GameOver();
         Destroy(gameObject);
     }
 
@@ -49,8 +51,8 @@ public class PlayerHealthScript : BaseHealthScript
             {
                 mr[i].enabled = !mr[i].enabled;
             }
-            _currentUnattackTime += 0.5f;
-            yield return new WaitForSeconds(0.5f);
+            _currentUnattackTime += 0.2f;
+            yield return new WaitForSeconds(0.2f);
         }
         for (int i = 0; i < mr.Length; i++)
         {

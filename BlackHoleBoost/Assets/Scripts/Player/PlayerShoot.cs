@@ -33,7 +33,7 @@ public class PlayerShoot : MonoBehaviour
                 StartCoroutine(Cooldown());
 
                 Vector3 spawnLoc = transform.position;
-                spawnLoc.y = spawnLoc.y + 1;
+                spawnLoc = spawnLoc + transform.up;
 
                 Vector3 dir = spawnLoc - transform.position;
                 dir.Normalize();

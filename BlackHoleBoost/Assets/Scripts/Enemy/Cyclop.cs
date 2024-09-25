@@ -12,15 +12,17 @@ public class Cyclop : EnemyBase
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player"&&!other.transform.GetComponent<PlayerControl>().isInBlackHole)
+        if (other.tag=="Player")
         {
-            base.OnTriggerEnter(other);
+            PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
+            otherHealth.Damage(1);
         }
         if (other.tag=="BlackHole")
         {
-            _enemyHealthScript.GetHurt(1);
+            _enemyHealthScript.Damage(1);
+
         }
     }
 
@@ -28,7 +30,7 @@ public class Cyclop : EnemyBase
     {
         if (other.tag == "BlackHole")
         {
-            _enemyHealthScript.GetHurt(1);
+            _enemyHealthScript.Damage(1);
         }
     }
 

@@ -24,11 +24,12 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Movement()
     {
-       
+        if (PlayerControl.Instance != null)
+        {
             Vector3 playerPos = PlayerControl.Instance.transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
             _rigid.velocity = dir * _speed;
-        
+        }
     }
     protected bool DetectBoundaries()
     {
@@ -62,9 +63,8 @@ public class EnemyBase : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("buh");
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
-            otherHealth.GetHurt(1);
+            otherHealth.Damage(1);
         }
     }
 }
