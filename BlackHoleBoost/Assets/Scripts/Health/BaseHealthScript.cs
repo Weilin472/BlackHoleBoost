@@ -19,7 +19,7 @@ public class BaseHealthScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void Damage(int damage)
+    public virtual void GetHurt(int damage)
     {
         _currentHealth -= damage;
 
@@ -27,6 +27,16 @@ public class BaseHealthScript : MonoBehaviour
         {
             OnDeath();
         }
+    }
+
+    public virtual void Heal(int healAmount)
+    {
+        _currentHealth += healAmount;
+        if (_currentHealth>_maxHealth)
+        {
+            _currentHealth = _maxHealth;
+        }
+        UIManager.Instance.SetLifeUI(_currentHealth);
     }
 
     protected virtual void ResetHealth()

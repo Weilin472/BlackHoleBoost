@@ -14,10 +14,13 @@ public class Cyclop : EnemyBase
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if (other.tag=="Player"&&!other.transform.GetComponent<PlayerControl>().isInBlackHole)
+        {
+            base.OnTriggerEnter(other);
+        }
         if (other.tag=="BlackHole")
         {
-            _enemyHealthScript.Damage(1);
+            _enemyHealthScript.GetHurt(1);
         }
     }
 
@@ -25,7 +28,7 @@ public class Cyclop : EnemyBase
     {
         if (other.tag == "BlackHole")
         {
-            _enemyHealthScript.Damage(1);
+            _enemyHealthScript.GetHurt(1);
         }
     }
 

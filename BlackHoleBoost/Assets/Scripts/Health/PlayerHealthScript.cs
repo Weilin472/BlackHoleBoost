@@ -18,12 +18,16 @@ public class PlayerHealthScript : BaseHealthScript
         UIManager.Instance.SetLifeUI(_maxHealth);
     }
 
-    public override void Damage(int damage)
+    /// <summary>
+    /// input a positive number to decrease its health
+    /// </summary>
+    /// <param name="damage"></param>
+    public override void GetHurt(int damage)
     {
-        if (!PlayerControl.Instance.isInBlackHole && !_isUnattackable)
+        if ( !_isUnattackable)
         {
             StartCoroutine(HurtAnimation());
-            base.Damage(damage);
+            base.GetHurt(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
     }

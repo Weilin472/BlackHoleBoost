@@ -160,6 +160,7 @@ MonoBehaviour:
   _maxSpeed: 7
   _maxBlackHoleSpeed: 13
   _beLockedOnIcon: {fileID: 5201209787225078029}
+  _blackHoleSuckUpMaxTime: 5
   isInBlackHole: 0
 --- !u!114 &6056557057473636322
 MonoBehaviour:

@@ -64,7 +64,7 @@ public class EnemyBase : MonoBehaviour
         {
             Debug.Log("buh");
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
-            otherHealth.Damage(1);
+            otherHealth.GetHurt(1);
         }
     }
 }
