@@ -13,6 +13,11 @@ public class PlayerHealthScript : BaseHealthScript
         ResetHealth();
     }
 
+    private void Start()
+    {
+        UIManager.Instance.SetLifeUI(_maxHealth);
+    }
+
     public override void Damage(int damage)
     {
         if (!PlayerControl.Instance.isInBlackHole && !_isUnattackable)

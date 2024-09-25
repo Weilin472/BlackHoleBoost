@@ -12,18 +12,12 @@ public class Cyclop : EnemyBase
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player")
-        {
-            Debug.Log("buh");
-            PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
-            otherHealth.Damage(1);
-        }
+        base.OnTriggerEnter(other);
         if (other.tag=="BlackHole")
         {
             _enemyHealthScript.Damage(1);
-
         }
     }
 

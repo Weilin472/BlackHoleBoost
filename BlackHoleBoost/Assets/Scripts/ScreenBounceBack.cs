@@ -11,8 +11,8 @@ public class ScreenBounceBack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rightBoundary = Camera.main.orthographicSize * Screen.width / Screen.height;
-        _topBoundary = Camera.main.orthographicSize;
+        _rightBoundary = GameManager.Instance.RightBoundary;
+        _topBoundary = GameManager.Instance.TopBoundary;
     }
 
     // Update is called once per frame

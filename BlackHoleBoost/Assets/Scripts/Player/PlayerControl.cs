@@ -11,6 +11,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _blackHolePrefab;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
+    [SerializeField] private GameObject _beLockedOnIcon;
+
 
 
     private GameObject _currentBlackHole;
@@ -134,6 +136,16 @@ public class PlayerControl : MonoBehaviour
         {
             _playerShoot.ShootAsteroid();
         }
+    }
+
+    public float GetSpaceShipMaxSpeed()
+    {
+        return _maxSpeed;
+    }
+
+    public void SetLockOnIcon(bool isLockOn)
+    {
+        _beLockedOnIcon.SetActive(isLockOn);
     }
 
 }
