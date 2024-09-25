@@ -25,6 +25,7 @@ public class BaseHealthScript : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
+            _currentHealth = 0;
             OnDeath();
         }
     }

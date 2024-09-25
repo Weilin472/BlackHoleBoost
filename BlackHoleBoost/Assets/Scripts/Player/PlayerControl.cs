@@ -62,7 +62,7 @@ public class PlayerControl : MonoBehaviour
             _currentTimeStayInBlackHole += Time.deltaTime;
             if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
             {
-                transform.GetComponent<PlayerHealthScript>().GetHurt(1);
+                transform.GetComponent<PlayerHealthScript>().GetHurt(100);
                 ExitBlackHoleMode();
                 rigid.velocity = Vector3.zero;
             }
