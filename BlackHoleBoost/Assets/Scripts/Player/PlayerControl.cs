@@ -11,6 +11,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _blackHolePrefab;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
+    [SerializeField] private GameObject _beLockedOnIcon;
+    [SerializeField] private float _blackHoleSuckUpMaxTime;
+
 
 
     private GameObject _currentBlackHole;
@@ -18,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
     private static PlayerControl _instance;
+    private float _currentTimeStayInBlackHole;
 
     private PlayerShoot _playerShoot;
 
@@ -51,9 +55,17 @@ public class PlayerControl : MonoBehaviour
             if (_currentBlachHoleSpeed<_maxBlackHoleSpeed)
             {
                 _currentBlachHoleSpeed +=  Time.deltaTime;
+              
             }
             _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x*0.8f / _currentBlachHoleSpeed);
             transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
+            _currentTimeStayInBlackHole += Time.deltaTime;
+            if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
+            {
+                transform.GetComponent<PlayerHealthScript>().GetHurt(100);
+                ExitBlackHoleMode();
+                rigid.velocity = Vector3.zero;
+            }
             return;
         }
 
@@ -121,11 +133,17 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                Destroy(_currentBlackHole);
-                _currentBlackHole = null;
-                isInBlackHole = false;
+                ExitBlackHoleMode();
             }         
         }
+    }
+
+    private void ExitBlackHoleMode()
+    {
+        _currentTimeStayInBlackHole = 0;
+        Destroy(_currentBlackHole);
+        _currentBlackHole = null;
+        isInBlackHole = false;
     }
 
     public void ShootAsteroid(InputAction.CallbackContext input)
@@ -134,6 +152,16 @@ public class PlayerControl : MonoBehaviour
         {
             _playerShoot.ShootAsteroid();
         }
+    }
+
+    public float GetSpaceShipMaxSpeed()
+    {
+        return _maxSpeed;
+    }
+
+    public void SetLockOnIcon(bool isLockOn)
+    {
+        _beLockedOnIcon.SetActive(isLockOn);
     }
 
 }

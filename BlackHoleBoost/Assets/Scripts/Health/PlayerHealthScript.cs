@@ -13,12 +13,21 @@ public class PlayerHealthScript : BaseHealthScript
         ResetHealth();
     }
 
-    public override void Damage(int damage)
+    private void Start()
     {
-        if (!PlayerControl.Instance.isInBlackHole && !_isUnattackable)
+        UIManager.Instance.SetLifeUI(_maxHealth);
+    }
+
+    /// <summary>
+    /// input a positive number to decrease its health
+    /// </summary>
+    /// <param name="damage"></param>
+    public override void GetHurt(int damage)
+    {
+        if ( !_isUnattackable)
         {
             StartCoroutine(HurtAnimation());
-            base.Damage(damage);
+            base.GetHurt(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
     }

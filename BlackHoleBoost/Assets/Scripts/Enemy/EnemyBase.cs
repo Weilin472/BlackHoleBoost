@@ -16,18 +16,10 @@ public class EnemyBase : MonoBehaviour
         _enemyHealthScript = GetComponent<EnemyHealthScript>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     protected virtual void FixedUpdate()
     {
-        if (!PlayerControl.Instance.isInBlackHole)
-        {
-            Movement();
-        }
+        Movement();
     }
 
     protected virtual void Movement()
@@ -37,6 +29,43 @@ public class EnemyBase : MonoBehaviour
             Vector3 playerPos = PlayerControl.Instance.transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
             _rigid.velocity = dir * _speed;
+        }
+    }
+    protected bool DetectBoundaries()
+    {
+        if ((transform.position.x > GameManager.Instance.RightBoundary) || (transform.position.x < -GameManager.Instance.RightBoundary) || (transform.position.y > GameManager.Instance.TopBoundary) || (transform.position.y < -GameManager.Instance.TopBoundary))
+        {
+            Vector3 currPos = transform.position;
+            if (transform.position.x>GameManager.Instance.RightBoundary)
+            {
+                currPos.x -= 0.5f;
+            }
+            else if (transform.position.x <-GameManager.Instance.RightBoundary)
+            {
+                currPos.x += 0.5f;
+            }
+            if (transform.position.y>GameManager.Instance.TopBoundary)
+            {
+                currPos.y -= 0.5f;
+            }
+            else if (transform.position.y<-GameManager.Instance.TopBoundary)
+            {
+                currPos.y += 0.5f;
+            }
+            transform.position = currPos;
+            _rigid.velocity = Vector3.zero;
+            return true;
+        }
+        return false;
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("buh");
+            PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
+            otherHealth.GetHurt(1);
         }
     }
 }

@@ -11,7 +11,7 @@ public class BaseDamageScript : MonoBehaviour
         if (other.transform.root.gameObject.GetComponent<BaseHealthScript>())
         {
             BaseHealthScript otherHealth = other.transform.root.gameObject.GetComponent<BaseHealthScript>();
-            otherHealth.Damage(_damage);
+            otherHealth.GetHurt(_damage);
         }
 
     }
