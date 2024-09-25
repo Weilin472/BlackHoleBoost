@@ -22,12 +22,12 @@ public class PlayerHealthScript : BaseHealthScript
     /// input a positive number to decrease its health
     /// </summary>
     /// <param name="damage"></param>
-    public override void GetHurt(int damage)
+    public override void Damage(int damage)
     {
         if ( !_isUnattackable)
         {
             StartCoroutine(HurtAnimation());
-            base.GetHurt(damage);
+            base.Damage(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
     }
