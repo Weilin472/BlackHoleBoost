@@ -952,6 +952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 547154220}
+  - component: {fileID: 547154222}
   - component: {fileID: 547154213}
   - component: {fileID: 547154219}
   - component: {fileID: 547154218}
@@ -1112,6 +1113,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefabs:
   - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
+  - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
+--- !u!114 &547154222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547154212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffa711d4d88bca48a130e80d4c475bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightBoundary: 0
+  TopBoundary: 0
 --- !u!1 &569247955
 GameObject:
   m_ObjectHideFlags: 0

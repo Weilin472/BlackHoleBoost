@@ -12,7 +12,6 @@ public class PrototypeEnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _enemyPrefabs;
     private GameObject _currentEnemy;
-    private int _currentIndex = 0;
 
     private bool _isSpawning = false;
 
@@ -41,6 +40,6 @@ public class PrototypeEnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Vector3 loc = new Vector3(Random.Range(-2, 2), 10, 0);
-        _currentEnemy = Instantiate(_enemyPrefabs[_currentIndex], loc, Quaternion.identity);
+        _currentEnemy = Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], loc, Quaternion.identity);
     }
 }

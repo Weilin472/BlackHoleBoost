@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6056557057473636322, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
         type: 3}
@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 1527436595}
   - component: {fileID: 1527436596}
   - component: {fileID: 1527436597}
+  - component: {fileID: 1527436598}
   m_Layer: 0
   m_Name: TestManager
   m_TagString: GameManager
@@ -961,6 +962,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 180469784}
+--- !u!114 &1527436598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527436590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffa711d4d88bca48a130e80d4c475bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightBoundary: 0
+  TopBoundary: 0
 --- !u!1 &1640506890
 GameObject:
   m_ObjectHideFlags: 0
