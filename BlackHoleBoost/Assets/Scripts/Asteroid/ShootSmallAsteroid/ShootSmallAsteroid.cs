@@ -44,16 +44,4 @@ public class ShootSmallAsteroid : MonoBehaviour
     {
         Pool.Release(this);
     }
-
-    private void OnEnable()
-    {
-        StartCoroutine(testDestroy());
-    }
-
-    private IEnumerator testDestroy()
-    {
-        yield return new WaitForSeconds(5f);
-
-        ReturnToPool();
-    }
 }
