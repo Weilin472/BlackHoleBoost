@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7966334743730919189}
   - component: {fileID: 4060509687084262200}
   - component: {fileID: 3359345526280067459}
+  - component: {fileID: 8719738746515006245}
   - component: {fileID: 3577111645972446562}
   - component: {fileID: 1091962646230154185}
-  - component: {fileID: 3727965585020725805}
   m_Layer: 0
   m_Name: ShootAsteroidContainer
   m_TagString: Untagged
@@ -126,6 +126,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _numOfBounces: 1
+--- !u!114 &8719738746515006245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476599835060194455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650f4bd504ec33e48bcdac53035d3467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3577111645972446562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf892153d3d8c224bb82269c64deb1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
+  _speed: 1
   _direction: {x: 0, y: 1, z: 0}
 --- !u!114 &1091962646230154185
 MonoBehaviour:
@@ -150,18 +162,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e279fde81fe9cb4a87834d8711785ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3727965585020725805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4476599835060194455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c4935db0a372c4db410fa704584ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3310250533949087503

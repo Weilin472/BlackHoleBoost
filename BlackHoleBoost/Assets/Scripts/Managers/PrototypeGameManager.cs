@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/23/2024]
+ * Last Updated: [09/29/2024]
  * [game manager for prototype (please dont use after prototype)]
  */
 
-public class PrototypeGameManager : Singleton<PrototypeGameManager>
+public class PrototypeGameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _livesText;
     [SerializeField] private TMP_Text _timerText;
@@ -38,6 +38,8 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
     private void OnEnable()
     {
         ShowTitleScreen();
+        Debug.LogError("needed this to be not static, change MonoBehavior to Singleton<PrototypeGameManager>");
+
     }
 
     public void HideAllUI()

@@ -12,7 +12,7 @@ public class Cyclop : EnemyBase
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Player")
         {

@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] protected float _speed;
+    protected float _currentSpeed;
     protected Rigidbody _rigid;
 
     protected EnemyHealthScript _enemyHealthScript;
+
+    protected bool isStuck = false;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -19,6 +22,14 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (isStuck)
+        {
+            _currentSpeed = 0;
+        }
+        else
+        {
+            _currentSpeed = _speed;
+        }
         Movement();
     }
 
@@ -28,7 +39,7 @@ public class EnemyBase : MonoBehaviour
         {
             Vector3 playerPos = PlayerControl.Instance.transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
-            _rigid.velocity = dir * _speed;
+            _rigid.velocity = dir * _currentSpeed;
         }
     }
     protected bool DetectBoundaries()
@@ -66,5 +77,15 @@ public class EnemyBase : MonoBehaviour
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
             otherHealth.Damage(1);
         }
+    }
+
+    public void GetStick()
+    {
+        isStuck = true;
+    }
+
+    public void Unstick()
+    {
+        isStuck = false;
     }
 }
