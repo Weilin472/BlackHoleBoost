@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/16/2024]
+ * Last Updated: [09/28/2024]
  * [sets damage and side effects of asteroid]
  */
 
@@ -13,12 +13,14 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private ShootSmallAsteroidEventBus _shootSmallAsteroidEventBus;
     private AsteroidMove _asteroidMove;
 
-    delegate void AsteroidEffect();
+    delegate void AsteroidEffect(Collider collider);
     private AsteroidEffect asteroidEffect;
 
     [SerializeField] private int _normalDamage = 1;
     [SerializeField] private int _bunceDamage = 1;
     [SerializeField] private int _stickyDamage = 0;
+
+    private List<GameObject> _stuckAsteroids;
 
     /// <summary>
     /// gets needed components
@@ -27,6 +29,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     {
         _shootSmallAsteroidEventBus = GetComponent<ShootSmallAsteroidEventBus>();
         _asteroidMove = GetComponent<AsteroidMove>();
+        _stuckAsteroids = new List<GameObject>();
     }
 
     /// <summary>
@@ -45,6 +48,14 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private void OnDisable()
     {
         asteroidEffect = null;
+        if (_stuckAsteroids.Count > 0)
+        {
+            foreach (GameObject stuckAsteroid in _stuckAsteroids)
+            {
+                Destroy(stuckAsteroid);
+            }
+        }
+        _stuckAsteroids = new List<GameObject>();
         _shootSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.NORMAL, SetNormal);
         _shootSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.BOUNCE, SetBounce);
         _shootSmallAsteroidEventBus.Unsubscribe(SmallAsteroidType.STICKY, SetSticky);
@@ -56,10 +67,13 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if (asteroidEffect != Stick || other.gameObject.tag != "Asteroid")
+        {
+            base.OnTriggerEnter(other);
+        }
         if (asteroidEffect != null)
         {
-            asteroidEffect();
+            asteroidEffect(other);
         }
     }
 
@@ -93,7 +107,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <summary>
     /// changes rotation of game object to bounce
     /// </summary>
-    private void Bounce()
+    private void Bounce(Collider collider)
     {
         _asteroidMove.ChangeDirection(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0));
     }
@@ -101,8 +115,32 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <summary>
     /// attaches enemy asteroid to this asteroid
     /// </summary>
-    private void Stick()
+    private void Stick(Collider collider)
     {
-        Debug.Log("Stick");
+        GameObject otherRoot = collider.transform.root.gameObject;
+
+        if (otherRoot.tag == "Asteroid")
+        {
+            GameObject otherModel = collider.gameObject;
+            for (int i = 0; i < _stuckAsteroids.Count; i++)
+            {
+                if (otherModel == _stuckAsteroids[i])
+                {
+                    return;
+                }
+            }
+
+            Vector3 closestPoint = collider.ClosestPoint(transform.position);
+            GameObject stuckModel = Instantiate(otherModel, closestPoint, Quaternion.identity);
+            stuckModel.transform.parent = this.transform;
+            _stuckAsteroids.Add(stuckModel);
+
+            if (otherRoot.GetComponent<BaseHealthScript>())
+            {
+                BaseHealthScript otherHealth = otherRoot.GetComponent<BaseHealthScript>();
+                otherHealth.Damage(99);
+            }
+        }
+        //Debug.Log("Stick");
     }
 }
