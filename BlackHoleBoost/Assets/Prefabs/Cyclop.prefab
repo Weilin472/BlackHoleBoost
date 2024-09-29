@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _laser: {fileID: 1897070107577296333}
+  _laserObject: {fileID: 6187280805525261798}
   _rotateSpeed: 45
 --- !u!114 &7020249951829209705
 MonoBehaviour:

@@ -64,6 +64,11 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             for (int i = 0; i < _stuckEnemies.Count; i++)
             {
                 _stuckEnemies[i].Unstick();
+                if (_stuckEnemies[i].gameObject.GetComponent<Cyclop>())
+                {
+                    Cyclop cyclop = _stuckEnemies[i].gameObject.GetComponent<Cyclop>();
+                    cyclop.TurnOnLaser();
+                }
             }
             _stuckEnemies = new List<EnemyBase>();
             _enemyOffset = new List<Vector3>();
@@ -164,6 +169,12 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             otherEnemy.GetStick();
             _stuckEnemies.Add(otherEnemy);
             _enemyOffset.Add(otherEnemy.transform.position - this.transform.position);
+
+            if (otherRoot.GetComponent<Cyclop>())
+            {
+                Cyclop cyclop = otherRoot.GetComponent<Cyclop>();
+                cyclop.TurnOffLaser();
+            }
         }
         //Debug.Log("Stick");
     }
