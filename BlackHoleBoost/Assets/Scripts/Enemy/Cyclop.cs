@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Cyclop : EnemyBase
 {
-    [SerializeField]private Transform _laser;
+    [SerializeField] private Transform _laser;
+    [SerializeField] private GameObject _laserObject;
     [SerializeField] private float _rotateSpeed;
 
     private void Update()
@@ -12,14 +13,14 @@ public class Cyclop : EnemyBase
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player")
+        if (other.tag == "Player")
         {
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
             otherHealth.Damage(1);
         }
-        if (other.tag=="BlackHole")
+        if (other.tag == "BlackHole")
         {
             _enemyHealthScript.Damage(1);
 
@@ -34,5 +35,13 @@ public class Cyclop : EnemyBase
         }
     }
 
-  
+    public void TurnOffLaser()
+    {
+        _laserObject.SetActive(false);
+    }
+
+    public void TurnOnLaser()
+    {
+        _laserObject.SetActive(true);
+    }
 }

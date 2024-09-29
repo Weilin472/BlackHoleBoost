@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/07/2024]
+ * Last Updated: [09/28/2024]
  * [Base Class for all health scripts]
  */
 
@@ -12,6 +12,8 @@ public class BaseHealthScript : MonoBehaviour
 {
     protected int _currentHealth;
     [SerializeField] protected int _maxHealth;
+
+    protected bool _invincible = false;
 
     protected virtual void OnDeath()
     {
@@ -21,12 +23,15 @@ public class BaseHealthScript : MonoBehaviour
 
     public virtual void Damage(int damage)
     {
-        _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
+        if (!_invincible)
         {
-            _currentHealth = 0;
-            OnDeath();
+            _currentHealth -= damage;
+
+            if (_currentHealth <= 0)
+            {
+                _currentHealth = 0;
+                OnDeath();
+            }
         }
     }
 

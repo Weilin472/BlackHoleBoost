@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/16/2024]
+ * Last Updated: [09/28/2024]
  * [script for pickupable small asteroids, make sure on bottom of component list]
  */
 
@@ -32,7 +32,7 @@ public class ShootSmallAsteroid : MonoBehaviour
         }
         else
         {
-            gameObject.name = "Pickup "+ asteroidType + " Asteroid";
+            gameObject.name = "Shoot "+ asteroidType + " Asteroid";
             _shootSmallAsteroidEventBus.Publish(asteroidType);
         }
     }

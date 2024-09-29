@@ -55,6 +55,7 @@ public class ShootSmallAsteroidHealth : BaseHealthScript
     private void SetNormal()
     {
         _maxHealth = 1;
+        _invincible = false;
         ResetHealth();
     }
 
@@ -64,6 +65,7 @@ public class ShootSmallAsteroidHealth : BaseHealthScript
     private void SetBounce()
     {
         _maxHealth = _numOfBounces;
+        _invincible = false;
         ResetHealth();
     }
 
@@ -72,8 +74,8 @@ public class ShootSmallAsteroidHealth : BaseHealthScript
     /// </summary>
     private void SetSticky()
     {
-        Debug.Log("Does Sticky have a limit?");
         _maxHealth = 1;
+        _invincible = true;
         ResetHealth();
     }
 }
