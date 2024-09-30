@@ -18,7 +18,7 @@ public class ScreenBounceBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerControl.Instance.isInBlackHole)
+        if (transform.GetComponent<PlayerControl>().isInBlackHole)
         {
             return;
         }

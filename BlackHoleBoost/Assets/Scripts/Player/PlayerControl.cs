@@ -17,7 +17,9 @@ public class PlayerControl : MonoBehaviour
 
 
     private GameObject _currentBlackHole;
+    private GameObject _currentPlanet;
     private float _currentBlachHoleSpeed;
+    private float _circleModeRotateDiameter;
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
     private static PlayerControl _instance;
@@ -26,6 +28,10 @@ public class PlayerControl : MonoBehaviour
     private PlayerShoot _playerShoot;
 
     public bool isInBlackHole;
+    private bool _canInteractWithPlanet;
+    private bool _isInPlanet;
+    private bool _isClockDirection;
+
     public static PlayerControl Instance => _instance;
 
     private void Awake()
@@ -45,27 +51,45 @@ public class PlayerControl : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         _playerShoot = GetComponent<PlayerShoot>();
+
+        
+       
+       
     }
 
-    private void Update()
+    private void Update()//if pos.x is positive, then rotatioin.z is negative
     {
       
-        if (isInBlackHole)
-        {            
+        if (isInBlackHole||_isInPlanet)
+        {
             if (_currentBlachHoleSpeed<_maxBlackHoleSpeed)
             {
                 _currentBlachHoleSpeed +=  Time.deltaTime;
               
             }
-            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _currentBlackHole.transform.localScale.x*0.8f / _currentBlachHoleSpeed);
-            transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
-            _currentTimeStayInBlackHole += Time.deltaTime;
-            if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
+            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _circleModeRotateDiameter / _currentBlachHoleSpeed);
+            if (_isInPlanet)
             {
-                transform.GetComponent<PlayerHealthScript>().Damage(100);
-                ExitBlackHoleMode();
-                rigid.velocity = Vector3.zero;
+                if (_isClockDirection)
+                {
+                    transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.Rotate(0, 0, _currentBlackHoleModeRotateSpeed * Time.deltaTime);
+                }
             }
+            if (isInBlackHole)
+            {
+                transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
+                _currentTimeStayInBlackHole += Time.deltaTime;
+                if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
+                {
+                    transform.GetComponent<PlayerHealthScript>().Damage(100);
+                    ExitBlackHoleMode();
+                    rigid.velocity = Vector3.zero;
+                }
+            }      
             return;
         }
 
@@ -77,7 +101,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isInBlackHole)
+        if (isInBlackHole||_isInPlanet)
         {
             rigid.velocity = transform.TransformDirection(Vector3.up)*_currentBlachHoleSpeed;
             
@@ -125,16 +149,43 @@ public class PlayerControl : MonoBehaviour
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            if (!isInBlackHole)
+            if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)
             {
                 _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right)*0.8f, Quaternion.identity);
                 isInBlackHole = true;
                 _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
+                _circleModeRotateDiameter = _currentBlackHole.transform.localScale.x * 0.8f;
             }
-            else
+            else if (_canInteractWithPlanet&&!_isInPlanet&&!isInBlackHole)
+            {
+                _isInPlanet = true;
+                _canInteractWithPlanet = false;
+                _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
+                _circleModeRotateDiameter = Vector3.Distance(_currentPlanet.transform.position, transform.position) * 2;
+
+                Vector3 contactDir = transform.position - _currentPlanet.transform.position;
+                Vector3 adjustedDir = new Vector3(-contactDir.y, contactDir.x, 0).normalized;
+                float planetLocalX = transform.InverseTransformPoint(_currentPlanet.transform.position).x;
+                if (planetLocalX >= 0)
+                {
+                    _isClockDirection = true;
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, -adjustedDir);
+                }
+                else
+                {
+                    _isClockDirection = false;
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, adjustedDir);
+                }
+            }
+            else if(isInBlackHole)
             {
                 ExitBlackHoleMode();
-            }         
+            }
+            else if (_isInPlanet)
+            {
+                _currentPlanet = null;
+                _isInPlanet = false;
+            }
         }
     }
 
@@ -163,5 +214,15 @@ public class PlayerControl : MonoBehaviour
     {
         _beLockedOnIcon.SetActive(isLockOn);
     }
+
+    public void SetIfInPlanet(bool isInPlanet, Transform planetTran=null)
+    {
+        _canInteractWithPlanet = isInPlanet;
+        if (isInPlanet)
+        {
+            _currentPlanet = planetTran.gameObject;
+        }
+    }
+
 
 }
