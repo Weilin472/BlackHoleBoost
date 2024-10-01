@@ -10,7 +10,7 @@ using UnityEngine.UI;
  * [game manager for prototype (please dont use after prototype)]
  */
 
-public class PrototypeGameManager : MonoBehaviour
+public class PrototypeGameManager : Singleton<PrototypeGameManager>
 {
     [SerializeField] private TMP_Text _livesText;
     [SerializeField] private TMP_Text _timerText;
@@ -38,7 +38,7 @@ public class PrototypeGameManager : MonoBehaviour
     private void OnEnable()
     {
         ShowTitleScreen();
-        Debug.LogError("needed this to be not static, change MonoBehavior to Singleton<PrototypeGameManager>");
+        //Debug.LogError("needed this to be not static, change MonoBehavior to Singleton<PrototypeGameManager>");
 
     }
 
