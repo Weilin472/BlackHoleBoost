@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/22/2024]
+ * Last Updated: [10/03/2024]
  * [inventory for player]
  */
 
@@ -42,6 +42,26 @@ public class PlayerAsteroidInventory : MonoBehaviour
         if (_inventory.Count <= 5)
         {
             _inventory.Add(asteroid);
+
+            //playtest data stuff here
+            if (PlaytestData.Instance != null)
+            {
+                PlaytestData.Instance.totalAsteroidsCollected++;
+                switch (asteroid)
+                {
+                    case SmallAsteroidType.NORMAL:
+                        PlaytestData.Instance.normalAsteroidsCollected++;
+                        break;
+                    case SmallAsteroidType.BOUNCE:
+                        PlaytestData.Instance.bounceAsteroidsCollected++;
+                        break;
+                    case SmallAsteroidType.STICKY:
+                        PlaytestData.Instance.stickyAsteroidsCollected++;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 

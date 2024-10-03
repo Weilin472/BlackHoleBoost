@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/22/2024]
+ * Last Updated: [10/03/2024]
  * [script that handles shooting]
  */
 
@@ -16,12 +16,16 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float _fireRate = .5f;
     private bool _onCooldown = false;
 
+    //
     private void OnEnable()
     {
         _playerAsteroidInventory = GetComponent<PlayerAsteroidInventory>();
         _shootSmallAsteroidPool = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShootSmallAsteroidPool>();
     }
 
+    /// <summary>
+    /// shoots asteroid in front of player
+    /// </summary>
     public void ShootAsteroid()
     {
         if (!_onCooldown)
@@ -30,6 +34,26 @@ public class PlayerShoot : MonoBehaviour
 
             if (asteroid != SmallAsteroidType.NONE)
             {
+                //playtest data
+                if (PlaytestData.Instance != null)
+                {
+                    PlaytestData.Instance.totalAsteroidShotsFired++;
+                    switch (asteroid)
+                    {
+                        case SmallAsteroidType.NORMAL:
+                            PlaytestData.Instance.normalAsteroidShotsFired++;
+                            break;
+                        case SmallAsteroidType.BOUNCE:
+                            PlaytestData.Instance.bounceAsteroidShotsFired++;
+                            break;
+                        case SmallAsteroidType.STICKY:
+                            PlaytestData.Instance.stickyAsteroidShotsFired++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
                 StartCoroutine(Cooldown());
 
                 Vector3 spawnLoc = transform.position;
@@ -43,6 +67,10 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// cooldown so player cant spam asteroids
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Cooldown()
     {
         _onCooldown = true;

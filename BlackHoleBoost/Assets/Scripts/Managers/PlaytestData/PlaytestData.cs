@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/02/2024]
+ * Last Updated: [10/03/2024]
  * [data on playtest]
  */
 
@@ -12,27 +12,32 @@ public class PlaytestData : Singleton<PlaytestData>
 {
     //round data
     public int secondsSurvived;
+    //need
     public float averageSpeed;
     public int numberOfBlackHoles;
 
     //shoot asteroid data
+    //implemented
     public int totalAsteroidsCollected;
     public int normalAsteroidsCollected;
     public int bounceAsteroidsCollected;
-    public int stickyAsteroidCollected;
+    public int stickyAsteroidsCollected;
 
+    //imp
     public int totalAsteroidShotsFired;
     public int normalAsteroidShotsFired;
     public int bounceAsteroidShotsFired;
     public int stickyAsteroidShotsFired;
 
+    //need
     public int asteroidsStuck;
     public int enemiesStuck;
 
+    //need
     public int numberOfAsteroidReachingBarrier;
     public int totalNumberOfAsteroidsHitBarrier;
 
-    //enemy info
+    //enemy info NEED
     public int bigAsteroidSpawn;
     public int smallAsteroidSpawn;
     public int numberOfAsteroidsCrash;
@@ -51,7 +56,7 @@ public class PlaytestData : Singleton<PlaytestData>
         totalAsteroidsCollected = 0;
         normalAsteroidsCollected = 0;
         bounceAsteroidsCollected = 0;
-        stickyAsteroidCollected = 0;
+        stickyAsteroidsCollected = 0;
         totalAsteroidShotsFired = 0;
         normalAsteroidShotsFired = 0;
         bounceAsteroidShotsFired = 0;

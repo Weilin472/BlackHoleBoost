@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/29/2024]
+ * Last Updated: [10/03/2024]
  * [game manager for prototype (please dont use after prototype)]
  */
 
@@ -35,6 +35,9 @@ public class PrototypeGameManager : MonoBehaviour
     private bool _isPlaying = false;
     private int _time;
 
+    /// <summary>
+    /// starts game off in title screen
+    /// </summary>
     private void OnEnable()
     {
         ShowTitleScreen();
@@ -42,6 +45,9 @@ public class PrototypeGameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// hides all ui
+    /// </summary>
     public void HideAllUI()
     {
         _livesText.enabled = false;
@@ -55,6 +61,9 @@ public class PrototypeGameManager : MonoBehaviour
         _toggleRulesButton.SetActive(false);
     }
 
+    /// <summary>
+    /// starts game
+    /// </summary>
     public void PlayGame()
     {
         ShowGameUI();
@@ -69,10 +78,19 @@ public class PrototypeGameManager : MonoBehaviour
         Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
     }
 
+    /// <summary>
+    /// stops game
+    /// </summary>
     public void GameOver()
     {
         _isPlaying = false;
         ShowGameOverUI();
+
+        //feedback tools code
+        if (PlaytestData.Instance != null)
+        {
+            PlaytestData.Instance.secondsSurvived = _time;
+        }
 
         _enemyAsteroidSpawner.StopSpawning();
         _prototypeEnemySpawner.StopSpawning();
@@ -81,6 +99,9 @@ public class PrototypeGameManager : MonoBehaviour
         _pickupSmallAsteroidPool.ReturnAllPickupAsteroids();
     }
 
+    /// <summary>
+    /// shows ui for title screen
+    /// </summary>
     public void ShowTitleScreen()
     {
         HideAllUI();
@@ -103,6 +124,9 @@ public class PrototypeGameManager : MonoBehaviour
         _toggleRulesButton.SetActive(true);
     }
 
+    /// <summary>
+    /// shows ui for game
+    /// </summary>
     public void ShowGameUI()
     {
         HideAllUI();
@@ -120,7 +144,9 @@ public class PrototypeGameManager : MonoBehaviour
         }
     }
 
-    //add time
+    /// <summary>
+    /// shows UI for game over
+    /// </summary>
     public void ShowGameOverUI()
     {
         HideAllUI();
@@ -143,12 +169,18 @@ public class PrototypeGameManager : MonoBehaviour
         _toggleRulesButton.SetActive(true);
     }
 
+    /// <summary>
+    /// toggles controls ui
+    /// </summary>
     public void ToggleControls()
     {
         _controlText.enabled = !_controlText.enabled;
         _controlIsToggled = !_controlIsToggled;
     }
 
+    /// <summary>
+    /// toggles rules ui
+    /// </summary>
     public void ToggleRules()
     {
         _rulesText.enabled = !_rulesText.enabled;
@@ -163,6 +195,10 @@ public class PrototypeGameManager : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// timer for the UI
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Timer()
     {
         while (_isPlaying)
