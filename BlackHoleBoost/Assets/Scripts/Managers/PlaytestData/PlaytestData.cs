@@ -29,17 +29,17 @@ public class PlaytestData : Singleton<PlaytestData>
     public int bounceAsteroidShotsFired;
     public int stickyAsteroidShotsFired;
 
-    //need
+    //imp
     public int asteroidsStuck;
     public int enemiesStuck;
 
-    //need
-    public int numberOfAsteroidReachingBarrier;
-    public int totalNumberOfAsteroidsHitBarrier;
+    //imp
+    public int numberOfShootAsteroidReachingBarrier;
 
-    //enemy info NEED
+    //enemy info
+    //imp
     public int bigAsteroidSpawn;
-    public int smallAsteroidSpawn;
+    public int mediumAsteroidSpawn;
     public int numberOfAsteroidsCrash;
 
     public int numberOfEnemySpawns;
@@ -48,7 +48,7 @@ public class PlaytestData : Singleton<PlaytestData>
 
     public string[] playerHits;
 
-    private void ResetValues()
+    public void ResetValues()
     {
         secondsSurvived = 0;
         averageSpeed = 0;
@@ -63,10 +63,9 @@ public class PlaytestData : Singleton<PlaytestData>
         stickyAsteroidShotsFired = 0;
         asteroidsStuck = 0;
         enemiesStuck = 0;
-        numberOfAsteroidReachingBarrier = 0;
-        totalNumberOfAsteroidsHitBarrier = 0;
+        numberOfShootAsteroidReachingBarrier = 0;
         bigAsteroidSpawn = 0;
-        smallAsteroidSpawn = 0;
+        mediumAsteroidSpawn = 0;
         numberOfAsteroidsCrash = 0;
         numberOfEnemySpawns = 0;
         cyclopsSpawned = 0;

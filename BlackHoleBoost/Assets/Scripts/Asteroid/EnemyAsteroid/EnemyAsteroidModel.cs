@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/08/2024]
+ * Last Updated: [10/03/2024]
  * [script to set model]
  */
 
@@ -49,6 +49,10 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetBig()
     {
         _bigModel.SetActive(true);
+        if (PlaytestData.Instance != null)
+        {
+            PlaytestData.Instance.bigAsteroidSpawn++;
+        }
     }
 
     /// <summary>
@@ -57,5 +61,9 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetMedium()
     {
         _mediumModel.SetActive(true);
+        if (PlaytestData.Instance != null)
+        {
+            PlaytestData.Instance.mediumAsteroidSpawn++;
+        }
     }
 }

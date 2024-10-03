@@ -40,6 +40,22 @@ public class PrototypeEnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Vector3 loc = new Vector3(Random.Range(-2, 2), 10, 0);
-        _currentEnemy = Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], loc, Quaternion.identity);
+        int spawnIndex = Random.Range(0, _enemyPrefabs.Length);
+        _currentEnemy = Instantiate(_enemyPrefabs[spawnIndex], loc, Quaternion.identity);
+
+
+        if (PlaytestData.Instance != null)
+        {
+            PlaytestData.Instance.numberOfEnemySpawns++;
+            if (spawnIndex == 0)
+            {
+                PlaytestData.Instance.cyclopsSpawned++;
+            }
+            else if (spawnIndex == 1)
+            {
+                PlaytestData.Instance.minotaurSpawned++;
+            }
+        }
+
     }
 }
