@@ -36,7 +36,7 @@ public class PlayerHealthScript : BaseHealthScript
     {
         //Time.timeScale = 0;
         Debug.Log("prototype game over here, remove later");
-        PrototypeGameManager.Instance.GameOver();
+        //PrototypeGameManager.Instance.GameOver();
         Destroy(gameObject);
     }
 
