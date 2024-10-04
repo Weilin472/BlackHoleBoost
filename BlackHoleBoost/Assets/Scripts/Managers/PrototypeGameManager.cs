@@ -61,7 +61,7 @@ public class PrototypeGameManager : MonoBehaviour
         _isPlaying = true;
         _time = 0;
         _timerText.text = "0:00";
-    //    StartCoroutine(Timer());
+        StartCoroutine(Timer());
 
         _enemyAsteroidSpawner.StartSpawning();
         _prototypeEnemySpawner.StartSpawning();
