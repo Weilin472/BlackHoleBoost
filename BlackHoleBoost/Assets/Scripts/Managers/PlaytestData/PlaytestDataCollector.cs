@@ -54,6 +54,12 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
     //need
     public string[] playerHits;
 
+    private bool _startCollecting = false;
+    private float _collectFrequency = 1f;
+
+    private float[] _speeds;
+    private int[] _numEnemies;
+
     public void ResetValues()
     {
         secondsSurvived = 0;
@@ -78,5 +84,15 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
         cyclopsSpawned = 0;
         minotaurSpawned = 0;
         playerHits = new string[0];
+    }
+
+    private IEnumerator Collect()
+    {
+        while (_startCollecting)
+        {
+            //get speeds
+            //get num of enemies
+            yield return new WaitForSeconds(_collectFrequency);
+        }
     }
 }
