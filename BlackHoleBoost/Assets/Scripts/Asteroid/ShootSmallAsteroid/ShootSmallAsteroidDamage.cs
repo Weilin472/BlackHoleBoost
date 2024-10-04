@@ -85,7 +85,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     {
-        if (_asteroidEffect != Stick || other.gameObject.tag != "Asteroid")
+        if (_asteroidEffect != Stick || other.gameObject.tag != "Asteroid" || other.gameObject.tag != "Player")
         {
             base.OnTriggerEnter(other);
         }
