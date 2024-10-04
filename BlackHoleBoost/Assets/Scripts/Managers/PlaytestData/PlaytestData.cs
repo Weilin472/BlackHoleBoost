@@ -4,11 +4,11 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/03/2024]
+ * Last Updated: [10/04/2024]
  * [data on playtest]
  */
 
-public class PlaytestData : Singleton<PlaytestData>
+public class PlaytestData
 {
     //round data
     public int secondsSurvived;
@@ -42,34 +42,41 @@ public class PlaytestData : Singleton<PlaytestData>
     public int mediumAsteroidSpawn;
     public int numberOfAsteroidsCrash;
 
+    //need
+    public int averageNuberOfEnemiesInScene;
+
+    //Remember, for prototype spawner
+    //imp
     public int numberOfEnemySpawns;
     public int cyclopsSpawned;
     public int minotaurSpawned;
 
+    //need
     public string[] playerHits;
 
-    public void ResetValues()
+    public PlaytestData()
     {
-        secondsSurvived = 0;
-        averageSpeed = 0;
-        numberOfBlackHoles = 0;
-        totalAsteroidsCollected = 0;
-        normalAsteroidsCollected = 0;
-        bounceAsteroidsCollected = 0;
-        stickyAsteroidsCollected = 0;
-        totalAsteroidShotsFired = 0;
-        normalAsteroidShotsFired = 0;
-        bounceAsteroidShotsFired = 0;
-        stickyAsteroidShotsFired = 0;
-        asteroidsStuck = 0;
-        enemiesStuck = 0;
-        numberOfShootAsteroidReachingBarrier = 0;
-        bigAsteroidSpawn = 0;
-        mediumAsteroidSpawn = 0;
-        numberOfAsteroidsCrash = 0;
-        numberOfEnemySpawns = 0;
-        cyclopsSpawned = 0;
-        minotaurSpawned = 0;
-        playerHits = new string[0];
+        secondsSurvived = PlaytestDataCollector.Instance.secondsSurvived;
+        averageSpeed = PlaytestDataCollector.Instance.averageSpeed;
+        numberOfBlackHoles = PlaytestDataCollector.Instance.numberOfBlackHoles;
+        totalAsteroidsCollected = PlaytestDataCollector.Instance.totalAsteroidsCollected;
+        normalAsteroidsCollected = PlaytestDataCollector.Instance.normalAsteroidsCollected;
+        bounceAsteroidsCollected = PlaytestDataCollector.Instance.bounceAsteroidsCollected;
+        stickyAsteroidsCollected = PlaytestDataCollector.Instance.stickyAsteroidsCollected;
+        totalAsteroidShotsFired = PlaytestDataCollector.Instance.totalAsteroidsCollected;
+        normalAsteroidShotsFired = PlaytestDataCollector.Instance.normalAsteroidsCollected;
+        bounceAsteroidShotsFired = PlaytestDataCollector.Instance.bounceAsteroidsCollected;
+        stickyAsteroidShotsFired = PlaytestDataCollector.Instance.stickyAsteroidsCollected;
+        asteroidsStuck = PlaytestDataCollector.Instance.asteroidsStuck;
+        enemiesStuck = PlaytestDataCollector.Instance.enemiesStuck;
+        numberOfShootAsteroidReachingBarrier = PlaytestDataCollector.Instance.numberOfShootAsteroidReachingBarrier;
+        bigAsteroidSpawn = PlaytestDataCollector.Instance.bigAsteroidSpawn;
+        mediumAsteroidSpawn = PlaytestDataCollector.Instance.mediumAsteroidSpawn;
+        numberOfAsteroidsCrash = PlaytestDataCollector.Instance.numberOfAsteroidsCrash;
+        averageNuberOfEnemiesInScene = PlaytestDataCollector.Instance.averageNuberOfEnemiesInScene;
+        numberOfEnemySpawns = PlaytestDataCollector.Instance.numberOfEnemySpawns;
+        cyclopsSpawned = PlaytestDataCollector.Instance.cyclopsSpawned;
+        minotaurSpawned = PlaytestDataCollector.Instance.minotaurSpawned;
+        //playerHits = new string[0];
     }
 }

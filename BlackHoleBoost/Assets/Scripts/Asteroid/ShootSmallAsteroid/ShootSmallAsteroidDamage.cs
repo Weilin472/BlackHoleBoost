@@ -155,9 +155,9 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             _stuckAsteroids.Add(stuckModel);
 
             //gets playtest data
-            if (PlaytestData.Instance != null)
+            if (PlaytestDataCollector.Instance != null)
             {
-                PlaytestData.Instance.asteroidsStuck++;
+                PlaytestDataCollector.Instance.asteroidsStuck++;
             }
 
             if (otherRoot.GetComponent<BaseHealthScript>())
@@ -176,9 +176,9 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             _stuckEnemies.Add(otherEnemy);
             _enemyOffset.Add(otherEnemy.transform.position - this.transform.position);
             //gets playtest data
-            if (PlaytestData.Instance != null)
+            if (PlaytestDataCollector.Instance != null)
             {
-                PlaytestData.Instance.enemiesStuck++;
+                PlaytestDataCollector.Instance.enemiesStuck++;
             }
 
             if (otherRoot.GetComponent<Cyclop>())

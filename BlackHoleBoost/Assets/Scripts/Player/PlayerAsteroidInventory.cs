@@ -44,19 +44,19 @@ public class PlayerAsteroidInventory : MonoBehaviour
             _inventory.Add(asteroid);
 
             //playtest data stuff here
-            if (PlaytestData.Instance != null)
+            if (PlaytestDataCollector.Instance != null)
             {
-                PlaytestData.Instance.totalAsteroidsCollected++;
+                PlaytestDataCollector.Instance.totalAsteroidsCollected++;
                 switch (asteroid)
                 {
                     case SmallAsteroidType.NORMAL:
-                        PlaytestData.Instance.normalAsteroidsCollected++;
+                        PlaytestDataCollector.Instance.normalAsteroidsCollected++;
                         break;
                     case SmallAsteroidType.BOUNCE:
-                        PlaytestData.Instance.bounceAsteroidsCollected++;
+                        PlaytestDataCollector.Instance.bounceAsteroidsCollected++;
                         break;
                     case SmallAsteroidType.STICKY:
-                        PlaytestData.Instance.stickyAsteroidsCollected++;
+                        PlaytestDataCollector.Instance.stickyAsteroidsCollected++;
                         break;
                     default:
                         break;

@@ -88,9 +88,9 @@ public class ShootSmallAsteroidBoundary : MonoBehaviour
             hitBoundary = true;
         }
 
-        if (PlaytestData.Instance != null && hitBoundary)
+        if (PlaytestDataCollector.Instance != null && hitBoundary)
         {
-            PlaytestData.Instance.numberOfShootAsteroidReachingBarrier++;
+            PlaytestDataCollector.Instance.numberOfShootAsteroidReachingBarrier++;
         }
     }
 

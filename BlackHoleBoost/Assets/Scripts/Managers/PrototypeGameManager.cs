@@ -10,7 +10,7 @@ using UnityEngine.UI;
  * [game manager for prototype (please dont use after prototype)]
  */
 
-public class PrototypeGameManager : MonoBehaviour
+public class PrototypeGameManager : Singleton<PrototypeGameManager>
 {
     [SerializeField] private TMP_Text _livesText;
     [SerializeField] private TMP_Text _timerText;
@@ -87,9 +87,9 @@ public class PrototypeGameManager : MonoBehaviour
         ShowGameOverUI();
 
         //feedback tools code
-        if (PlaytestData.Instance != null)
+        if (PlaytestDataCollector.Instance != null)
         {
-            PlaytestData.Instance.secondsSurvived = _time;
+            PlaytestDataCollector.Instance.secondsSurvived = _time;
         }
 
         _enemyAsteroidSpawner.StopSpawning();

@@ -35,19 +35,19 @@ public class PlayerShoot : MonoBehaviour
             if (asteroid != SmallAsteroidType.NONE)
             {
                 //playtest data
-                if (PlaytestData.Instance != null)
+                if (PlaytestDataCollector.Instance != null)
                 {
-                    PlaytestData.Instance.totalAsteroidShotsFired++;
+                    PlaytestDataCollector.Instance.totalAsteroidShotsFired++;
                     switch (asteroid)
                     {
                         case SmallAsteroidType.NORMAL:
-                            PlaytestData.Instance.normalAsteroidShotsFired++;
+                            PlaytestDataCollector.Instance.normalAsteroidShotsFired++;
                             break;
                         case SmallAsteroidType.BOUNCE:
-                            PlaytestData.Instance.bounceAsteroidShotsFired++;
+                            PlaytestDataCollector.Instance.bounceAsteroidShotsFired++;
                             break;
                         case SmallAsteroidType.STICKY:
-                            PlaytestData.Instance.stickyAsteroidShotsFired++;
+                            PlaytestDataCollector.Instance.stickyAsteroidShotsFired++;
                             break;
                         default:
                             break;

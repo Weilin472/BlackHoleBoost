@@ -44,16 +44,16 @@ public class PrototypeEnemySpawner : MonoBehaviour
         _currentEnemy = Instantiate(_enemyPrefabs[spawnIndex], loc, Quaternion.identity);
 
 
-        if (PlaytestData.Instance != null)
+        if (PlaytestDataCollector.Instance != null)
         {
-            PlaytestData.Instance.numberOfEnemySpawns++;
+            PlaytestDataCollector.Instance.numberOfEnemySpawns++;
             if (spawnIndex == 0)
             {
-                PlaytestData.Instance.cyclopsSpawned++;
+                PlaytestDataCollector.Instance.cyclopsSpawned++;
             }
             else if (spawnIndex == 1)
             {
-                PlaytestData.Instance.minotaurSpawned++;
+                PlaytestDataCollector.Instance.minotaurSpawned++;
             }
         }
 

@@ -49,9 +49,9 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetBig()
     {
         _bigModel.SetActive(true);
-        if (PlaytestData.Instance != null)
+        if (PlaytestDataCollector.Instance != null)
         {
-            PlaytestData.Instance.bigAsteroidSpawn++;
+            PlaytestDataCollector.Instance.bigAsteroidSpawn++;
         }
     }
 
@@ -61,9 +61,9 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetMedium()
     {
         _mediumModel.SetActive(true);
-        if (PlaytestData.Instance != null)
+        if (PlaytestDataCollector.Instance != null)
         {
-            PlaytestData.Instance.mediumAsteroidSpawn++;
+            PlaytestDataCollector.Instance.mediumAsteroidSpawn++;
         }
     }
 }
