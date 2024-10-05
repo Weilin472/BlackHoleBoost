@@ -93,11 +93,6 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
         _numEnemies = new List<int>();
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(Collect());
-    }
-
     /// <summary>
     /// adds a string of what hits the player
     /// </summary>
@@ -116,6 +111,17 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
         playerHits[temp.Length] = enemy;
     }
 
+    public void StartCollecting()
+    {
+        _startCollecting = true;
+        StartCoroutine(Collect());
+    }
+
+    public void StopCollecting()
+    {
+        _startCollecting = false;
+    }
+
     /// <summary>
     /// collects info for average data
     /// </summary>
@@ -124,6 +130,7 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
     {
         while (_startCollecting)
         {
+            Debug.Log("Buh");
             //get speeds
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null && player.GetComponent<Rigidbody>())

@@ -76,7 +76,9 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         _time = 0;
         _timerText.text = "0:00";
         StartCoroutine(Timer());
+
         PlaytestDataCollector.Instance.ResetValues();
+        PlaytestDataCollector.Instance.StartCollecting();
 
         _enemyAsteroidSpawner.StartSpawning();
         _prototypeEnemySpawner.StartSpawning();
@@ -97,7 +99,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         {
             PlaytestDataCollector.Instance.secondsSurvived = _time;
         }
-
+        PlaytestDataCollector.Instance.StopCollecting();
         //don't think i can export it
         //_savePlaytestData.SaveData();
 
@@ -163,6 +165,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
 
         _titleText.enabled = true;
         _titleText.text = "Game Over\nYou survived: " + _timerText.text;
+
         _dataText.enabled = true;
 
         string playerHitString = "";
@@ -252,6 +255,7 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         {
             yield return new WaitForSeconds(1);
             _time++;
+            PlaytestDataCollector.Instance.secondsSurvived = _time;
             if (_time % 60 < 10)
             {
                 _timerText.text = (_time / 60) + ":0" + (_time % 60);

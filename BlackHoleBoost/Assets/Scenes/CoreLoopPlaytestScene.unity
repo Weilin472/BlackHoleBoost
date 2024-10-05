@@ -1148,6 +1148,7 @@ GameObject:
   - component: {fileID: 547154221}
   - component: {fileID: 547154224}
   - component: {fileID: 547154223}
+  - component: {fileID: 547154225}
   m_Layer: 0
   m_Name: TestManager
   m_TagString: GameManager
@@ -1199,6 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 788719530}
+  _timerText: {fileID: 0}
 --- !u!114 &547154215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,6 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightBoundary: 0
   TopBoundary: 0
+  GamePlaying: 0
 --- !u!114 &547154223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1367,18 @@ MonoBehaviour:
   cyclopsSpawned: 0
   minotaurSpawned: 0
   playerHits: []
+--- !u!114 &547154225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547154212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465acf256f86bd844bd9aed9bc3387ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &569247955
 GameObject:
   m_ObjectHideFlags: 0
