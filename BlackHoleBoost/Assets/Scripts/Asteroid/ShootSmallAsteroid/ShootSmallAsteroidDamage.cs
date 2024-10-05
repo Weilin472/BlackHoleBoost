@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/28/2024]
+ * Last Updated: [10/03/2024]
  * [sets damage and side effects of asteroid]
  */
 
@@ -85,7 +85,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     {
-        if (_asteroidEffect != Stick || other.gameObject.tag != "Asteroid")
+        if (_asteroidEffect != Stick || other.gameObject.tag != "Asteroid" || other.gameObject.tag != "Player")
         {
             base.OnTriggerEnter(other);
         }
@@ -154,6 +154,12 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             stuckModel.transform.parent = this.transform;
             _stuckAsteroids.Add(stuckModel);
 
+            //gets playtest data
+            if (PlaytestDataCollector.Instance != null)
+            {
+                PlaytestDataCollector.Instance.asteroidsStuck++;
+            }
+
             if (otherRoot.GetComponent<BaseHealthScript>())
             {
                 BaseHealthScript otherHealth = otherRoot.GetComponent<BaseHealthScript>();
@@ -169,6 +175,11 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             otherEnemy.GetStick();
             _stuckEnemies.Add(otherEnemy);
             _enemyOffset.Add(otherEnemy.transform.position - this.transform.position);
+            //gets playtest data
+            if (PlaytestDataCollector.Instance != null)
+            {
+                PlaytestDataCollector.Instance.enemiesStuck++;
+            }
 
             if (otherRoot.GetComponent<Cyclop>())
             {

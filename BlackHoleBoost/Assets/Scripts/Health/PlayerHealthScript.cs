@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [10/04/2024]
+ * [health script for prototype]
+ */
+
 public class PlayerHealthScript : BaseHealthScript
 {
     [SerializeField] private float _UnattackablePeriod;
@@ -36,7 +42,7 @@ public class PlayerHealthScript : BaseHealthScript
     {
         //Time.timeScale = 0;
         Debug.Log("prototype game over here, remove later");
-        //PrototypeGameManager.Instance.GameOver();
+        PrototypeGameManager.Instance.GameOver();
         StateMachine.Instance.GameEnd();
         Destroy(gameObject);
     }

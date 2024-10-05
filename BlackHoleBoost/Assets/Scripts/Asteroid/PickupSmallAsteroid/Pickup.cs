@@ -50,6 +50,8 @@ public class Pickup : MonoBehaviour
         {
             PlayerAsteroidInventory inventory = other.transform.root.gameObject.GetComponent<PlayerAsteroidInventory>();
             inventory.AddAsteroid(_type);
+
+
             _pickupSmallAsteroid.ReturnToPool();
         }
     }

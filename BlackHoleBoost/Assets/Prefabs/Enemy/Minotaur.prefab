@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1311960856969051531}
   - component: {fileID: 1061280993404196889}
   - component: {fileID: 8079328716812293636}
+  - component: {fileID: 7516991211117861182}
   m_Layer: 0
   m_Name: Minotaur
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,3 +153,16 @@ MonoBehaviour:
   _detectPlayerDistance: 4.5
   _timeLockOnPlayrMultiplier: 3
   __ramingSpeedMultiplier: 2
+--- !u!114 &7516991211117861182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363659080550161467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fd2cdafb0626b4e86a63bbeb209316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1

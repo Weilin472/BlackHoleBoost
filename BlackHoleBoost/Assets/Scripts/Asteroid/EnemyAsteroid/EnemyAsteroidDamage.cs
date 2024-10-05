@@ -41,6 +41,21 @@ public class EnemyAsteroidDamage : BaseDamageScript
         _enemyAsteroidEventBus.Unsubscribe(EnemyAsteroidSizeEnum.MEDIUM, SetMedium);
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.root.gameObject.tag != "Enemy")
+        {
+            base.OnTriggerEnter(other);
+            if (PlaytestDataCollector.Instance != null)
+            {
+                if (other.transform.root.gameObject.tag == "Player")
+                {
+                    PlaytestDataCollector.Instance.AddPlayerHit("Asteroid");
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// sets health to big asteroid
     /// </summary>

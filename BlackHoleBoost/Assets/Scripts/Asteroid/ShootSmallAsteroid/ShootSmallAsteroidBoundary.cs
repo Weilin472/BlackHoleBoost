@@ -66,21 +66,31 @@ public class ShootSmallAsteroidBoundary : MonoBehaviour
     private void Update()
     {
         _screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        bool hitBoundary = false;
         if (_screenPos.x <= -200 && _rigidbody.velocity.x < 0)
         {
             _asteroidEffect(new Vector3(_topRight.x + 2, transform.position.y, 0f));
+            hitBoundary = true;
         }
         else if (_screenPos.x >= Screen.width + 200 && _rigidbody.velocity.x > 0)
         {
             _asteroidEffect(new Vector3(_bottomLeft.x - 2, transform.position.y, 0f));
+            hitBoundary = true;
         }
         if (_screenPos.y >= Screen.height + 200 && _rigidbody.velocity.y > 0)
         {
             _asteroidEffect(new Vector3(transform.position.x, _bottomLeft.y - 2, 0f));
+            hitBoundary = true;
         }
         else if (_screenPos.y <= -200 && _rigidbody.velocity.y < 0)
         {
             _asteroidEffect(new Vector3(transform.position.x, _topRight.y + 2, 0f));
+            hitBoundary = true;
+        }
+
+        if (PlaytestDataCollector.Instance != null && hitBoundary)
+        {
+            PlaytestDataCollector.Instance.numberOfShootAsteroidReachingBarrier++;
         }
     }
 

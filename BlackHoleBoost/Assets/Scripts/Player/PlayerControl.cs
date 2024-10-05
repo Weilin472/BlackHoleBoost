@@ -223,6 +223,4 @@ public class PlayerControl : MonoBehaviour
             _currentPlanet = planetTran.gameObject;
         }
     }
-
-
 }
