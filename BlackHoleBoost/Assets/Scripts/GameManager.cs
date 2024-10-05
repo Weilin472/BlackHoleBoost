@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float RightBoundary;
     public float TopBoundary;
 
+    public bool GamePlaying;
+
     private void Awake()
     {
         if (_instance!=null )
