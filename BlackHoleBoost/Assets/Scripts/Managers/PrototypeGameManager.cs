@@ -164,7 +164,14 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
         _titleText.enabled = true;
         _titleText.text = "Game Over\nYou survived: " + _timerText.text;
         _dataText.enabled = true;
-        _dataText.text = 
+
+        string playerHitString = "";
+        for (int i = 0; i < PlaytestDataCollector.Instance.playerHits.Length; i++)
+        {
+            playerHitString = playerHitString + ", " + PlaytestDataCollector.Instance.playerHits[i];
+        }
+
+        _dataText.text =
             "Playtest Data \n" +
             "Playtest On: " + System.DateTime.Now + "\n" +
             "Seconds Survived: " + PlaytestDataCollector.Instance.secondsSurvived + "\n" +
@@ -189,7 +196,8 @@ public class PrototypeGameManager : Singleton<PrototypeGameManager>
             "Average Nuber Of Enemies In Scene: " + PlaytestDataCollector.Instance.averageNuberOfEnemiesInScene + "\n" +
             "Number Of Enemy Spawns: " + PlaytestDataCollector.Instance.numberOfEnemySpawns + "\n" +
             "Cyclops Spawned: " + PlaytestDataCollector.Instance.cyclopsSpawned + "\n" +
-            "Minotaur Spawned: " + PlaytestDataCollector.Instance.minotaurSpawned + "\n"
+            "Minotaur Spawned: " + PlaytestDataCollector.Instance.minotaurSpawned + "\n" +
+            "Player Hit By: " + playerHitString; 
             ;
 
         if (_controlIsToggled)
