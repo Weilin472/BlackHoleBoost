@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /*
@@ -42,8 +43,8 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
     public int mediumAsteroidSpawn;
     public int numberOfAsteroidsCrash;
 
-    //need
-    public int averageNuberOfEnemiesInScene;
+    //imp
+    public float averageNuberOfEnemiesInScene;
 
     //Remember, for prototype spawner
     //imp
@@ -51,15 +52,18 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
     public int cyclopsSpawned;
     public int minotaurSpawned;
 
-    //need
+    //imp
     public string[] playerHits;
 
     private bool _startCollecting = false;
     private float _collectFrequency = 1f;
 
-    private float[] _speeds;
-    private int[] _numEnemies;
+    private List<float> _speeds;
+    private List<int> _numEnemies;
 
+    /// <summary>
+    /// resets all values
+    /// </summary>
     public void ResetValues()
     {
         secondsSurvived = 0;
@@ -84,13 +88,65 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
         cyclopsSpawned = 0;
         minotaurSpawned = 0;
         playerHits = new string[0];
+
+        _speeds = new List<float>();
+        _numEnemies = new List<int>();
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(Collect());
+    }
+
+    /// <summary>
+    /// adds a string of what hits the player
+    /// </summary>
+    /// <param name="enemy">what player was hit by</param>
+    public void AddPlayerHit(string enemy)
+    {
+        string[] temp = (string[])playerHits.Clone();
+
+        playerHits = new string[temp.Length + 1];
+
+        for (int i = 0; i < temp.Length; i++)
+        {
+            playerHits[i] = temp[i];
+        }
+
+        playerHits[temp.Length] = enemy;
+    }
+
+    /// <summary>
+    /// collects info for average data
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Collect()
     {
         while (_startCollecting)
         {
             //get speeds
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null && player.GetComponent<Rigidbody>())
+            {
+                Rigidbody rigidbody = player.GetComponent<Rigidbody>();
+                _speeds.Add(rigidbody.velocity.magnitude);
+
+                if (_speeds.Count > 0)
+                {
+                    averageSpeed = _speeds.Average();
+                }
+            }
+
+            _numEnemies.Add(GameObject.FindGameObjectsWithTag("Enemy").Length);
+            if (_numEnemies.Count > 0)
+            {
+                float total = 0;
+                foreach (int num in _numEnemies)
+                {
+                    total += (float)num;
+                }
+                averageNuberOfEnemiesInScene = total / _numEnemies.Count;
+            }
             //get num of enemies
             yield return new WaitForSeconds(_collectFrequency);
         }

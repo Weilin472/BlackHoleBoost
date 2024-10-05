@@ -43,7 +43,7 @@ public class PlaytestData
     public int numberOfAsteroidsCrash;
 
     //need
-    public int averageNuberOfEnemiesInScene;
+    public float averageNuberOfEnemiesInScene;
 
     //Remember, for prototype spawner
     //imp
@@ -77,6 +77,6 @@ public class PlaytestData
         numberOfEnemySpawns = PlaytestDataCollector.Instance.numberOfEnemySpawns;
         cyclopsSpawned = PlaytestDataCollector.Instance.cyclopsSpawned;
         minotaurSpawned = PlaytestDataCollector.Instance.minotaurSpawned;
-        //playerHits = new string[0];
+        //playerHits = PlaytestDataCollector.Instance.playerHits.Clone();
     }
 }

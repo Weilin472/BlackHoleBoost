@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -841,11 +841,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 912290916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 478, y: 604.2}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -21.94, y: -21.299988}
+  m_SizeDelta: {x: 478, y: 754.93994}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &480174198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,9 +896,9 @@ MonoBehaviour:
     Sticky
     Asteroid Shots Fired:
 
-    AsteroidsStuck:
+    Asteroids Stuck:
 
-    EnemiesStuck:
+    Enemies Stuck:
 
     Number Of
     Shoot Asteroid Reaching Barrier:
@@ -1146,6 +1146,8 @@ GameObject:
   - component: {fileID: 547154215}
   - component: {fileID: 547154214}
   - component: {fileID: 547154221}
+  - component: {fileID: 547154224}
+  - component: {fileID: 547154223}
   m_Layer: 0
   m_Name: TestManager
   m_TagString: GameManager
@@ -1170,10 +1172,12 @@ MonoBehaviour:
   _controlText: {fileID: 1717531987}
   _rulesText: {fileID: 119944530}
   _titleText: {fileID: 703560322}
+  _dataText: {fileID: 480174198}
   _playButton: {fileID: 1195893032}
   _quitButton: {fileID: 86768202}
   _toggleControlsButton: {fileID: 1192050000}
   _toggleRulesButton: {fileID: 838851907}
+  _toggleDataExport: {fileID: 1173485965}
   _playerPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
     type: 3}
   _enemyAsteroidSpawner: {fileID: 547154215}
@@ -1181,6 +1185,7 @@ MonoBehaviour:
   _shootSmallAsteroidPool: {fileID: 547154216}
   _pickupSmallAsteroidPool: {fileID: 547154217}
   _prototypeEnemySpawner: {fileID: 547154221}
+  _savePlaytestData: {fileID: 547154223}
 --- !u!114 &547154214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1318,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightBoundary: 0
   TopBoundary: 0
+--- !u!114 &547154223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547154212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac427eb0206faa44f949a21d2a8ad819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &547154224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547154212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cced0b8a3e1b744b7e3fff12e31191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsSurvived: 0
+  averageSpeed: 0
+  numberOfBlackHoles: 0
+  totalAsteroidsCollected: 0
+  normalAsteroidsCollected: 0
+  bounceAsteroidsCollected: 0
+  stickyAsteroidsCollected: 0
+  totalAsteroidShotsFired: 0
+  normalAsteroidShotsFired: 0
+  bounceAsteroidShotsFired: 0
+  stickyAsteroidShotsFired: 0
+  asteroidsStuck: 0
+  enemiesStuck: 0
+  numberOfShootAsteroidReachingBarrier: 0
+  bigAsteroidSpawn: 0
+  mediumAsteroidSpawn: 0
+  numberOfAsteroidsCrash: 0
+  averageNuberOfEnemiesInScene: 0
+  numberOfEnemySpawns: 0
+  cyclopsSpawned: 0
+  minotaurSpawned: 0
+  playerHits: []
 --- !u!1 &569247955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,7 +2232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1173485966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2249,7 +2300,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 547154223}
+        m_TargetAssemblyTypeName: SavePlaytestData, Assembly-CSharp
+        m_MethodName: ToggleFileExport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1192050000
 GameObject:

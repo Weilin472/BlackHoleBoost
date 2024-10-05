@@ -19,7 +19,8 @@ public class SavePlaytestData : MonoBehaviour
         {
             PlaytestData data = new PlaytestData();
             string json = JsonUtility.ToJson(data);
-            File.WriteAllText(Application.dataPath + "/playtestData" + System.DateTime.Now + ".json", json);
+            Debug.Log(Application.dataPath + "/playtestData.json");
+            File.WriteAllText(Application.dataPath + "/playtestData.json", json);
         }
     }
 
