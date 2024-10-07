@@ -14,7 +14,7 @@ public class AsteroidMove : MonoBehaviour
     private Rigidbody _rigidbody;
     
     //testing. direction probably set when spawned
-    [SerializeField] private Vector3 _direction = Vector3.up;
+    private Vector3 _direction;
 
     private void Awake()
     {
