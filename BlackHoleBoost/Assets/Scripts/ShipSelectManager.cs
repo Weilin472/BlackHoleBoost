@@ -3,65 +3,90 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShipSelectManager : MonoBehaviour
 {
-    [SerializeField] private GameObject FirstPlayerSelectMenu;
-    [SerializeField] private GameObject SecondPlayerSelectMenu;
-    private int _playerIndex;
+
+    [SerializeField] private GameObject PlayerSelectMenu;
 
     [SerializeField] private Transform CanvasTran;
 
+    private int readyPlayerNum;
+
+    private static ShipSelectManager _instance;
+    public static ShipSelectManager Instance=>_instance;
+
+    private void Awake()
+    {
+        if (Instance!=null)
+        {
+            Destroy(Instance.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     private void Start()
     {
-        PlayerInputManager.instance.playerPrefab = FirstPlayerSelectMenu;
-        _playerIndex = 0;
+        SpawnSelectMenu();
     }
 
-    public void OnPlayerJoined(PlayerInput playerInput)
+    public void PlayerGetReady(Color headColor, Color bodyColor)
     {
-        if (playerInput.playerIndex==0)
+        readyPlayerNum++;
+        if (readyPlayerNum==1)
         {
-
-            playerInput.transform.SetParent(CanvasTran);
-            float xPos = CanvasTran.GetComponent<RectTransform>().rect.width / 4;
-            playerInput.gameObject.transform.localPosition = new Vector3(-xPos, 0, 0);
-            playerInput.transform.GetComponent<Image>().color = Color.red;
-            PlayerInputManager.instance.playerPrefab = SecondPlayerSelectMenu;
-            //playerInput.SwitchCurrentControlScheme("Scheme_1");
-
-            //playerInput.SwitchCurrentActionMap("ShipSelect_1");
+            LookOfPlayerShip.FirstPlayerHeadColor = headColor;
+            LookOfPlayerShip.FirstPlayerBodyColor = bodyColor;
         }
-        else if (playerInput.playerIndex==1)
+        else if (readyPlayerNum==2)
         {
-            playerInput.transform.SetParent(CanvasTran);
-            float xPos = CanvasTran.GetComponent<RectTransform>().rect.width / 4;
-            playerInput.gameObject.transform.localPosition = new Vector3(xPos, 0, 0);
-            playerInput.transform.GetComponent<Image>().color = Color.blue;
-            //playerInput.SwitchCurrentControlScheme("Scheme_2");
-            //playerInput.SwitchCurrentActionMap("ShipSelect_2");
+            LookOfPlayerShip.SecondPlayerHeadColor = headColor;
+            LookOfPlayerShip.SecondPlayerBodyColor = bodyColor;
+        }
+        if (readyPlayerNum>=2)
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
-    private void Update()
+    private void SpawnSelectMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        PlayerInput p=null;
+        InputDevice[] devices=null;
+        float xPos = CanvasTran.GetComponent<RectTransform>().rect.width / 4;
+
+        if (Gamepad.all.Count >= 1)
         {
-            if (_playerIndex==0)
-            {
-                PlayerInput p= PlayerInput.Instantiate(FirstPlayerSelectMenu);
-                p.transform.SetParent(CanvasTran);
-                float xPos = CanvasTran.GetComponent<RectTransform>().rect.width / 4;
-                p.gameObject.transform.localPosition = new Vector3(-xPos, 0, 0);
-            }
-            else if (_playerIndex==1)
-            {
-                PlayerInput p = PlayerInput.Instantiate(SecondPlayerSelectMenu);
-                p.transform.SetParent(CanvasTran);
-                float xPos = CanvasTran.GetComponent<RectTransform>().rect.width / 4;
-                p.gameObject.transform.localPosition = new Vector3(xPos, 0, 0);
-            }
-            _playerIndex++;
+            devices= new InputDevice[] { Keyboard.current, Gamepad.all[0] };
         }
+        else
+        {
+            devices= new InputDevice[] { Keyboard.current };
+        }
+        p = PlayerInput.Instantiate(PlayerSelectMenu, pairWithDevices: devices);
+        p.SwitchCurrentActionMap("ShipSelect_1");
+        p.transform.SetParent(CanvasTran);
+        p.gameObject.transform.localPosition = new Vector3(-xPos, 0, 0);
+        p.transform.GetComponent<Image>().color = Color.red;
+        p.transform.GetComponent<ShipSelectControl>().InstructionText.text = "Use WASD(Keyboard) or Joystick(GamePad) to select the look of your ship, and press E(Keyboard) or A(Gamepad) to get ready.";
+
+        if (Gamepad.all.Count >= 2)
+        {
+            devices= new InputDevice[] { Keyboard.current, Gamepad.all[1] };
+        }
+        else
+        {
+           devices= new InputDevice[] { Keyboard.current };
+        }
+        p = PlayerInput.Instantiate(PlayerSelectMenu, pairWithDevices: devices);
+        p.SwitchCurrentActionMap("ShipSelect_2");
+        p.transform.SetParent(CanvasTran);
+        p.gameObject.transform.localPosition = new Vector3(xPos, 0, 0);
+        p.transform.GetComponent<Image>().color = Color.blue;
+        p.transform.GetComponent<ShipSelectControl>().InstructionText.text = "Use Arrow keys(Keyboard) or Joystick(GamePad) to select the look of your ship, and press 1(Keyboard) or A(Gamepad) to get ready.";
     }
 }

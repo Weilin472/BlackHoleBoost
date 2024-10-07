@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 7132723371863224009}
   - component: {fileID: 8081387908008791036}
   - component: {fileID: 7741658399658312972}
-  m_Layer: 0
-  m_Name: SpaceShip
+  m_Layer: 7
+  m_Name: SecondPlayerSpaceShip 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 227f4ecb4baa9044297698acac31e3e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,7 +133,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -224,9 +224,117 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 25bb13f0-0382-4961-ab2e-3b5e09902da5
     m_ActionName: PlayerInput/ShootSmallAsteroid[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75c4b524-a26f-4764-a04b-e84d98c7bce1
+    m_ActionName: PlayerInput_1/SlowDown[/Keyboard/s,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 897d0643-c91b-4474-966a-fb11b67f4bc9
+    m_ActionName: PlayerInput_1/LeftMove[/Keyboard/a,/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6aafe4c-d27d-4b5d-a94b-854ade96bb33
+    m_ActionName: PlayerInput_1/RightMove[/Keyboard/d,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: Acceleration
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c2092b15-9591-42bf-9d69-e136adc3482a
+    m_ActionName: PlayerInput_2/Acceleration[/Keyboard/upArrow,/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: SpawnBlackHole
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 623eef68-a51d-462b-a732-b278cacb7d3c
+    m_ActionName: PlayerInput_2/SpawnBlackHole[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: ShootAsteroid
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ab33acb-0618-414a-bbbc-3a350b81086c
+    m_ActionName: PlayerInput_2/ShootSmallAsteroid[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: SlowDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a10210a8-4f4f-4eb8-9b1e-f8430e61020d
+    m_ActionName: PlayerInput_2/SlowDown[/Keyboard/downArrow,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: LeftMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e2d0f2b-1643-4afd-a78e-532862c74114
+    m_ActionName: PlayerInput_2/LeftMove[/Keyboard/leftArrow,/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: RightMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5f425ac9-098c-4614-ac4a-2688147330b8
+    m_ActionName: PlayerInput_2/RightMove[/Keyboard/rightArrow,/XInputControllerWindows/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerInput
+  m_DefaultActionMap: PlayerInput_2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5116504414373414044
@@ -293,7 +401,7 @@ GameObject:
   - component: {fileID: 1210541309381790334}
   - component: {fileID: 8113675652854847131}
   - component: {fileID: 5960687157288492528}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,8 +536,8 @@ GameObject:
   - component: {fileID: 3383732062419958504}
   - component: {fileID: 7343757118820885542}
   - component: {fileID: 6166349525423904024}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 7
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,7 +586,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b00fe335f7e167e43846615cfde8e8eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -533,7 +641,7 @@ GameObject:
   - component: {fileID: 7195400068401246938}
   - component: {fileID: 6906913575089439654}
   - component: {fileID: 7167224208332755111}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: MinotaurLockOnIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

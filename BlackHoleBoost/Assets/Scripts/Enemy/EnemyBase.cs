@@ -35,9 +35,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Movement()
     {
-        if (PlayerControl.Instance != null)
+        if (GameManager.Instance.players.Count>0)
         {
-            Vector3 playerPos = PlayerControl.Instance.transform.position;
+            Vector3 playerPos =GameManager.Instance.GetPlayerWithMoreHealth().transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
             _rigid.velocity = dir * _currentSpeed;
         }

@@ -13,11 +13,12 @@ public class Minotaur : EnemyBase
    [SerializeField] private float _timeLockOnPlayrMultiplier;
    [SerializeField] private float __ramingSpeedMultiplier;
 
+    PlayerControl target;
 
     protected override void Start()
     {
         base.Start();
-        _ramingSpeed = PlayerControl.Instance.GetSpaceShipMaxSpeed()*__ramingSpeedMultiplier;
+        _ramingSpeed =GameManager.Instance.players[0].GetSpaceShipMaxSpeed()*__ramingSpeedMultiplier;
         _isLockingOnPlayer = false;
         _isRaming = false;
     }
@@ -28,14 +29,15 @@ public class Minotaur : EnemyBase
 
             base.Movement();
             transform.rotation = Quaternion.LookRotation(Vector3.forward, _rigid.velocity);
-            float dis = Vector3.Distance(PlayerControl.Instance.transform.position, transform.position);
+            target = GameManager.Instance.GetPlayerWithMoreHealth();
+            float dis = Vector3.Distance(target.transform.position, transform.position);
             if (dis < _detectPlayerDistance)
             {
                 _timeLockOnPlayer = dis / _ramingSpeed * _timeLockOnPlayrMultiplier;
                 _currentTimeLockOnPlayer = 0;
                 _rigid.velocity = Vector3.zero;
                 _isLockingOnPlayer = true;
-                PlayerControl.Instance.SetLockOnIcon(true);
+                target.SetLockOnIcon(true);
             }
         }
     }
@@ -46,7 +48,7 @@ public class Minotaur : EnemyBase
         {
             if (_isLockingOnPlayer && !_isRaming)
             {
-                Vector3 lastPosOfPlayer = PlayerControl.Instance.transform.position;
+                Vector3 lastPosOfPlayer = target.transform.position;
                 Vector3 dir = (lastPosOfPlayer - transform.position).normalized;
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
                 _currentTimeLockOnPlayer += Time.deltaTime;
@@ -57,7 +59,7 @@ public class Minotaur : EnemyBase
                     _currentTimeLockOnPlayer = 0;
                     _isLockingOnPlayer = false;
                     _isRaming = true;
-                    PlayerControl.Instance.SetLockOnIcon(false);
+                    target.SetLockOnIcon(false);
                 }
             }
             else if (_isRaming && DetectBoundaries())

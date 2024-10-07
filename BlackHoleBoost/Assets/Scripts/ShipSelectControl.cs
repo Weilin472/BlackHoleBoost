@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class ShipSelectControl : MonoBehaviour
 {
@@ -13,34 +14,34 @@ public class ShipSelectControl : MonoBehaviour
     private int _headBtnIndex;
     private int _bodyBtnIndex;
 
+    private bool isReady;
+
+    public TMP_Text InstructionText;
 
     private void Start()
     {
         _verticalBtnIndex = 0;
-        Image[] images = _verticalButtonList[_verticalBtnIndex].transform.GetComponentsInChildren<Image>();
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = Color.green;
-        }
+        SetBtnColor(_verticalButtonList[0], Color.green);
     }
 
     private void SetSelectedBtn(int theLastIndex, int currentIndex)
     {
-        Image[] lastImages = _verticalButtonList[theLastIndex].transform.GetComponentsInChildren<Image>();
-        for (int i = 0; i < lastImages.Length; i++)
-        {
-            lastImages[i].color = Color.white;
-        }
-        Image[] images = _verticalButtonList[currentIndex].transform.GetComponentsInChildren<Image>();
+        SetBtnColor(_verticalButtonList[theLastIndex], Color.white);
+        SetBtnColor(_verticalButtonList[currentIndex], Color.green);
+    }
+
+    private void SetBtnColor(GameObject buttonParent,Color c)
+    {
+        Image[] images = buttonParent.transform.GetComponentsInChildren<Image>();
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].color = Color.green;
+            images[i].color = c;
         }
     }
 
     public void ButtonGoDown(InputAction.CallbackContext input)
     {
-        if (input.phase==InputActionPhase.Performed)
+        if (input.phase==InputActionPhase.Performed&&!isReady)
         {
             int thelastindex = _verticalBtnIndex;
             _verticalBtnIndex++;
@@ -55,7 +56,7 @@ public class ShipSelectControl : MonoBehaviour
 
     public void ButtonGoUp(InputAction.CallbackContext input)
     {
-        if (input.phase==InputActionPhase.Performed)
+        if (input.phase==InputActionPhase.Performed&&!isReady)
         {
             int thelastIndex = _verticalBtnIndex;
             _verticalBtnIndex--;
@@ -119,6 +120,17 @@ public class ShipSelectControl : MonoBehaviour
                 SetHorizontalBtn(_bodyParentTran, ref _bodyBtnIndex);
             }
 
+        }
+    }
+
+    public void ConfirmReady(InputAction.CallbackContext input)
+    {
+        if (input.phase==InputActionPhase.Performed&&_verticalBtnIndex==0&&!isReady)
+        {
+            isReady = true;
+            SetBtnColor(_verticalButtonList[0], Color.red);
+            
+            ShipSelectManager.Instance.PlayerGetReady(_headParentTran.GetChild(_headBtnIndex).GetComponent<Image>().color,_bodyParentTran.GetChild(_bodyBtnIndex).GetComponent<Image>().color);
         }
     }
 

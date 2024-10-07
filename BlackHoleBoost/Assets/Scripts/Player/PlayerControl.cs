@@ -22,7 +22,6 @@ public class PlayerControl : MonoBehaviour
     private float _circleModeRotateDiameter;
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
-    private static PlayerControl _instance;
     private float _currentTimeStayInBlackHole;
 
     private PlayerShoot _playerShoot;
@@ -32,19 +31,13 @@ public class PlayerControl : MonoBehaviour
     private bool _isInPlanet;
     private bool _isClockDirection;
 
-    public static PlayerControl Instance => _instance;
+    private bool _isMovingLeft;
+    private bool _isMovingRight;
+    private bool _isAccelerating;
+    private bool _isSlowingDown;
 
-    private void Awake()
-    {
-        if (_instance!=null )
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -93,10 +86,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.A)||Input.GetKeyUp(KeyCode.D))
-        {
-            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
-        }
+      
     }
 
     private void FixedUpdate()
@@ -111,7 +101,7 @@ public class PlayerControl : MonoBehaviour
         {
             rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (_isAccelerating)
         {
             if (Mathf.Abs(rigid.velocity.magnitude)<_maxSpeed)
             {
@@ -122,7 +112,7 @@ public class PlayerControl : MonoBehaviour
                 rigid.velocity = transform.TransformDirection(Vector3.up) * _maxSpeed;
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (_isSlowingDown)
         {
 
             if (Mathf.Abs(rigid.velocity.magnitude)>_accelerationMultipler)
@@ -135,13 +125,63 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (_isMovingLeft)
         {
             rigid.velocity =new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (_isMovingRight)
         {
             rigid.velocity =new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+        }
+    }
+
+    public void LeftMove(InputAction.CallbackContext input)
+    {
+        if (input.phase==InputActionPhase.Performed)
+        {
+            _isMovingLeft = true;
+        }
+        else if (input.phase==InputActionPhase.Canceled)
+        {
+            _isMovingLeft = false;
+            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+        }
+    }
+
+    public void RightMove(InputAction.CallbackContext input)
+    {
+        if (input.phase == InputActionPhase.Performed)
+        {
+            _isMovingRight = true;
+        }
+        else if (input.phase == InputActionPhase.Canceled)
+        {
+            _isMovingRight = false;
+            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+        }
+    }
+
+    public void Acceleration(InputAction.CallbackContext input)
+    {
+        if (input.phase == InputActionPhase.Performed)
+        {
+            _isAccelerating = true;
+        }
+        else if (input.phase == InputActionPhase.Canceled)
+        {
+            _isAccelerating = false;
+        }
+    }
+
+    public void SlowDown(InputAction.CallbackContext input)
+    {
+        if (input.phase == InputActionPhase.Performed)
+        {
+            _isSlowingDown = true;
+        }
+        else if (input.phase == InputActionPhase.Canceled)
+        {
+            _isSlowingDown = false;
         }
     }
     

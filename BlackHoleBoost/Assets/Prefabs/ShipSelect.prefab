@@ -379,12 +379,13 @@ RectTransform:
   m_Children:
   - {fileID: 362143177661374022}
   - {fileID: 9134450706131664539}
+  - {fileID: 4326274628716512117}
   m_Father: {fileID: 1893028176335427720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000009536743, y: 0}
-  m_SizeDelta: {x: 606.6617, y: 737.7773}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 21.614075}
+  m_SizeDelta: {x: -353.3383, y: -385.451}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1210126327865767889
 GameObject:
@@ -723,6 +724,142 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1775643097553078314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4326274628716512117}
+  - component: {fileID: 6286766231500423553}
+  - component: {fileID: 4826103259931858201}
+  m_Layer: 5
+  m_Name: InstructionText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4326274628716512117
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775643097553078314}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8136439991319605777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 89.303314}
+  m_SizeDelta: {x: 660.4742, y: 238.4237}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6286766231500423553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775643097553078314}
+  m_CullTransparentMesh: 1
+--- !u!114 &4826103259931858201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775643097553078314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Keyboard: Press E or 1 to get ready
+
+    GamePad: Press A to get ready'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 52.2
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2182411715347412911
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +1044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.7172, y: 56}
+  m_AnchoredPosition: {x: -0.00000667572, y: 0}
   m_SizeDelta: {x: 540.8411, y: 154.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3473138380829011770
@@ -924,12 +1061,12 @@ GameObject:
   - component: {fileID: 1256142867489674342}
   - component: {fileID: 5136711859140195207}
   m_Layer: 5
-  m_Name: ShipSelectControlUI_1
+  m_Name: ShipSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1893028176335427720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -972,7 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.42822075, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1001,7 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 78604d40e9808df44a40a6e13504abf1,
+  m_Actions: {fileID: -944628639613478452, guid: b44344de7eed70f49a48938995e90824,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -1029,8 +1166,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 2c1bcb72-6af5-4c93-aebf-2c3e55f7bcb5
-    m_ActionName: ShipSelect/BtnGoUp[/XInputControllerWindows1/leftStick/up,/Keyboard/w]
+    m_ActionId: 1b6a3f20-92b5-41f3-aa10-2432746242df
+    m_ActionName: ShipSelect_1/BtnGoUp[/Keyboard/w,/XInputControllerWindows/leftStick/up]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5136711859140195207}
@@ -1045,8 +1182,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 209cd0f4-da13-40f8-a7fe-4286391ef8db
-    m_ActionName: ShipSelect/BtnGoDown[/XInputControllerWindows1/leftStick/down,/Keyboard/s]
+    m_ActionId: b905efc0-319b-4941-aeed-7f0e32795515
+    m_ActionName: ShipSelect_1/BtnGoDown[/Keyboard/s,/XInputControllerWindows/leftStick/down]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5136711859140195207}
@@ -1061,8 +1198,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a9c9fda4-6815-4ccb-a2b1-5f5182a5239a
-    m_ActionName: ShipSelect/CurrentBtnGoLeft[/XInputControllerWindows1/leftStick/left,/Keyboard/a]
+    m_ActionId: add9a77b-15fa-49ac-aa86-e05f7199bba1
+    m_ActionName: ShipSelect_1/CurrentBtnGoLeft[/Keyboard/a,/XInputControllerWindows/leftStick/left]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5136711859140195207}
@@ -1077,12 +1214,104 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: bf040842-f25d-49df-b0d3-48400b264725
-    m_ActionName: ShipSelect/CurrentBtnGoRight[/XInputControllerWindows1/leftStick/right,/Keyboard/d]
+    m_ActionId: 8a01fcb3-d56b-479a-9047-c7c073b0813d
+    m_ActionName: ShipSelect_1/CurrentBtnGoRight[/Keyboard/d,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8b1a616e-465e-4066-b8e0-346d90ce8063
-    m_ActionName: ShipSelect/Ready[/XInputControllerWindows1/buttonSouth,/Keyboard/e]
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: ConfirmReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9e447b64-f529-485e-bd4d-3646fba5943b
+    m_ActionName: ShipSelect_1/Ready
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: ButtonGoUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2486de2f-213b-4a57-a701-c44eb13d5c58
+    m_ActionName: ShipSelect_2/BtnGoUp[/Keyboard/upArrow,/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: ButtonGoDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3140f94e-0d25-4d87-b542-d30387383fa6
+    m_ActionName: ShipSelect_2/BtnGoDown[/Keyboard/downArrow,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: CurrentButtonGoLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fb7855e8-ce5a-44ed-bf97-33e94a023e5b
+    m_ActionName: ShipSelect_2/CurrentBtnGoLeft[/Keyboard/leftArrow,/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: CurrentButtonGoRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6bb310f6-60d5-4120-8f6c-f299ae61bc57
+    m_ActionName: ShipSelect_2/CurrentBtnGoRight[/Keyboard/rightArrow,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5136711859140195207}
+        m_TargetAssemblyTypeName: ShipSelectControl, Assembly-CSharp
+        m_MethodName: ConfirmReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c05290a9-2486-4c55-b125-e1533e095298
+    m_ActionName: ShipSelect_2/Ready
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: ShipSelect_1
@@ -1106,6 +1335,7 @@ MonoBehaviour:
   - {fileID: 1574624783070838702}
   _headParentTran: {fileID: 8005854984096458339}
   _bodyParentTran: {fileID: 7856466570982960885}
+  InstructionText: {fileID: 4826103259931858201}
 --- !u!1 &3666218751240566914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,8 +2143,8 @@ RectTransform:
   - {fileID: 8005854984096458339}
   m_Father: {fileID: 8136439991319605777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.7172, y: 252.39685}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.00000667572, y: -77.39685}
   m_SizeDelta: {x: 540.8411, y: 154.7937}
   m_Pivot: {x: 0.5, y: 0.5}

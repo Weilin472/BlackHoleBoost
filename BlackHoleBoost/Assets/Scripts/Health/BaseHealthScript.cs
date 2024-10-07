@@ -15,6 +15,8 @@ public class BaseHealthScript : MonoBehaviour
 
     protected bool _invincible = false;
 
+    public int CurrentHealth => _currentHealth;
+
     protected virtual void OnDeath()
     {
         Debug.Log("using base version of health script, override OnDeath() if item is in object pool");
