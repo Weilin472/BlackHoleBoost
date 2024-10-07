@@ -1138,14 +1138,14 @@ GameObject:
   m_Component:
   - component: {fileID: 547154220}
   - component: {fileID: 547154222}
+  - component: {fileID: 547154215}
   - component: {fileID: 547154213}
   - component: {fileID: 547154219}
   - component: {fileID: 547154218}
   - component: {fileID: 547154217}
   - component: {fileID: 547154216}
-  - component: {fileID: 547154215}
-  - component: {fileID: 547154214}
   - component: {fileID: 547154221}
+  - component: {fileID: 547154214}
   - component: {fileID: 547154224}
   - component: {fileID: 547154223}
   - component: {fileID: 547154225}
