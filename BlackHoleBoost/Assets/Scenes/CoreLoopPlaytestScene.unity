@@ -1321,6 +1321,10 @@ MonoBehaviour:
   RightBoundary: 0
   TopBoundary: 0
   GamePlaying: 0
+  _inPrototype: 0
+  _firstShipPrefab: {fileID: 0}
+  _secondShipPrefab: {fileID: 0}
+  players: []
 --- !u!114 &547154223
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     public bool GamePlaying;
 
+    //temp bool so prototype can work
+    [SerializeField] public bool _inPrototype = true;
+
     [SerializeField] private GameObject _firstShipPrefab;
     [SerializeField] private GameObject _secondShipPrefab;
 
@@ -33,7 +36,10 @@ public class GameManager : MonoBehaviour
         RightBoundary = Camera.main.orthographicSize * Screen.width / Screen.height;
         TopBoundary = Camera.main.orthographicSize;
 
-        SpawnShip();
+        if (_inPrototype)
+        {
+            SpawnShip();
+        }
 
     }
 
