@@ -229,7 +229,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void ExitBlackHoleMode()
+    public void ExitBlackHoleMode()
     {
         _currentTimeStayInBlackHole = 0;
         Destroy(_currentBlackHole);

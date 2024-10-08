@@ -7,10 +7,13 @@ public class Cyclop : EnemyBase
     [SerializeField] private Transform _laser;
     [SerializeField] private GameObject _laserObject;
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _distanceToTurnOnLaser = 5f;
+
 
     private void Update()
     {
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
+        CheckLaser();
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -32,6 +35,34 @@ public class Cyclop : EnemyBase
         if (other.tag == "BlackHole")
         {
             _enemyHealthScript.Damage(1);
+        }
+    }
+
+    private void CheckLaser()
+    {
+        Vector3 playerPos = Vector3.zero;
+        if (GameManager.Instance._inPrototype)
+        {
+            if (GameManager.Instance.players.Count > 0)
+            {
+                playerPos = GameManager.Instance.GetPlayerWithMoreHealth().transform.position;
+            }
+        }
+        else
+        {
+            playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            
+        }
+
+        float dist = Vector3.Distance(transform.position, playerPos);
+        Debug.Log(dist);
+        if (dist <= _distanceToTurnOnLaser)
+        {
+            TurnOnLaser();
+        }
+        else
+        {
+            TurnOffLaser();
         }
     }
 
