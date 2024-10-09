@@ -55,7 +55,6 @@ public class Cyclop : EnemyBase
         }
 
         float dist = Vector3.Distance(transform.position, playerPos);
-        Debug.Log(dist);
         if (dist <= _distanceToTurnOnLaser)
         {
             TurnOnLaser();
