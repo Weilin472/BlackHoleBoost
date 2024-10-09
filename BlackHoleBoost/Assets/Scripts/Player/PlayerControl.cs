@@ -45,12 +45,12 @@ public class PlayerControl : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         _playerShoot = GetComponent<PlayerShoot>();
 
-        
-       
+
+        Debug.Log(transform.rotation);
        
     }
 
-    private void Update()//if pos.x is positive, then rotatioin.z is negative
+    private void Update()
     {
       
         if (isInBlackHole||_isInPlanet)
@@ -86,7 +86,9 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-      
+       
+
+
     }
 
     private void FixedUpdate()
@@ -109,7 +111,9 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                rigid.velocity = transform.TransformDirection(Vector3.up) * _maxSpeed;
+                Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+                relativeVelocity.y = _maxSpeed;
+                rigid.velocity = transform.TransformDirection(relativeVelocity);
             }
         }
         else if (_isSlowingDown)
@@ -121,18 +125,57 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);
+                Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+                relativeVelocity.y = 0;
+                rigid.velocity = transform.TransformDirection(relativeVelocity);
             }
         }
 
         if (_isMovingLeft)
         {
-            rigid.velocity =new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+            //   rigid.velocity =new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+            //   rigid.velocity = transform.TransformDirection(new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z));
+            // transform.position += transform.TransformDirection(Vector3.left * _sideMoveSpeed * Time.deltaTime);
+            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+            relativeVelocity.x = -_sideMoveSpeed;
+            if (!IsNormalStrafing())
+            {
+                relativeVelocity.x *= -1;
+            }
+            rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
         else if (_isMovingRight)
         {
-            rigid.velocity =new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+            //   rigid.velocity =new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
+            //   rigid.velocity = transform.TransformDirection(new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z));
+            // transform.position += transform.TransformDirection(Vector3.right * _sideMoveSpeed * Time.deltaTime);
+            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+            relativeVelocity.x = _sideMoveSpeed;
+            if (!IsNormalStrafing())
+            {
+                relativeVelocity.x *= -1;
+            }
+            rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
+
+    }
+
+    private bool IsNormalStrafing()
+    {
+        float zAxis = transform.localEulerAngles.z;
+        while (zAxis>180)
+        {
+            zAxis -= 360;
+        }
+        while (zAxis<-180)
+        {
+            zAxis += 360;
+        }
+        if (-90<zAxis&&zAxis<90)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void LeftMove(InputAction.CallbackContext input)
@@ -144,7 +187,10 @@ public class PlayerControl : MonoBehaviour
         else if (input.phase==InputActionPhase.Canceled)
         {
             _isMovingLeft = false;
-            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+            //   rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+            relativeVelocity.x = 0;
+            rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
     }
 
@@ -157,7 +203,10 @@ public class PlayerControl : MonoBehaviour
         else if (input.phase == InputActionPhase.Canceled)
         {
             _isMovingRight = false;
-            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+            //    rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+            relativeVelocity.x = 0;
+            rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
     }
 

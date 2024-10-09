@@ -871,6 +871,7 @@ MonoBehaviour:
     type: 3}
   _secondShipPrefab: {fileID: 2875590302239603435, guid: 621da6a3c5f67a94c86ab58bbd4a5348,
     type: 3}
+  players: []
 --- !u!4 &2012164792
 Transform:
   m_ObjectHideFlags: 0
