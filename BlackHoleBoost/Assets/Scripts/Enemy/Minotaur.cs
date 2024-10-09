@@ -18,7 +18,14 @@ public class Minotaur : EnemyBase
     protected override void Start()
     {
         base.Start();
-        _ramingSpeed =GameManager.Instance.players[0].GetSpaceShipMaxSpeed()*__ramingSpeedMultiplier;
+        if (GameManager.Instance._inPrototype)
+        {
+            _ramingSpeed = GameManager.Instance.players[0].GetSpaceShipMaxSpeed() * __ramingSpeedMultiplier;
+        }
+        else
+        {
+            _ramingSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>().GetSpaceShipMaxSpeed() * __ramingSpeedMultiplier;
+        }
         _isLockingOnPlayer = false;
         _isRaming = false;
     }
@@ -29,7 +36,14 @@ public class Minotaur : EnemyBase
 
             base.Movement();
             transform.rotation = Quaternion.LookRotation(Vector3.forward, _rigid.velocity);
-            target = GameManager.Instance.GetPlayerWithMoreHealth();
+            if (GameManager.Instance._inPrototype)
+            {
+                target = GameManager.Instance.GetPlayerWithMoreHealth();
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+            }
             float dis = Vector3.Distance(target.transform.position, transform.position);
             if (dis < _detectPlayerDistance)
             {

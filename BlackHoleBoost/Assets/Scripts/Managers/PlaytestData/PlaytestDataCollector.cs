@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/04/2024]
+ * Last Updated: [10/07/2024]
  * [collects data for playtest]
  */
 
@@ -130,7 +130,6 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
     {
         while (_startCollecting)
         {
-            Debug.Log("Buh");
             //get speeds
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null && player.GetComponent<Rigidbody>())

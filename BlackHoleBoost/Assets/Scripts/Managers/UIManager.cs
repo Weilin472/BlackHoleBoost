@@ -33,12 +33,13 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (GameManager.Instance.GamePlaying)
         {
             _currentTime += Time.deltaTime;
             _timerText.text =System.Math.Round(_currentTime, 2).ToString();
          //   _timerText.text = ((int)_currentTime).ToString();
-        }
+        }*/
     }
 
    
