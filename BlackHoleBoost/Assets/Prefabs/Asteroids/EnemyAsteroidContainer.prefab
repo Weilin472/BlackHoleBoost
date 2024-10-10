@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 0
-  _bigHealth: 3
+  _bigHealth: 2
   _smallHealth: 1
 --- !u!114 &2538252058804078851
 MonoBehaviour:
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _bigDamage: 3
+  _bigDamage: 2
   _mediumDamage: 1
 --- !u!114 &7831237988079201339
 MonoBehaviour:
@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1306026421338877988
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ShipSelectScreen.unity
     guid: dd7bf52acd2acdd4ba87e94460b896c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Weilin's Scene.unity
     guid: 38dfab3c19ad8dc4eb78dfddb9032e30
+  - enabled: 1
+    path: Assets/Scenes/CoreLoopPlaytestScene.unity
+    guid: e36e4e0265b77854ab840b239375f07b
   m_configObjects: {}
