@@ -150,9 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _detectPlayerDistance: 4.5
-  _timeLockOnPlayrMultiplier: 3
-  __ramingSpeedMultiplier: 2
+  _detectPlayerDistance: 4
+  _timeLockOnPlayrMultiplier: 6
+  __ramingSpeedMultiplier: 1
 --- !u!114 &7516991211117861182
 MonoBehaviour:
   m_ObjectHideFlags: 0

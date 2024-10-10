@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _accelerationMultipler: 2
-  _sideMoveSpeed: 2
+  _sideMoveSpeed: 4
   _blackHolePrefab: {fileID: 5926682915721196415, guid: c1f112e16cef97c458c7bad428bcde43,
     type: 3}
   _maxSpeed: 7
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
-  _UnattackablePeriod: 3
+  _UnattackablePeriod: 6
 --- !u!114 &8081387908008791036
 MonoBehaviour:
   m_ObjectHideFlags: 0
