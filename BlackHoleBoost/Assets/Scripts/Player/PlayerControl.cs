@@ -288,7 +288,7 @@ public class PlayerControl : MonoBehaviour
 
     public void ShootAsteroid(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed && !isInBlackHole)
+        if (input.phase == InputActionPhase.Performed)
         {
             _playerShoot.ShootAsteroid();
         }
