@@ -2853,7 +2853,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 1000}
+  m_SizeDelta: {x: 941.3, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717531987
 MonoBehaviour:
@@ -2882,9 +2882,10 @@ MonoBehaviour:
     [A] [D] = Strafe Left and
     Right
 
-    [E] = Spawn Black Holes
+    [Right Click] = Spawn Black Holes
 
-    [R] = Shoot Stored Asteroids'
+    [Left Click] = Shoot Stored
+    Asteroids'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
