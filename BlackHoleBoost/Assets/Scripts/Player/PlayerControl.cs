@@ -85,10 +85,6 @@ public class PlayerControl : MonoBehaviour
             }      
             return;
         }
-
-       
-
-
     }
 
     private void FixedUpdate()
@@ -286,11 +282,27 @@ public class PlayerControl : MonoBehaviour
         isInBlackHole = false;
     }
 
+    /// <summary>
+    /// calls to shoot asteroid
+    /// </summary>
+    /// <param name="input"></param>
     public void ShootAsteroid(InputAction.CallbackContext input)
     {
         if (input.phase == InputActionPhase.Performed)
         {
             _playerShoot.ShootAsteroid();
+        }
+    }
+
+    /// <summary>
+    /// calls to switch asteroid
+    /// </summary>
+    /// <param name="input"></param>
+    public void SwitchAsteroid(InputAction.CallbackContext input)
+    {
+        if (input.phase == InputActionPhase.Performed)
+        {
+            _playerShoot.SwitchCurrentAsteroid();
         }
     }
 

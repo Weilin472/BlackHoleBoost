@@ -60,10 +60,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
-                    "type": "PassThrough",
-                    "id": "26bd2ea3-36fa-40da-bb97-f31ba0181822",
-                    "expectedControlType": "Vector2",
+                    "name": "SwapAsteroid",
+                    "type": "Button",
+                    "id": "0daca821-337e-4819-92d8-c7b0a6742abc",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -95,7 +95,7 @@
                 {
                     "name": "",
                     "id": "da3d8b3c-8b30-4cfb-9c38-2d8c362a2c8a",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -117,7 +117,7 @@
                 {
                     "name": "",
                     "id": "14d323fe-46e8-4a15-b5d5-d5aeb54c651e",
-                    "path": "<Keyboard>/r",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -204,23 +204,23 @@
                 },
                 {
                     "name": "",
-                    "id": "95c41598-9951-4cdd-9a42-d64edcafcf73",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "d15475b3-c712-43db-a0ca-e315ea67259d",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "SwapAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "823560d6-e221-4dbb-a5c3-b4fc724de36a",
-                    "path": "<Mouse>/position",
+                    "id": "3dcb960d-bbfc-43cc-ba29-dc9d376af854",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "SwapAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

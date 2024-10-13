@@ -1,42 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/07/2024]
+ * Last Updated: [10/12/2024]
  * [inventory for player]
  */
 
 public class PlayerAsteroidInventory : MonoBehaviour
 {
-    private List<SmallAsteroidType> _inventory;
+    private int _normalInventory = 0;
+    private int _bounceInventory = 0;
+    private int _stickyInventory = 0;
+
+    [SerializeField] private int _maxSize = 5;
 
     [SerializeField] private int _startingNormal = 3;
     [SerializeField] private int _startingBounce = 0;
     [SerializeField] private int _startingSticky = 0;
 
-    [SerializeField] private GameObject[] _displaySlot;
-    private MeshRenderer[] _displaySlotRenderer;
-
-    [SerializeField] private Material _displayNormal;
-    [SerializeField] private Material _displayBounce;
-    [SerializeField] private Material _displaySticky;
+    [SerializeField] private TMP_Text _normalDisplayText;
+    [SerializeField] private TMP_Text _bounceDisplayText;
+    [SerializeField] private TMP_Text _stickyDisplayText;
 
     /// <summary>
     /// gets needed components
     /// </summary>
     private void Awake()
     {
-        _inventory = new List<SmallAsteroidType>();
-        _displaySlotRenderer = new MeshRenderer[5];
-
-        for (int i = 0; i < _displaySlot.Length; i++)
-        {
-            _displaySlotRenderer[i] = _displaySlot[i].GetComponent<MeshRenderer>();
-            _displaySlot[i].SetActive(false);
-        }
-
         //starting inventroy
         for (int i = 0; i < _startingNormal; i++)
         {
@@ -48,39 +41,13 @@ public class PlayerAsteroidInventory : MonoBehaviour
         }
         for (int i = 0; i < _startingBounce; i++)
         {
-            AddAsteroid(SmallAsteroidType.STICKY);
+            AddAsteroid(SmallAsteroidType.BOUNCE);
         }
     }
 
     private void Update()
     {
-        for (int i = 0; i < _displaySlot.Length; i++)
-        {
-            if (_inventory.Count > i)
-            {
-                _displaySlot[i].SetActive(true);
-
-                switch (_inventory[i])
-                {
-                    case SmallAsteroidType.NORMAL:
-                        _displaySlotRenderer[i].material = _displayNormal;
-                        break;
-                    case SmallAsteroidType.BOUNCE:
-                        _displaySlotRenderer[i].material = _displayBounce;
-                        break;
-                    case SmallAsteroidType.STICKY:
-                        _displaySlotRenderer[i].material = _displaySticky;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                _displaySlot[i].SetActive(false);
-            }
-        }
-
+        DisplayInventrory();
     }
 
     /// <summary>
@@ -89,9 +56,22 @@ public class PlayerAsteroidInventory : MonoBehaviour
     /// <param name="asteroid"></param>
     public void AddAsteroid(SmallAsteroidType asteroid)
     {
-        if (_inventory.Count <= 5)
+        if (_normalInventory + _bounceInventory + _stickyInventory < _maxSize)
         {
-            _inventory.Add(asteroid);
+            switch (asteroid)
+            {
+                case SmallAsteroidType.NORMAL:
+                    _normalInventory++;
+                    break;
+                case SmallAsteroidType.BOUNCE:
+                    _bounceInventory++;
+                    break;
+                case SmallAsteroidType.STICKY:
+                    _stickyInventory++;
+                    break;
+                default:
+                    break;
+            }
 
             //playtest data stuff here
             if (PlaytestDataCollector.Instance != null)
@@ -116,21 +96,73 @@ public class PlayerAsteroidInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// gets next asteroid for shoot
-    /// takes out asteroid for shoot
-    /// only should be used for shoot
+    /// checks if player can shoot asteroid
+    /// if true, shoots asteroid
     /// </summary>
-    /// <returns>asteroid type to shoot</returns>
-    public SmallAsteroidType PopNextShootAsteroid()
+    /// <param name="asteroid">asteroid player is shooting</param>
+    /// <returns>if the player can shoot</returns>
+    public void OnShootAsteroid(SmallAsteroidType asteroid)
     {
-        if (_inventory.Count > 0)
+        switch (asteroid)
         {
-            SmallAsteroidType smallAsteroidType = _inventory[0];
-
-            _inventory.RemoveAt(0);
-
-            return smallAsteroidType;
+            case SmallAsteroidType.NORMAL:
+                if (_normalInventory > 0)
+                {
+                    _normalInventory--;
+                }
+                break;
+            case SmallAsteroidType.BOUNCE:
+                if (_bounceInventory > 0)
+                {
+                    _bounceInventory--;
+                }
+                break;
+            case SmallAsteroidType.STICKY:
+                if (_stickyInventory > 0)
+                {
+                    _stickyInventory--;
+                }
+                break;
+            default:
+                break;
         }
-        return SmallAsteroidType.NONE;
+    }
+
+    public bool HasAsteroidType(SmallAsteroidType asteroid)
+    {
+        switch (asteroid)
+        {
+            case SmallAsteroidType.NORMAL:
+                if (_normalInventory > 0)
+                {
+                    return true;
+                }
+                break;
+            case SmallAsteroidType.BOUNCE:
+                if (_bounceInventory > 0)
+                {
+                    return true;
+                }
+                break;
+            case SmallAsteroidType.STICKY:
+                if (_stickyInventory > 0)
+                {
+                    return true;
+                }
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// displays how much each asteroids the player has
+    /// </summary>
+    public void DisplayInventrory()
+    {
+        _normalDisplayText.text = _normalInventory.ToString();
+        _bounceDisplayText.text = _bounceInventory.ToString();
+        _stickyDisplayText.text = _stickyInventory.ToString();
     }
 }
