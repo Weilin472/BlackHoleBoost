@@ -8,6 +8,7 @@ TagManager:
   - Asteroid
   - GameManager
   - Enemy
+  - Planet
   layers:
   - Default
   - TransparentFX
