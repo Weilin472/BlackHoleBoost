@@ -33,7 +33,7 @@ public class PlayerHealthScript : BaseHealthScript
     /// <param name="damage"></param>
     public override void Damage(int damage)
     {
-        if ( !_isUnattackable)
+        if ( !_isUnattackable&&!transform.GetComponent<PlayerControl>().isInBlackHole)
         {
             StartCoroutine(HurtAnimation());
             base.Damage(damage);
