@@ -43,11 +43,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        _playerShoot = GetComponent<PlayerShoot>();
-
-
-        Debug.Log(transform.rotation);
-       
+        _playerShoot = GetComponent<PlayerShoot>();       
     }
 
     private void Update()
@@ -238,7 +234,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)//spawn black holes
             {
-                if (_isMovingLeft)
+                if ((_isMovingLeft&&IsNormalStrafing())||(_isMovingRight&&!IsNormalStrafing())||(!_isMovingLeft&&!_isMovingRight&&!IsNormalStrafing()))
                 {
                     _isClockDirection = false;
                     _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.left) * 0.8f, Quaternion.identity);
