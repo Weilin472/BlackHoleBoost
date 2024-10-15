@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/22/2024]
+ * Last Updated: [10/14/2024]
  * [script for pickupable small asteroids, make sure on bottom of component list]
  */
 
@@ -26,7 +26,10 @@ public class PickupSmallAsteroid : MonoBehaviour
         _pickupSmallAsteroidEventBus = GetComponent<PickupSmallAsteroidEventBus>();
     }
 
-    private void OnEnable()
+    /// <summary>
+    /// sets asteroid if there isn't a specific type of asteroid
+    /// </summary>
+    public void SetAsteroid()
     {
         float size = Random.Range(0f, 1f);
         if (size <= _chanceForNormal)
@@ -44,6 +47,15 @@ public class PickupSmallAsteroid : MonoBehaviour
             gameObject.name = "Pickup Sticky Asteroid";
             _pickupSmallAsteroidEventBus.Publish(SmallAsteroidType.STICKY);
         }
+    }
+
+    /// <summary>
+    /// sets asteroid to type
+    /// </summary>
+    /// <param name="type">the type of asteroid being converted to</param>
+    public void SetAsteroid(SmallAsteroidType type)
+    {
+        _pickupSmallAsteroidEventBus.Publish(type);
     }
 
     /// <summary>
