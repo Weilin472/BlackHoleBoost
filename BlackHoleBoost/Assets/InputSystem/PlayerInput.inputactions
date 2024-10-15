@@ -95,7 +95,7 @@
                 {
                     "name": "",
                     "id": "da3d8b3c-8b30-4cfb-9c38-2d8c362a2c8a",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -117,7 +117,7 @@
                 {
                     "name": "",
                     "id": "14d323fe-46e8-4a15-b5d5-d5aeb54c651e",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -163,7 +163,6 @@ public class PlayerShoot : MonoBehaviour
             {
                 currentCheck = 1;
             }
-            Debug.Log((SmallAsteroidType)currentCheck);
 
             if (_playerAsteroidInventory.HasAsteroidType((SmallAsteroidType)currentCheck))
             {
