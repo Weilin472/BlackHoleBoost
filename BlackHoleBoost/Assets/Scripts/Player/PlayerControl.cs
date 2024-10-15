@@ -61,20 +61,18 @@ public class PlayerControl : MonoBehaviour
               
             }
             _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _circleModeRotateDiameter / _currentBlachHoleSpeed);
-            if (_isInPlanet)
-            {
-                if (_isClockDirection)
-                {
-                    transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.Rotate(0, 0, _currentBlackHoleModeRotateSpeed * Time.deltaTime);
-                }
-            }
-            if (isInBlackHole)
+
+            if (_isClockDirection)
             {
                 transform.Rotate(0, 0, -_currentBlackHoleModeRotateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate(0, 0, _currentBlackHoleModeRotateSpeed * Time.deltaTime);
+            }
+
+            if (isInBlackHole)
+            {
                 _currentTimeStayInBlackHole += Time.deltaTime;
                 if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
                 {
@@ -238,14 +236,31 @@ public class PlayerControl : MonoBehaviour
     {
         if (input.phase == InputActionPhase.Performed)
         {
-            if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)
+            if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)//spawn black holes
             {
-                _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right)*0.8f, Quaternion.identity);
+                if (_isMovingLeft)
+                {
+                    _isClockDirection = false;
+                    _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.left) * 0.8f, Quaternion.identity);
+                }
+                else
+                {
+                    _isClockDirection = true;
+                    _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right) * 0.8f, Quaternion.identity);
+                }
                 isInBlackHole = true;
                 _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
                 _circleModeRotateDiameter = _currentBlackHole.transform.localScale.x * 0.8f;
+                Collider[] colliders = Physics.OverlapSphere(_currentBlackHole.transform.position, _currentBlackHole.transform.localScale.x / 2);
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if (colliders[i].tag=="Planet")
+                    {
+                        Destroy(colliders[i].gameObject);
+                    }
+                }
             }
-            else if (_canInteractWithPlanet&&!_isInPlanet&&!isInBlackHole)
+            else if (_canInteractWithPlanet&&!_isInPlanet&&!isInBlackHole)//circle the planets
             {
                 _isInPlanet = true;
                 _canInteractWithPlanet = false;
@@ -266,11 +281,11 @@ public class PlayerControl : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(Vector3.forward, adjustedDir);
                 }
             }
-            else if(isInBlackHole)
+            else if(isInBlackHole)//destory blackhole
             {
                 ExitBlackHoleMode();
             }
-            else if (_isInPlanet)
+            else if (_isInPlanet)//leave the planet
             {
                 _currentPlanet = null;
                 _isInPlanet = false;
