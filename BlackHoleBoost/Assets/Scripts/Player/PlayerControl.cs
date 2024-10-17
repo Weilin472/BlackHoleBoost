@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _beLockedOnIcon;
     [SerializeField] private float _blackHoleSuckUpMaxTime;
 
-
+    public bool IsFreeze;
 
     private GameObject _currentBlackHole;
     private GameObject _currentPlanet;
@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
     private bool _isMovingRight;
     private bool _isAccelerating;
     private bool _isSlowingDown;
+    private bool canMove;
 
 
    
@@ -43,7 +44,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        _playerShoot = GetComponent<PlayerShoot>();       
+        _playerShoot = GetComponent<PlayerShoot>();
+        canMove = true;
     }
 
     private void Update()
@@ -97,9 +99,18 @@ public class PlayerControl : MonoBehaviour
         {
             rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
         }
+        if (canMove)
+        {
+            Movement();
+        }
+
+    }
+
+    private void Movement()
+    {
         if (_isAccelerating)
         {
-            if (Mathf.Abs(rigid.velocity.magnitude)<_maxSpeed)
+            if (Mathf.Abs(rigid.velocity.magnitude) < _maxSpeed)
             {
                 rigid.AddForce(transform.TransformDirection(Vector3.up) * _accelerationMultipler, ForceMode.Acceleration);
             }
@@ -113,7 +124,7 @@ public class PlayerControl : MonoBehaviour
         else if (_isSlowingDown)
         {
 
-            if (Mathf.Abs(rigid.velocity.magnitude)>_accelerationMultipler)
+            if (Mathf.Abs(rigid.velocity.magnitude) > _accelerationMultipler)
             {
                 rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
             }
@@ -127,9 +138,6 @@ public class PlayerControl : MonoBehaviour
 
         if (_isMovingLeft)
         {
-            //   rigid.velocity =new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
-            //   rigid.velocity = transform.TransformDirection(new Vector3(-_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z));
-            // transform.position += transform.TransformDirection(Vector3.left * _sideMoveSpeed * Time.deltaTime);
             Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
             relativeVelocity.x = -_sideMoveSpeed;
             if (!IsNormalStrafing())
@@ -140,9 +148,6 @@ public class PlayerControl : MonoBehaviour
         }
         else if (_isMovingRight)
         {
-            //   rigid.velocity =new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z);
-            //   rigid.velocity = transform.TransformDirection(new Vector3(_sideMoveSpeed, rigid.velocity.y, rigid.velocity.z));
-            // transform.position += transform.TransformDirection(Vector3.right * _sideMoveSpeed * Time.deltaTime);
             Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
             relativeVelocity.x = _sideMoveSpeed;
             if (!IsNormalStrafing())
@@ -151,7 +156,6 @@ public class PlayerControl : MonoBehaviour
             }
             rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
-
     }
 
     private bool IsNormalStrafing()
@@ -230,7 +234,7 @@ public class PlayerControl : MonoBehaviour
     
     public void SpawnBlackHole(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (input.phase == InputActionPhase.Performed&&!IsFreeze)
         {
             if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)//spawn black holes
             {
@@ -323,4 +327,20 @@ public class PlayerControl : MonoBehaviour
             _currentPlanet = planetTran.gameObject;
         }
     }
+
+    public void Freeze()
+    {
+        IsFreeze = true;
+        canMove = false;
+        rigid.velocity = Vector3.zero;
+        Invoke("UnFreeze", 2.5f);
+
+       
+    }
+    void UnFreeze()
+    {
+        IsFreeze = false;
+        canMove = true;
+    }
+
 }

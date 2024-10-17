@@ -12,11 +12,15 @@ public class EnemyBase : MonoBehaviour
 
     protected bool isStuck = false;
 
+    public PlayerControl targetPlayer;
+
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         _rigid = transform.GetComponent<Rigidbody>();
         _enemyHealthScript = GetComponent<EnemyHealthScript>();
+        targetPlayer = GameManager.Instance.GetPlayerWithMoreHealth();
     }
 
 
@@ -39,14 +43,16 @@ public class EnemyBase : MonoBehaviour
         {
             if (GameManager.Instance.players.Count > 0)
             {
-                Vector3 playerPos = GameManager.Instance.GetPlayerWithMoreHealth().transform.position;
+                targetPlayer = GameManager.Instance.GetPlayerWithMoreHealth();
+                Vector3 playerPos = targetPlayer.transform.position;
                 Vector3 dir = (playerPos - transform.position).normalized;
                 _rigid.velocity = dir * _currentSpeed;
             }
         }
         else
         {
-            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            targetPlayer = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerControl>();
+            Vector3 playerPos = targetPlayer.transform.position;
             Vector3 dir = (playerPos - transform.position).normalized;
             _rigid.velocity = dir * _currentSpeed;
         }
