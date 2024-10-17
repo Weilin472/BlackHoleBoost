@@ -43,9 +43,10 @@ public class Medusa : EnemyBase
 
     private IEnumerator ShootingAnimation()
     {
-        while (_isLockingOntoPlayer)
+        GameObject gorgon = GetNearestGorgon(targetPlayer.gameObject);
+        while (_isLockingOntoPlayer&&gorgon!=null)
         {
-            GameObject emp = Instantiate(_empPrefab, GetNearestGorgon(targetPlayer.gameObject).transform.position, Quaternion.identity);
+            GameObject emp = Instantiate(_empPrefab, gorgon.transform.position, Quaternion.identity);
             emp.transform.rotation = Quaternion.LookRotation(emp.transform.forward, targetPlayer.transform.position - emp.transform.position);
             yield return new WaitForSeconds(1f);
         }

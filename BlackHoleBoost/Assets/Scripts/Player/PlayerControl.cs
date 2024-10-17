@@ -50,6 +50,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+       
       
         if (isInBlackHole||_isInPlanet)
         {
