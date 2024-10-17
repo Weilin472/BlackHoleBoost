@@ -76,7 +76,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "Acceleration",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -87,7 +87,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Acceleration",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -98,7 +98,7 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "SpawnBlackHole",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -109,7 +109,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "SpawnBlackHole",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -120,7 +120,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "ShootSmallAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -131,7 +131,7 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "ShootSmallAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -142,7 +142,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "SlowDown",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -153,7 +153,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "SlowDown",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -164,7 +164,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "LeftMove",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -175,7 +175,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "LeftMove",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -186,7 +186,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "RightMove",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -197,7 +197,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "RightMove",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -208,7 +208,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "SwapAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -219,7 +219,7 @@
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "SwapAsteroid",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -228,12 +228,12 @@
         },
         {
             "name": "PlayerInput_2",
-            "id": "d8e06208-d6b4-4029-bcca-144d3b0136ff",
+            "id": "5fd6bfc1-87c1-4387-a276-97395e574b59",
             "actions": [
                 {
                     "name": "Acceleration",
                     "type": "Button",
-                    "id": "c2092b15-9591-42bf-9d69-e136adc3482a",
+                    "id": "f3de3100-16b9-4fd9-95f3-5108bc1f5ee0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -242,7 +242,7 @@
                 {
                     "name": "SpawnBlackHole",
                     "type": "Button",
-                    "id": "623eef68-a51d-462b-a732-b278cacb7d3c",
+                    "id": "8441300f-22f4-4fa8-8772-11e2e1775ce1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,7 +251,7 @@
                 {
                     "name": "ShootSmallAsteroid",
                     "type": "Button",
-                    "id": "9ab33acb-0618-414a-bbbc-3a350b81086c",
+                    "id": "e07750e5-fe86-4651-a80f-35664140ff39",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -260,7 +260,7 @@
                 {
                     "name": "SlowDown",
                     "type": "Button",
-                    "id": "a10210a8-4f4f-4eb8-9b1e-f8430e61020d",
+                    "id": "e1aed8ed-57a6-466f-89a0-cd01bb58d656",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -269,7 +269,7 @@
                 {
                     "name": "LeftMove",
                     "type": "Button",
-                    "id": "2e2d0f2b-1643-4afd-a78e-532862c74114",
+                    "id": "034b85bd-572b-46e2-98d8-6b28060cc7e2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -278,7 +278,7 @@
                 {
                     "name": "RightMove",
                     "type": "Button",
-                    "id": "5f425ac9-098c-4614-ac4a-2688147330b8",
+                    "id": "0751afee-8fb5-4d83-ad62-5d9de5194cbe",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -288,7 +288,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "f3d44509-9312-475d-8534-8d567135dc29",
+                    "id": "866ce398-1836-413b-98fa-fe8f5a867e07",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
@@ -299,7 +299,7 @@
                 },
                 {
                     "name": "",
-                    "id": "26625e87-0428-45e4-a257-4324c95988c3",
+                    "id": "8ec93ace-a918-4c1c-99b3-e9eab184256e",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
@@ -310,7 +310,7 @@
                 },
                 {
                     "name": "",
-                    "id": "218275f6-f24b-420d-b8fa-8b54de04b2ab",
+                    "id": "6713893c-ac22-4829-a068-9177f03401af",
                     "path": "<Keyboard>/numpad1",
                     "interactions": "",
                     "processors": "",
@@ -321,7 +321,7 @@
                 },
                 {
                     "name": "",
-                    "id": "ea7593e0-78a5-4aae-a9f5-b904b354e0c1",
+                    "id": "8bae610d-fd53-40fb-8cc0-8f6621b52150",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -332,7 +332,7 @@
                 },
                 {
                     "name": "",
-                    "id": "ab82df7a-88b0-4014-a2d2-45f3520256d0",
+                    "id": "5f4cfb88-e28f-4cbe-bc82-41625fa55d89",
                     "path": "<Keyboard>/numpad2",
                     "interactions": "",
                     "processors": "",
@@ -343,7 +343,7 @@
                 },
                 {
                     "name": "",
-                    "id": "514adf34-c9d0-48b1-8448-761fdc56889f",
+                    "id": "174c091a-887d-45a7-83e0-d2b024258e0f",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
@@ -354,7 +354,7 @@
                 },
                 {
                     "name": "",
-                    "id": "523e1372-03b3-4e9a-84f3-af79d52c806b",
+                    "id": "ff33df2a-0ac0-4963-8dcc-8274c9e65d8e",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -365,7 +365,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8dd430e8-92f0-41e3-a58b-079230c1f989",
+                    "id": "b6a7035f-cc43-49c9-9c1d-4401aa4d75dc",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
@@ -376,7 +376,7 @@
                 },
                 {
                     "name": "",
-                    "id": "89ecccfa-8b6e-445b-b4b2-b3fa7457fb7f",
+                    "id": "54307c73-80fc-4677-91cf-d8ef4b0c9d69",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -387,7 +387,7 @@
                 },
                 {
                     "name": "",
-                    "id": "fd6296e2-d5e3-4551-9a02-90098870de14",
+                    "id": "660dc8e3-a021-437b-af39-50adf3e58e6f",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
@@ -398,7 +398,7 @@
                 },
                 {
                     "name": "",
-                    "id": "9da15336-d185-479f-9f55-98e2d7ab8b51",
+                    "id": "eb2f8367-998c-4c07-accd-c6c72ce02fd4",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -409,7 +409,7 @@
                 },
                 {
                     "name": "",
-                    "id": "159c61ec-f097-44dc-8d03-9dd71f232a58",
+                    "id": "33048d9d-4d3e-476f-a0ca-eb7a1a476d2a",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
@@ -421,5 +421,33 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "KBM",
+            "bindingGroup": "KBM",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

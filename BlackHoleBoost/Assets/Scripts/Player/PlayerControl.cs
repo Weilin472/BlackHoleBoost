@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject _beLockedOnIcon;
     [SerializeField] private float _blackHoleSuckUpMaxTime;
 
-
+    private PlayerInput _playerInput;
 
     private GameObject _currentBlackHole;
     private GameObject _currentPlanet;
@@ -36,14 +36,16 @@ public class PlayerControl : MonoBehaviour
     private bool _isAccelerating;
     private bool _isSlowingDown;
 
-
-   
-
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        _playerShoot = GetComponent<PlayerShoot>();       
+        _playerShoot = GetComponent<PlayerShoot>();
+        _playerInput = GetComponent<PlayerInput>();
+        if (!Mouse.current.enabled)
+        {
+            InputSystem.EnableDevice(Mouse.current);
+        }
     }
 
     private void Update()
