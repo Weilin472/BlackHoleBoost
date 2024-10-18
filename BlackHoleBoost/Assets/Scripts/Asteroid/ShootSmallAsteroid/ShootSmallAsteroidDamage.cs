@@ -4,17 +4,22 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/03/2024]
+ * Last Updated: [10/18/2024]
  * [sets damage and side effects of asteroid]
  */
 
 public class ShootSmallAsteroidDamage : BaseDamageScript
 {
+    private ShootSmallAsteroid _shootSmallAsteroid;
     private ShootSmallAsteroidEventBus _shootSmallAsteroidEventBus;
     private AsteroidMove _asteroidMove;
 
     delegate void AsteroidEffect(Collider collider);
     private AsteroidEffect _asteroidEffect;
+
+    private int _numOfHits;
+    [SerializeField] private int _normalNumOfHits = 1;
+    [SerializeField] private int _bounceNumOfHits = 2;
 
     [SerializeField] private int _normalDamage = 1;
     [SerializeField] private int _bunceDamage = 1;
@@ -31,6 +36,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     {
         _shootSmallAsteroidEventBus = GetComponent<ShootSmallAsteroidEventBus>();
         _asteroidMove = GetComponent<AsteroidMove>();
+        _shootSmallAsteroid = GetComponent<ShootSmallAsteroid>();
         _stuckAsteroids = new List<GameObject>();
         _stuckEnemies = new List<EnemyBase>();
         _enemyOffset = new List<Vector3>();
@@ -85,9 +91,14 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     {
-        if (_asteroidEffect != Stick && other.transform.root.gameObject.tag != "Player")
+        if (_asteroidEffect != Stick && other.transform.root.gameObject.tag != "Player" && other.transform.root.gameObject.tag != "Pickup" && other.transform.root.gameObject.tag != "Laser")
         {
             base.OnTriggerEnter(other);
+            _numOfHits--;
+            if (_numOfHits <= 0)
+            {
+                _shootSmallAsteroid.ReturnToPool();
+            }
         }
         if (_asteroidEffect != null)
         {
@@ -101,6 +112,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private void SetNormal()
     {
         _damage = _normalDamage;
+        _numOfHits = _normalNumOfHits;
         _asteroidEffect = null;
     }
 
@@ -110,6 +122,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private void SetBounce()
     {
         _damage = _bunceDamage;
+        _numOfHits = _bounceNumOfHits;
         _asteroidEffect += Bounce;
     }
 
@@ -119,6 +132,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private void SetSticky()
     {
         _damage = _stickyDamage;
+        _numOfHits = 99;
         _asteroidEffect += Stick;
     }
 
@@ -190,7 +204,12 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
         //Debug.Log("Stick");
     }
 
-    private void FixedUpdate()
+
+
+    /// <summary>
+    /// for sticky asteroid
+    /// </summary>
+    private void Update()
     {
         if (_asteroidEffect == Stick)
         {
