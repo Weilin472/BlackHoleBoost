@@ -9,6 +9,8 @@ TagManager:
   - GameManager
   - Enemy
   - Planet
+  - Pickup
+  - Laser
   layers:
   - Default
   - TransparentFX
