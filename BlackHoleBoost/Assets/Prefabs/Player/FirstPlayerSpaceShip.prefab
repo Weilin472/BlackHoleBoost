@@ -448,6 +448,7 @@ MonoBehaviour:
   _maxBlackHoleSpeed: 13
   _beLockedOnIcon: {fileID: 5201209787225078029}
   _blackHoleSuckUpMaxTime: 10
+  IsFreeze: 0
   isInBlackHole: 0
 --- !u!114 &6056557057473636322
 MonoBehaviour:
@@ -625,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1857f54ea00f2834b914d2341e93d40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 9999
   _UnattackablePeriod: 6
 --- !u!114 &8081387908008791036
 MonoBehaviour:

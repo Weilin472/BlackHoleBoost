@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5916655668307492689}
   - component: {fileID: 7966334743730919189}
   - component: {fileID: 4060509687084262200}
-  - component: {fileID: 3359345526280067459}
   - component: {fileID: 8719738746515006245}
   - component: {fileID: 3577111645972446562}
   - component: {fileID: 1091962646230154185}
@@ -109,23 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _normalNumOfHits: 1
+  _bounceNumOfHits: 2
   _normalDamage: 1
   _bunceDamage: 1
   _stickyDamage: 0
---- !u!114 &3359345526280067459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4476599835060194455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9321c2df995e84cbdcd6af8b8bb885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _numOfBounces: 1
 --- !u!114 &8719738746515006245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
-  _direction: {x: 0, y: 1, z: 0}
 --- !u!114 &1091962646230154185
 MonoBehaviour:
   m_ObjectHideFlags: 0
