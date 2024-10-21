@@ -365,6 +365,30 @@ public class PlayerControl : MonoBehaviour
                     _aimDirection.transform.rotation = Quaternion.RotateTowards(_aimDirection.transform.rotation, newRotation, _gamepadRotateSmoothing * Time.deltaTime);
                 }
             }
+            else
+            {
+                Vector3 playerDirection = transform.up;
+                Quaternion newRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg - 90f);
+                _aimDirection.transform.rotation = Quaternion.RotateTowards(_aimDirection.transform.rotation, newRotation, _gamepadRotateSmoothing * Time.deltaTime);
+            }
+        }
+        else
+        {
+            Ray ray = Camera.main.ScreenPointToRay(_aim);
+            Plane groundPlane = new Plane(Vector3.back, Vector3.zero);
+            float rayDistance;
+
+            if (groundPlane.Raycast(ray, out rayDistance))
+            {
+                Vector3 point = ray.GetPoint(rayDistance);
+                Vector3 playerDirection = new Vector3(point.x, point.y, 0);
+                playerDirection = playerDirection - transform.position;
+                if (playerDirection.sqrMagnitude > 0.0f)
+                {
+                    Quaternion newRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg - 90f);
+                    _aimDirection.transform.rotation = Quaternion.RotateTowards(_aimDirection.transform.rotation, newRotation, _gamepadRotateSmoothing * Time.deltaTime);
+                }
+            }
         }
     }
 
