@@ -8,9 +8,9 @@ public class BaseDamageScript : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.gameObject.GetComponent<BaseHealthScript>())
+        if (other.transform.gameObject.GetComponent<BaseHealthScript>())
         {
-            BaseHealthScript otherHealth = other.transform.root.gameObject.GetComponent<BaseHealthScript>();
+            BaseHealthScript otherHealth = other.transform.gameObject.GetComponent<BaseHealthScript>();
             otherHealth.Damage(_damage);
         }
 

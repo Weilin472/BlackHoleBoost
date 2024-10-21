@@ -107,7 +107,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.3
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &982594225270077230
 Rigidbody:
@@ -155,6 +155,7 @@ MonoBehaviour:
   _detectDistance: 4
   _empPrefab: {fileID: 9071010954541602351, guid: 7486b9036ed37104ea663450125bff2a,
     type: 3}
+  shootingCoolDown: 2
 --- !u!114 &5536405399134539415
 MonoBehaviour:
   m_ObjectHideFlags: 0
