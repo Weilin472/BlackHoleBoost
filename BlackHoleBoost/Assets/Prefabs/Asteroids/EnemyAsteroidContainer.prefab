@@ -13,10 +13,12 @@ GameObject:
   - component: {fileID: 5467342111078902574}
   - component: {fileID: 4746976894693925639}
   - component: {fileID: 2538252058804078851}
+  - component: {fileID: -4608388176579414500}
   - component: {fileID: 7831237988079201339}
   - component: {fileID: 2543255211553108971}
   - component: {fileID: 3986341489127378086}
   - component: {fileID: -1414381720877079274}
+  - component: {fileID: 8266327497934105552}
   m_Layer: 0
   m_Name: EnemyAsteroidContainer
   m_TagString: Asteroid
@@ -110,6 +112,21 @@ MonoBehaviour:
   _damage: 1
   _bigDamage: 2
   _mediumDamage: 1
+--- !u!114 &-4608388176579414500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159866683361754084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22367f1c3147c80478b1076f0c34515b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 8266327497934105552}
+  _bigHitboxRadius: 0.62
+  _mediumHitboxRadius: 0.37
 --- !u!114 &7831237988079201339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +179,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+--- !u!136 &8266327497934105552
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159866683361754084}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.62
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1306026421338877988
 PrefabInstance:
   m_ObjectHideFlags: 0
