@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 2574333322569971276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.3, z: 0}
+  m_LocalPosition: {x: -0.3, y: 0.3, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -460,6 +460,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7618729290950334159}
   m_maskType: 0
+--- !u!1 &2722251452649900248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7529897484216565033}
+  m_Layer: 0
+  m_Name: CurrentShootPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7529897484216565033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2722251452649900248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 656056632116146848}
+  m_Father: {fileID: 8637601470956232730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2773471108595643126
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 2773471108595643126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -586,8 +618,8 @@ Transform:
   - {fileID: 3790702073466844056}
   - {fileID: 5914456402486534271}
   - {fileID: 5060800753510898202}
-  - {fileID: 656056632116146848}
   - {fileID: 925232837742393466}
+  - {fileID: 7529897484216565033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9008109993643838182
@@ -710,6 +742,9 @@ MonoBehaviour:
   _blackHoleSuckUpMaxTime: 10
   IsFreeze: 0
   isInBlackHole: 0
+  _controllerDeadzone: 0.1
+  _gamepadRotateSmoothing: 1000
+  _aimDirection: {fileID: 2722251452649900248}
 --- !u!114 &6056557057473636322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,7 +769,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnDeviceChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -833,30 +880,6 @@ MonoBehaviour:
     m_ActionId: e6aafe4c-d27d-4b5d-a94b-854ade96bb33
     m_ActionName: PlayerInput_1/RightMove[/Keyboard/d,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c2092b15-9591-42bf-9d69-e136adc3482a
-    m_ActionName: PlayerInput_2/Acceleration[/Keyboard/upArrow,/XInputControllerWindows/leftStick/up]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 623eef68-a51d-462b-a732-b278cacb7d3c
-    m_ActionName: PlayerInput_2/SpawnBlackHole[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9ab33acb-0618-414a-bbbc-3a350b81086c
-    m_ActionName: PlayerInput_2/ShootSmallAsteroid[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a10210a8-4f4f-4eb8-9b1e-f8430e61020d
-    m_ActionName: PlayerInput_2/SlowDown[/Keyboard/downArrow,/XInputControllerWindows/leftStick/down]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2e2d0f2b-1643-4afd-a78e-532862c74114
-    m_ActionName: PlayerInput_2/LeftMove[/Keyboard/leftArrow,/XInputControllerWindows/leftStick/left]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5f425ac9-098c-4614-ac4a-2688147330b8
-    m_ActionName: PlayerInput_2/RightMove[/Keyboard/rightArrow,/XInputControllerWindows/leftStick/right]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9148963259565905819}
         m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
@@ -872,6 +895,46 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0daca821-337e-4819-92d8-c7b0a6742abc
     m_ActionName: PlayerInput_1/SwapAsteroid[/Keyboard/e,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9148963259565905819}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: AimAsteroid
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 707ee8c5-6d3e-41d1-bab2-69836e1c0ae1
+    m_ActionName: PlayerInput_1/Aim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3de3100-16b9-4fd9-95f3-5108bc1f5ee0
+    m_ActionName: PlayerInput_2/Acceleration[/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8441300f-22f4-4fa8-8772-11e2e1775ce1
+    m_ActionName: PlayerInput_2/SpawnBlackHole[/Keyboard/numpad1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e07750e5-fe86-4651-a80f-35664140ff39
+    m_ActionName: PlayerInput_2/ShootSmallAsteroid[/Keyboard/numpad2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e1aed8ed-57a6-466f-89a0-cd01bb58d656
+    m_ActionName: PlayerInput_2/SlowDown[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 034b85bd-572b-46e2-98d8-6b28060cc7e2
+    m_ActionName: PlayerInput_2/LeftMove[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0751afee-8fb5-4d83-ad62-5d9de5194cbe
+    m_ActionName: PlayerInput_2/RightMove[/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput_1
@@ -1311,11 +1374,11 @@ Transform:
   m_GameObject: {fileID: 4247142671512041515}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.608, z: 0}
+  m_LocalPosition: {x: 0, y: 2.16, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8637601470956232730}
+  m_Father: {fileID: 7529897484216565033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5769524754634695611
 MeshFilter:
@@ -1667,7 +1730,7 @@ Transform:
   m_GameObject: {fileID: 7843288308599061820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0.3, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:

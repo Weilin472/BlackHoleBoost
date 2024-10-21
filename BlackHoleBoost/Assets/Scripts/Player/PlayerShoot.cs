@@ -81,8 +81,7 @@ public class PlayerShoot : MonoBehaviour
                 StartCoroutine(Cooldown());
                 _playerAsteroidInventory.OnShootAsteroid(asteroid);
 
-                Vector3 spawnLoc = transform.position;
-                spawnLoc = spawnLoc + transform.up;
+                Vector3 spawnLoc = _currentAsteroidDisplay.transform.position;
 
                 Vector3 dir = spawnLoc - transform.position;
                 dir.Normalize();

@@ -38,6 +38,13 @@ public class PlayerControl : MonoBehaviour
     private bool _isSlowingDown;
     private bool canMove;
 
+    //variables for controls and aiming
+    private bool _isGamepad;
+    [SerializeField] private float _controllerDeadzone = 0.1f;
+    [SerializeField] private float _gamepadRotateSmoothing = 1000f;
+    [SerializeField] private GameObject _aimDirection;
+    private Vector2 _aim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +60,9 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-       
-      
+        HandleAimRotation();
+
+
         if (isInBlackHole||_isInPlanet)
         {
             if (_currentBlachHoleSpeed<_maxBlackHoleSpeed)
@@ -322,6 +330,41 @@ public class PlayerControl : MonoBehaviour
         if (input.phase == InputActionPhase.Performed)
         {
             _playerShoot.SwitchCurrentAsteroid();
+        }
+    }
+    
+    //gets input for aiming
+    public void AimAsteroid(InputAction.CallbackContext input)
+    {
+        _aim = input.ReadValue<Vector2>();
+    }
+
+    /// <summary>
+    /// makes sure the game knows which input to take
+    /// temp: make sure to lock controls before round starts
+    /// </summary>
+    /// <param name="pi"></param>
+    public void OnDeviceChange(PlayerInput pi)
+    {
+        _isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    /// <summary>
+    /// handles rotation of aiming
+    /// </summary>
+    private void HandleAimRotation()
+    {
+        if (_isGamepad)
+        {
+            if (Mathf.Abs(_aim.x) > _controllerDeadzone || Mathf.Abs(_aim.y) > _controllerDeadzone)
+            {
+                Vector3 playerDirection = Vector3.right * _aim.x + Vector3.up * _aim.y;
+                if (playerDirection.sqrMagnitude > 0.0f)
+                {
+                    Quaternion newRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg - 90f);
+                    _aimDirection.transform.rotation = Quaternion.RotateTowards(_aimDirection.transform.rotation, newRotation, _gamepadRotateSmoothing * Time.deltaTime);
+                }
+            }
         }
     }
 
