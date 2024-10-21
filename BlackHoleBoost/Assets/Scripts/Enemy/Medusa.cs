@@ -8,6 +8,7 @@ public class Medusa : EnemyBase
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _detectDistance;
     [SerializeField] private GameObject _empPrefab;
+    [SerializeField] private float shootingCoolDown;
 
     private bool _isLockingOntoPlayer;
     
@@ -48,7 +49,7 @@ public class Medusa : EnemyBase
         {
             GameObject emp = Instantiate(_empPrefab, gorgon.transform.position, Quaternion.identity);
             emp.transform.rotation = Quaternion.LookRotation(emp.transform.forward, targetPlayer.transform.position - emp.transform.position);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(shootingCoolDown);
         }
     }
 

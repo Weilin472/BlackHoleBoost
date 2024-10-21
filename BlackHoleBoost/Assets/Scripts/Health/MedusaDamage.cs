@@ -6,13 +6,9 @@ public class MedusaDamage : EnemyHealthScript
 {
     public override void Damage(int damage)
     {
-        Medusa medusa = transform.GetComponent<Medusa>();
-        GameObject gorgon =medusa.GetNearestGorgon(medusa.targetPlayer.gameObject);
-        if (gorgon!=null)
-        {
-            gorgon.transform.GetComponent<EnemyHealthScript>().Damage(damage);
-        }
-        else
+        int childNum = transform.Find("Gorgons").childCount;
+        Debug.Log("shoot medusa");
+        if (childNum<=0)
         {
             base.Damage(damage);
         }
