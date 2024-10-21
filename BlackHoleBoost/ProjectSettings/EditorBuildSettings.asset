@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Weilin's Scene.unity
     guid: 38dfab3c19ad8dc4eb78dfddb9032e30
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CoreLoopPlaytestScene.unity
     guid: e36e4e0265b77854ab840b239375f07b
+  - enabled: 1
+    path: Assets/Scenes/JustinScene2.unity
+    guid: 87e06dc08fcf43c4bb0247268be9ea19
   m_configObjects: {}
