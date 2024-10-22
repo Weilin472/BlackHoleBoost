@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 247816565181534097}
   - component: {fileID: 982594225270077230}
   - component: {fileID: 7763149390388757276}
-  - component: {fileID: 5536405399134539415}
+  - component: {fileID: 2695190586342062176}
   m_Layer: 0
   m_Name: Medusa
   m_TagString: Enemy
@@ -156,7 +156,7 @@ MonoBehaviour:
   _empPrefab: {fileID: 9071010954541602351, guid: 7486b9036ed37104ea663450125bff2a,
     type: 3}
   shootingCoolDown: 2
---- !u!114 &5536405399134539415
+--- !u!114 &2695190586342062176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

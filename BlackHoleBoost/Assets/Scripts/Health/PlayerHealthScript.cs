@@ -47,7 +47,7 @@ public class PlayerHealthScript : BaseHealthScript
         Debug.Log("prototype game over here, remove later");
         _playerControl.ExitBlackHoleMode();
         PrototypeGameManager.Instance.GameOver();
-        StateMachine.Instance.GameEnd();
+    //    StateMachine.Instance.GameEnd();
         GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
         Destroy(gameObject);
     }

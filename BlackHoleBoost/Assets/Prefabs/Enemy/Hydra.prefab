@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2680701303922166772}
   - component: {fileID: 2197565197017264366}
   - component: {fileID: 8209011815706233762}
-  - component: {fileID: 3797387879555702928}
   - component: {fileID: 2347264351549115734}
+  - component: {fileID: -1625690013891500955}
   m_Layer: 0
   m_Name: Hydra
   m_TagString: Untagged
@@ -136,19 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &3797387879555702928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826317108700541650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386eccddf178b384cac91d7b49293b3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 2
 --- !u!114 &2347264351549115734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +151,19 @@ MonoBehaviour:
   _speed: 2
   targetPlayer: {fileID: 0}
   movingTime: 5
+--- !u!114 &-1625690013891500955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826317108700541650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386eccddf178b384cac91d7b49293b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1
 --- !u!1 &6979293777767898141
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HydraDamage : EnemyHealthScript
+public class HydraHealthScript : EnemyHealthScript
 {
     public override void Damage(int damage)
     {
