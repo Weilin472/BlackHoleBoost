@@ -10,11 +10,18 @@ public class StateMachine : Singleton<StateMachine>
 
     private void Update()
     {
-        _currentState.StateInProgress();
+        if (_currentState!=null)
+        {
+            _currentState.StateInProgress();
+        }
     }
 
     public void ChangeState(GameState state)
     {
+        if (_currentState!=null)
+        {
+            _currentState.StateEnd();
+        }
         _currentState = state;
         _currentState.StateStart();
     }

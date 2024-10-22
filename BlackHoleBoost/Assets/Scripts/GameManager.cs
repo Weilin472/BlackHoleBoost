@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GamePlaying = true;
+    }
+
     private void SpawnShip()
     {
         PlayerInput p = null;
