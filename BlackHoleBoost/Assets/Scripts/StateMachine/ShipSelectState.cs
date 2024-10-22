@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-public class GamePlayingState : GameState
+public class ShipSelectState : GameState
 {
     public override void StateInProgress()
     {
@@ -9,6 +9,6 @@ public class GamePlayingState : GameState
 
     public override void StateStart()
     {
-        SceneManager.LoadScene(1);        
+        SceneManager.LoadScene("ShipSelectScreen");
     }
 }

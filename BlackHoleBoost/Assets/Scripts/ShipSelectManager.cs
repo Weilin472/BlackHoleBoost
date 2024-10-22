@@ -17,6 +17,8 @@ public class ShipSelectManager : MonoBehaviour
     private static ShipSelectManager _instance;
     public static ShipSelectManager Instance=>_instance;
 
+    
+
     private void Awake()
     {
         if (Instance!=null)
@@ -49,7 +51,7 @@ public class ShipSelectManager : MonoBehaviour
         }
         if (readyPlayerNum>=2)
         {
-            SceneManager.LoadScene(1);
+            StateMachine.Instance.ChangeState(new GamePlayingState());
         }
     }
 

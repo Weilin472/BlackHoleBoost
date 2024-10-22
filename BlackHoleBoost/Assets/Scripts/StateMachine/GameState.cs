@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface GameState
+public class GameState
 {
-    public abstract void StateStart();
+    public virtual void StateStart()
+    {
+
+    }
 
 
-    public abstract void StateInProgress();
+    public virtual void StateInProgress()
+    {
+
+    }
+
+    public virtual void StateEnd()
+    {
+
+    }
   
 }
