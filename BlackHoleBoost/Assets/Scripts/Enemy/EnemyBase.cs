@@ -79,7 +79,6 @@ public class EnemyBase : MonoBehaviour
                 currPos.y += 0.5f;
             }
             transform.position = currPos;
-            _rigid.velocity = Vector3.zero;
             return true;
         }
         return false;

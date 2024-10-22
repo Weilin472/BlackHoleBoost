@@ -6,12 +6,42 @@ public class HydraDamage : EnemyHealthScript
 {
     public override void Damage(int damage)
     {
-        base.Damage(damage);
-        Debug.Log("parent get hurt");
+        if (CheckAttackable())
+        {
+            HeadofHydraHealth[] heads = transform.GetComponentsInChildren<HeadofHydraHealth>();
+            if (heads.Length>0)
+            {
+                Destroy(heads[0].gameObject);
+                RegrownAllHead();
+            }
+            else
+            {
+                base.Damage(damage);
+            }
+        }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private bool CheckAttackable()
     {
-        Debug.Log("something get hit");
+        bool canAttack = true;
+        HeadofHydraHealth[] heads = transform.GetComponentsInChildren<HeadofHydraHealth>();
+        for (int i = 0; i < heads.Length; i++)
+        {
+            if (heads[i].hasHead)
+            {
+                return false;
+            }
+        }
+        return canAttack;
+    }
+
+    private void RegrownAllHead()
+    {
+        HeadofHydraHealth[] heads = transform.GetComponentsInChildren<HeadofHydraHealth>();
+        for (int i = 0; i < heads.Length; i++)
+        {
+            heads[i].RegrowHead();
+        }
     }
 }

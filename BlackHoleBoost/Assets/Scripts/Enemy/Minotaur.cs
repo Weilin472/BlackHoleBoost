@@ -69,6 +69,7 @@ public class Minotaur : EnemyBase
             }
             else if (_isRaming && DetectBoundaries())
             {
+                _rigid.velocity = Vector3.zero;
                 _isRaming = false;
             }
         }
