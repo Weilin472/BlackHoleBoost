@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameOverState : GameState
 {
-    public void StateInProgress()
+    public override void StateInProgress()
     {
         
     }
 
-    public void StateStart()
+    public override void StateStart()
     {
         GameManager.Instance.GamePlaying = false;
     }
