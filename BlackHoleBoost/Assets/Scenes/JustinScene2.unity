@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1293,6 +1293,8 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
   - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
+  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
+  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,10 +2958,14 @@ MonoBehaviour:
 
     [E] = Swap Asteroids
 
-    [Right Click] = Spawn
-    Black Holes
+
+    [Mouse] = Aim Ateroid
+
+    [Right
+    Click] = Spawn Black Holes
 
     [Left Click] = Shoot Stored Asteroids
+
 
     <u>Gamepad</u>
 
@@ -2971,10 +2977,13 @@ MonoBehaviour:
     [Left Stick Left
     and Right] = Strafe
 
+
+    [Right Stick] = Aim Asteroid
+
     [Y] = Swap Asteroids
 
-    [Right Shoulder] = Spawn Black
-    Holes
+    [Right
+    Shoulder] = Spawn Black Holes
 
     [Left Shoulder] = Shoot Stored Asteroids'
   m_isRightToLeft: 0
