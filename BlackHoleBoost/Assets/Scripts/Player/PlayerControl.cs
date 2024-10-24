@@ -150,7 +150,8 @@ public class PlayerControl : MonoBehaviour
             relativeVelocity.x = -_sideMoveSpeed;
             if (!IsNormalStrafing())
             {
-                relativeVelocity.x *= -1;
+                Debug.Log("Turned off switch strafing for playtest");
+                //relativeVelocity.x *= -1;
             }
             rigid.velocity = transform.TransformDirection(relativeVelocity);
         }
@@ -160,7 +161,8 @@ public class PlayerControl : MonoBehaviour
             relativeVelocity.x = _sideMoveSpeed;
             if (!IsNormalStrafing())
             {
-                relativeVelocity.x *= -1;
+                Debug.Log("Turned off switch strafing for playtest");
+                //relativeVelocity.x *= -1;
             }
             rigid.velocity = transform.TransformDirection(relativeVelocity);
         }

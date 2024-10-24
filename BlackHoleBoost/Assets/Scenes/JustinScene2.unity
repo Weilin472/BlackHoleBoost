@@ -1292,8 +1292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefabs:
   - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
-  - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
   - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
+  - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
   - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
@@ -2956,10 +2956,10 @@ MonoBehaviour:
     [A]
     [D] = Strafe Left and Right
 
-    [E] = Swap Asteroids
-
 
     [Mouse] = Aim Ateroid
+
+    [E] = Swap Asteroids
 
     [Right
     Click] = Spawn Black Holes

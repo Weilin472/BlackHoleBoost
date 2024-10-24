@@ -153,7 +153,7 @@ MonoBehaviour:
   _speed: 1
   targetPlayer: {fileID: 0}
   _detectPlayerDistance: 4
-  _timeLockOnPlayrMultiplier: 6
+  _timeLockOnPlayrMultiplier: 4
   __ramingSpeedMultiplier: 1
 --- !u!114 &7516991211117861182
 MonoBehaviour:

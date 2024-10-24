@@ -15,6 +15,9 @@ public class PrototypeEnemySpawner : MonoBehaviour
 
     private bool _isSpawning = false;
 
+    /// <summary>
+    /// spawns enemy when no enemy
+    /// </summary>
     private void Update()
     {
         if (_isSpawning && _currentEnemy == null)
@@ -23,11 +26,17 @@ public class PrototypeEnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// start spawning
+    /// </summary>
     public void StartSpawning()
     {
         _isSpawning = true;
     }
 
+    /// <summary>
+    /// stop spawning
+    /// </summary>
     public void StopSpawning()
     {
         _isSpawning = false;
@@ -37,6 +46,9 @@ public class PrototypeEnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// spawns enemy
+    /// </summary>
     private void SpawnEnemy()
     {
         Vector3 loc = new Vector3(Random.Range(-2, 2), 10, 0);
