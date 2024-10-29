@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/14/2024]
+ * Last Updated: [10/28/2024]
  * [script for pickupable small asteroids, make sure on bottom of component list]
  */
 

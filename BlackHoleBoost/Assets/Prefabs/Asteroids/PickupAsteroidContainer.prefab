@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 364372377126552211}
   - component: {fileID: 6293287956820280494}
   - component: {fileID: 8729018691577860525}
+  - component: {fileID: -3738135990408359414}
+  - component: {fileID: 4847739807893170799}
+  - component: {fileID: 544827194683329563}
   m_Layer: 0
   m_Name: PickupAsteroidContainer
   m_TagString: Untagged
@@ -119,6 +122,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chanceForNormal: 0.33
   _chanceForBounce: 0.33
+--- !u!114 &-3738135990408359414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674186815812008647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf892153d3d8c224bb82269c64deb1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+--- !u!114 &4847739807893170799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674186815812008647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a3251914c1e0046b349c91e8151d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _magnetSpeed: 1
+  _magnetDistance: 2
+--- !u!114 &544827194683329563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674186815812008647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c4935db0a372c4db410fa704584ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2383715305123288407
 PrefabInstance:
   m_ObjectHideFlags: 0
