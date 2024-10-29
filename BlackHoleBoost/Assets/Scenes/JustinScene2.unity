@@ -1292,7 +1292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefabs:
   - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
+  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
   - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
+  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1367,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547154212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 465acf256f86bd844bd9aed9bc3387ed, type: 3}
   m_Name: 
@@ -2687,12 +2689,12 @@ PrefabInstance:
     - target: {fileID: 2274978819945666223, guid: d8254888183ad894ebc9b07d027f1268,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3152819290646014300, guid: d8254888183ad894ebc9b07d027f1268,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.824
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 3152819290646014300, guid: d8254888183ad894ebc9b07d027f1268,
         type: 3}
@@ -2954,12 +2956,16 @@ MonoBehaviour:
     [A]
     [D] = Strafe Left and Right
 
+
+    [Mouse] = Aim Ateroid
+
     [E] = Swap Asteroids
 
-    [Right Click] = Spawn
-    Black Holes
+    [Right
+    Click] = Spawn Black Holes
 
     [Left Click] = Shoot Stored Asteroids
+
 
     <u>Gamepad</u>
 
@@ -2971,10 +2977,13 @@ MonoBehaviour:
     [Left Stick Left
     and Right] = Strafe
 
+
+    [Right Stick] = Aim Asteroid
+
     [Y] = Swap Asteroids
 
-    [Right Shoulder] = Spawn Black
-    Holes
+    [Right
+    Shoulder] = Spawn Black Holes
 
     [Left Shoulder] = Shoot Stored Asteroids'
   m_isRightToLeft: 0

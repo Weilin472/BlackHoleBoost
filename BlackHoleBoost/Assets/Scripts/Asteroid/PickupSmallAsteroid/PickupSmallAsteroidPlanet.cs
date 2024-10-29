@@ -16,6 +16,7 @@ public class PickupSmallAsteroidPlanet : MonoBehaviour
     [SerializeField] private int _numOfAsteroid = 5;
     [SerializeField] private float _timeToRespawn = 5f;
     [SerializeField] private GameObject _orbitCenter;
+    [SerializeField] private float _wanderSpeed = 1f;
 
     private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
     private PickupSmallAsteroid[] _currentAsteroids;
@@ -46,14 +47,33 @@ public class PickupSmallAsteroidPlanet : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    /// <summary>
+    /// when planet is destroyed or disabled, let the pickup asteroids wander
+    /// </summary>
+    private void OnDisable()
     {
         for (int i = 0; i < _currentAsteroids.Length; i++)
         {
             if (_currentAsteroids[i] != null)
             {
                 //replace with wander
-                _currentAsteroids[i].ReturnToPool();
+                
+                PickupSmallAsteroidMove currentMove = _currentAsteroids[i].GetComponent<PickupSmallAsteroidMove>();
+                currentMove.ChangeSpeed(_wanderSpeed);
+                Vector3 dir = _currentAsteroids[i].transform.position - transform.position;
+                Vector2 temp = new Vector2(dir.x, dir.y);
+                for (int j = 0; j < 3; j++)
+                {
+                    temp = Vector2.Perpendicular(temp);
+                }
+                dir = new Vector3(temp.x, temp.y, 0f);
+                currentMove.ChangeDirection(dir);
+
+                currentMove.magnet = true;
+
+                //causes error when scene is stopped
+                _currentAsteroids[i].transform.parent = null;
+                //_currentAsteroids[i].ReturnToPool();
             }
         }
     }
