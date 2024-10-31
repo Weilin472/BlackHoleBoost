@@ -11,6 +11,7 @@ using UnityEngine;
 public class EnemyAsteroidModel : MonoBehaviour
 {
     private EnemyAsteroidEventBus _enemyAsteroidEventBus;
+    private EnemyAsteroid _enemyAsteroid;
 
     [SerializeField] private GameObject _bigModel;
     [SerializeField] private GameObject _mediumModel;
@@ -21,6 +22,7 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void Awake()
     {
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
+        _enemyAsteroid = GetComponent<EnemyAsteroid>();
     }
 
     /// <summary>
@@ -49,6 +51,8 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetBig()
     {
         _bigModel.SetActive(true);
+        SwitchModel(_bigModel);
+
         if (PlaytestDataCollector.Instance != null)
         {
             PlaytestDataCollector.Instance.bigAsteroidSpawn++;
@@ -61,9 +65,23 @@ public class EnemyAsteroidModel : MonoBehaviour
     private void SetMedium()
     {
         _mediumModel.SetActive(true);
+        SwitchModel(_mediumModel);
+
         if (PlaytestDataCollector.Instance != null)
         {
             PlaytestDataCollector.Instance.mediumAsteroidSpawn++;
+        }
+    }
+
+    /// <summary>
+    /// calls to switch model 
+    /// </summary>
+    /// <param name="asteroid">model to switch model</param>
+    private void SwitchModel(GameObject asteroid)
+    {
+        if (asteroid.TryGetComponent<EnemyModelSwitching>(out EnemyModelSwitching switchScript))
+        {
+            switchScript.SwitchModel(_enemyAsteroid.dropType);
         }
     }
 }

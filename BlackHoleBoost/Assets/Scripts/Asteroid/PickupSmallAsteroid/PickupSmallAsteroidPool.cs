@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/28/2024]
+ * Last Updated: [10/31/2024]
  * [object pooling for asteroid pickups]
  */
 
@@ -107,6 +107,24 @@ public class PickupSmallAsteroidPool : MonoBehaviour
     }
 
     /// <summary>
+    /// spawns pickup asteroid
+    /// </summary>
+    /// <param name="pos">position</param>
+    /// <param name="type">type of asteroid</param>
+    public void Spawn(Vector3 pos, SmallAsteroidType type)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(pos);
+        if (screenPos.x >= 0 && screenPos.x <= Screen.width && screenPos.y <= Screen.height && screenPos.y >= 0)
+        {
+            var asteroid = Pool.Get();
+            asteroid.transform.position = pos;
+            asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+            asteroid.SetAsteroid(type);
+            _currentPickupAsteroids.Add(asteroid);
+        }
+    }
+
+    /// <summary>
     /// spawn pickup asteroids for planets
     /// </summary>
     /// <param name="pos">location of spawn</param>
@@ -118,7 +136,7 @@ public class PickupSmallAsteroidPool : MonoBehaviour
         asteroid.transform.position = pos;
         asteroid.SetAsteroid(type);
         _currentPickupAsteroids.Add(asteroid);
-        asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+        asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = false;
         return asteroid;
     }
 
