@@ -60,4 +60,9 @@ public class EnemyIndicator : MonoBehaviour
         }
         return false;
     }
+
+    private void OnDisable()
+    {
+        _indicator.gameObject.SetActive(false);
+    }
 }
