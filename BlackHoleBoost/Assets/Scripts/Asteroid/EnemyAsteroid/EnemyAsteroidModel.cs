@@ -79,9 +79,7 @@ public class EnemyAsteroidModel : MonoBehaviour
     /// <param name="asteroid">model to switch model</param>
     private void SwitchModel(GameObject asteroid)
     {
-        if (asteroid.TryGetComponent<EnemyModelSwitching>(out EnemyModelSwitching switchScript))
-        {
-            switchScript.SwitchModel(_enemyAsteroid.dropType);
-        }
+        EnemyModelSwitching switchScript = asteroid.GetComponent<EnemyModelSwitching>();
+        switchScript.SwapModel(_enemyAsteroid.dropType);
     }
 }

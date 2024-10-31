@@ -11,6 +11,7 @@ using UnityEngine;
 public class EnemyModelSwitching : MonoBehaviour
 {
     [SerializeField] private GameObject[] _asteroidModels;
+    [SerializeField] private MeshRenderer[] _renderers;
 
     [SerializeField] private Material _normalMat;
     [SerializeField] private Material _bounceMat;
@@ -19,8 +20,8 @@ public class EnemyModelSwitching : MonoBehaviour
     /// <summary>
     /// switches model for asteroid
     /// </summary>
-    /// <param name="type">type of asteroid</param>
-    public void SwitchModel(SmallAsteroidType type)
+    /// <param name="asteroidType">type of asteroid</param>
+    public void SwapModel(SmallAsteroidType asteroidType)
     {
         foreach (GameObject model in _asteroidModels)
         {
@@ -29,19 +30,19 @@ public class EnemyModelSwitching : MonoBehaviour
 
         int modelIndex = Random.Range(0, _asteroidModels.Length);
         _asteroidModels[modelIndex].SetActive(true);
-        MeshRenderer[] renderer = _asteroidModels[modelIndex].GetComponentsInChildren<MeshRenderer>();
-        for (int i = 0; i < renderer.Length; i++)
+        _asteroidModels[modelIndex].transform.rotation = Random.rotation;
+        for (int i = 0; i < _renderers.Length; i++)
         {
-            switch (type)
+            switch (asteroidType)
             {
                 case SmallAsteroidType.NORMAL:
-                    renderer[i].material = _normalMat;
+                    _renderers[i].material = _normalMat;
                     break;
                 case SmallAsteroidType.BOUNCE:
-                    renderer[i].material = _bounceMat;
+                    _renderers[i].material = _bounceMat;
                     break;
                 case SmallAsteroidType.STICKY:
-                    renderer[i].material = _stickyMat;
+                    _renderers[i].material = _stickyMat;
                     break;
                 default:
                     break;

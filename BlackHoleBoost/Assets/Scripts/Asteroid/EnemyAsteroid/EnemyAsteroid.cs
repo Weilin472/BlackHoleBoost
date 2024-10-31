@@ -50,20 +50,7 @@ public class EnemyAsteroid : MonoBehaviour
             gameObject.name = "Medium Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.MEDIUM);
         }
-
-        float dropSize = Random.Range(0f, 1f);
-        if (dropSize <= .33f)
-        {
-            _dropType = SmallAsteroidType.NORMAL;
-        }
-        else if (dropSize > .33f && dropSize <= .66f)
-        {
-            _dropType = SmallAsteroidType.BOUNCE;
-        }
-        else
-        {
-            _dropType = SmallAsteroidType.STICKY;
-        }
+        //Debug.Log(_dropType);
     }
 
     /// <summary>
@@ -88,5 +75,6 @@ public class EnemyAsteroid : MonoBehaviour
     public SmallAsteroidType dropType
     {
         get { return _dropType; }
+        set { _dropType = value; }
     }
 }
