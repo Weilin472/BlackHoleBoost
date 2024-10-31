@@ -41,11 +41,8 @@ public class EnemyHealthScript : BaseHealthScript
         MeshRenderer[] renderer = transform.GetComponentsInChildren<MeshRenderer>();
         for (int i = 0; i < renderer.Length; i++)
         {
-            if (renderer[i].material.color != null)
-            {
-                originalColor.Add(renderer[i], renderer[i].material.color);
-                renderer[i].material.color = Color.red;
-            }
+            originalColor.Add(renderer[i], renderer[i].material.color);
+            renderer[i].material.color = Color.red;
         }
         yield return new WaitForSeconds(0.5f);
         foreach (var item in originalColor)
