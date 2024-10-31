@@ -21,6 +21,10 @@ public class EnemyBase : MonoBehaviour
         _rigid = transform.GetComponent<Rigidbody>();
         _enemyHealthScript = GetComponent<EnemyHealthScript>();
         targetPlayer = GameManager.Instance.GetPlayerWithMoreHealth();
+        if (targetPlayer==null)
+        {
+            targetPlayer = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerControl>();
+        }
     }
 
 
@@ -39,23 +43,17 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Movement()
     {
-        if (GameManager.Instance._inPrototype)
-        {
-            if (GameManager.Instance.players.Count > 0)
-            {
-                targetPlayer = GameManager.Instance.GetPlayerWithMoreHealth();
-                Vector3 playerPos = targetPlayer.transform.position;
-                Vector3 dir = (playerPos - transform.position).normalized;
-                _rigid.velocity = dir * _currentSpeed;
-            }
+        if (GameManager.Instance._inPrototype&& GameManager.Instance.players.Count > 0)
+        {    
+                targetPlayer = GameManager.Instance.GetPlayerWithMoreHealth();          
         }
         else
         {
             targetPlayer = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerControl>();
-            Vector3 playerPos = targetPlayer.transform.position;
-            Vector3 dir = (playerPos - transform.position).normalized;
-            _rigid.velocity = dir * _currentSpeed;
         }
+        Vector3 playerPos = targetPlayer.transform.position;
+        Vector3 dir = (playerPos - transform.position).normalized;
+        _rigid.velocity = dir * _currentSpeed;
     }
     protected bool DetectBoundaries()
     {
