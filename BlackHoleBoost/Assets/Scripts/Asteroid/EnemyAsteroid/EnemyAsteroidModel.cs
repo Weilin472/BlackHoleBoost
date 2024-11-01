@@ -16,6 +16,8 @@ public class EnemyAsteroidModel : MonoBehaviour
     [SerializeField] private GameObject _bigModel;
     [SerializeField] private GameObject _mediumModel;
 
+    private bool _currentBig = true;
+
     /// <summary>
     /// gets needed component
     /// </summary>
@@ -52,6 +54,7 @@ public class EnemyAsteroidModel : MonoBehaviour
     {
         _bigModel.SetActive(true);
         SwitchModel(_bigModel);
+        _currentBig = true;
 
         if (PlaytestDataCollector.Instance != null)
         {
@@ -66,6 +69,7 @@ public class EnemyAsteroidModel : MonoBehaviour
     {
         _mediumModel.SetActive(true);
         SwitchModel(_mediumModel);
+        _currentBig = false;
 
         if (PlaytestDataCollector.Instance != null)
         {
@@ -81,5 +85,10 @@ public class EnemyAsteroidModel : MonoBehaviour
     {
         EnemyModelSwitching switchScript = asteroid.GetComponent<EnemyModelSwitching>();
         switchScript.SwapModel(_enemyAsteroid.dropType);
+    }
+
+    public bool currentBig
+    {
+        get { return _currentBig; }
     }
 }
