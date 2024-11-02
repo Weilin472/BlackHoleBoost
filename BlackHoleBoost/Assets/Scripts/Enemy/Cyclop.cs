@@ -10,8 +10,9 @@ public class Cyclop : EnemyBase
     [SerializeField] private float _distanceToTurnOnLaser = 5f;
 
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         transform.Rotate(0, 0, -_rotateSpeed * Time.deltaTime);
         CheckLaser();
     }

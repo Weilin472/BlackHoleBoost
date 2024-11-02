@@ -38,6 +38,7 @@ public class PlayerControl : MonoBehaviour
     private bool _isAccelerating;
     private bool _isSlowingDown;
     private bool canMove;
+    private bool canShoot;
 
     //variables for controls and aiming
     private bool _isGamepad;
@@ -57,6 +58,7 @@ public class PlayerControl : MonoBehaviour
             InputSystem.EnableDevice(Mouse.current);
         }
         canMove = true;
+        canShoot = true;
     }
 
     private void Update()
@@ -329,7 +331,7 @@ public class PlayerControl : MonoBehaviour
     /// <param name="input"></param>
     public void ShootAsteroid(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (input.phase == InputActionPhase.Performed&&canShoot)
         {
             _playerShoot.ShootAsteroid();
         }
@@ -430,9 +432,7 @@ public class PlayerControl : MonoBehaviour
         IsFreeze = true;
         canMove = false;
         rigid.velocity = Vector3.zero;
-        Invoke("UnFreeze", 2.5f);
-
-       
+        Invoke("UnFreeze", 2.5f);   
     }
     void UnFreeze()
     {
@@ -440,4 +440,16 @@ public class PlayerControl : MonoBehaviour
         canMove = true;
     }
 
+    public void HitBySphinx(int damage,float effectTime)
+    {
+        transform.GetComponent<PlayerHealthScript>().Damage(damage);
+        canShoot = false;
+        CancelInvoke("ResetFromSphinx");
+        Invoke("ResetFromSphinx", effectTime);
+    }
+
+    private void ResetFromSphinx()
+    {
+        canShoot = true;
+    }
 }

@@ -20,8 +20,9 @@ public class Hydra : EnemyBase
        
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (_isMoving)
         {
             if (DetectBoundaries())

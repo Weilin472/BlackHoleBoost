@@ -47,8 +47,9 @@ public class Minotaur : EnemyBase
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!isStuck)
         {
             if (_isLockingOnPlayer && !_isRaming)
