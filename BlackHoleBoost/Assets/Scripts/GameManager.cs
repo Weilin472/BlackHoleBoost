@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         if (_inPrototype)
         {
-        //    SpawnShip();
+            SpawnShip();
         }
 
     }

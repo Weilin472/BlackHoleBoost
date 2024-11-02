@@ -15,8 +15,9 @@ public class Medusa : EnemyBase
  
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         gorgonParentTran.Rotate(0, 0, -_rotateSpeed * Time.deltaTime) ;
     }
 

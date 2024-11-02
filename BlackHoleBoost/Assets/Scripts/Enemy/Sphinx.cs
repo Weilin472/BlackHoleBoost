@@ -25,8 +25,9 @@ public class Sphinx : EnemyBase
        
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!powerDown)
         {
             if (!readyToShoot)

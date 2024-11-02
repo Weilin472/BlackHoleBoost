@@ -111,4 +111,21 @@ public class EnemyBase : MonoBehaviour
     {
         isStuck = false;
     }
+
+    private void OnDestroy()
+    {
+        if (EnemySpawner.Instance!=null)
+        {
+            EnemySpawner.Instance.EnemyDestroy(this);
+        }
+        
+    }
+
+    //protected virtual void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }
