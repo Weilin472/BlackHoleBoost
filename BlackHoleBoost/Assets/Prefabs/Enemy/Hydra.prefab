@@ -229,6 +229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadofHydra (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1716364349256413457, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
+        type: 3}
+      propertyPath: _bodyModel
+      value: 
+      objectReference: {fileID: 6208385432285398510}
     - target: {fileID: 6541605221335425059, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,6 +308,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadofHydra (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1716364349256413457, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
+        type: 3}
+      propertyPath: _bodyModel
+      value: 
+      objectReference: {fileID: 6208385432285398510}
     - target: {fileID: 6541605221335425059, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,6 +387,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadofHydra (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1716364349256413457, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
+        type: 3}
+      propertyPath: _bodyModel
+      value: 
+      objectReference: {fileID: 6208385432285398510}
     - target: {fileID: 6541605221335425059, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -527,6 +542,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6060845535466134868}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6208385432285398510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 159015010988480698, guid: 8909a0b4f214e38488550011db6300de,
+    type: 3}
+  m_PrefabInstance: {fileID: 6060845535466134868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7253158632318712063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadofHydra (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1716364349256413457, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
+        type: 3}
+      propertyPath: _bodyModel
+      value: 
+      objectReference: {fileID: 6208385432285398510}
     - target: {fileID: 6541605221335425059, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,6 +640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadofHydra
       objectReference: {fileID: 0}
+    - target: {fileID: 1716364349256413457, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
+        type: 3}
+      propertyPath: _bodyModel
+      value: 
+      objectReference: {fileID: 6208385432285398510}
     - target: {fileID: 6541605221335425059, guid: 4a3dcd2cafb3c794681b5e13f2bbd3df,
         type: 3}
       propertyPath: m_LocalPosition.x
