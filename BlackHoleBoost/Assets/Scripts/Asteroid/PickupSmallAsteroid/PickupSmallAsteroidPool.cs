@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/28/2024]
+ * Last Updated: [10/31/2024]
  * [object pooling for asteroid pickups]
  */
 
@@ -107,18 +107,36 @@ public class PickupSmallAsteroidPool : MonoBehaviour
     }
 
     /// <summary>
+    /// spawns pickup asteroid
+    /// </summary>
+    /// <param name="pos">position</param>
+    /// <param name="asteroidType">type of asteroid</param>
+    public void Spawn(Vector3 pos, SmallAsteroidType asteroidType)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(pos);
+        if (screenPos.x >= 0 && screenPos.x <= Screen.width && screenPos.y <= Screen.height && screenPos.y >= 0)
+        {
+            var asteroid = Pool.Get();
+            asteroid.transform.position = pos;
+            asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+            asteroid.SetAsteroid(asteroidType);
+            _currentPickupAsteroids.Add(asteroid);
+        }
+    }
+
+    /// <summary>
     /// spawn pickup asteroids for planets
     /// </summary>
     /// <param name="pos">location of spawn</param>
-    /// <param name="type">type of astereoid spawned</param>
+    /// <param name="AsteroidType">type of astereoid spawned</param>
     /// <returns>spawned asteriod</returns>
-    public PickupSmallAsteroid PlanetSpawn(Vector3 pos, SmallAsteroidType type)
+    public PickupSmallAsteroid PlanetSpawn(Vector3 pos, SmallAsteroidType AsteroidType)
     {
         var asteroid = Pool.Get();
         asteroid.transform.position = pos;
-        asteroid.SetAsteroid(type);
+        asteroid.SetAsteroid(AsteroidType);
         _currentPickupAsteroids.Add(asteroid);
-        asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+        asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = false;
         return asteroid;
     }
 

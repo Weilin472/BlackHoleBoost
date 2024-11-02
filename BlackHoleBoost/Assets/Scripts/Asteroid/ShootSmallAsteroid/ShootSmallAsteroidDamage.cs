@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/18/2024]
+ * Last Updated: [11/01/2024]
  * [sets damage and side effects of asteroid]
  */
 
@@ -152,7 +152,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
         GameObject otherRoot = collider.transform.root.gameObject;
 
         //if asteroid: add the model to this asteroid as a child
-        if (otherRoot.tag == "Asteroid")
+        if (otherRoot.TryGetComponent<EnemyAsteroidSticky>(out EnemyAsteroidSticky enemyAsteroidSticky))
         {
             GameObject otherModel = collider.gameObject;
             for (int i = 0; i < _stuckAsteroids.Count; i++)
@@ -164,7 +164,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             }
 
             Vector3 closestPoint = collider.ClosestPoint(transform.position);
-            GameObject stuckModel = Instantiate(otherModel, closestPoint, Quaternion.identity);
+            GameObject stuckModel = Instantiate(enemyAsteroidSticky.GetModel(), closestPoint, Quaternion.identity);
             stuckModel.transform.parent = this.transform;
             _stuckAsteroids.Add(stuckModel);
 
@@ -174,10 +174,9 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
                 PlaytestDataCollector.Instance.asteroidsStuck++;
             }
 
-            if (otherRoot.GetComponent<BaseHealthScript>())
+            if (otherRoot.TryGetComponent<EnemyAsteroidHealth>(out EnemyAsteroidHealth enemyAsteroidHealth))
             {
-                BaseHealthScript otherHealth = otherRoot.GetComponent<BaseHealthScript>();
-                otherHealth.Damage(99);
+                enemyAsteroidHealth.StickyDeath();
             }
         }
 

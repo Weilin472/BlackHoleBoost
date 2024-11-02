@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/08/2024]
+ * Last Updated: [10/31/2024]
  * [Script for enemy asteroids
  * MAKE SURE THIS IS BOTTOM OF SCRIPT COPONENTS SO ON ENABLE WORKS RIGH]
  */
@@ -18,6 +18,8 @@ public class EnemyAsteroid : MonoBehaviour
 
     [SerializeField][Range(0, 1)]
     private float _chanceForBig = 0.5f;
+
+    private SmallAsteroidType _dropType;
 
     /// <summary>
     /// on Start: get needed scripts
@@ -48,6 +50,7 @@ public class EnemyAsteroid : MonoBehaviour
             gameObject.name = "Medium Asteroid";
             _enemyAsteroidEventBus.Publish(EnemyAsteroidSizeEnum.MEDIUM);
         }
+        //Debug.Log(_dropType);
     }
 
     /// <summary>
@@ -64,5 +67,14 @@ public class EnemyAsteroid : MonoBehaviour
     public void ReturnToPool()
     {
         Pool.Release(this);
+    }
+
+    /// <summary>
+    /// property for drop type
+    /// </summary>
+    public SmallAsteroidType dropType
+    {
+        get { return _dropType; }
+        set { _dropType = value; }
     }
 }

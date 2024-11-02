@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/22/2024]
+ * Last Updated: [11/01/2024]
  * [script for enemy health]
  */
 
@@ -62,8 +62,15 @@ public class EnemyAsteroidHealth : BaseHealthScript
     /// </summary>
     protected override void OnDeath()
     {
-        //Debug.Log("IMPLEMENT SMALL ASTEROID DROP");
-        _pickupSmallAsteroidPool.Spawn(transform.position);
+        _pickupSmallAsteroidPool.Spawn(transform.position, _enemyAsteroid.dropType);
+        _enemyAsteroid.ReturnToPool();
+    }
+
+    /// <summary>
+    /// instant kill that doesn't drop a pickup
+    /// </summary>
+    public void StickyDeath()
+    {
         _enemyAsteroid.ReturnToPool();
     }
 }

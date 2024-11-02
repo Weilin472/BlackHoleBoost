@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
     private float _currentTimeStayInBlackHole;
+    private int _currentBlackHolePhase = 0;
 
     private PlayerShoot _playerShoot;
 
@@ -86,11 +87,22 @@ public class PlayerControl : MonoBehaviour
             if (isInBlackHole)
             {
                 _currentTimeStayInBlackHole += Time.deltaTime;
-                if (_currentTimeStayInBlackHole > _blackHoleSuckUpMaxTime)
+                if (_currentTimeStayInBlackHole >= _blackHoleSuckUpMaxTime)
                 {
-                    transform.GetComponent<PlayerHealthScript>().Damage(100);
+
+                    isInBlackHole = false;
+                    transform.GetComponent<PlayerHealthScript>().Damage(99999);
                     ExitBlackHoleMode();
                     rigid.velocity = Vector3.zero;
+                }
+                else
+                {
+                    int checkPhase = (int)(_currentTimeStayInBlackHole / (_blackHoleSuckUpMaxTime / 5));
+                    if (checkPhase != _currentBlackHolePhase)
+                    {
+                        _currentBlackHolePhase = checkPhase;
+                        _currentBlackHole.GetComponent<BlackHoleTextureManager>().SwapPhase(_currentBlackHolePhase);
+                    }
                 }
             }      
             return;

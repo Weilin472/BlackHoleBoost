@@ -90,6 +90,7 @@ public class EnemyAsteroidPool : MonoBehaviour
         var asteroid = Pool.Get();
         asteroid.transform.position = spawnLoc;
         asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
+        float dropSize = Random.Range(0f, 1f);
 
         _currentEnemyAsteroids.Add(asteroid);
     }
