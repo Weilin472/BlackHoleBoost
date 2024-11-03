@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -427,7 +427,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1008.30005, y: 250}
+  m_SizeDelta: {x: 1008.30005, y: 48.9}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &119944530
 MonoBehaviour:
@@ -449,20 +449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Objective: Survive as long as possible (Don''t Get Hit)
-
-    Controls:
-
-    use
-    W and A to speed up and slow down
-
-    A and D can be used to strafe
-
-    E spawns
-    a black hole to speed up further and rotate
-
-    You can pick up destroyed asteroids
-    to shoot with R'
+  m_text: 'Objective: Survive as long as possible (Don''t Get Hit)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -471,8 +458,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281597696
+  m_fontColor: {r: 0, g: 1, b: 0.2004807, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1305,7 +1292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefabs:
   - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
+  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
   - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
+  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,7 +1367,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547154212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 465acf256f86bd844bd9aed9bc3387ed, type: 3}
   m_Name: 
@@ -2875,17 +2864,45 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[W] = Accelerate
+  m_text: '<u>Keyboard and Mouse</u>
+
+    [W] = Accelerate
 
     [S] = Decelerate
 
-    [A] [D] = Strafe Left and
-    Right
+    [A]
+    [D] = Strafe Left and Right
 
-    [Right Click] = Spawn Black Holes
 
-    [Left Click] = Shoot Stored
-    Asteroids'
+    [Mouse] = Aim Ateroid
+
+    [E] = Swap Asteroids
+
+    [Right
+    Click] = Spawn Black Holes
+
+    [Left Click] = Shoot Stored Asteroids
+
+
+    <u>Gamepad</u>
+
+    [Left
+    Stick Up] = Accelerate
+
+    [Left Stick Down] = Decelerate
+
+    [Left Stick Left
+    and Right] = Strafe
+
+
+    [Right Stick] = Aim Asteroid
+
+    [Y] = Swap Asteroids
+
+    [Right
+    Shoulder] = Spawn Black Holes
+
+    [Left Shoulder] = Shoot Stored Asteroids'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
