@@ -33,6 +33,13 @@ public class PlayerControl : MonoBehaviour
     private bool _isInPlanet;
     private bool _isClockDirection;
 
+    private bool _tutorial = false;
+    private bool _tutorialAcceleration = false;
+    private bool _tutorialStrafing = false;
+    private bool _tutorialBlackhole = false;
+    private bool _tutorialShooting = false;
+
+
     private bool _isMovingLeft;
     private bool _isMovingRight;
     private bool _isAccelerating;
@@ -202,117 +209,133 @@ public class PlayerControl : MonoBehaviour
 
     public void LeftMove(InputAction.CallbackContext input)
     {
-        if (input.phase==InputActionPhase.Performed)
+        if (!_tutorial || _tutorial && _tutorialStrafing)
         {
-            _isMovingLeft = true;
+            if (input.phase == InputActionPhase.Performed)
+            {
+                _isMovingLeft = true;
+            }
+            else if (input.phase == InputActionPhase.Canceled)
+            {
+                _isMovingLeft = false;
+                //   rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+                Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+                relativeVelocity.x = 0;
+                rigid.velocity = transform.TransformDirection(relativeVelocity);
+            }
         }
-        else if (input.phase==InputActionPhase.Canceled)
-        {
-            _isMovingLeft = false;
-            //   rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
-            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
-            relativeVelocity.x = 0;
-            rigid.velocity = transform.TransformDirection(relativeVelocity);
-        }
+        
     }
 
     public void RightMove(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (!_tutorial || _tutorial && _tutorialStrafing)
         {
-            _isMovingRight = true;
-        }
-        else if (input.phase == InputActionPhase.Canceled)
-        {
-            _isMovingRight = false;
-            //    rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
-            Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
-            relativeVelocity.x = 0;
-            rigid.velocity = transform.TransformDirection(relativeVelocity);
+            if (input.phase == InputActionPhase.Performed)
+            {
+                _isMovingRight = true;
+            }
+            else if (input.phase == InputActionPhase.Canceled)
+            {
+                _isMovingRight = false;
+                //    rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+                Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+                relativeVelocity.x = 0;
+                rigid.velocity = transform.TransformDirection(relativeVelocity);
+            }
         }
     }
 
     public void Acceleration(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (!_tutorial || _tutorial && _tutorialAcceleration)
         {
-            _isAccelerating = true;
-        }
-        else if (input.phase == InputActionPhase.Canceled)
-        {
-            _isAccelerating = false;
+            if (input.phase == InputActionPhase.Performed)
+            {
+                _isAccelerating = true;
+            }
+            else if (input.phase == InputActionPhase.Canceled)
+            {
+                _isAccelerating = false;
+            }
         }
     }
 
     public void SlowDown(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (!_tutorial || _tutorial && _tutorialAcceleration)
         {
-            _isSlowingDown = true;
-        }
-        else if (input.phase == InputActionPhase.Canceled)
-        {
-            _isSlowingDown = false;
+            if (input.phase == InputActionPhase.Performed)
+            {
+                _isSlowingDown = true;
+            }
+            else if (input.phase == InputActionPhase.Canceled)
+            {
+                _isSlowingDown = false;
+            }
         }
     }
     
     public void SpawnBlackHole(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed&&!IsFreeze)
+        if (!_tutorial || _tutorial && _tutorialBlackhole)
         {
-            if (!isInBlackHole&&!_canInteractWithPlanet&&!_isInPlanet)//spawn black holes
+            if (input.phase == InputActionPhase.Performed && !IsFreeze)
             {
-                if ((_isMovingLeft&&IsNormalStrafing())||(_isMovingRight&&!IsNormalStrafing())||(!_isMovingLeft&&!_isMovingRight&&!IsNormalStrafing()))
+                if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet)//spawn black holes
                 {
-                    _isClockDirection = false;
-                    _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.left) * 0.8f, Quaternion.identity);
-                }
-                else
-                {
-                    _isClockDirection = true;
-                    _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right) * 0.8f, Quaternion.identity);
-                }
-                isInBlackHole = true;
-                _currentBlachHoleSpeed =Mathf.Abs(rigid.velocity.magnitude);
-                _circleModeRotateDiameter = _currentBlackHole.transform.localScale.x * 0.8f;
-                Collider[] colliders = Physics.OverlapSphere(_currentBlackHole.transform.position, _currentBlackHole.transform.localScale.x / 2);
-                for (int i = 0; i < colliders.Length; i++)
-                {
-                    if (colliders[i].tag=="Planet")
+                    if ((_isMovingLeft && IsNormalStrafing()) || (_isMovingRight && !IsNormalStrafing()) || (!_isMovingLeft && !_isMovingRight && !IsNormalStrafing()))
                     {
-                        Destroy(colliders[i].gameObject);
+                        _isClockDirection = false;
+                        _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.left) * 0.8f, Quaternion.identity);
+                    }
+                    else
+                    {
+                        _isClockDirection = true;
+                        _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right) * 0.8f, Quaternion.identity);
+                    }
+                    isInBlackHole = true;
+                    _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
+                    _circleModeRotateDiameter = _currentBlackHole.transform.localScale.x * 0.8f;
+                    Collider[] colliders = Physics.OverlapSphere(_currentBlackHole.transform.position, _currentBlackHole.transform.localScale.x / 2);
+                    for (int i = 0; i < colliders.Length; i++)
+                    {
+                        if (colliders[i].tag == "Planet")
+                        {
+                            Destroy(colliders[i].gameObject);
+                        }
                     }
                 }
-            }
-            else if (_canInteractWithPlanet&&!_isInPlanet&&!isInBlackHole)//circle the planets
-            {
-                _isInPlanet = true;
-                _canInteractWithPlanet = false;
-                _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
-                _circleModeRotateDiameter = Vector3.Distance(_currentPlanet.transform.position, transform.position) * 2;
+                else if (_canInteractWithPlanet && !_isInPlanet && !isInBlackHole)//circle the planets
+                {
+                    _isInPlanet = true;
+                    _canInteractWithPlanet = false;
+                    _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
+                    _circleModeRotateDiameter = Vector3.Distance(_currentPlanet.transform.position, transform.position) * 2;
 
-                Vector3 contactDir = transform.position - _currentPlanet.transform.position;
-                Vector3 adjustedDir = new Vector3(-contactDir.y, contactDir.x, 0).normalized;
-                float planetLocalX = transform.InverseTransformPoint(_currentPlanet.transform.position).x;
-                if (planetLocalX >= 0)
-                {
-                    _isClockDirection = true;
-                    transform.rotation = Quaternion.LookRotation(Vector3.forward, -adjustedDir);
+                    Vector3 contactDir = transform.position - _currentPlanet.transform.position;
+                    Vector3 adjustedDir = new Vector3(-contactDir.y, contactDir.x, 0).normalized;
+                    float planetLocalX = transform.InverseTransformPoint(_currentPlanet.transform.position).x;
+                    if (planetLocalX >= 0)
+                    {
+                        _isClockDirection = true;
+                        transform.rotation = Quaternion.LookRotation(Vector3.forward, -adjustedDir);
+                    }
+                    else
+                    {
+                        _isClockDirection = false;
+                        transform.rotation = Quaternion.LookRotation(Vector3.forward, adjustedDir);
+                    }
                 }
-                else
+                else if (isInBlackHole)//destory blackhole
                 {
-                    _isClockDirection = false;
-                    transform.rotation = Quaternion.LookRotation(Vector3.forward, adjustedDir);
+                    ExitBlackHoleMode();
                 }
-            }
-            else if(isInBlackHole)//destory blackhole
-            {
-                ExitBlackHoleMode();
-            }
-            else if (_isInPlanet)//leave the planet
-            {
-                _currentPlanet = null;
-                _isInPlanet = false;
+                else if (_isInPlanet)//leave the planet
+                {
+                    _currentPlanet = null;
+                    _isInPlanet = false;
+                }
             }
         }
     }
@@ -331,9 +354,12 @@ public class PlayerControl : MonoBehaviour
     /// <param name="input"></param>
     public void ShootAsteroid(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed&&canShoot)
+        if (!_tutorial || _tutorial && _tutorialShooting)
         {
-            _playerShoot.ShootAsteroid();
+            if (input.phase == InputActionPhase.Performed && canShoot)
+            {
+                _playerShoot.ShootAsteroid();
+            }
         }
     }
 
@@ -343,9 +369,12 @@ public class PlayerControl : MonoBehaviour
     /// <param name="input"></param>
     public void SwitchAsteroid(InputAction.CallbackContext input)
     {
-        if (input.phase == InputActionPhase.Performed)
+        if (!_tutorial || _tutorial && _tutorialShooting)
         {
-            _playerShoot.SwitchCurrentAsteroid();
+            if (input.phase == InputActionPhase.Performed)
+            {
+                _playerShoot.SwitchCurrentAsteroid();
+            }
         }
     }
     
@@ -451,5 +480,45 @@ public class PlayerControl : MonoBehaviour
     private void ResetFromSphinx()
     {
         canShoot = true;
+    }
+
+    /// <summary>
+    /// flags to lock controls for tutorial
+    /// </summary>
+    public void TutorialControls()
+    {
+        _tutorial = true;
+    }
+
+    /// <summary>
+    /// flags to unlock acceleration controls for tutorial
+    /// </summary>
+    public void UnlockTutorialAcceleration()
+    {
+        _tutorialAcceleration = true;
+    }
+
+    /// <summary>
+    /// flags to unlock strafing controls for tutorial
+    /// </summary>
+    public void UnlockTutorialStrafing()
+    {
+        _tutorialStrafing = true;
+    }
+
+    /// <summary>
+    /// flags to unlock Blackhole controls for tutorial
+    /// </summary>
+    public void UnlockTutorialBlackhole()
+    {
+        _tutorialBlackhole = true;
+    }
+
+    /// <summary>
+    /// flags to unlock shooting controls for tutorial
+    /// </summary>
+    public void UnlockTutorialShooting()
+    {
+        _tutorialShooting = true;
     }
 }
