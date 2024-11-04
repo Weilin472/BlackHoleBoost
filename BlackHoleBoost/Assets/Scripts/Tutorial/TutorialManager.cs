@@ -15,6 +15,12 @@ public class TutorialManager : Singleton<TutorialManager>
     private GameObject _currentPlayer;
     private PlayerControl _currentPlayerControl;
 
+    [SerializeField] private GameObject _accelerationObjective;
+
+    [SerializeField] private GameObject _blackholeObjective;
+
+    [SerializeField] private GameObject _strafeObjective;
+
     /// <summary>
     /// starts tutorial (temp)
     /// </summary>
@@ -38,31 +44,34 @@ public class TutorialManager : Singleton<TutorialManager>
     /// <summary>
     /// calls to unlock acceleration for player
     /// </summary>
-    public void UnlockAcceleration()
+    public void AccelerationTutorial()
     {
+        _accelerationObjective.SetActive(true);
         _currentPlayerControl.UnlockTutorialAcceleration();
     }
 
     /// <summary>
     /// calls to unlock Strafing for player
     /// </summary>
-    public void UnlockStrafing()
+    public void StrafingTutorial()
     {
+        _strafeObjective.SetActive(true);
         _currentPlayerControl.UnlockTutorialStrafing();
     }
 
     /// <summary>
     /// calls to unlock Black Hole for player
     /// </summary>
-    public void UnlockBlackHole()
+    public void BlackHoleTutorial()
     {
+        _blackholeObjective.SetActive(true);
         _currentPlayerControl.UnlockTutorialBlackhole();
     }
 
     /// <summary>
     /// calls to unlock Shooting for player
     /// </summary>
-    public void UnlockShooting()
+    public void ShootingTutorial()
     {
         _currentPlayerControl.UnlockTutorialShooting();
     }

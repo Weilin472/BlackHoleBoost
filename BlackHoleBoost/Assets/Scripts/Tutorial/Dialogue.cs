@@ -18,5 +18,6 @@ public class Dialogue
     public bool unlockBlackhole = false;
     public bool unlockShooting = false;
 
+    [TextArea(3, 10)]
     public string objectiveText;
 }

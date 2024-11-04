@@ -16,6 +16,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     [SerializeField] private GameObject _dialogueBox;
     [SerializeField] private TMP_Text _dialogueText;
+    [SerializeField] private TMP_Text _objectiveText;
 
     private Dialogue _currentDialogue;
     private Sentence _currentSentence;
@@ -80,20 +81,22 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (_currentDialogue.unlockAcceleration)
         {
-            TutorialManager.Instance.UnlockAcceleration();
+            TutorialManager.Instance.AccelerationTutorial();
         }
         else if (_currentDialogue.unlockStrafing)
         {
-            TutorialManager.Instance.UnlockStrafing();
+            TutorialManager.Instance.StrafingTutorial();
         }
         else if (_currentDialogue.unlockBlackhole)
         {
-            TutorialManager.Instance.UnlockBlackHole();
+            TutorialManager.Instance.BlackHoleTutorial();
         }
         else if (_currentDialogue.unlockShooting)
         {
-            TutorialManager.Instance.UnlockShooting();
+            TutorialManager.Instance.ShootingTutorial();
         }
+
+        _objectiveText.text = _currentDialogue.objectiveText;
 
         _dialogueBox.SetActive(false);
     }

@@ -936,9 +936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSize: 5
-  _startingNormal: 0
+  _startingNormal: 3
   _startingBounce: 0
-  _startingSticky: 5
+  _startingSticky: 0
   _normalDisplayText: {fileID: 3415747731452684020}
   _bounceDisplayText: {fileID: 2014871708696451499}
   _stickyDisplayText: {fileID: 6201416180564752465}
