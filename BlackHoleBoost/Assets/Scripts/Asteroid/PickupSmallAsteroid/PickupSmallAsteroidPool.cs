@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/31/2024]
+ * Last Updated: [11/03/2024]
  * [object pooling for asteroid pickups]
  */
 
@@ -104,6 +104,20 @@ public class PickupSmallAsteroidPool : MonoBehaviour
             asteroid.SetAsteroid();
             _currentPickupAsteroids.Add(asteroid);
         }
+    }
+
+    /// <summary>
+    /// spawns asteroid for tutorial
+    /// </summary>
+    /// <param name="pos">position of asteroid</param>
+    public PickupSmallAsteroid TutorialSpawn(Vector3 pos, SmallAsteroidType asteroidType)
+    {
+        var asteroid = Pool.Get();
+        asteroid.transform.position = pos;
+        asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+        asteroid.SetAsteroid(asteroidType);
+        _currentPickupAsteroids.Add(asteroid);
+        return asteroid;
     }
 
     /// <summary>

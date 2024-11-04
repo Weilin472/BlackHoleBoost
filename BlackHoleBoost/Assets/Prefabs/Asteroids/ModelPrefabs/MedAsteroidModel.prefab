@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroidModels:
   - {fileID: 3137131779615202476}
-  - {fileID: 2095050237322820972}
+  - {fileID: 35676844023979221}
   - {fileID: 6060694196212135563}
   _renderers:
   - {fileID: 3497512176789372281}
@@ -262,12 +262,6 @@ MeshRenderer:
 --- !u!4 &1610263072587982806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 54ae635a907b13744a45d533dbcc6db5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1284217241167216701}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2095050237322820972 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 54ae635a907b13744a45d533dbcc6db5,
     type: 3}
   m_PrefabInstance: {fileID: 1284217241167216701}
   m_PrefabAsset: {fileID: 0}

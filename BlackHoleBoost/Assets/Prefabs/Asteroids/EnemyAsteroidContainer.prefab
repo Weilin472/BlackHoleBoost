@@ -293,11 +293,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1754090497644520650, guid: e8a0b044eeba5ff41bf5b418050b8bf6,
+        type: 3}
+      propertyPath: _asteroidModels.Array.data[1]
+      value: 
+      objectReference: {fileID: 2769379168463119818}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a0b044eeba5ff41bf5b418050b8bf6, type: 3}
+--- !u!1 &2769379168463119818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 35676844023979221, guid: e8a0b044eeba5ff41bf5b418050b8bf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2742815631339288863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3049848185181721623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 883634119815048456, guid: e8a0b044eeba5ff41bf5b418050b8bf6,

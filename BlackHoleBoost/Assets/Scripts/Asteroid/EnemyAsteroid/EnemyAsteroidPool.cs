@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [09/22/24]
+ * Last Updated: [11/03/24]
  * [object pool for big asteroids]
  */
 
@@ -81,6 +81,22 @@ public class EnemyAsteroidPool : MonoBehaviour
     }
 
     /// <summary>
+    /// spawns enemy asteroid for tutorial
+    /// </summary>
+    /// <param name="spawnLoc">location of asteroid</param>
+    /// <param name="dir"></param>
+    public EnemyAsteroid TutorialSpawn(Vector3 spawnLoc)
+    {
+        var asteroid = Pool.Get();
+        asteroid.transform.position = spawnLoc;
+        asteroid.GetComponent<AsteroidMove>().ChangeSpeed(0);
+        //float dropSize = Random.Range(0f, 1f);
+
+        _currentEnemyAsteroids.Add(asteroid);
+        return asteroid;
+    }
+
+    /// <summary>
     /// spawns asteroid
     /// </summary>
     /// <param name="spawnLoc">location of asteroid</param>
@@ -90,7 +106,7 @@ public class EnemyAsteroidPool : MonoBehaviour
         var asteroid = Pool.Get();
         asteroid.transform.position = spawnLoc;
         asteroid.GetComponent<AsteroidMove>().ChangeDirection(dir);
-        float dropSize = Random.Range(0f, 1f);
+        //float dropSize = Random.Range(0f, 1f);
 
         _currentEnemyAsteroids.Add(asteroid);
     }

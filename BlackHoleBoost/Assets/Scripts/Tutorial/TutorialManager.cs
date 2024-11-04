@@ -14,12 +14,15 @@ public class TutorialManager : Singleton<TutorialManager>
     [SerializeField] private GameObject _playerPrefab;
     private GameObject _currentPlayer;
     private PlayerControl _currentPlayerControl;
+    private bool _inTutorial = false;
 
     [SerializeField] private GameObject _accelerationObjective;
 
     [SerializeField] private GameObject _blackholeObjective;
 
     [SerializeField] private GameObject _strafeObjective;
+
+    [SerializeField] private GameObject _shootObjective;
 
     /// <summary>
     /// starts tutorial (temp)
@@ -29,16 +32,35 @@ public class TutorialManager : Singleton<TutorialManager>
         StartTutorial();
     }
 
+
+    /// <summary>
+    /// respawns player if they die
+    /// </summary>
+    private void Update()
+    {
+        if (_inTutorial && _currentPlayer == null)
+        {
+            SpawnPlayer();
+        }
+    }
+
     /// <summary>
     /// starts the tutorial
     /// </summary>
     public void StartTutorial()
     {
-        _currentPlayer = Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
-        _currentPlayerControl = _currentPlayer.GetComponent<PlayerControl>();
+        SpawnPlayer();
+
+        _inTutorial = true;
 
         _currentPlayerControl.TutorialControls();
         _dialogueTrigger.TriggerDialogue();
+    }
+
+    private void SpawnPlayer()
+    {
+        _currentPlayer = Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
+        _currentPlayerControl = _currentPlayer.GetComponent<PlayerControl>();
     }
 
     /// <summary>
@@ -73,6 +95,16 @@ public class TutorialManager : Singleton<TutorialManager>
     /// </summary>
     public void ShootingTutorial()
     {
+        _shootObjective.SetActive(true);
         _currentPlayerControl.UnlockTutorialShooting();
+    }
+
+    /// <summary>
+    /// ends tutorial when needed
+    /// </summary>
+    public void EndTutorial()
+    {
+        _inTutorial = false;
+        ///go back to main menu
     }
 }

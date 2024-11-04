@@ -456,6 +456,94 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &637351931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637351933}
+  - component: {fileID: 637351932}
+  m_Layer: 0
+  m_Name: PickupAsteroidObjectives (strafe)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &637351932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637351931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1939cdd7753085a4b92802c4e2d3eca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - sentence: Ok, that is enough movement. lets get into shooting.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: You just picked up small asteroids. These are your amunition to fire.
+        You can pick up a maximum of 5 and they come in with 3 different variants.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: 'The red ones is a normal asteroid.
+
+        The blue ones is a bouncy
+        asteroid that can ricochet in a different direction for another time
+
+        Finally,
+        the green ones are sticky asteroids that sticks and drags anything away.'
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: 'To Aim your asteroids: Move your Mouse or Right Stick'
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: 'To Swap your asteroids: Press E on keyboard or Y on controller'
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: 'To Shoot your asteroids: Left Mouse Click or Left Shoulder button'
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: I have set up a few asteroids as target practice. Shoot them to finish
+        your training. Be careful, they can hurt if they ram into you
+      outline: 0
+      highlight: {fileID: 0}
+    unlockAcceleration: 0
+    unlockStrafing: 0
+    unlockBlackhole: 0
+    unlockShooting: 1
+    endTutorial: 0
+    objectiveText: 'Shoot all the asteroids:
+
+      Aim: Move Mouse or Right Stick
+
+      Shoot:
+      Left Click or Left Shoulder
+
+      Swap: E for Keyboard or Y for Controller'
+--- !u!4 &637351933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637351931}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7709472805147116089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788719529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1194,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 482.09998, y: 92}
+  m_SizeDelta: {x: 482.09998, y: 165.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246918456
 MonoBehaviour:
@@ -1155,8 +1243,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27.13
+  m_fontSizeBase: 27.13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1241,7 +1329,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 543, y: 129.2}
+  m_SizeDelta: {x: 543, y: 207.71}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1281049287
 MonoBehaviour:
@@ -1256,7 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1349,6 +1437,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1597464424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597464425}
+  - component: {fileID: 1597464426}
+  m_Layer: 0
+  m_Name: EnemyAsteroidObjectives (shoot)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1597464425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597464424}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7709472805147116089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1597464426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597464424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbb81c816c12b2488bbc1e17ac9816d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - sentence: With that, your training is complete.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: The last thing I will warn you is that the arena likes to send in
+        monsters. I am forbiden from telling you about them, so you have to fight
+        them in the arena.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: Good luck soldier, and may you survive long in the arena
+      outline: 0
+      highlight: {fileID: 0}
+    unlockAcceleration: 0
+    unlockStrafing: 0
+    unlockBlackhole: 0
+    unlockShooting: 0
+    endTutorial: 1
+    objectiveText: 
 --- !u!1 &1713566328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - sentence: Welcome Gladiator, if you want glory, head my words.
+    - sentence: Welcome Gladiator, if you want glory, heed my words.
       outline: 0
       highlight: {fileID: 0}
     - sentence: The galaxy only recognizes those who survived the longest here
@@ -1465,13 +1616,14 @@ MonoBehaviour:
     - sentence: To do so, lets go over how to control your ship.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To accelerate: Press W or Left Stick Up'
+    - sentence: 'To Accelerate: Press W or Left Stick Up'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 1
     unlockStrafing: 0
     unlockBlackhole: 0
     unlockShooting: 0
+    endTutorial: 0
     objectiveText: 'Accelerate to the green area:
 
       Accelerate: W or Left Stick
@@ -1627,6 +1779,135 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -47.38}
   m_SizeDelta: {x: 230.3, y: 130.6}
   m_Pivot: {x: 1, y: 1}
+--- !u!1 &1939169152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1598341968143746688, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2132842488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1939169153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2132842488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2132842488
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7709472805147116089}
+    m_Modifications:
+    - target: {fileID: 1598341968143746688, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_Name
+      value: ObjectiveLocation (bh)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598341968143746688, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.objectiveText
+      value: 'Collect all of the small asteroids:
+
+        Strafe Left: A or Left
+        Stick Left
+
+        Strafe Right: D or Left Stick Right'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.unlockStrafing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0].sentence
+      value: Perfect. You have one more movement option. You also have the ability
+        to strafe your ships for some last minute dodging.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[1].sentence
+      value: The next objective is going to look a little different. Use all of your
+        movement abilities to collect all of the asteroids for the next training
+        excersice.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2].sentence
+      value: 'To Strafe Left: Press A or Left Stick Left
+
+        To Strafe Right: 
+        Press D or Left Stick Right
+
+        (Just remember that this is relative
+        to your ship)'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc71cd94c0fcc3f40bf7868a73779ffd, type: 3}
 --- !u!114 &528775234073640303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1994,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1019264780149594513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5345651352051548765}
+  - component: {fileID: 1832679431504612199}
+  - component: {fileID: 2389114574514990702}
+  - component: {fileID: 8755019377440772329}
+  - component: {fileID: 8631695601809614162}
+  m_Layer: 0
+  m_Name: ObjectiveLocation (accel)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!33 &1832679431504612199
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019264780149594513}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2376912421909063345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,6 +2041,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!23 &2389114574514990702
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019264780149594513}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ba465bc156f191d478df53d36fbb730f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2600621764376782192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,6 +2293,21 @@ RectTransform:
   m_AnchoredPosition: {x: -10, y: 10}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0}
+--- !u!4 &5345651352051548765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019264780149594513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7709472805147116089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5474875484509903694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1983,7 +2349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueBox: {fileID: 3737170891775572388}
   _dialogueText: {fileID: 8298494609698081540}
-  _objectiveText: {fileID: 0}
+  _objectiveText: {fileID: 1246918456}
 --- !u!1 &7646045603575430457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2382,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1739469795}
+  - {fileID: 5345651352051548765}
+  - {fileID: 1939169153}
+  - {fileID: 637351933}
+  - {fileID: 1597464425}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7709472805147116090
@@ -2033,6 +2403,10 @@ MonoBehaviour:
   _dialogueTrigger: {fileID: 1739469794}
   _playerPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
     type: 3}
+  _accelerationObjective: {fileID: 1019264780149594513}
+  _blackholeObjective: {fileID: 1939169152}
+  _strafeObjective: {fileID: 637351931}
+  _shootObjective: {fileID: 1597464424}
 --- !u!222 &7781102106050373621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2151,6 +2525,53 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8631695601809614162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019264780149594513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57ea2a10416e8d4997f959493368d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - sentence: Good, but obviously you don't just want to go forward.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: Your ship comes equipt with the ability to create black holes.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: Use the gravitational force of the black holes to slingshot your
+        way around the arena.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: Just don't spend too much time in the black hole or else it will
+        suck you up.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: There are also some other useful benifits like protecting you from
+        enemies while in there and accelerating you past your limits.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: Lets test it out now.
+      outline: 0
+      highlight: {fileID: 0}
+    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button'
+      outline: 0
+      highlight: {fileID: 0}
+    unlockAcceleration: 0
+    unlockStrafing: 0
+    unlockBlackhole: 1
+    unlockShooting: 0
+    endTutorial: 0
+    objectiveText: 'Use Black Holes to go to the green area:
+
+      Black Hole: Right
+      Click or Right Shoulder'
 --- !u!1 &8636768096558333686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,6 +2590,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8755019377440772329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019264780149594513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

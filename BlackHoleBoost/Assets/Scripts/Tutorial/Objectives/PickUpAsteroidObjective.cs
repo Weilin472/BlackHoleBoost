@@ -8,17 +8,45 @@ using UnityEngine;
  * [triggers dialogue when player collects all asteroids]
  */
 
-public class PickUpAsteroidObjective : MonoBehaviour
+public class PickUpAsteroidObjective : DialogueTrigger
 {
-    // Start is called before the first frame update
-    void Start()
+    private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
+    private List<PickupSmallAsteroid> _objectives;
+    private bool _startCheck = false;
+
+    /// <summary>
+    /// gets needed components and spawns 
+    /// </summary>
+    private void OnEnable()
     {
-        
+        _objectives = new List<PickupSmallAsteroid>();
+        _pickupSmallAsteroidPool = GameManager.Instance.gameObject.GetComponent<PickupSmallAsteroidPool>();
+
+        _objectives.Add(_pickupSmallAsteroidPool.TutorialSpawn(Vector3.zero, SmallAsteroidType.STICKY));
+        _objectives.Add(_pickupSmallAsteroidPool.TutorialSpawn(new Vector3(4, 3, 0), SmallAsteroidType.NORMAL));
+        _objectives.Add(_pickupSmallAsteroidPool.TutorialSpawn(new Vector3(-3, -2, 0), SmallAsteroidType.NORMAL));
+        _objectives.Add(_pickupSmallAsteroidPool.TutorialSpawn(new Vector3(3, -3, 0), SmallAsteroidType.BOUNCE));
+        _objectives.Add(_pickupSmallAsteroidPool.TutorialSpawn(new Vector3(-3, 4, 0), SmallAsteroidType.BOUNCE));
+
+        _startCheck = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// checks if all asteroids have been picked up
+    /// </summary>
+    private void Update()
     {
-        
+        if (_startCheck)
+        {
+            foreach (PickupSmallAsteroid asteroid in _objectives)
+            {
+                if (asteroid.gameObject.activeSelf)
+                {
+                    return;
+                }
+            }
+            TriggerDialogue();
+            gameObject.SetActive(false);
+        }
     }
 }

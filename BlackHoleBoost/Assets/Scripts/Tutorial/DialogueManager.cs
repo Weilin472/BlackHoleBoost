@@ -95,6 +95,10 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             TutorialManager.Instance.ShootingTutorial();
         }
+        else if (_currentDialogue.endTutorial)
+        {
+            TutorialManager.Instance.EndTutorial();
+        }
 
         _objectiveText.text = _currentDialogue.objectiveText;
 

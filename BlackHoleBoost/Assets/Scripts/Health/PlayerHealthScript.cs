@@ -37,7 +37,7 @@ public class PlayerHealthScript : BaseHealthScript
         {
             StartCoroutine(HurtAnimation());
             base.Damage(damage);
-            UIManager.Instance.SetLifeUI(_currentHealth);
+            //UIManager.Instance.SetLifeUI(_currentHealth);
         }
     }
 
@@ -46,9 +46,10 @@ public class PlayerHealthScript : BaseHealthScript
         //Time.timeScale = 0;
         Debug.Log("prototype game over here, remove later");
         _playerControl.ExitBlackHoleMode();
-        PrototypeGameManager.Instance.GameOver();
-    //    StateMachine.Instance.GameEnd();
-        GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
+        //PrototypeGameManager.Instance.GameOver();
+        //    StateMachine.Instance.GameEnd();
+
+        //GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
         Destroy(gameObject);
     }
 
