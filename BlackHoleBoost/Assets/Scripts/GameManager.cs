@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager _instance;
-    public static GameManager Instance => _instance;
 
     public float RightBoundary;
     public float TopBoundary;
@@ -21,25 +19,11 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerControl> players=new List<PlayerControl>();
 
-    private void Awake()
+    private void OnEnable()
     {
-        
-        if (_instance!=null )
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
         RightBoundary = Camera.main.orthographicSize * Screen.width / Screen.height;
         TopBoundary = Camera.main.orthographicSize;
 
-        if (_inPrototype)
-        {
-            SpawnShip();
-        }
 
     }
 
@@ -67,19 +51,19 @@ public class GameManager : MonoBehaviour
         //p.transform.GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerBodyColor;
         //p.transform.Find("Head").GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerHeadColor;
 
-        if (Gamepad.all.Count >= 2)
-        {
-            devices = new InputDevice[] { Keyboard.current, Gamepad.all[1] };
-        }
-        else
-        {
-            devices = new InputDevice[] { Keyboard.current };
-        }
-        p = PlayerInput.Instantiate(_secondShipPrefab, pairWithDevices: devices);
-        p.gameObject.transform.position = Vector3.zero + Vector3.right * 2;
-        players.Add(p.transform.GetComponent<PlayerControl>());
-        p.transform.GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.SecondPlayerBodyColor;
-        p.transform.Find("Head").GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.SecondPlayerHeadColor;
+        //if (Gamepad.all.Count >= 2)
+        //{
+        //    devices = new InputDevice[] { Keyboard.current, Gamepad.all[1] };
+        //}
+        //else
+        //{
+        //    devices = new InputDevice[] { Keyboard.current };
+        //}
+        //p = PlayerInput.Instantiate(_secondShipPrefab, pairWithDevices: devices);
+        //p.gameObject.transform.position = Vector3.zero + Vector3.right * 2;
+        //players.Add(p.transform.GetComponent<PlayerControl>());
+        //p.transform.GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.SecondPlayerBodyColor;
+        //p.transform.Find("Head").GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.SecondPlayerHeadColor;
 
     }
     

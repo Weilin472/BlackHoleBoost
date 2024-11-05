@@ -698,6 +698,7 @@ MonoBehaviour:
   _beLockedOnIcon: {fileID: 5201209787225078029}
   _blackHoleSuckUpMaxTime: 10
   IsFreeze: 0
+  _constantBlackHoleSpeed: 4
   isInBlackHole: 0
   _controllerDeadzone: 0.1
   _gamepadRotateSmoothing: 1000

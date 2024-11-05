@@ -15,7 +15,7 @@ public class TestMainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _startBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ShipSelectState()));
+        _startBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new GameStartState()));
         _settingBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_settingMenu)));
         _instructionBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_instructionMenu)));
         _creditBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_creditMenu)));
@@ -23,10 +23,10 @@ public class TestMainMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        _startBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ShipSelectState()));
-        _settingBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_settingMenu)));
-        _instructionBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_instructionMenu)));
-        _creditBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_creditMenu)));
+        //_startBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ShipSelectState()));
+        //_settingBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_settingMenu)));
+        //_instructionBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_instructionMenu)));
+        //_creditBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_creditMenu)));
 
     }
 
