@@ -25,12 +25,13 @@ public class Hydra : EnemyBase
         base.Update();
         if (_isMoving)
         {
+            _currentMoveTime += Time.deltaTime;
             if (DetectBoundaries())
             {
-                _rigid.velocity *= -1;
+                _rigid.velocity = (Vector3.zero - transform.position).normalized*_speed;
                 transform.rotation = Quaternion.LookRotation(transform.forward, _rigid.velocity);
+                return;
             }
-            _currentMoveTime += Time.deltaTime;
             if (_currentMoveTime >= movingTime)
             {
                 _currentMoveTime = 0;

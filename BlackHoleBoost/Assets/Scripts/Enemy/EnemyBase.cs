@@ -123,9 +123,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(gameObject);
+        }
     }
 }

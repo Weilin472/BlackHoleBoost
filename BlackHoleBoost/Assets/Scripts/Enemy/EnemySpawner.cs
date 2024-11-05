@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     private int phase = 0;
     private int loop = 1;
     private List<EnemyBase> currentEnemies = new List<EnemyBase>();
+    private Vector3 _spawnPos;
 
     private static EnemySpawner _instance;
     public static EnemySpawner Instance
@@ -30,6 +31,9 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         Invoke("SpawnEnemy", 2);
+        _spawnPos = Camera.main.transform.position;
+        _spawnPos.z = 0;
+        _spawnPos.y = GameManager.Instance.TopBoundary + GameManager.Instance.TopBoundary / 5;
     }
 
     private void SpawnEnemy()
@@ -46,9 +50,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 enemyIndex = Random.Range(0, Enemies.Count);
             }
-            float posX = Random.Range(-GameManager.Instance.RightBoundary, GameManager.Instance.RightBoundary);
-            float posY = Random.Range(-GameManager.Instance.TopBoundary, GameManager.Instance.TopBoundary);
-            Vector3 pos = new Vector3(posX, posY, 0);
+            //float posX = Random.Range(-GameManager.Instance.RightBoundary, GameManager.Instance.RightBoundary);
+            //float posY = Random.Range(-GameManager.Instance.TopBoundary, GameManager.Instance.TopBoundary);
+            Vector3 pos = _spawnPos;
             if (Enemies[enemyIndex].transform.GetComponent<Sphinx>())
             {
                 pos = Camera.main.transform.position;
