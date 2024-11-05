@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float _sideMoveSpeed;
     [SerializeField] private GameObject _blackHolePrefab;
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _minimumSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
     [SerializeField] private GameObject _beLockedOnIcon;
     [SerializeField] private float _blackHoleSuckUpMaxTime;
@@ -146,15 +147,15 @@ public class PlayerControl : MonoBehaviour
         else if (_isSlowingDown)
         {
 
-            if (Mathf.Abs(rigid.velocity.magnitude) > _accelerationMultipler)
+            if (Mathf.Abs(rigid.velocity.magnitude) > 0)
             {
                 rigid.AddForce(transform.TransformDirection(Vector3.down) * _accelerationMultipler, ForceMode.Acceleration);
-            }
-            else
-            {
-                Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
-                relativeVelocity.y = 0;
-                rigid.velocity = transform.TransformDirection(relativeVelocity);
+                if (rigid.velocity.magnitude < _minimumSpeed)
+                {
+                    Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
+                    relativeVelocity.y = _minimumSpeed;
+                    rigid.velocity = transform.TransformDirection(relativeVelocity);
+                }
             }
         }
 
