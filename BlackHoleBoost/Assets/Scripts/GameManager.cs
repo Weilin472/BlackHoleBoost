@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
         p = PlayerInput.Instantiate(_firstShipPrefab, pairWithDevices: devices);
         p.gameObject.transform.position = Vector3.zero + Vector3.left*2;
         players.Add(p.transform.GetComponent<PlayerControl>());
-        p.transform.GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerBodyColor;
-        p.transform.Find("Head").GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerHeadColor;
+        //p.transform.GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerBodyColor;
+        //p.transform.Find("Head").GetComponent<MeshRenderer>().material.color = LookOfPlayerShip.FirstPlayerHeadColor;
 
         if (Gamepad.all.Count >= 2)
         {

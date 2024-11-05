@@ -53,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
             //float posX = Random.Range(-GameManager.Instance.RightBoundary, GameManager.Instance.RightBoundary);
             //float posY = Random.Range(-GameManager.Instance.TopBoundary, GameManager.Instance.TopBoundary);
             Vector3 pos = _spawnPos;
+            pos.x += i * 5;
             if (Enemies[enemyIndex].transform.GetComponent<Sphinx>())
             {
                 pos = Camera.main.transform.position;
