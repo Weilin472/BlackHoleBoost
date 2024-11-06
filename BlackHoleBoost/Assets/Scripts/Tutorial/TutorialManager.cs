@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [11/03/2024]
+ * Last Updated: [11/06/2024]
  * [Manages the tutorial]
  */
 
@@ -16,6 +16,12 @@ public class TutorialManager : Singleton<TutorialManager>
     private PlayerControl _currentPlayerControl;
     private bool _inTutorial = false;
 
+    private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
+    private ShootSmallAsteroidPool _shootSmallAsteroidPool;
+    private EnemyAsteroidPool _enemyAsteroidPool;
+    [SerializeField] private GameObject _dialogueBox;
+    [SerializeField] private GameObject _objectiveBox;
+
     [SerializeField] private GameObject _accelerationObjective;
 
     [SerializeField] private GameObject _blackholeObjective;
@@ -24,12 +30,20 @@ public class TutorialManager : Singleton<TutorialManager>
 
     [SerializeField] private GameObject _shootObjective;
 
+    private void OnEnable()
+    {
+        _enemyAsteroidPool = GameManager.Instance.gameObject.GetComponent<EnemyAsteroidPool>();
+        _pickupSmallAsteroidPool = GameManager.Instance.gameObject.GetComponent<PickupSmallAsteroidPool>();
+        _shootSmallAsteroidPool = GameManager.Instance.gameObject.GetComponent<ShootSmallAsteroidPool>();
+    }
+
     /// <summary>
     /// starts tutorial (temp)
     /// </summary>
     void Start()
     {
         StartTutorial();
+
     }
 
 
@@ -105,6 +119,15 @@ public class TutorialManager : Singleton<TutorialManager>
     public void EndTutorial()
     {
         _inTutorial = false;
+        _currentPlayerControl.EndTutorial();
+        _shootSmallAsteroidPool.ReturnAllShootAsteroids();
+        _enemyAsteroidPool.ReturnAllEnemyAsteroids();
+        _pickupSmallAsteroidPool.ReturnAllPickupAsteroids();
+
+        _dialogueBox.SetActive(false);
+        _objectiveBox.SetActive(false);
+
+        Destroy(_currentPlayer);
         ///go back to main menu
     }
 }

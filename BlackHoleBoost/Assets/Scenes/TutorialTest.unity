@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1862,12 +1862,7 @@ PrefabInstance:
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.objectiveText
-      value: 'Collect all of the small asteroids:
-
-        Strafe Left: A or Left
-        Stick Left
-
-        Strafe Right: D or Left Stick Right'
+      value: Collect all of the small asteroids
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
@@ -1877,20 +1872,19 @@ PrefabInstance:
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0].sentence
-      value: Perfect. You have one more movement option. You also have the ability
-        to strafe your ships for some last minute dodging.
+      value: Perfect. For the next training excersice, you will need to pick up small
+        asteroids.
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1].sentence
-      value: The next objective is going to look a little different. Use all of your
-        movement abilities to collect all of the asteroids for the next training
-        excersice.
+      value: Usually you'd get these from destroying asteroids, but I'll just lay
+        some out for you. Just fly over them to collect them.
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
@@ -2403,6 +2397,8 @@ MonoBehaviour:
   _dialogueTrigger: {fileID: 1739469794}
   _playerPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
     type: 3}
+  _dialogueBox: {fileID: 0}
+  _objectiveBox: {fileID: 0}
   _accelerationObjective: {fileID: 1019264780149594513}
   _blackholeObjective: {fileID: 1939169152}
   _strafeObjective: {fileID: 637351931}

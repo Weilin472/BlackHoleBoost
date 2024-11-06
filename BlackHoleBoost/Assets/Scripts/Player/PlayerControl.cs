@@ -497,6 +497,14 @@ public class PlayerControl : MonoBehaviour
     }
 
     /// <summary>
+    /// makes sure tutorial controls is off
+    /// </summary>
+    public void EndTutorial()
+    {
+        _tutorial = false;
+    }
+
+    /// <summary>
     /// flags to unlock acceleration controls for tutorial
     /// </summary>
     public void UnlockTutorialAcceleration()
