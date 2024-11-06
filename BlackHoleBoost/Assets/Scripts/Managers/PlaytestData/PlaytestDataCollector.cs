@@ -93,24 +93,6 @@ public class PlaytestDataCollector : Singleton<PlaytestDataCollector>
         _numEnemies = new List<int>();
     }
 
-    /// <summary>
-    /// adds a string of what hits the player
-    /// </summary>
-    /// <param name="enemy">what player was hit by</param>
-    public void AddPlayerHit(string enemy)
-    {
-        string[] temp = (string[])playerHits.Clone();
-
-        playerHits = new string[temp.Length + 1];
-
-        for (int i = 0; i < temp.Length; i++)
-        {
-            playerHits[i] = temp[i];
-        }
-
-        playerHits[temp.Length] = enemy;
-    }
-
     public void StartCollecting()
     {
         _startCollecting = true;

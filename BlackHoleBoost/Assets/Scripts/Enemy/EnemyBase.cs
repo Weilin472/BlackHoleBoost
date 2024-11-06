@@ -92,17 +92,6 @@ public class EnemyBase : MonoBehaviour
         {
             PlayerHealthScript otherHealth = other.transform.root.gameObject.GetComponent<PlayerHealthScript>();
             otherHealth.Damage(1);
-            if (PlaytestDataCollector.Instance != null)
-            {
-                if (GetComponent<Cyclop>())
-                {
-                    PlaytestDataCollector.Instance.AddPlayerHit("Cyclops");
-                }
-                else if (GetComponent<Minotaur>())
-                {
-                    PlaytestDataCollector.Instance.AddPlayerHit("Minotaur");
-                }
-            }
         }
     }
 

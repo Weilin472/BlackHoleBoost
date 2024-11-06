@@ -11,7 +11,6 @@ public class GameOverState : GameState
 
     public override void StateStart()
     {
-        GameManager.Instance.GamePlaying = false;
     }
 
   

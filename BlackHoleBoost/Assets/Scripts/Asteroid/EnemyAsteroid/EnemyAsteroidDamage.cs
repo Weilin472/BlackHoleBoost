@@ -46,13 +46,6 @@ public class EnemyAsteroidDamage : BaseDamageScript
         if (other.transform.root.gameObject.tag != "Enemy")
         {
             base.OnTriggerEnter(other);
-            if (PlaytestDataCollector.Instance != null)
-            {
-                if (other.transform.root.gameObject.tag == "Player")
-                {
-                    PlaytestDataCollector.Instance.AddPlayerHit("Asteroid");
-                }
-            }
         }
     }
 

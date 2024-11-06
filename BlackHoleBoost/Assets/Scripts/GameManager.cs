@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager>
     public float RightBoundary;
     public float TopBoundary;
 
-    public bool GamePlaying;
 
     //temp bool so prototype can work
     [SerializeField] public bool _inPrototype = true;
@@ -27,10 +26,6 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    private void Start()
-    {
-        GamePlaying = true;
-    }
 
     private void SpawnShip()
     {

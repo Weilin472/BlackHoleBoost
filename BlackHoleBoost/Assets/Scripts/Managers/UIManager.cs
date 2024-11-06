@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text _lifeText;
     [SerializeField] TMP_Text _timerText;
     [SerializeField] GameObject gameoverPanel;
+    [SerializeField] TMP_Text _surviveTimer;
     private static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -35,19 +36,31 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (GameManager.Instance.GamePlaying)
+        _currentTime += Time.deltaTime;
+        int t = Mathf.RoundToInt(_currentTime);
+        if (t % 60 < 10)
         {
-            _currentTime += Time.deltaTime;
-            _timerText.text =System.Math.Round(_currentTime, 2).ToString();
-         //   _timerText.text = ((int)_currentTime).ToString();
-        }*/
+            _timerText.text = (t / 60) + ":0" + (t % 60);
+        }
+        else
+        {
+            _timerText.text = (t / 60) + ":" + (t % 60);
+        }
     }
 
     public void ShowGameOverPanel()
     {
         gameoverPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
+        int t = Mathf.RoundToInt(_currentTime);
+        if (t % 60 < 10)
+        {
+            _surviveTimer.text = "You have survived: "+(t / 60) + ":0" + (t % 60);
+        }
+        else
+        {
+            _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
+        }
     }
 
     public void ClickReTryBtn()
