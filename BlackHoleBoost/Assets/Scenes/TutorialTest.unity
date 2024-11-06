@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 788719530}
   _timerText: {fileID: 0}
+  gameoverPanel: {fileID: 0}
+  _surviveTimer: {fileID: 0}
 --- !u!114 &547154216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightBoundary: 0
   TopBoundary: 0
-  GamePlaying: 0
   _inPrototype: 0
   _firstShipPrefab: {fileID: 0}
   _secondShipPrefab: {fileID: 0}
@@ -2397,8 +2398,8 @@ MonoBehaviour:
   _dialogueTrigger: {fileID: 1739469794}
   _playerPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
     type: 3}
-  _dialogueBox: {fileID: 0}
-  _objectiveBox: {fileID: 0}
+  _dialogueBox: {fileID: 3737170891775572388}
+  _objectiveBox: {fileID: 1281049285}
   _accelerationObjective: {fileID: 1019264780149594513}
   _blackholeObjective: {fileID: 1939169152}
   _strafeObjective: {fileID: 637351931}

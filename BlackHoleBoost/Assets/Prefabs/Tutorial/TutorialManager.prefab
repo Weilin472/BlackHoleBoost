@@ -355,7 +355,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3657675654718137176}
   - component: {fileID: 4041929308894175101}
-  - component: {fileID: 3485934055123450042}
   - component: {fileID: 5515499090747754664}
   m_Layer: 0
   m_Name: TutorialManager
@@ -394,19 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueBox: {fileID: 7773838766568102085}
   _dialogueText: {fileID: 3104401720907262565}
---- !u!114 &3485934055123450042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8297756786683093428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1439a74fe22c3c4f81c2751f7c28a0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialogueTrigger: {fileID: 5515499090747754664}
+  _objectiveText: {fileID: 0}
 --- !u!114 &5515499090747754664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +408,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences: []
+    unlockAcceleration: 0
+    unlockStrafing: 0
+    unlockBlackhole: 0
+    unlockShooting: 0
+    endTutorial: 0
+    objectiveText: 
 --- !u!1 &8701901479992084432
 GameObject:
   m_ObjectHideFlags: 0

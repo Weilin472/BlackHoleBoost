@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JustinScene2.unity
     guid: 87e06dc08fcf43c4bb0247268be9ea19
+  - enabled: 1
+    path: Assets/Scenes/TutorialTest.unity
+    guid: abce94361fd020749911937e80e58418
+  - enabled: 1
+    path: Assets/Scenes/TestMainMenuScene.unity
+    guid: cfee2121d13cb9a4c9637d5146478ecf
   m_configObjects: {}

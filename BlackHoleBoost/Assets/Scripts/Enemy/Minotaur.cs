@@ -23,7 +23,11 @@ public class Minotaur : EnemyBase
         }
         else
         {
-            _ramingSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>().GetSpaceShipMaxSpeed() * __ramingSpeedMultiplier;
+            if (GameObject.FindGameObjectWithTag("Player"))
+            {
+                _ramingSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>().GetSpaceShipMaxSpeed() * __ramingSpeedMultiplier;
+            }
+            
         }
         _isLockingOnPlayer = false;
         _isRaming = false;

@@ -2284,7 +2284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Instruction
+  m_text: Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2499,7 +2499,7 @@ GameObject:
   - component: {fileID: 1725844936}
   - component: {fileID: 1725844935}
   m_Layer: 5
-  m_Name: InstructionBtn
+  m_Name: TutorialBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2625,7 +2625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1757206440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2641,9 +2641,9 @@ RectTransform:
   - {fileID: 1364203573}
   m_Father: {fileID: 1312428026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 281.75195, y: -449.32562}
   m_SizeDelta: {x: 399.8524, y: 74.9723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757206441
@@ -2976,7 +2976,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightBoundary: 0
   TopBoundary: 0
-  GamePlaying: 0
   _inPrototype: 1
   _firstShipPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
     type: 3}

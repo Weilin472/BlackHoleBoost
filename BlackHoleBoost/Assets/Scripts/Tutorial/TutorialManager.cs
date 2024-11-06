@@ -128,6 +128,8 @@ public class TutorialManager : Singleton<TutorialManager>
         _objectiveBox.SetActive(false);
 
         Destroy(_currentPlayer);
+
+        StateMachine.Instance.ChangeState(new MainMenuState());
         ///go back to main menu
     }
 }

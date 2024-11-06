@@ -17,7 +17,7 @@ public class TestMainMenu : MonoBehaviour
     {
         _startBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new GameStartState()));
         _settingBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_settingMenu)));
-        _instructionBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_instructionMenu)));
+        _instructionBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new TutorialState()));
         _creditBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_creditMenu)));
     }
 
