@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     private GameObject _currentBlackHole;
     private GameObject _currentPlanet;
     private float _currentBlachHoleSpeed;
+    [SerializeField] private float _constantBlackHoleSpeed;
     private float _circleModeRotateDiameter;
     private Rigidbody rigid;
     private float _currentBlackHoleModeRotateSpeed;
@@ -81,7 +82,7 @@ public class PlayerControl : MonoBehaviour
                 _currentBlachHoleSpeed +=  Time.deltaTime;
               
             }
-            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _circleModeRotateDiameter / _currentBlachHoleSpeed);
+            _currentBlackHoleModeRotateSpeed =360/(Mathf.PI * _circleModeRotateDiameter / _constantBlackHoleSpeed);
 
             if (_isClockDirection)
             {
@@ -121,7 +122,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (isInBlackHole||_isInPlanet)
         {
-            rigid.velocity = transform.TransformDirection(Vector3.up)*_currentBlachHoleSpeed;
+            rigid.velocity = transform.TransformDirection(Vector3.up)* _constantBlackHoleSpeed;
             
             return;
         }
@@ -296,7 +297,7 @@ public class PlayerControl : MonoBehaviour
                         _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.right) * 0.8f, Quaternion.identity);
                     }
                     isInBlackHole = true;
-                    _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
+                    _currentBlachHoleSpeed = _constantBlackHoleSpeed;
                     _circleModeRotateDiameter = _currentBlackHole.transform.localScale.x * 0.8f;
                     Collider[] colliders = Physics.OverlapSphere(_currentBlackHole.transform.position, _currentBlackHole.transform.localScale.x / 2);
                     for (int i = 0; i < colliders.Length; i++)
@@ -311,7 +312,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     _isInPlanet = true;
                     _canInteractWithPlanet = false;
-                    _currentBlachHoleSpeed = Mathf.Abs(rigid.velocity.magnitude);
+                    _currentBlachHoleSpeed = _constantBlackHoleSpeed;
                     _circleModeRotateDiameter = Vector3.Distance(_currentPlanet.transform.position, transform.position) * 2;
 
                     Vector3 contactDir = transform.position - _currentPlanet.transform.position;
@@ -347,6 +348,9 @@ public class PlayerControl : MonoBehaviour
         Destroy(_currentBlackHole);
         _currentBlackHole = null;
         isInBlackHole = false;
+        Vector3 tempSpeed = transform.InverseTransformDirection(rigid.velocity);
+        tempSpeed.y = _currentBlachHoleSpeed;
+        rigid.velocity = transform.TransformDirection(tempSpeed);
     }
 
     /// <summary>
