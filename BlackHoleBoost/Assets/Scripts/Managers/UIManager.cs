@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text _lifeText;
     [SerializeField] TMP_Text _timerText;
+    [SerializeField] GameObject gameoverPanel;
     private static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -42,5 +44,22 @@ public class UIManager : MonoBehaviour
         }*/
     }
 
+    public void ShowGameOverPanel()
+    {
+        gameoverPanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ClickReTryBtn()
+    {
+        StateMachine.Instance.ChangeState(new GameStartState());
+    }
+
+   
+
+    public void ClickQuitBtn()
+    {
+        Application.Quit();
+    }
    
 }

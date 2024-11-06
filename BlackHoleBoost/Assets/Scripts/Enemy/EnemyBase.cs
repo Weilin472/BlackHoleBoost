@@ -49,7 +49,11 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            targetPlayer = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerControl>();
+            if (GameObject.FindGameObjectWithTag("Player"))
+            {
+                targetPlayer = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerControl>();
+            }
+            
         }
         Vector3 playerPos = targetPlayer.transform.position;
         Vector3 dir = (playerPos - transform.position).normalized;

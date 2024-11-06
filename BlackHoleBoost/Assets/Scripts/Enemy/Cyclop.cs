@@ -51,7 +51,11 @@ public class Cyclop : EnemyBase
         }
         else
         {
-            playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            if (GameObject.FindGameObjectWithTag("Player"))
+            {
+                playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            }
+            
             
         }
 

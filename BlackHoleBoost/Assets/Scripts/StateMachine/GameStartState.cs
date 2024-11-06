@@ -11,5 +11,7 @@ public class GameStartState : GameState
     public override void StateStart()
     {
         SceneManager.LoadScene("Weilin's Scene");
+        GameManager.Instance.GetComponent<EnemyAsteroidSpawner>().StartSpawning();
+
     }
 }

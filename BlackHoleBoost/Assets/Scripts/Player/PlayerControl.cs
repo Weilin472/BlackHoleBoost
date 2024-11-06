@@ -68,6 +68,7 @@ public class PlayerControl : MonoBehaviour
         }
         canMove = true;
         canShoot = true;
+        Time.timeScale = 1;
     }
 
     private void Update()

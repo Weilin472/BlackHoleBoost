@@ -63,6 +63,10 @@ public class EnemyIndicator : MonoBehaviour
 
     private void OnDisable()
     {
-        _indicator.gameObject.SetActive(false);
+        if (_indicator!=null)
+        {
+            _indicator.gameObject.SetActive(false);
+
+        }
     }
 }
