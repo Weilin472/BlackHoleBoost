@@ -73,6 +73,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_isClockDirection);
         HandleAimRotation();
 
 
@@ -168,6 +169,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        /*
         if (_isMovingLeft)
         {
             Vector3 relativeVelocity = transform.InverseTransformDirection(rigid.velocity);
@@ -189,7 +191,7 @@ public class PlayerControl : MonoBehaviour
                 //relativeVelocity.x *= -1;
             }
             rigid.velocity = transform.TransformDirection(relativeVelocity);
-        }
+        }*/
     }
 
     private bool IsNormalStrafing()
@@ -208,6 +210,7 @@ public class PlayerControl : MonoBehaviour
             return true;
         }
         return false;
+        //return true;
     }
 
     public void LeftMove(InputAction.CallbackContext input)
@@ -287,7 +290,7 @@ public class PlayerControl : MonoBehaviour
             {
                 if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet)//spawn black holes
                 {
-                    if ((_isMovingLeft && IsNormalStrafing()) || (_isMovingRight && !IsNormalStrafing()) || (!_isMovingLeft && !_isMovingRight && !IsNormalStrafing()))
+                    if (_isMovingLeft || (!_isMovingLeft && !_isMovingRight))
                     {
                         _isClockDirection = false;
                         _currentBlackHole = Instantiate(_blackHolePrefab, transform.position + transform.TransformDirection(Vector3.left) * 0.8f, Quaternion.identity);
