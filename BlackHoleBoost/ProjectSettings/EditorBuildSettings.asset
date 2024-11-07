@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ShipSelectScreen.unity
     guid: dd7bf52acd2acdd4ba87e94460b896c1
-  - enabled: 1
-    path: Assets/Scenes/Weilin's Scene.unity
-    guid: 38dfab3c19ad8dc4eb78dfddb9032e30
   - enabled: 0
     path: Assets/Scenes/CoreLoopPlaytestScene.unity
     guid: e36e4e0265b77854ab840b239375f07b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JustinScene2.unity
     guid: 87e06dc08fcf43c4bb0247268be9ea19
   - enabled: 1
-    path: Assets/Scenes/TutorialTest.unity
-    guid: abce94361fd020749911937e80e58418
-  - enabled: 1
     path: Assets/Scenes/TestMainMenuScene.unity
     guid: cfee2121d13cb9a4c9637d5146478ecf
+  - enabled: 1
+    path: Assets/Scenes/Weilin's Scene.unity
+    guid: 38dfab3c19ad8dc4eb78dfddb9032e30
+  - enabled: 1
+    path: Assets/Scenes/TutorialTest.unity
+    guid: abce94361fd020749911937e80e58418
   m_configObjects: {}
