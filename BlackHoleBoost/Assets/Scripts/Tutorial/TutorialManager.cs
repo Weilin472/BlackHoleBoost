@@ -92,7 +92,6 @@ public class TutorialManager : Singleton<TutorialManager>
     public void StrafingTutorial()
     {
         _strafeObjective.SetActive(true);
-        _currentPlayerControl.UnlockTutorialStrafing();
     }
 
     /// <summary>
@@ -102,6 +101,7 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         _blackholeObjective.SetActive(true);
         _currentPlayerControl.UnlockTutorialBlackhole();
+        _currentPlayerControl.UnlockTutorialStrafing();
     }
 
     /// <summary>

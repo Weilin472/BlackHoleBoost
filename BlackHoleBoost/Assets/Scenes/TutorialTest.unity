@@ -2574,7 +2574,10 @@ MonoBehaviour:
     - sentence: Lets test it out now.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button'
+    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button
+
+        Choose
+        direction orbit Black Hole: A and D or Left Stick Left or Right'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0
