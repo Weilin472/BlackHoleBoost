@@ -21,6 +21,7 @@ public class ShootSmallAsteroid : MonoBehaviour
     private void Awake()
     {
         _shootSmallAsteroidEventBus = GetComponent<ShootSmallAsteroidEventBus>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SetAsteroid(SmallAsteroidType asteroidType)

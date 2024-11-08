@@ -50,16 +50,19 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOverPanel()
     {
-        gameoverPanel.gameObject.SetActive(true);
-        Time.timeScale = 0;
-        int t = Mathf.RoundToInt(_currentTime);
-        if (t % 60 < 10)
+        if (gameoverPanel != null && _surviveTimer != null)
         {
-            _surviveTimer.text = "You have survived: "+(t / 60) + ":0" + (t % 60);
-        }
-        else
-        {
-            _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
+            gameoverPanel.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            int t = Mathf.RoundToInt(_currentTime);
+            if (t % 60 < 10)
+            {
+                _surviveTimer.text = "You have survived: " + (t / 60) + ":0" + (t % 60);
+            }
+            else
+            {
+                _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
+            }
         }
     }
 
