@@ -383,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 7438477602703125969}
   _headModel: {fileID: 5023126396035284992}
+  _bodyModel: {fileID: 0}
 --- !u!1001 &2782475406833306165
 PrefabInstance:
   m_ObjectHideFlags: 0

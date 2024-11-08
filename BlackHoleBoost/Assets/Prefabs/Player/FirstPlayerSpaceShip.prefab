@@ -692,11 +692,11 @@ MonoBehaviour:
   _sideMoveSpeed: 4
   _blackHolePrefab: {fileID: 5926682915721196415, guid: c1f112e16cef97c458c7bad428bcde43,
     type: 3}
-  _maxSpeed: 7
+  _maxSpeed: 4
   _minimumSpeed: 1
-  _maxBlackHoleSpeed: 13
+  _maxBlackHoleSpeed: 7
   _beLockedOnIcon: {fileID: 5201209787225078029}
-  _blackHoleSuckUpMaxTime: 10
+  _blackHoleSuckUpMaxTime: 5
   IsFreeze: 0
   _constantBlackHoleSpeed: 4
   isInBlackHole: 0
