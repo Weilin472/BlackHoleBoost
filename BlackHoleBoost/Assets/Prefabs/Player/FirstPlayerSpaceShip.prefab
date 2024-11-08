@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b9c53f593f173479aa32b0864f3864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _accelerationMultipler: 2
+  _accelerationMultipler: 4
   _sideMoveSpeed: 4
   _blackHolePrefab: {fileID: 5926682915721196415, guid: c1f112e16cef97c458c7bad428bcde43,
     type: 3}
