@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16a03b5395c5c3499d041c249f9048a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30
+  _speed: 15
   targetPlayer: {fileID: 0}
   chargeTime: 5
   sphinxExposure: {fileID: 2473181260850505420, guid: 9f8ce603e65743b42b3c10f8c6a8200a,
