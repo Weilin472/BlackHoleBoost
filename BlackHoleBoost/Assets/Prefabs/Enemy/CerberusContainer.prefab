@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7223488827267390294}
   - component: {fileID: 257679392364191625}
   - component: {fileID: 1786879975718482755}
+  - component: {fileID: 5760138029411008868}
   - component: {fileID: 5363334286163879499}
   - component: {fileID: 4092120627944721383}
   m_Layer: 0
@@ -86,6 +87,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5760138029411008868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417213218052931279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b589b0a0565e37d499bea53e184d5ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  targetPlayer: {fileID: 0}
+  _guardSpeed: 1
+  _pursuitSpeed: 2
+  _distanceToPursuit: 1.5
 --- !u!114 &5363334286163879499
 MonoBehaviour:
   m_ObjectHideFlags: 0
