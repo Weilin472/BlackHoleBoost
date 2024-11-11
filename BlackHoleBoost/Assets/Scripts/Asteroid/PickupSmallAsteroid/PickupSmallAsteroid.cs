@@ -24,6 +24,7 @@ public class PickupSmallAsteroid : MonoBehaviour
     private void Awake()
     {
         _pickupSmallAsteroidEventBus = GetComponent<PickupSmallAsteroidEventBus>();
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

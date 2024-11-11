@@ -27,6 +27,7 @@ public class EnemyAsteroid : MonoBehaviour
     private void Awake()
     {
         _enemyAsteroidEventBus = GetComponent<EnemyAsteroidEventBus>();
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

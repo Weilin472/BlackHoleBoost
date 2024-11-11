@@ -1187,7 +1187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 788719530}
-  _timerText: {fileID: 0}
+  _timerText: {fileID: 1781893700}
+  gameoverPanel: {fileID: 0}
+  _surviveTimer: {fileID: 1781893700}
 --- !u!114 &547154215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,10 +1293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 3647422855487545507, guid: add71d7c575aa834da71979acfdea99c, type: 3}
-  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
-  - {fileID: 7363659080550161467, guid: 8c0078c9c62caa04db3031acf1f930c7, type: 3}
-  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
+  - {fileID: 417213218052931279, guid: a3d5f13cea61be64bbb011cf89bece20, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,7 +1308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightBoundary: 0
   TopBoundary: 0
-  GamePlaying: 0
   _inPrototype: 0
   _firstShipPrefab: {fileID: 0}
   _secondShipPrefab: {fileID: 0}

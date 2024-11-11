@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &547154214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +775,7 @@ GameObject:
   - component: {fileID: 912290915}
   - component: {fileID: 912290914}
   - component: {fileID: 912290913}
+  - component: {fileID: 912290917}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -869,6 +870,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &912290917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912290912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee94a89b4e10f2c4c97d67de21c48e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeText: {fileID: 788719530}
+  _timerText: {fileID: 1781893700}
+  gameoverPanel: {fileID: 0}
+  _surviveTimer: {fileID: 0}
 --- !u!1 &1025734172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,7 +2574,10 @@ MonoBehaviour:
     - sentence: Lets test it out now.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button'
+    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button
+
+        Choose
+        direction orbit Black Hole: A and D or Left Stick Left or Right'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0

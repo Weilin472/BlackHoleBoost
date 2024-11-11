@@ -124,25 +124,25 @@ MonoBehaviour:
   _outerRenderer: {fileID: 1431018442541769371}
   _ringRenderer: {fileID: 1669061011204261514}
   _coreMats:
-  - {fileID: 2100000, guid: 89519a90596ea6142bcb967bc8c15912, type: 2}
+  - {fileID: 2100000, guid: 04109561cc6f4f7419278c9598151291, type: 2}
   - {fileID: 2100000, guid: 82f613808ca0ce741a82ab555f27d51b, type: 2}
   - {fileID: 2100000, guid: aa7ca52ec893d3644b10fcd49eca4826, type: 2}
   - {fileID: 2100000, guid: cd293ce1d815c634bbb9cf14c287afcc, type: 2}
   - {fileID: 2100000, guid: 89519a90596ea6142bcb967bc8c15912, type: 2}
   _innerMats:
-  - {fileID: 2100000, guid: 6250e82917ba0a647bce2c3c2c7a77d3, type: 2}
+  - {fileID: 2100000, guid: ccb9ea66b2b0de74eb866d21e6ecdf89, type: 2}
   - {fileID: 2100000, guid: c5899de5aa82dc04d9aba45764ce5d7b, type: 2}
   - {fileID: 2100000, guid: 7208145026879054fac9dd1177468e13, type: 2}
   - {fileID: 2100000, guid: 955d543ef89df1849924d8994b849a33, type: 2}
   - {fileID: 2100000, guid: 6250e82917ba0a647bce2c3c2c7a77d3, type: 2}
   _outerMats:
-  - {fileID: 2100000, guid: 654dd1e71ef69df46896c4eaaa9e1f0d, type: 2}
+  - {fileID: 2100000, guid: 889ffba209e626d4fa87433e9d631109, type: 2}
   - {fileID: 2100000, guid: 05023ae6248030548b61ba94219259d2, type: 2}
   - {fileID: 2100000, guid: 9c4840aa5da16314f81e91acec7ea2ec, type: 2}
   - {fileID: 2100000, guid: 4a012b84c725b6b43a670d6fad9ed410, type: 2}
   - {fileID: 2100000, guid: 654dd1e71ef69df46896c4eaaa9e1f0d, type: 2}
   _ringMats:
-  - {fileID: 2100000, guid: d626c74a7cc171d43b871e71734aa059, type: 2}
+  - {fileID: 2100000, guid: fbec4a67036e93f42bc4b363a89bca04, type: 2}
   - {fileID: 2100000, guid: 9063212528c46be43ae2211fc0785cbe, type: 2}
   - {fileID: 2100000, guid: 79a7aa025eb4f3848b6375ab568480f7, type: 2}
   - {fileID: 2100000, guid: 95782a718c818e740829955989b0815d, type: 2}
