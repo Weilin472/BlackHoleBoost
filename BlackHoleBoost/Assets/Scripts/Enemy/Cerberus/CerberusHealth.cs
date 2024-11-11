@@ -12,6 +12,10 @@ public class CerberusHealth : EnemyHealthScript
 {
     [SerializeField] private GameObject[] _cerberusHeads = new GameObject[3];
 
+    /// <summary>
+    /// if all of the heads are down, then the player can hurt the body
+    /// </summary>
+    /// <param name="damage"></param>
     public override void Damage(int damage)
     {
         foreach (GameObject head in _cerberusHeads)

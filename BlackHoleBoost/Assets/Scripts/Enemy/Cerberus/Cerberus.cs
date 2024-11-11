@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [11/10/2024]
+ * [movement for cerberus]
+ */
+
 public class Cerberus : EnemyBase
 {
     [SerializeField] private float _guardSpeed;
@@ -37,17 +43,23 @@ public class Cerberus : EnemyBase
         }
     }
 
+    /// <summary>
+    /// calls for every frame
+    /// </summary>
     protected override void Update()
     {
         base.Update();
-        CheckForPersuit();
         if (!_pursuit)
         {
+            CheckForPersuit();
             MoveToNextPos();
         }
         transform.rotation = Quaternion.LookRotation(Vector3.forward, _rigid.velocity);
     }
 
+    /// <summary>
+    /// checks if player is close enough to persuit
+    /// </summary>
     private void CheckForPersuit()
     {
         Vector3 playerPos = Vector3.zero;
@@ -76,6 +88,9 @@ public class Cerberus : EnemyBase
         }
     }
 
+    /// <summary>
+    /// moves to next patrol point and sets new one if at patrol point
+    /// </summary>
     private void MoveToNextPos()
     {
         if ((_nextPos - transform.position).magnitude < .1f)
