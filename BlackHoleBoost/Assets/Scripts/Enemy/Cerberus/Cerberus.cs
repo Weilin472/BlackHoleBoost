@@ -103,4 +103,9 @@ public class Cerberus : EnemyBase
         Vector3 dir = (_nextPos - transform.position).normalized;
         _rigid.velocity = dir * _currentSpeed;
     }
+
+    public void AttackPersuit()
+    {
+        _pursuit = true;
+    }
 }

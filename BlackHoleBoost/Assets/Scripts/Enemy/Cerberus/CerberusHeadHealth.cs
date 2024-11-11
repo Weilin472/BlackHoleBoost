@@ -11,6 +11,12 @@ using UnityEngine;
 public class CerberusHeadHealth : MonoBehaviour
 {
     [SerializeField] private SmallAsteroidType _damageableType;
+    private Cerberus _cerberus;
+
+    private void OnEnable()
+    {
+        _cerberus = transform.root.gameObject.GetComponent<Cerberus>();
+    }
 
     /// <summary>
     /// checks if it's an asteroid and if it is the right type of asteroid
@@ -22,6 +28,7 @@ public class CerberusHeadHealth : MonoBehaviour
         {
             if (asteroidType.GetAsteroidType() == _damageableType)
             {
+                _cerberus.AttackPersuit();
                 gameObject.SetActive(false);
             }
         }

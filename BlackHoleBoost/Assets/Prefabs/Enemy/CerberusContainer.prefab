@@ -103,7 +103,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   _guardSpeed: 1
   _pursuitSpeed: 2
-  _distanceToPursuit: 1.5
+  _distanceToPursuit: 3
 --- !u!114 &5363334286163879499
 MonoBehaviour:
   m_ObjectHideFlags: 0
