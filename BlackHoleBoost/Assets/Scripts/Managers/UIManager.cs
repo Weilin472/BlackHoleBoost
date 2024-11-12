@@ -34,6 +34,11 @@ public class UIManager : MonoBehaviour
         _lifeText.text = "Life: " + life;
     }
 
+    public void DisplayInventroy()
+    {
+
+    }
+
     private void Update()
     {
         _currentTime += Time.deltaTime;
