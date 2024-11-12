@@ -5,7 +5,7 @@ using TMPro;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/12/2024]
+ * Last Updated: [11/12/2024]
  * [inventory for player]
  */
 
@@ -20,10 +20,6 @@ public class PlayerAsteroidInventory : MonoBehaviour
     [SerializeField] private int _startingNormal = 3;
     [SerializeField] private int _startingBounce = 0;
     [SerializeField] private int _startingSticky = 0;
-
-    [SerializeField] private TMP_Text _normalDisplayText;
-    [SerializeField] private TMP_Text _bounceDisplayText;
-    [SerializeField] private TMP_Text _stickyDisplayText;
 
     /// <summary>
     /// gets needed components
@@ -43,11 +39,6 @@ public class PlayerAsteroidInventory : MonoBehaviour
         {
             AddAsteroid(SmallAsteroidType.BOUNCE);
         }
-    }
-
-    private void Update()
-    {
-        DisplayInventrory();
     }
 
     /// <summary>
@@ -156,13 +147,18 @@ public class PlayerAsteroidInventory : MonoBehaviour
         return false;
     }
 
-    /// <summary>
-    /// displays how much each asteroids the player has
-    /// </summary>
-    public void DisplayInventrory()
+    public int normalInventory
     {
-        _normalDisplayText.text = _normalInventory.ToString();
-        _bounceDisplayText.text = _bounceInventory.ToString();
-        _stickyDisplayText.text = _stickyInventory.ToString();
+        get { return _normalInventory; }
+    }
+
+    public int bounceInventory
+    {
+        get { return _bounceInventory; }
+    }
+
+    public int stickyInventory
+    {
+        get { return _stickyInventory; }
     }
 }
