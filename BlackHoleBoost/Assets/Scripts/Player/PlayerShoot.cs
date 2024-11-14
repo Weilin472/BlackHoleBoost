@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/12/2024]
+ * Last Updated: [11/14/2024]
  * [script that handles shooting]
  */
 
@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     private ShootSmallAsteroidPool _shootSmallAsteroidPool;
 
     private SmallAsteroidType _currentAsteroid = SmallAsteroidType.NONE;
+    private SmallAsteroidType _currentDisplayAsteroidType = SmallAsteroidType.NORMAL;
     private SmallAsteroidType[] _switchOrder;
 
     [SerializeField] private GameObject _currentAsteroidDisplay;
@@ -43,6 +44,10 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
+        if (_currentAsteroid != SmallAsteroidType.NONE)
+        {
+            _currentDisplayAsteroidType = _currentAsteroid;
+        }
         UpdateCurrentAsteroid();
         UpdateDisplayAsteroid();
     }
@@ -180,5 +185,11 @@ public class PlayerShoot : MonoBehaviour
         _onCooldown = true;
         yield return new WaitForSeconds(_fireRate);
         _onCooldown = false;
+    }
+
+    //returns the display asteroid
+    public SmallAsteroidType currentDisplayAsteroidType
+    {
+        get { return _currentDisplayAsteroidType; }
     }
 }

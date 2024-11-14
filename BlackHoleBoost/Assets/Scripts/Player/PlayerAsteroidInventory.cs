@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/12/2024]
+ * Last Updated: [11/14/2024]
  * [inventory for player]
  */
 
 public class PlayerAsteroidInventory : MonoBehaviour
 {
+    private PlayerShoot _playerShoot;
+
     private int _normalInventory = 0;
     private int _bounceInventory = 0;
     private int _stickyInventory = 0;
@@ -21,15 +22,13 @@ public class PlayerAsteroidInventory : MonoBehaviour
     [SerializeField] private int _startingBounce = 0;
     [SerializeField] private int _startingSticky = 0;
 
-    [SerializeField] private TMP_Text _normalDisplayText;
-    [SerializeField] private TMP_Text _bounceDisplayText;
-    [SerializeField] private TMP_Text _stickyDisplayText;
-
     /// <summary>
     /// gets needed components
     /// </summary>
     private void Awake()
     {
+        _playerShoot = GetComponent<PlayerShoot>();
+
         //starting inventroy
         for (int i = 0; i < _startingNormal; i++)
         {
@@ -45,9 +44,12 @@ public class PlayerAsteroidInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// updates the displaye
+    /// </summary>
     private void Update()
     {
-        DisplayInventrory();
+        UpdateDisplay();
     }
 
     /// <summary>
@@ -128,6 +130,11 @@ public class PlayerAsteroidInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// checks if player has a specific asteroid in inventory 
+    /// </summary>
+    /// <param name="asteroid">asteroid type</param>
+    /// <returns>true if the player has at least one of the type</returns>
     public bool HasAsteroidType(SmallAsteroidType asteroid)
     {
         switch (asteroid)
@@ -157,12 +164,67 @@ public class PlayerAsteroidInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// displays how much each asteroids the player has
+    /// calls to update the display
     /// </summary>
-    public void DisplayInventrory()
+    private void UpdateDisplay()
     {
-        _normalDisplayText.text = _normalInventory.ToString();
-        _bounceDisplayText.text = _bounceInventory.ToString();
-        _stickyDisplayText.text = _stickyInventory.ToString();
+        SmallAsteroidType nextAsteroid = NextAsteroid(_playerShoot.currentDisplayAsteroidType);
+        SmallAsteroidType lastAsteroid = NextAsteroid(nextAsteroid);
+
+
+        UIManager.Instance.UpdateDisplayInventroy(_playerShoot.currentDisplayAsteroidType, nextAsteroid, lastAsteroid, 
+            TypeAmount(_playerShoot.currentDisplayAsteroidType), TypeAmount(nextAsteroid), TypeAmount(lastAsteroid));
+    }
+
+    /// <summary>
+    /// gets the next asteroid type in order
+    /// </summary>
+    /// <param name="asteroid">asteroid type being checked</param>
+    /// <returns>the next asteroid type</returns>
+    private SmallAsteroidType NextAsteroid(SmallAsteroidType asteroid)
+    {
+        int nextAsteroid = (int)asteroid + 1;
+        if (nextAsteroid > 3)
+        {
+            nextAsteroid = 1;
+        }
+        return (SmallAsteroidType)nextAsteroid;
+    }
+
+    /// <summary>
+    /// returns the amount of asteroid the player has of that type
+    /// </summary>
+    /// <param name="asteroidType">type of asteroid being checked</param>
+    /// <returns>number of asteroids</returns>
+    private int TypeAmount(SmallAsteroidType asteroidType)
+    {
+        switch (asteroidType)
+        {
+            case SmallAsteroidType.NORMAL:
+                return _normalInventory;
+            case SmallAsteroidType.BOUNCE:
+                return _bounceInventory;
+            case SmallAsteroidType.STICKY:
+                return _stickyInventory;
+            default:
+                break;
+        }
+        return -1;
+    }
+
+    //properties
+    public int normalInventory
+    {
+        get { return _normalInventory; }
+    }
+
+    public int bounceInventory
+    {
+        get { return _bounceInventory; }
+    }
+
+    public int stickyInventory
+    {
+        get { return _stickyInventory; }
     }
 }
