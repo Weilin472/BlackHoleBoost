@@ -394,8 +394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSize: 5
   _startingNormal: 3
-  _startingBounce: 0
-  _startingSticky: 0
+  _startingBounce: 1
+  _startingSticky: 1
 --- !u!114 &7741658399658312972
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text _timerText;
     [SerializeField] GameObject gameoverPanel;
     [SerializeField] TMP_Text _surviveTimer;
+
+    [SerializeField] Image _currentAsteroidSprite;
+    [SerializeField] Image _nextAsteroidSprite;
+    [SerializeField] Image _lastAsteroidSprite;
+
+    [SerializeField] TMP_Text _currentAsteroidAmount;
+    [SerializeField] TMP_Text _nextAsteroidAmount;
+    [SerializeField] TMP_Text _lastAsteroidAmount;
+
     private static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -34,9 +43,48 @@ public class UIManager : MonoBehaviour
         _lifeText.text = "Life: " + life;
     }
 
-    public void DisplayInventroy()
+    /// <summary>
+    /// updates the inventory display
+    /// </summary>
+    /// <param name="current">type of asteroid for current asteroid</param>
+    /// <param name="next">type of asteroid for next asteroid</param>
+    /// <param name="last">type of asteroid for last asteroid</param>
+    /// <param name="currentAmount">number of current asteroid</param>
+    /// <param name="nextAmount">number of next asteroid</param>
+    /// <param name="lastAmount">number of last asteroid</param>
+    public void UpdateDisplayInventroy(SmallAsteroidType current, SmallAsteroidType next, SmallAsteroidType last, int currentAmount, int nextAmount, int lastAmount)
     {
+        SetAsteroidSpriteColor(_currentAsteroidSprite, current);
+        SetAsteroidSpriteColor(_nextAsteroidSprite, next);
+        SetAsteroidSpriteColor(_lastAsteroidSprite, last);
 
+        _currentAsteroidAmount.text = "" + currentAmount;
+        _nextAsteroidAmount.text = "" + nextAmount;
+        _lastAsteroidAmount.text = "" + lastAmount;
+    }
+
+    /// <summary>
+    /// sets the color of the asteroid sprite
+    /// </summary>
+    /// <param name="asteroidSprite">asteroid image of ui</param>
+    /// <param name="asteroidType">type of asteroid</param>
+    public void SetAsteroidSpriteColor(Image asteroidSprite, SmallAsteroidType asteroidType)
+    {
+        switch (asteroidType)
+        {
+            case SmallAsteroidType.NORMAL:
+                asteroidSprite.color = Color.red;
+                break;
+            case SmallAsteroidType.BOUNCE:
+                asteroidSprite.color = Color.blue;
+                break;
+            case SmallAsteroidType.STICKY:
+                asteroidSprite.color = Color.green;
+                break;
+            default:
+                asteroidSprite.color = Color.white;
+                break;
+        }
     }
 
     private void Update()
