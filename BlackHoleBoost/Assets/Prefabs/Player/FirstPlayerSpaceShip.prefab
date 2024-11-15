@@ -149,6 +149,7 @@ MonoBehaviour:
     type: 3}
   _maxSpeed: 4
   _minimumSpeed: 1
+  _freezeSpeed: 1
   _maxBlackHoleSpeed: 7
   _beLockedOnIcon: {fileID: 5201209787225078029}
   _blackHoleSuckUpMaxTime: 5

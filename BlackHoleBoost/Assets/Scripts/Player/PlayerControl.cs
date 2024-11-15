@@ -10,7 +10,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float _sideMoveSpeed;
     [SerializeField] private GameObject _blackHolePrefab;
     [SerializeField] private float _maxSpeed;
+    private float _originalMaxSpeed;
+
     [SerializeField] private float _minimumSpeed;
+    [SerializeField] private float _freezeSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
     [SerializeField] private GameObject _beLockedOnIcon;
     [SerializeField] private float _blackHoleSuckUpMaxTime;
@@ -59,6 +62,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _originalMaxSpeed = _maxSpeed;
         rigid = GetComponent<Rigidbody>();
         _playerShoot = GetComponent<PlayerShoot>();
         _playerInput = GetComponent<PlayerInput>();
@@ -285,7 +289,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!_tutorial || _tutorial && _tutorialBlackhole)
         {
-            if (input.phase == InputActionPhase.Performed && !IsFreeze)
+            if (input.phase == InputActionPhase.Performed)
             {
                 if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet)//spawn black holes
                 {
@@ -467,14 +471,16 @@ public class PlayerControl : MonoBehaviour
     public void Freeze()
     {
         IsFreeze = true;
-        canMove = false;
-        rigid.velocity = Vector3.zero;
+        //canMove = false;
+        _maxSpeed = _freezeSpeed;
+        rigid.velocity = rigid.velocity.normalized * _freezeSpeed;
         Invoke("UnFreeze", 2.5f);   
     }
     void UnFreeze()
     {
         IsFreeze = false;
-        canMove = true;
+        _maxSpeed = _originalMaxSpeed;
+        //canMove = true;
     }
 
     public void HitBySphinx(int damage,float effectTime)
