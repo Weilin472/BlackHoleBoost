@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -830,7 +830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21.94, y: -21.299988}
+  m_AnchoredPosition: {x: -21.940002, y: -21.300049}
   m_SizeDelta: {x: 478, y: 754.93994}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &480174198
@@ -1190,6 +1190,12 @@ MonoBehaviour:
   _timerText: {fileID: 1781893700}
   gameoverPanel: {fileID: 0}
   _surviveTimer: {fileID: 1781893700}
+  _currentAsteroidSprite: {fileID: 0}
+  _nextAsteroidSprite: {fileID: 0}
+  _lastAsteroidSprite: {fileID: 0}
+  _currentAsteroidAmount: {fileID: 0}
+  _nextAsteroidAmount: {fileID: 0}
+  _lastAsteroidAmount: {fileID: 0}
 --- !u!114 &547154215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 417213218052931279, guid: a3d5f13cea61be64bbb011cf89bece20, type: 3}
+  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0

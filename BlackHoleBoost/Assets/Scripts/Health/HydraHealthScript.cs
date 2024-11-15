@@ -44,4 +44,17 @@ public class HydraHealthScript : EnemyHealthScript
             heads[i].RegrowHead();
         }
     }
+
+    /// <summary>
+    /// checks if the head killed is a freebie kill before heads start to regrow
+    /// </summary>
+    /// <param name="head"></param>
+    public void CheckFreebieKill(HeadofHydraHealth head)
+    {
+        HeadofHydraHealth[] heads = transform.GetComponentsInChildren<HeadofHydraHealth>();
+        if (heads.Length > 3)
+        {
+            Destroy(head.gameObject);
+        }
+    }
 }
