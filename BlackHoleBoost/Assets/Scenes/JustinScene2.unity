@@ -1461,8 +1461,8 @@ MonoBehaviour:
   _currentAsteroidSprite: {fileID: 1213654821}
   _nextAsteroidSprite: {fileID: 850660100}
   _lastAsteroidSprite: {fileID: 655475203}
-  _currentAsteroidAmount: {fileID: 463258556}
-  _nextAsteroidAmount: {fileID: 1140229377}
+  _currentAsteroidAmount: {fileID: 1140229377}
+  _nextAsteroidAmount: {fileID: 463258556}
   _lastAsteroidAmount: {fileID: 402164777}
 --- !u!114 &547154215
 MonoBehaviour:
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 5826317108700541650, guid: f1cf8ec1094e63f4d8e9a48b70fce267, type: 3}
+  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
