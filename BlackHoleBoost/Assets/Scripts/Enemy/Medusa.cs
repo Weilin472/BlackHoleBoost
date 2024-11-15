@@ -10,6 +10,7 @@ public class Medusa : EnemyBase
     [SerializeField] private GameObject _empPrefab;
     [SerializeField] private float shootingCoolDown;
 
+    private bool _isShooting = false;
     private bool _isLockingOntoPlayer;
     
  
@@ -31,7 +32,11 @@ public class Medusa : EnemyBase
                 _isLockingOntoPlayer = true;
                 targetPlayer.SetLockOnIcon(true);
                 _rigid.velocity = Vector3.zero;
-                StartCoroutine(ShootingAnimation());
+                if (!_isShooting)
+                {
+                    _isShooting = true;
+                    StartCoroutine(ShootingAnimation());
+                }
             }
         }   
         else if(Vector3.Distance(targetPlayer.transform.position,transform.position)>_detectDistance)
@@ -52,6 +57,7 @@ public class Medusa : EnemyBase
             emp.transform.rotation = Quaternion.LookRotation(emp.transform.forward, targetPlayer.transform.position - emp.transform.position);
             yield return new WaitForSeconds(shootingCoolDown);
         }
+        _isShooting = false;
     }
 
     /// <summary>

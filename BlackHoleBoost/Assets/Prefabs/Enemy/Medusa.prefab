@@ -161,7 +161,7 @@ MonoBehaviour:
   _detectDistance: 4
   _empPrefab: {fileID: 9071010954541602351, guid: 7486b9036ed37104ea663450125bff2a,
     type: 3}
-  shootingCoolDown: 4
+  shootingCoolDown: 1
 --- !u!114 &2695190586342062176
 MonoBehaviour:
   m_ObjectHideFlags: 0
