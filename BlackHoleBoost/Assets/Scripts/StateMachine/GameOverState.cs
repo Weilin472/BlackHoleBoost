@@ -11,7 +11,8 @@ public class GameOverState : GameState
 
     public override void StateStart()
     {
+        UIManager.Instance.ShowGameOverPanel();
     }
 
-  
+
 }

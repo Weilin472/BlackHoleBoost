@@ -48,8 +48,8 @@ public class PlayerHealthScript : BaseHealthScript
         _playerControl.ExitBlackHoleMode();
         //PrototypeGameManager.Instance.GameOver();
         //  StateMachine.Instance.GameEnd();
-        UIManager.Instance.ShowGameOverPanel();
         GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
+        StateMachine.Instance.ChangeState(new GameOverState());
         Destroy(gameObject);
     }
 

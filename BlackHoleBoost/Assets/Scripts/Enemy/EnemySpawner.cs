@@ -5,12 +5,17 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<GameObject> Enemies = new List<GameObject>();
-    private int phase = 0;
-    private int loop = 1;
+    
     private List<EnemyBase> currentEnemies = new List<EnemyBase>();
     private Vector3 _spawnPos;
 
+    private int phase = 0;
+    private int loop = 1;
+
     private static EnemySpawner _instance;
+
+    public int Phase => phase;
+    public int Loop => loop;
     public static EnemySpawner Instance
     {
         get

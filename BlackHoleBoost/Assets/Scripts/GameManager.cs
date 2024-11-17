@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager : Singleton<GameManager>
 {
+    public static string LeaderBoardSavingString = "LeaderBoardData";
+    public static int LeaderBoardPlayerNum = 5;
 
     public float RightBoundary;
     public float TopBoundary;
@@ -17,6 +19,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject _secondShipPrefab;
 
     public List<PlayerControl> players=new List<PlayerControl>();
+
+    
 
     private void OnEnable()
     {

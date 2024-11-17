@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text _nextAsteroidAmount;
     [SerializeField] TMP_Text _lastAsteroidAmount;
 
+    [SerializeField] GameObject _inputField;
+    [SerializeField] GameObject _leaderBoard;
+
     private static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -117,14 +120,50 @@ public class UIManager : MonoBehaviour
                 _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
             }
         }
+        List<LeaderBoardInfo> infoList = null;
+        if (PlayerPrefs.HasKey(GameManager.LeaderBoardSavingString))
+        {
+            string dataString = PlayerPrefs.GetString(GameManager.LeaderBoardSavingString);
+            SavingandLoadingData data = JsonUtility.FromJson<SavingandLoadingData>(dataString);
+            infoList = data.LeaderBoardDataList;
+        }
+        else
+        {
+            infoList = new List<LeaderBoardInfo>();
+            for (int i = 0; i < GameManager.LeaderBoardPlayerNum; i++)
+            {
+                infoList.Add(new LeaderBoardInfo("", 0, 0));
+            }
+        }
+        EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
+        if (CompareLeaderBoard(infoList,spawner.Phase,(int)_currentTime))
+        {
+            _inputField.gameObject.SetActive(true);
+        }
+        else
+        {
+            _leaderBoard.gameObject.SetActive(true);
+            //set up the information of leaderboard
+        }
+    }
+
+    private bool CompareLeaderBoard(List<LeaderBoardInfo> infoList,int survivedPhases, int survivedTime)
+    {
+        for (int i = 0; i < infoList.Count; i++)
+        {
+            LeaderBoardInfo info = infoList[i];
+            if (survivedPhases>info.SurvivedPhases||(survivedPhases==info.SurvivedPhases&&survivedTime>info.SurvivedTime))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void ClickReTryBtn()
     {
         StateMachine.Instance.ChangeState(new GameStartState());
-    }
-
-   
+    }  
 
     public void ClickQuitBtn()
     {
