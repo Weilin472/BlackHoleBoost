@@ -24,6 +24,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _inputField;
     [SerializeField] GameObject _leaderBoard;
 
+    [SerializeField] GameObject[] _leaderBoardContents;
+
+    List<LeaderBoardInfo> infoList;
+
     private static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -120,7 +124,6 @@ public class UIManager : MonoBehaviour
                 _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
             }
         }
-        List<LeaderBoardInfo> infoList = null;
         if (PlayerPrefs.HasKey(GameManager.LeaderBoardSavingString))
         {
             string dataString = PlayerPrefs.GetString(GameManager.LeaderBoardSavingString);
@@ -139,11 +142,13 @@ public class UIManager : MonoBehaviour
         if (CompareLeaderBoard(infoList,spawner.Phase,(int)_currentTime))
         {
             _inputField.gameObject.SetActive(true);
+            _leaderBoard.gameObject.SetActive(false);
         }
         else
         {
+            _inputField.gameObject.SetActive(false);
             _leaderBoard.gameObject.SetActive(true);
-            //set up the information of leaderboard
+            SetUpLeaderBoard();
         }
     }
 
@@ -158,6 +163,19 @@ public class UIManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void SetUpLeaderBoard()
+    {
+        if (infoList!=null)
+        {
+            for (int i = 0; i < _leaderBoardContents.Length; i++)
+            {
+                _leaderBoardContents[i].transform.Find("name").GetComponent<TMP_Text>().text = infoList[i].Name;
+                _leaderBoardContents[i].transform.Find("Phase").GetComponent<TMP_Text>().text = infoList[i].SurvivedPhases.ToString();
+                _leaderBoardContents[i].transform.Find("Time").GetComponent<TMP_Text>().text = infoList[i].SurvivedTime.ToString();
+            }
+        }
     }
 
     public void ClickReTryBtn()
