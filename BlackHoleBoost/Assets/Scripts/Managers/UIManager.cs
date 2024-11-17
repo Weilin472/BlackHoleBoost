@@ -129,17 +129,20 @@ public class UIManager : MonoBehaviour
             string dataString = PlayerPrefs.GetString(GameManager.LeaderBoardSavingString);
             SavingandLoadingData data = JsonUtility.FromJson<SavingandLoadingData>(dataString);
             infoList = data.LeaderBoardDataList;
+            Debug.Log("loadagain: "+infoList.Count);
         }
         else
         {
             infoList = new List<LeaderBoardInfo>();
+            Debug.Log("numCount: " + GameManager.LeaderBoardPlayerNum);
             for (int i = 0; i < GameManager.LeaderBoardPlayerNum; i++)
             {
                 infoList.Add(new LeaderBoardInfo("", 0, 0));
             }
         }
         EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
-        if (CompareLeaderBoard(infoList,spawner.Phase,(int)_currentTime))
+        int rankIndex = CompareLeaderBoard(infoList, spawner.Phase, (int)_currentTime);
+        if (rankIndex!=-1)
         {
             _inputField.gameObject.SetActive(true);
             _leaderBoard.gameObject.SetActive(false);
@@ -152,17 +155,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private bool CompareLeaderBoard(List<LeaderBoardInfo> infoList,int survivedPhases, int survivedTime)
+    private int CompareLeaderBoard(List<LeaderBoardInfo> infoList,int survivedPhases, int survivedTime)
     {
         for (int i = 0; i < infoList.Count; i++)
         {
             LeaderBoardInfo info = infoList[i];
             if (survivedPhases>info.SurvivedPhases||(survivedPhases==info.SurvivedPhases&&survivedTime>info.SurvivedTime))
             {
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
     private void SetUpLeaderBoard()
@@ -171,9 +174,12 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < _leaderBoardContents.Length; i++)
             {
+                Debug.Log("index: " + i);
                 _leaderBoardContents[i].transform.Find("name").GetComponent<TMP_Text>().text = infoList[i].Name;
-                _leaderBoardContents[i].transform.Find("Phase").GetComponent<TMP_Text>().text = infoList[i].SurvivedPhases.ToString();
-                _leaderBoardContents[i].transform.Find("Time").GetComponent<TMP_Text>().text = infoList[i].SurvivedTime.ToString();
+                _leaderBoardContents[i].transform.Find("Phase").GetComponent<TMP_Text>().text = (infoList[i].SurvivedPhases+1).ToString();
+                int time = infoList[i].SurvivedTime;
+                string timeString = (time / 60) +":"+ (time % 60 < 10 ? ("0" + time % 60) : (time % 60).ToString());
+                _leaderBoardContents[i].transform.Find("Time").GetComponent<TMP_Text>().text = timeString;
             }
         }
     }
@@ -186,6 +192,30 @@ public class UIManager : MonoBehaviour
     public void ClickQuitBtn()
     {
         Application.Quit();
+    }
+
+    public void EnterName(string s)
+    {
+        if (s!="")
+        {
+            if (infoList != null)
+            {
+                EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
+                int rankIndex = CompareLeaderBoard(infoList, spawner.Phase, (int)_currentTime);
+                LeaderBoardInfo info = new LeaderBoardInfo(s, spawner.Phase, (int)_currentTime);
+                infoList.Insert(rankIndex, info);
+                infoList.RemoveAt(infoList.Count - 1);
+                SavingandLoadingData data = new SavingandLoadingData();
+                data.LeaderBoardDataList = infoList;
+                Debug.Log("save: " + infoList.Count);
+                string dataString = JsonUtility.ToJson(data);
+                PlayerPrefs.SetString(GameManager.LeaderBoardSavingString, dataString);
+                PlayerPrefs.Save();
+            }
+        }
+        SetUpLeaderBoard();
+        _inputField.gameObject.SetActive(false);
+        _leaderBoard.gameObject.SetActive(true);
     }
    
 }

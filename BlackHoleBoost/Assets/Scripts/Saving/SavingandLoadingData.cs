@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class SavingandLoadingData : MonoBehaviour
+[Serializable]
+public class SavingandLoadingData
 {
-    public List<LeaderBoardInfo> LeaderBoardDataList = new List<LeaderBoardInfo>();
+    public List<LeaderBoardInfo> LeaderBoardDataList;
 }

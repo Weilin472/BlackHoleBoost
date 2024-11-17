@@ -16,7 +16,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public bool _inPrototype = true;
 
     [SerializeField] private GameObject _firstShipPrefab;
-    [SerializeField] private GameObject _secondShipPrefab;
 
     public List<PlayerControl> players=new List<PlayerControl>();
 

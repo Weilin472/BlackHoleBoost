@@ -1,5 +1,5 @@
 
-
+[System.Serializable]
 public class LeaderBoardInfo
 {
     public string Name;
