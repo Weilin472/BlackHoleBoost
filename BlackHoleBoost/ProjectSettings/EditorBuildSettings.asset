@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Weilin's Scene.unity
     guid: bddf0a789a0f146439b35670c896d045
+  - enabled: 0
+    path: Assets/Scenes/Weilin's Scene test.unity
+    guid: c922ac5cdf9852142965d994b76459da
   m_configObjects: {}

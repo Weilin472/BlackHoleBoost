@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject _pausePanel;
 
+    [SerializeField] GameObject _settingPanel;
+
     List<LeaderBoardInfo> infoList;
 
     private static UIManager _instance;
@@ -230,6 +232,11 @@ public class UIManager : MonoBehaviour
     {
         _pausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void ShowSettingMenu()
+    {
+        StateMachine.Instance.ChangeState(new ActiveMenuState(_settingPanel));
     }
    
 }
