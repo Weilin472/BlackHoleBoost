@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject[] _leaderBoardContents;
 
+    [SerializeField] GameObject _pausePanel;
+
     List<LeaderBoardInfo> infoList;
 
     private static UIManager _instance;
@@ -216,6 +218,18 @@ public class UIManager : MonoBehaviour
         SetUpLeaderBoard();
         _inputField.gameObject.SetActive(false);
         _leaderBoard.gameObject.SetActive(true);
+    }
+
+    public void ShowPauseMenu()
+    {
+        _pausePanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ContienueBtn()
+    {
+        _pausePanel.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
    
 }
