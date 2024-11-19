@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1464,6 +1464,9 @@ MonoBehaviour:
   _currentAsteroidAmount: {fileID: 1140229377}
   _nextAsteroidAmount: {fileID: 463258556}
   _lastAsteroidAmount: {fileID: 402164777}
+  _inputField: {fileID: 0}
+  _leaderBoard: {fileID: 0}
+  _leaderBoardContents: []
 --- !u!114 &547154215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,7 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 2061532770650779881, guid: 6a2fdc9c61338404cb5fecdad3683d65, type: 3}
+  - {fileID: 4266011411390706956, guid: 16d621f1f49ad334a803d9f960fb4737, type: 3}
 --- !u!114 &547154222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,7 +1587,6 @@ MonoBehaviour:
   TopBoundary: 0
   _inPrototype: 0
   _firstShipPrefab: {fileID: 0}
-  _secondShipPrefab: {fileID: 0}
   players: []
 --- !u!114 &547154223
 MonoBehaviour:
