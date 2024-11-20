@@ -3332,7 +3332,6 @@ GameObject:
   - component: {fileID: 1910738547}
   - component: {fileID: 1910738546}
   - component: {fileID: 1910738545}
-  - component: {fileID: 1910738544}
   - component: {fileID: 1910738543}
   - component: {fileID: 1910738542}
   - component: {fileID: 1910738541}
@@ -3407,21 +3406,6 @@ MonoBehaviour:
     type: 3}
   maxPoolSize: 10
   stackDefaultCapacity: 10
---- !u!114 &1910738544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910738539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14bdb3b54eba2946a3bc277f494aaa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healingPickUpModels:
-  - {fileID: 3320990005011325088, guid: 3a10e3d493918e04d92a0dc657fdab0b, type: 3}
-  spawnRate: 10
 --- !u!114 &1910738545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3494,8 +3478,6 @@ MonoBehaviour:
   TopBoundary: 0
   _inPrototype: 0
   _firstShipPrefab: {fileID: 2875590302239603435, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
-    type: 3}
-  _secondShipPrefab: {fileID: 2875590302239603435, guid: 621da6a3c5f67a94c86ab58bbd4a5348,
     type: 3}
   players: []
 --- !u!4 &1910738548

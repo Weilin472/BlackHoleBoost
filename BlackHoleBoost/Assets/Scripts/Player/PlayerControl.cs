@@ -291,7 +291,8 @@ public class PlayerControl : MonoBehaviour
         {
             if (input.phase == InputActionPhase.Performed)
             {
-                if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet)//spawn black holes
+                float offset = 1.9f;
+                if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet&&(transform.position.x<(GameManager.Instance.RightBoundary- offset))&&(transform.position.x>(-GameManager.Instance.RightBoundary+ offset))&&(transform.position.y<(GameManager.Instance.TopBoundary- offset))&&(transform.position.y>(-GameManager.Instance.TopBoundary+ offset)))//spawn black holes
                 {
                     if (_isMovingLeft || (!_isMovingLeft && !_isMovingRight))
                     {

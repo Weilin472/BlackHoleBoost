@@ -4731,6 +4731,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606664691}
   m_CullTransparentMesh: 1
+--- !u!1 &618208059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618208061}
+  - component: {fileID: 618208060}
+  m_Layer: 0
+  m_Name: DebrisSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &618208060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618208059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14bdb3b54eba2946a3bc277f494aaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healingPickUpModels:
+  - {fileID: 3320990005011325088, guid: 3a10e3d493918e04d92a0dc657fdab0b, type: 3}
+  spawnRate: 10
+--- !u!4 &618208061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618208059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 511.87637, y: 460.43866, z: -1.7896616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635194955
 GameObject:
   m_ObjectHideFlags: 0
@@ -13761,4 +13808,5 @@ SceneRoots:
   - {fileID: 825525118}
   - {fileID: 176030445}
   - {fileID: 1547541864}
+  - {fileID: 618208061}
   - {fileID: 717640520}
