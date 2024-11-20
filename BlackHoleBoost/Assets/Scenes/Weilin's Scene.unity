@@ -9338,6 +9338,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9148963259565905819, guid: 1486e45ef33f6364dbf0a1ba16d0a9d7,
+        type: 3}
+      propertyPath: _spawnBlackHoleDistanceOffset
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
