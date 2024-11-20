@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8729018691577860525}
   - component: {fileID: -3738135990408359414}
   - component: {fileID: 4847739807893170799}
+  - component: {fileID: 3617173047591744109}
   - component: {fileID: 544827194683329563}
   m_Layer: 0
   m_Name: PickupAsteroidContainer
@@ -150,6 +151,19 @@ MonoBehaviour:
   _speed: 5
   _magnetSpeed: 1
   _magnetDistance: 2
+--- !u!114 &3617173047591744109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674186815812008647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e721700a531038c4c814fdc7ba905dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 5
 --- !u!114 &544827194683329563
 MonoBehaviour:
   m_ObjectHideFlags: 0
