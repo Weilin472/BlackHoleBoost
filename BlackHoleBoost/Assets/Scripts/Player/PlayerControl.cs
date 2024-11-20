@@ -57,6 +57,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float _controllerDeadzone = 0.1f;
     [SerializeField] private float _gamepadRotateSmoothing = 1000f;
     [SerializeField] private GameObject _aimDirection;
+    [SerializeField] float _spawnBlackHoleDistanceOffset = 1.9f;
     private Vector2 _aim;
 
     // Start is called before the first frame update
@@ -291,8 +292,8 @@ public class PlayerControl : MonoBehaviour
         {
             if (input.phase == InputActionPhase.Performed)
             {
-                float offset = 1.9f;
-                if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet&&(transform.position.x<(GameManager.Instance.RightBoundary- offset))&&(transform.position.x>(-GameManager.Instance.RightBoundary+ offset))&&(transform.position.y<(GameManager.Instance.TopBoundary- offset))&&(transform.position.y>(-GameManager.Instance.TopBoundary+ offset)))//spawn black holes
+              
+                if (!isInBlackHole && !_canInteractWithPlanet && !_isInPlanet&&(transform.position.x<(GameManager.Instance.RightBoundary- _spawnBlackHoleDistanceOffset))&&(transform.position.x>(-GameManager.Instance.RightBoundary+ _spawnBlackHoleDistanceOffset))&&(transform.position.y<(GameManager.Instance.TopBoundary- _spawnBlackHoleDistanceOffset))&&(transform.position.y>(-GameManager.Instance.TopBoundary+ _spawnBlackHoleDistanceOffset)))//spawn black holes
                 {
                     if (_isMovingLeft || (!_isMovingLeft && !_isMovingRight))
                     {
