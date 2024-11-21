@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text _lifeText;
+    //[SerializeField] TMP_Text _lifeText;
+    [SerializeField] private GameObject[] _lifeBars;
+
     [SerializeField] TMP_Text _timerText;
     [SerializeField] GameObject gameoverPanel;
     [SerializeField] TMP_Text _surviveTimer;
@@ -48,10 +50,21 @@ public class UIManager : MonoBehaviour
             _instance = this;
         }
     }
-   
+
     public void SetLifeUI(int life)
     {
-        _lifeText.text = "Life: " + life;
+        for (int i = 0; i < life; i++)
+        {
+            _lifeBars[i].SetActive(true);
+        }
+
+        if (life < 5)
+        {
+            for (int i = life; i <= 4; i++)
+            {
+                _lifeBars[i].SetActive(false);
+            }
+        }
     }
 
     /// <summary>
@@ -125,7 +138,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
+                _surviveTimer.text = "You have survived: " + (t / 60) + ":" + (t % 60);
             }
         }
         if (PlayerPrefs.HasKey(GameManager.LeaderBoardSavingString))

@@ -42,6 +42,7 @@ public class PickUpAsteroidObjective : DialogueTrigger
             {
                 if (asteroid.gameObject.activeSelf)
                 {
+                    Debug.Log("Check");
                     return;
                 }
             }

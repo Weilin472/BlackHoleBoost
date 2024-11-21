@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     private PlayerInput _playerInput;
     public bool IsFreeze;
 
+    [SerializeField] private GameObject _shieldSprite;
     private GameObject _currentBlackHole;
     private GameObject _currentPlanet;
     private float _currentBlachHoleSpeed;
@@ -32,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     private int _currentBlackHolePhase = 0;
 
     private PlayerShoot _playerShoot;
+    private PlayerHealthScript _playerHealthScript;
 
     public bool isInBlackHole;
     private bool _canInteractWithPlanet;
@@ -66,6 +68,7 @@ public class PlayerControl : MonoBehaviour
         _originalMaxSpeed = _maxSpeed;
         rigid = GetComponent<Rigidbody>();
         _playerShoot = GetComponent<PlayerShoot>();
+        _playerHealthScript = GetComponent<PlayerHealthScript>();
         _playerInput = GetComponent<PlayerInput>();
         if (!Mouse.current.enabled)
         {
@@ -83,6 +86,7 @@ public class PlayerControl : MonoBehaviour
 
         if (isInBlackHole||_isInPlanet)
         {
+            _shieldSprite.SetActive(true);
             if (_currentBlachHoleSpeed<_maxBlackHoleSpeed)
             {
                 _currentBlachHoleSpeed +=  Time.deltaTime;
@@ -106,7 +110,7 @@ public class PlayerControl : MonoBehaviour
                 {
 
                     isInBlackHole = false;
-                    transform.GetComponent<PlayerHealthScript>().Damage(99999);
+                    _playerHealthScript.InstantDeath();
                     ExitBlackHoleMode();
                     rigid.velocity = Vector3.zero;
                 }
@@ -116,11 +120,19 @@ public class PlayerControl : MonoBehaviour
                     if (checkPhase != _currentBlackHolePhase)
                     {
                         _currentBlackHolePhase = checkPhase;
+                        if (checkPhase == 4)
+                        {
+                            _playerHealthScript.BlackHoleDamage(2);
+                        }
                         _currentBlackHole.GetComponent<BlackHoleTextureManager>().SwapPhase(_currentBlackHolePhase);
                     }
                 }
             }      
             return;
+        }
+        else
+        {
+            _shieldSprite.SetActive(false);
         }
     }
 
@@ -544,5 +556,10 @@ public class PlayerControl : MonoBehaviour
     public void UnlockTutorialShooting()
     {
         _tutorialShooting = true;
+    }
+
+    public bool tutorial
+    {
+        get { return _tutorial; }
     }
 }

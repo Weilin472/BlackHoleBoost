@@ -10,8 +10,10 @@ using UnityEngine.UI;
  * [manages the dialogue for the tutorial]
  */
 
-public class DialogueManager : Singleton<DialogueManager>
+public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private TutorialManager _tutorialManager; 
+
     private Queue<Sentence> _sentences;
 
     [SerializeField] private GameObject _dialogueBox;
@@ -35,6 +37,13 @@ public class DialogueManager : Singleton<DialogueManager>
     /// <param name="dialogue">dialogue to display</param>
     public void StartDialogue(Dialogue dialogue)
     {
+        if (!_dialogueBox || !_dialogueText || !_objectiveText)
+        {
+            _dialogueBox = GameObject.Find("DialogueBox");
+            _dialogueText = GameObject.Find("DialogueText").GetComponent<TMP_Text>();
+            _objectiveText = GameObject.Find("ObjectiveText").GetComponent<TMP_Text>();
+        }
+
         _dialogueBox.SetActive(true);
         _currentDialogue = dialogue;
         _sentences.Clear();
@@ -81,23 +90,23 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (_currentDialogue.unlockAcceleration)
         {
-            TutorialManager.Instance.AccelerationTutorial();
+            _tutorialManager.AccelerationTutorial();
         }
         else if (_currentDialogue.unlockStrafing)
         {
-            TutorialManager.Instance.StrafingTutorial();
+            _tutorialManager.StrafingTutorial();
         }
         else if (_currentDialogue.unlockBlackhole)
         {
-            TutorialManager.Instance.BlackHoleTutorial();
+            _tutorialManager.BlackHoleTutorial();
         }
         else if (_currentDialogue.unlockShooting)
         {
-            TutorialManager.Instance.ShootingTutorial();
+            _tutorialManager.ShootingTutorial();
         }
         else if (_currentDialogue.endTutorial)
         {
-            TutorialManager.Instance.EndTutorial();
+            _tutorialManager.EndTutorial();
         }
 
         _objectiveText.text = _currentDialogue.objectiveText;

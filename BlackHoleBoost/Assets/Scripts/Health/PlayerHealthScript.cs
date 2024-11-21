@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/04/2024]
+ * Last Updated: [11/20/2024]
  * [health script for prototype]
  */
 
@@ -33,12 +33,34 @@ public class PlayerHealthScript : BaseHealthScript
     /// <param name="damage"></param>
     public override void Damage(int damage)
     {
-        if ( !_isUnattackable&&!transform.GetComponent<PlayerControl>().isInBlackHole)
+        if ( !_isUnattackable && !transform.GetComponent<PlayerControl>().isInBlackHole)
         {
             StartCoroutine(HurtAnimation());
             base.Damage(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
+    }
+
+    /// <summary>
+    /// damage even in shield
+    /// </summary>
+    /// <param name="damage"></param>
+    public void BlackHoleDamage(int damage)
+    {
+        if (!_isUnattackable)
+        {
+            StartCoroutine(HurtAnimation());
+            base.Damage(damage);
+            UIManager.Instance.SetLifeUI(_currentHealth);
+        }
+    }
+
+    /// <summary>
+    /// instant death
+    /// </summary>
+    public void InstantDeath()
+    {
+        base.Damage(9999);
     }
 
     protected override void OnDeath()
@@ -49,7 +71,11 @@ public class PlayerHealthScript : BaseHealthScript
         //PrototypeGameManager.Instance.GameOver();
         //  StateMachine.Instance.GameEnd();
         GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
-        StateMachine.Instance.ChangeState(new GameOverState());
+
+        if (!_playerControl.tutorial)
+        {
+            StateMachine.Instance.ChangeState(new GameOverState());
+        }
         Destroy(gameObject);
     }
 
