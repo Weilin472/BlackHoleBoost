@@ -159,6 +159,7 @@ MonoBehaviour:
   _controllerDeadzone: 0.1
   _gamepadRotateSmoothing: 1000
   _aimDirection: {fileID: 2722251452649900248}
+  _spawnBlackHoleDistanceOffset: 1
 --- !u!114 &6056557057473636322
 MonoBehaviour:
   m_ObjectHideFlags: 0

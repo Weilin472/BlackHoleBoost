@@ -14,12 +14,19 @@ public class PickupSmallAsteroidTimer : MonoBehaviour
 
     [SerializeField] private float _lifeTime;
 
-    private void OnEnable()
+    /// <summary>
+    /// starts timer when called
+    /// </summary>
+    public void StartTime()
     {
         _pickupSmallAsteroid = GetComponent<PickupSmallAsteroid>();
         StartCoroutine(AutoDestroy());
     }
 
+    /// <summary>
+    /// waits _lifeTime to return to the pool
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator AutoDestroy()
     {
         yield return new WaitForSeconds(_lifeTime);

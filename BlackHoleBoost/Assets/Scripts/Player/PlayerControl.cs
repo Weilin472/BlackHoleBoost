@@ -545,4 +545,9 @@ public class PlayerControl : MonoBehaviour
     {
         _tutorialShooting = true;
     }
+
+    public bool tutorial
+    {
+        get { return _tutorial; }
+    }
 }

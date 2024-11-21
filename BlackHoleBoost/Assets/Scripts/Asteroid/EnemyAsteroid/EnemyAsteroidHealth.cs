@@ -62,7 +62,7 @@ public class EnemyAsteroidHealth : BaseHealthScript
     /// </summary>
     protected override void OnDeath()
     {
-        _pickupSmallAsteroidPool.Spawn(transform.position, _enemyAsteroid.dropType);
+        _pickupSmallAsteroidPool.Spawn(transform.position, _enemyAsteroid.dropType, true);
         _enemyAsteroid.ReturnToPool();
     }
 

@@ -4,11 +4,11 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [11/06/2024]
+ * Last Updated: [11/20/2024]
  * [Manages the tutorial]
  */
 
-public class TutorialManager : Singleton<TutorialManager>
+public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private DialogueTrigger _dialogueTrigger;
     [SerializeField] private GameObject _playerPrefab;
@@ -37,15 +37,10 @@ public class TutorialManager : Singleton<TutorialManager>
         _shootSmallAsteroidPool = GameManager.Instance.gameObject.GetComponent<ShootSmallAsteroidPool>();
     }
 
-    /// <summary>
-    /// starts tutorial (temp)
-    /// </summary>
-    void Start()
+    private void Start()
     {
         StartTutorial();
-
     }
-
 
     /// <summary>
     /// respawns player if they die

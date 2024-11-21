@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [10/04/2024]
+ * Last Updated: [11/20/2024]
  * [health script for prototype]
  */
 
@@ -49,7 +49,11 @@ public class PlayerHealthScript : BaseHealthScript
         //PrototypeGameManager.Instance.GameOver();
         //  StateMachine.Instance.GameEnd();
         GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
-        StateMachine.Instance.ChangeState(new GameOverState());
+
+        if (!_playerControl.tutorial)
+        {
+            StateMachine.Instance.ChangeState(new GameOverState());
+        }
         Destroy(gameObject);
     }
 

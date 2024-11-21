@@ -138,6 +138,20 @@ public class PickupSmallAsteroidPool : MonoBehaviour
         }
     }
 
+    public void Spawn(Vector3 pos, SmallAsteroidType asteroidType, bool autoDestroy)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(pos);
+        if (screenPos.x >= 0 && screenPos.x <= Screen.width && screenPos.y <= Screen.height && screenPos.y >= 0)
+        {
+            var asteroid = Pool.Get();
+            asteroid.transform.position = pos;
+            asteroid.gameObject.GetComponent<PickupSmallAsteroidMove>().magnet = true;
+            asteroid.gameObject.GetComponent<PickupSmallAsteroidTimer>().StartTime();
+            asteroid.SetAsteroid(asteroidType);
+            _currentPickupAsteroids.Add(asteroid);
+        }
+    }
+
     /// <summary>
     /// spawn pickup asteroids for planets
     /// </summary>

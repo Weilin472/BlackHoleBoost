@@ -138,7 +138,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                _surviveTimer.text = "You have survived: " + (t / 60) + ": " + (t % 60);
+                _surviveTimer.text = "You have survived: " + (t / 60) + ":" + (t % 60);
             }
         }
         if (PlayerPrefs.HasKey(GameManager.LeaderBoardSavingString))
