@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11216,7 +11216,8 @@ MonoBehaviour:
     - sentence: Welcome Gladiator, if you want glory, heed my words.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: The galaxy only recognizes those who survived the longest here
+    - sentence: The galaxy only recognizes those who killed them most and survives
+        the longest.
       outline: 0
       highlight: {fileID: 0}
     - sentence: To do so, lets go over how to control your ship.
@@ -13788,6 +13789,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6343251256954061874, guid: 3c543cfbeb17d80489b69137fdf273db,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 569247957}
+    - target: {fileID: 6343251256954061874, guid: 3c543cfbeb17d80489b69137fdf273db,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15610,16 +15621,16 @@ MonoBehaviour:
       outline: 0
       highlight: {fileID: 0}
     - sentence: Use the gravitational force of the black holes to slingshot your
-        way around the arena.
+        way around the arena. You may seem a little slow orbiting the black hole,
+        but you will be launched out of it when you drop it.
       outline: 0
       highlight: {fileID: 0}
     - sentence: Just don't spend too much time in the black hole or else it will
         start damaging you. Stay in for longer than that, and you risk getting sucked
-        in
+        in.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: There are also some other useful benifits like protecting you from
-        enemies while in there and accelerating you past your limits.
+    - sentence: There are also some versatility like shielding you from enemies..
       outline: 0
       highlight: {fileID: 0}
     - sentence: Lets test it out now.
@@ -15628,7 +15639,7 @@ MonoBehaviour:
     - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button
 
         Choose
-        direction orbit Black Hole: A and D or Left Stick Left or Right'
+        direction orbit Black Hole: D and F or Left Stick Left or Right'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0
