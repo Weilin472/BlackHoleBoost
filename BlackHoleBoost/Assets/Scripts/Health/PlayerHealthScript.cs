@@ -41,6 +41,10 @@ public class PlayerHealthScript : BaseHealthScript
         }
     }
 
+    /// <summary>
+    /// damage even in shield
+    /// </summary>
+    /// <param name="damage"></param>
     public void BlackHoleDamage(int damage)
     {
         if (!_isUnattackable)
@@ -49,6 +53,14 @@ public class PlayerHealthScript : BaseHealthScript
             base.Damage(damage);
             UIManager.Instance.SetLifeUI(_currentHealth);
         }
+    }
+
+    /// <summary>
+    /// instant death
+    /// </summary>
+    public void InstantDeath()
+    {
+        base.Damage(9999);
     }
 
     protected override void OnDeath()

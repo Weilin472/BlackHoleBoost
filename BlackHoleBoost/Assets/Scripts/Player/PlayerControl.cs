@@ -110,7 +110,7 @@ public class PlayerControl : MonoBehaviour
                 {
 
                     isInBlackHole = false;
-                    _playerHealthScript.Damage(99999);
+                    _playerHealthScript.InstantDeath();
                     ExitBlackHoleMode();
                     rigid.velocity = Vector3.zero;
                 }
@@ -120,9 +120,9 @@ public class PlayerControl : MonoBehaviour
                     if (checkPhase != _currentBlackHolePhase)
                     {
                         _currentBlackHolePhase = checkPhase;
-                        if (checkPhase == 3)
+                        if (checkPhase == 4)
                         {
-                            _playerHealthScript.BlackHoleDamage(1);
+                            _playerHealthScript.BlackHoleDamage(2);
                         }
                         _currentBlackHole.GetComponent<BlackHoleTextureManager>().SwapPhase(_currentBlackHolePhase);
                     }
