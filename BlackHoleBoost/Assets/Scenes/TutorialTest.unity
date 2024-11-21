@@ -15614,7 +15614,8 @@ MonoBehaviour:
       outline: 0
       highlight: {fileID: 0}
     - sentence: Just don't spend too much time in the black hole or else it will
-        suck you up.
+        start damaging you. Stay in for longer than that, and you risk getting sucked
+        in
       outline: 0
       highlight: {fileID: 0}
     - sentence: There are also some other useful benifits like protecting you from
