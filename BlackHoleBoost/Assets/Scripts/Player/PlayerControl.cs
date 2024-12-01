@@ -235,7 +235,16 @@ public class PlayerControl : MonoBehaviour
         {
             if (input.phase == InputActionPhase.Performed)
             {
-                _isMovingLeft = true;
+                if (isInBlackHole&&_isClockDirection)
+                {
+                    _isClockDirection = false;
+                    rigid.velocity = -rigid.velocity;
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, rigid.velocity);
+                }
+                else
+                {
+                    _isMovingLeft = true;
+                }
             }
             else if (input.phase == InputActionPhase.Canceled)
             {
@@ -255,7 +264,16 @@ public class PlayerControl : MonoBehaviour
         {
             if (input.phase == InputActionPhase.Performed)
             {
-                _isMovingRight = true;
+                if (isInBlackHole&&!_isClockDirection)
+                {
+                    _isClockDirection = true;
+                    rigid.velocity = -rigid.velocity;
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, rigid.velocity);
+                }
+                else
+                {
+                    _isMovingRight = true;
+                }
             }
             else if (input.phase == InputActionPhase.Canceled)
             {
