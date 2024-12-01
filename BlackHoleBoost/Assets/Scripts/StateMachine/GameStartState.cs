@@ -14,6 +14,8 @@ public class GameStartState : GameState
 
         GameManager.Instance.GetComponent<EnemyAsteroidPool>().ReturnAllEnemyAsteroids();
         GameManager.Instance.GetComponent<PickupSmallAsteroidPool>().ReturnAllPickupAsteroids();
+        GameManager.Instance.GetComponent<ShootSmallAsteroidPool>().ReturnAllShootAsteroids();
+
 
         GameManager.Instance.GetComponent<EnemyAsteroidSpawner>().StartSpawning();
     }

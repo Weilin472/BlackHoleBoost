@@ -203,7 +203,10 @@ public class UIManager : MonoBehaviour
 
     public void ClickReTryBtn()
     {
-        StateMachine.Instance.ChangeState(new GameStartState());
+        if (!GameObject.FindGameObjectWithTag("TutorialManager"))
+        {
+            StateMachine.Instance.ChangeState(new GameStartState());
+        }
     }  
 
     public void ClickQuitBtn()
