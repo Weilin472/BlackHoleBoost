@@ -129,6 +129,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOverPanel()
     {
+        _inPause = false;
         if (gameoverPanel != null && _surviveTimer != null)
         {
             gameoverPanel.gameObject.SetActive(true);
