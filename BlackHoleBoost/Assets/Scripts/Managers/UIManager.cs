@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 
 public class UIManager : MonoBehaviour
@@ -31,6 +32,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _pausePanel;
 
     [SerializeField] GameObject _settingPanel;
+
+    [SerializeField] AudioMixer _audioMixer;
 
     List<LeaderBoardInfo> infoList;
 
@@ -266,5 +269,20 @@ public class UIManager : MonoBehaviour
     public bool inPause
     {
         get { return _inPause; }
+    }
+
+    public void OnMasterMusicChange(float value)
+    {
+        _audioMixer.SetFloat("MasterVolume", value);
+    }
+
+    public void OnMusicChange(float value)
+    {
+        _audioMixer.SetFloat("MusicVolume", value);
+    }
+
+    public void OnSFXChange(float value)
+    {
+        _audioMixer.SetFloat("SFXVolume", value);
     }
 }
