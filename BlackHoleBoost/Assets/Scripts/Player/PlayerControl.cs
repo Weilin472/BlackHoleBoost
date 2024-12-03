@@ -401,7 +401,7 @@ public class PlayerControl : MonoBehaviour
     /// <param name="input"></param>
     public void ShootAsteroid(InputAction.CallbackContext input)
     {
-        if (!_tutorial || _tutorial && _tutorialShooting)
+        if ((!_tutorial || _tutorial && _tutorialShooting) && !UIManager.Instance.inPause)
         {
             if (input.phase == InputActionPhase.Performed && canShoot)
             {
@@ -481,6 +481,22 @@ public class PlayerControl : MonoBehaviour
                     _aimDirection.transform.rotation = Quaternion.RotateTowards(_aimDirection.transform.rotation, newRotation, _gamepadRotateSmoothing * Time.deltaTime);
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// toggles the pause menu for esc
+    /// </summary>
+    /// <param name="input"></param>
+    public void TogglePause(InputAction.CallbackContext input)
+    {
+        if (!UIManager.Instance.inPause)
+        {
+            UIManager.Instance.ShowPauseMenu();
+        }
+        else
+        {
+            UIManager.Instance.ContienueBtn();
         }
     }
 

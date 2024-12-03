@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
 
     private float _currentTime;
 
+    private bool _inPause = false;
+
     private void Awake()
     {
         if (_instance!=null )
@@ -242,17 +244,26 @@ public class UIManager : MonoBehaviour
     {
         _pausePanel.gameObject.SetActive(true);
         Time.timeScale = 0;
+        _inPause = true;
     }
 
     public void ContienueBtn()
     {
         _pausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
+        _inPause = false;
     }
 
     public void ShowSettingMenu()
     {
         StateMachine.Instance.ChangeState(new ActiveMenuState(_settingPanel));
     }
-   
+
+    /// <summary>
+    /// property for pause
+    /// </summary>
+    public bool inPause
+    {
+        get { return _inPause; }
+    }
 }
