@@ -229,6 +229,11 @@ public class UIManager : MonoBehaviour
     {
         if (s!="")
         {
+            if (s.Length >= 8)
+            {
+
+            }
+
             if (infoList != null)
             {
                 EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
