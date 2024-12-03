@@ -220,6 +220,11 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ClickMainMenuBtn()
+    {
+        StateMachine.Instance.ChangeState(new MainMenuState());
+    }
+
     public void EnterName(string s)
     {
         if (s!="")
