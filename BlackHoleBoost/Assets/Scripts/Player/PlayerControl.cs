@@ -15,7 +15,6 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float _minimumSpeed;
     [SerializeField] private float _freezeSpeed;
     [SerializeField] private float _maxBlackHoleSpeed;
-    [SerializeField] private GameObject _beLockedOnIcon;
     [SerializeField] private float _blackHoleSuckUpMaxTime;
 
     private PlayerInput _playerInput;
@@ -62,6 +61,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float _spawnBlackHoleDistanceOffset = 1.9f;
     private Vector2 _aim;
 
+    //variables for indicators
+    private PlayerEnemyIndicator _playerEnemyIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,7 @@ public class PlayerControl : MonoBehaviour
         _playerShoot = GetComponent<PlayerShoot>();
         _playerHealthScript = GetComponent<PlayerHealthScript>();
         _playerInput = GetComponent<PlayerInput>();
+        _playerEnemyIndicator = GetComponent<PlayerEnemyIndicator>();
         if (!Mouse.current.enabled)
         {
             InputSystem.EnableDevice(Mouse.current);
@@ -486,9 +489,9 @@ public class PlayerControl : MonoBehaviour
         return _maxSpeed;
     }
 
-    public void SetLockOnIcon(bool isLockOn)
+    public void SetLockOnIcon(int monsterIndex, bool isOn)
     {
-        _beLockedOnIcon.SetActive(isLockOn);
+        _playerEnemyIndicator.ChangeIndicator(monsterIndex, isOn);
     }
 
     public void SetIfInPlanet(bool isInPlanet, Transform planetTran=null)
@@ -502,7 +505,9 @@ public class PlayerControl : MonoBehaviour
 
     public void Freeze()
     {
+        Debug.Log("buh");
         IsFreeze = true;
+        SetLockOnIcon(1, true);
         //canMove = false;
         _maxSpeed = _freezeSpeed;
         rigid.velocity = rigid.velocity.normalized * _freezeSpeed;
@@ -511,6 +516,7 @@ public class PlayerControl : MonoBehaviour
     void UnFreeze()
     {
         IsFreeze = false;
+        SetLockOnIcon(1, false);
         _maxSpeed = _originalMaxSpeed;
         //canMove = true;
     }
@@ -519,6 +525,7 @@ public class PlayerControl : MonoBehaviour
     {
         transform.GetComponent<PlayerHealthScript>().Damage(damage);
         canShoot = false;
+        SetLockOnIcon(2, true);
         CancelInvoke("ResetFromSphinx");
         Invoke("ResetFromSphinx", effectTime);
     }
@@ -526,6 +533,7 @@ public class PlayerControl : MonoBehaviour
     private void ResetFromSphinx()
     {
         canShoot = true;
+        SetLockOnIcon(2, false);
     }
 
     /// <summary>

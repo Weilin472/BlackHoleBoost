@@ -46,7 +46,7 @@ public class Minotaur : EnemyBase
                 _currentTimeLockOnPlayer = 0;
                 _rigid.velocity = Vector3.zero;
                 _isLockingOnPlayer = true;
-                targetPlayer.SetLockOnIcon(true);
+                targetPlayer.SetLockOnIcon(0, true);
             }
         }
     }
@@ -69,7 +69,7 @@ public class Minotaur : EnemyBase
                     _currentTimeLockOnPlayer = 0;
                     _isLockingOnPlayer = false;
                     _isRaming = true;
-                    targetPlayer.SetLockOnIcon(false);
+                    targetPlayer.SetLockOnIcon(0, false);
                 }
             }
             else if (_isRaming && DetectBoundaries())

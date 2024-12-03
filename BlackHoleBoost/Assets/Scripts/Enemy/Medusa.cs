@@ -12,9 +12,6 @@ public class Medusa : EnemyBase
 
     private bool _isShooting = false;
     private bool _isLockingOntoPlayer;
-    
- 
-
     // Update is called once per frame
     protected override void Update()
     {
@@ -30,7 +27,6 @@ public class Medusa : EnemyBase
             if (Vector3.Distance(targetPlayer.transform.position, transform.position)<=_detectDistance)
             {
                 _isLockingOntoPlayer = true;
-                targetPlayer.SetLockOnIcon(true);
                 _rigid.velocity = Vector3.zero;
                 if (!_isShooting)
                 {
@@ -42,7 +38,6 @@ public class Medusa : EnemyBase
         else if(Vector3.Distance(targetPlayer.transform.position,transform.position)>_detectDistance)
         {
             _isLockingOntoPlayer = false;
-            targetPlayer.SetLockOnIcon(false);
 
         }
 
