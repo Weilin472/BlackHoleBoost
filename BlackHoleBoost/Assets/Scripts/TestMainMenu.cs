@@ -21,6 +21,11 @@ public class TestMainMenu : MonoBehaviour
         _creditBtn.onClick.AddListener(() => StateMachine.Instance.ChangeState(new ActiveMenuState(_creditMenu)));
     }
 
+    public void ClickQuitBtn()
+    {
+        Application.Quit();
+    }
+
     private void OnDisable()
     {
         //_startBtn.onClick.RemoveListener(() => StateMachine.Instance.ChangeState(new ShipSelectState()));
