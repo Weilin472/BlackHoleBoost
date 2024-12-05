@@ -4055,6 +4055,7 @@ MonoBehaviour:
   _leaderBoardContents: []
   _pausePanel: {fileID: 0}
   _settingPanel: {fileID: 0}
+  _audioMixer: {fileID: 0}
 --- !u!114 &547154216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8594,6 +8595,7 @@ MonoBehaviour:
   - {fileID: 1712961173}
   _pausePanel: {fileID: 458119580}
   _settingPanel: {fileID: 271484273}
+  _audioMixer: {fileID: 0}
 --- !u!114 &1265181565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9027,6 +9029,95 @@ RectTransform:
   m_AnchoredPosition: {x: -23.7988, y: 0}
   m_SizeDelta: {x: 247.5977, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1304801523
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5345651352051548765}
+    m_Modifications:
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578359907986546705, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_Name
+      value: Sea_Buoy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb841b29c0b76924b8225ce2b91613d2, type: 3}
+--- !u!4 &1304801524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1304801523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358487966
 GameObject:
   m_ObjectHideFlags: 0
@@ -12475,12 +12566,12 @@ MonoBehaviour:
     unlockBlackhole: 0
     unlockShooting: 0
     endTutorial: 0
-    objectiveText: 'Accelerate to the green area:
+    objectiveText: 'Accelerate to the Buoy:
 
-      Accelerate: W or Left Stick
-      Up
+      Accelerate: W or Left Stick Up
 
-      Decelerate: S or Left Stick Down'
+      Decelerate:
+      S or Left Stick Down'
 --- !u!4 &1739469795
 Transform:
   m_ObjectHideFlags: 0
@@ -13573,6 +13664,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911444814}
   m_CullTransparentMesh: 1
+--- !u!1001 &1934576325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1939169153}
+    m_Modifications:
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0022426143
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578359907986546705, guid: cb841b29c0b76924b8225ce2b91613d2,
+        type: 3}
+      propertyPath: m_Name
+      value: Sea_Buoy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb841b29c0b76924b8225ce2b91613d2, type: 3}
+--- !u!4 &1934576326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7316218868842508875, guid: cb841b29c0b76924b8225ce2b91613d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1934576325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939169152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1598341968143746688, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
@@ -14923,6 +15103,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4119812258169631103, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14973,6 +15158,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7028790650206703608, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.objectiveText
@@ -15013,7 +15203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5919073457272921420, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1934576326}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc71cd94c0fcc3f40bf7868a73779ffd, type: 3}
 --- !u!114 &528775234073640303
@@ -15156,7 +15350,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019264780149594513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15413,7 +15607,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 4.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1304801524}
   m_Father: {fileID: 7709472805147116089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5474875484509903694
@@ -15683,10 +15878,10 @@ MonoBehaviour:
     unlockBlackhole: 1
     unlockShooting: 0
     endTutorial: 0
-    objectiveText: 'Use Black Holes to go to the green area:
+    objectiveText: 'Use Black Holes to go to the Buoy:
 
-      Black Hole: Right
-      Click or Right Shoulder'
+      Black Hole: Right Click
+      or Right Shoulder'
 --- !u!1 &8636768096558333686
 GameObject:
   m_ObjectHideFlags: 0
