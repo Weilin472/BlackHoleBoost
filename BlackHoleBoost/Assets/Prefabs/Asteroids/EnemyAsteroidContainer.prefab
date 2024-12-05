@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 0
+  _damageSFX: {fileID: 8300000, guid: e420c81e63a7c0b43bb1f96138ffdd69, type: 3}
   _bigHealth: 2
   _smallHealth: 1
 --- !u!114 &-4608388176579414500

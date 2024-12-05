@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [11/01/2024]
+ * Last Updated: [12/05/2024]
  * [sets damage and side effects of asteroid]
  */
 

@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
+  _damageSFX: {fileID: 8300000, guid: 46a61fc3055e0784f8c0efa044e2bb7e, type: 3}
   _UnattackablePeriod: 6
 --- !u!114 &8081387908008791036
 MonoBehaviour:
