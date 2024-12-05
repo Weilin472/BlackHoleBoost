@@ -56,7 +56,7 @@ public class Minotaur : EnemyBase
         base.Update();
         if (!isStuck)
         {
-            if (_isLockingOnPlayer && !_isRaming)
+            if (_isLockingOnPlayer && !_isRaming && targetPlayer != null)
             {
                 Vector3 lastPosOfPlayer = targetPlayer.transform.position;
                 Vector3 dir = (lastPosOfPlayer - transform.position).normalized;

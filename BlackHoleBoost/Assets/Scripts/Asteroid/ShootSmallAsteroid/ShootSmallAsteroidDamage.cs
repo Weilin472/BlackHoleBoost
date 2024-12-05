@@ -99,11 +99,20 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             {
                 _shootSmallAsteroid.ReturnToPool();
             }
+
+            if (_asteroidEffect != null)
+            {
+                _asteroidEffect(other);
+            }
         }
-        if (_asteroidEffect != null)
+        else if (_asteroidEffect == Stick)
         {
-            _asteroidEffect(other);
+            if (_asteroidEffect != null)
+            {
+                _asteroidEffect(other);
+            }
         }
+        
     }
 
     /// <summary>
