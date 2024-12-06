@@ -107,6 +107,7 @@ public class EnemyBase : MonoBehaviour
 
     private void OnDestroy()
     {
+        targetPlayer.gameObject.GetComponent<PlayerEnemyIndicator>().ResetIndicator();
         if (EnemySpawner.Instance!=null)
         {
             EnemySpawner.Instance.EnemyDestroy(this);

@@ -521,7 +521,6 @@ public class PlayerControl : MonoBehaviour
 
     public void Freeze()
     {
-        Debug.Log("buh");
         IsFreeze = true;
         SetLockOnIcon(1, true);
         //canMove = false;

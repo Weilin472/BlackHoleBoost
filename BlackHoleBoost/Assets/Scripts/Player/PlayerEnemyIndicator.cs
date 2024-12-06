@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [12/02/2024]
+ * Last Updated: [12/06/2024]
  * [script for all of the indicators]
  */
 
@@ -25,5 +25,16 @@ public class PlayerEnemyIndicator : MonoBehaviour
     public void ChangeIndicator(int index, bool active)
     {
         _enemyIndicators[index].SetActive(active);
+    }
+
+    /// <summary>
+    /// just sets all indicators to false
+    /// </summary>
+    public void ResetIndicator()
+    {
+        for (int i = 0; i < _enemyIndicators.Length; i++)
+        {
+            _enemyIndicators[i].SetActive(false);
+        }
     }
 }

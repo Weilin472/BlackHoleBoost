@@ -22,6 +22,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySFX(AudioClip clip)
     {
+        _sfxSource.pitch = Random.Range(.95f, 1.05f);
         _sfxSource.PlayOneShot(clip);
     }
 
