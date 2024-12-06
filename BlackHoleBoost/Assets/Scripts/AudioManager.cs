@@ -1,11 +1,14 @@
 
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager>
 {
     [Header("Audio Source")]
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _sfxSource;
+    [SerializeField] AudioMixer _audioMixer;
+
 
     [Header("Clip")]
     public AudioClip BGMusic;
@@ -22,5 +25,18 @@ public class AudioManager : Singleton<AudioManager>
         _sfxSource.PlayOneShot(clip);
     }
 
-  
+    public void OnMasterMusicChange(float value)
+    {
+        _audioMixer.SetFloat("MasterVolume", value);
+    }
+
+    public void OnMusicChange(float value)
+    {
+        _audioMixer.SetFloat("MusicVolume", value);
+    }
+
+    public void OnSFXChange(float value)
+    {
+        _audioMixer.SetFloat("SFXVolume", value);
+    }
 }
