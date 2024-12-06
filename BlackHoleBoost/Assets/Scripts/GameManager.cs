@@ -23,10 +23,15 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
+        SetBoundaries();
+
+
+    }
+
+    public void SetBoundaries()
+    {
         RightBoundary = Camera.main.orthographicSize * Screen.width / Screen.height;
         TopBoundary = Camera.main.orthographicSize;
-
-
     }
 
 
