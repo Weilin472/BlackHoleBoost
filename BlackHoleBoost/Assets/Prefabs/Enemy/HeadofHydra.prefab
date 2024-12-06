@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 0
+  _damageSFX: {fileID: 8300000, guid: a43376ab37059ac45b81b1d5d88eb7e2, type: 3}
   hasHead: 1
   head: {fileID: 5023126396035284992}
   _regrowHeadTime: 10

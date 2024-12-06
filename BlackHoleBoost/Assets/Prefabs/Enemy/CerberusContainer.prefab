@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 1
+  _damageSFX: {fileID: 8300000, guid: a43376ab37059ac45b81b1d5d88eb7e2, type: 3}
   _cerberusHeads:
   - {fileID: 1025445401098549574}
   - {fileID: 3977105751147806}

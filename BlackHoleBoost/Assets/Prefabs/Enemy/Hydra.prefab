@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 1
+  _damageSFX: {fileID: 8300000, guid: a43376ab37059ac45b81b1d5d88eb7e2, type: 3}
 --- !u!114 &8232234439686608507
 MonoBehaviour:
   m_ObjectHideFlags: 0

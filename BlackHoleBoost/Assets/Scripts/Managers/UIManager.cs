@@ -229,11 +229,17 @@ public class UIManager : MonoBehaviour
     {
         if (s!="")
         {
+            string name = s;
+            if (s.Length >= 8)
+            {
+                name = s.Substring(0, 5) + "...";
+            }
+
             if (infoList != null)
             {
                 EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
                 int rankIndex = CompareLeaderBoard(infoList, spawner.Phase, (int)_currentTime);
-                LeaderBoardInfo info = new LeaderBoardInfo(s, spawner.Phase, (int)_currentTime);
+                LeaderBoardInfo info = new LeaderBoardInfo(name, spawner.Phase, (int)_currentTime);
                 infoList.Insert(rankIndex, info);
                 infoList.RemoveAt(infoList.Count - 1);
                 SavingandLoadingData data = new SavingandLoadingData();

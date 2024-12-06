@@ -65,11 +65,6 @@ public class PlayerHealthScript : BaseHealthScript
 
     protected override void OnDeath()
     {
-        //Time.timeScale = 0;
-        Debug.Log("prototype game over here, remove later");
-        _playerControl.ExitBlackHoleMode();
-        //PrototypeGameManager.Instance.GameOver();
-        //  StateMachine.Instance.GameEnd();
         GameManager.Instance.players.Remove(transform.GetComponent<PlayerControl>());
 
         if (!_playerControl.tutorial)

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3986341489127378086}
   - component: {fileID: -1414381720877079274}
   - component: {fileID: 8266327497934105552}
+  - component: {fileID: 430437886467850719}
   m_Layer: 0
   m_Name: EnemyAsteroidContainer
   m_TagString: Asteroid
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 0
+  _damageSFX: {fileID: 8300000, guid: e420c81e63a7c0b43bb1f96138ffdd69, type: 3}
   _bigHealth: 2
   _smallHealth: 1
 --- !u!114 &-4608388176579414500
@@ -230,6 +232,20 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &430437886467850719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159866683361754084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5108025a65ed284b81f2a8a5e69d111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _indicatorPrefab: {fileID: 3991055699993311887, guid: e1b34d8b2c3b09b4eb964714b7fc1b82,
+    type: 3}
 --- !u!1001 &2742815631339288863
 PrefabInstance:
   m_ObjectHideFlags: 0

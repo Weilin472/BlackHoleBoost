@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [11/01/2024]
+ * Last Updated: [12/05/2024]
  * [sets damage and side effects of asteroid]
  */
 
@@ -99,11 +99,20 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             {
                 _shootSmallAsteroid.ReturnToPool();
             }
+
+            if (_asteroidEffect != null)
+            {
+                _asteroidEffect(other);
+            }
         }
-        if (_asteroidEffect != null)
+        else if (_asteroidEffect == Stick)
         {
-            _asteroidEffect(other);
+            if (_asteroidEffect != null)
+            {
+                _asteroidEffect(other);
+            }
         }
+        
     }
 
     /// <summary>

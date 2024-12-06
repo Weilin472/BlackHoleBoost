@@ -12,6 +12,7 @@ public class BaseHealthScript : MonoBehaviour
 {
     protected int _currentHealth;
     [SerializeField] protected int _maxHealth;
+    [SerializeField] protected AudioClip _damageSFX;
 
     protected bool _invincible = false;
 
@@ -29,6 +30,11 @@ public class BaseHealthScript : MonoBehaviour
         {
             _currentHealth -= damage;
 
+            if (_damageSFX != null)
+            {
+                AudioManager.Instance.PlaySFX(_damageSFX);
+            }
+
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
@@ -44,6 +50,7 @@ public class BaseHealthScript : MonoBehaviour
         {
             _currentHealth = _maxHealth;
         }
+
         UIManager.Instance.SetLifeUI(_currentHealth);
     }
 
