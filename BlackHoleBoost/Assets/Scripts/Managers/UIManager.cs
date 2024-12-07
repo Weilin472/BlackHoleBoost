@@ -222,6 +222,7 @@ public class UIManager : MonoBehaviour
 
     public void ClickMainMenuBtn()
     {
+        GameManager.Instance.ResetAsteroids();
         StateMachine.Instance.ChangeState(new MainMenuState());
     }
 

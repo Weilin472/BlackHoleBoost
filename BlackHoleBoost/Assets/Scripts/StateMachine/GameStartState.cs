@@ -12,9 +12,7 @@ public class GameStartState : GameState
     {
         SceneManager.LoadScene("Weilin's Scene");
 
-        GameManager.Instance.GetComponent<EnemyAsteroidPool>().ReturnAllEnemyAsteroids();
-        GameManager.Instance.GetComponent<PickupSmallAsteroidPool>().ReturnAllPickupAsteroids();
-        GameManager.Instance.GetComponent<ShootSmallAsteroidPool>().ReturnAllShootAsteroids();
+        GameManager.Instance.ResetAsteroids();
 
 
         GameManager.Instance.GetComponent<EnemyAsteroidSpawner>().StartSpawning();

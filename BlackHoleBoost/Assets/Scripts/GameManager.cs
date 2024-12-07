@@ -11,6 +11,10 @@ public class GameManager : Singleton<GameManager>
     public float RightBoundary;
     public float TopBoundary;
 
+    private EnemyAsteroidPool _enemyAsteroidPool;
+    private PickupSmallAsteroidPool _pickupSmallAsteroidPool;
+    private ShootSmallAsteroidPool _shootSmallAsteroidPool;
+
 
     //temp bool so prototype can work
     [SerializeField] public bool _inPrototype = true;
@@ -25,7 +29,9 @@ public class GameManager : Singleton<GameManager>
     {
         SetBoundaries();
 
-
+        _enemyAsteroidPool = GetComponent<EnemyAsteroidPool>();
+        _pickupSmallAsteroidPool = GetComponent<PickupSmallAsteroidPool>();
+        _shootSmallAsteroidPool = GetComponent<ShootSmallAsteroidPool>();
     }
 
     public void SetBoundaries()
@@ -84,6 +90,16 @@ public class GameManager : Singleton<GameManager>
         {
             return null;
         }
+    }
+
+    /// <summary>
+    /// calls to return all object pool
+    /// </summary>
+    public void ResetAsteroids()
+    {
+        _enemyAsteroidPool.ReturnAllEnemyAsteroids();
+        _pickupSmallAsteroidPool.ReturnAllPickupAsteroids();
+        _shootSmallAsteroidPool.ReturnAllShootAsteroids();
     }
 
 

@@ -19,38 +19,36 @@ public class EnemyAsteroidSpawner : MonoBehaviour
     private IEnumerator _spawnCoroutine;
     private bool _isSpawning = false;
 
+    /// <summary>
+    /// get needed components
+    /// </summary>
     private void Awake()
     {
         _enemyAsteroidPool = GetComponent<EnemyAsteroidPool>();
         _spawnCoroutine = SpawnAsteroidCoroutine();
     }
 
-    private void Update()
-    {
-        if (testStart)
-        {
-            StartSpawning();
-            testStart = false;
-        }
-        if (testStop)
-        {
-            StopSpawning();
-            testStop = false;
-        }
-    }
-
+    /// <summary>
+    /// starts spawning asteroids
+    /// </summary>
     public void StartSpawning()
     {
         _isSpawning = true;
         StartCoroutine(_spawnCoroutine);
     }
 
+    /// <summary>
+    /// stops spawning asteroids
+    /// </summary>
     public void StopSpawning()
     {
         _isSpawning = false;
         StopCoroutine(_spawnCoroutine);
     }
 
+    /// <summary>
+    /// spawns asteroids off screen
+    /// </summary>
     public void SpawnAsteroid()
     {
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0f));
@@ -72,6 +70,10 @@ public class EnemyAsteroidSpawner : MonoBehaviour
         _enemyAsteroidPool.Spawn(loc, direction);
     }
 
+    /// <summary>
+    /// coroutine to spawn asteroids repeatedly
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnAsteroidCoroutine()
     {
         while (_isSpawning)

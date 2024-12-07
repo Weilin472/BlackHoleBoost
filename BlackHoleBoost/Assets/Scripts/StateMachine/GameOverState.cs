@@ -12,6 +12,8 @@ public class GameOverState : GameState
     public override void StateStart()
     {
         UIManager.Instance.ShowGameOverPanel();
+        GameManager.Instance.GetComponent<EnemyAsteroidSpawner>().StopSpawning();
+        GameManager.Instance.ResetAsteroids();
     }
 
 
