@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4929,30 +4929,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - sentence: Ok, that is enough movement. Let's get into shooting.
+    - sentence: "It\u2019s a good start. Let\u2019s move on to target practice."
       outline: 0
       highlight: {fileID: 0}
-    - sentence: You just picked up small asteroids. These are your ammunition to
-        fire. You can pick up a maximum of 5 and they come in with 3 different variants.
+    - sentence: "Remember, these <b>small asteroids are your ammo</b>. \r\n\r\n<b>In
+        battle your ammo is <color=red>limited to 5</color> and <color=red>they come
+        3 different types</color></b>."
       outline: 0
       highlight: {fileID: 0}
-    - sentence: "The red ones is a normal asteroid.\r\nThe blue ones is a bouncy
-        asteroid that can ricochet in a different direction for another time\r\nFinally,
-        the green ones are sticky asteroids that stick and drag anything away.\r"
+    - sentence: "<b><color=red>RED: NORMAL</color> - damages enemies.\r\n\r\n<color=red>BLUE:
+        BOUNCE</color> - will impact then ricochet in a different direction.\r\n\r\n<color=red>GREEN:
+        STICKY / DRAG</color> - stick & drag anything it touches away.</b>\r"
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Aim your asteroids: Move your Mouse or Right Stick'
+    - sentence: '<b><color=red>AIM</color>: Move Mouse or Right stick</b>'
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Swap your asteroids: Press E on keyboard or Y on controller'
+    - sentence: '<b><color=red>SWAP ASTEROIDS</color>: Press E on Keyboard or Y on
+        Controller</b>'
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Shoot your asteroids: Left Mouse Click or Left Shoulder button'
+    - sentence: '<b><color=red>SHOOT</color>: Left Mouse Click or Left Shoulder Button</b>'
       outline: 0
       highlight: {fileID: 0}
-    - sentence: I have set up a few asteroids as target practice. Shoot them to finish
-        your training. Be careful, they can hurt if you ram into them. I should be
-        able to fix you up if your health gets too low but don't push it.
+    - sentence: 'Target practice is set up- <b>shoot them to finish the training</b>.
+
+
+        <b>Be
+        CAREFUL, they can hurt you if the ship rams into them!</b>
+
+
+        I will
+        help you if your health is low, but you <b>can still die</b>- beware!'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0
@@ -11570,15 +11578,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - sentence: With that, your training is complete.
+    - sentence: "That\u2019s enough to enter the arena!"
       outline: 0
       highlight: {fileID: 0}
-    - sentence: The last thing I will warn you is that the arena likes to send in
-        monsters. I am forbiden from telling you about them, so you have to fight
-        them in the arena.
+    - sentence: "As a <b><color=red>WARNING</color></b>- training is different than
+        the arena. \r\n\r\nThe gods like to <b><color=red>send in monsters</color></b>
+        to test your mettle, so <b><color=red>you\u2019ll find them in the arena</color></b>.\r\n\r\nIt\u2019s
+        forbidden to give hints, but it\u2019ll be one hell of an odyssey."
       outline: 0
       highlight: {fileID: 0}
-    - sentence: Good luck soldier, and may you survive long in the arena
+    - sentence: Last long enough & the gods will place your name among the stars!
+        Good luck Gladiator!
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0
@@ -12636,17 +12646,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - sentence: Welcome Gladiator, if you want glory, heed my words.
+    - sentence: Welcome Gladiator- glory awaits those who train properly!
       outline: 0
       highlight: {fileID: 0}
-    - sentence: The galaxy only recognizes those who killed them most and survives
-        the longest.
+    - sentence: To <b>put your name</b> in the stars- out <b><color=red>SURVIVE</color></b>
+        the best of the best!
       outline: 0
       highlight: {fileID: 0}
-    - sentence: To do so, lets go over how to control your ship.
+    - sentence: Start with <b><color=red>CONTROLLING</color></b> your ship.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Accelerate: Press W or Left Stick Up'
+    - sentence: '<color=red><b>ACCELERATE: W</b> or <b>Left Stick Up</b></color>'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 1
@@ -15265,14 +15275,15 @@ PrefabInstance:
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0].sentence
-      value: Perfect. For the next training exercise, you will need to pick up small
-        asteroids.
+      value: Good. Onto <b><color=red>small asteroids- your ammo</color></b>.
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1].sentence
-      value: Usually, you'd get these from destroying asteroids, but I'll just lay
-        some out for you. Just fly over them to collect them.
+      value: "In battle, <b>large asteroids will smash together</b> & <b><color=red>CREATE
+        SMALL ONES</color></b> that can be <b><color=red>PICKED UP</color></b>. \r\n\r\nOr
+        you can shoot them.\r\n\r\nWe\u2019ve set up some for you- fly over them
+        to pick them up.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
@@ -15929,32 +15940,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - sentence: Good, but obviously you don't just want to go forward.
+    - sentence: Hmph- good enough. Moving on.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: Your ship comes equipped with the ability to create black holes.
+    - sentence: All ships are equipped with <b><color=red>BLACK HOLE GENERATORS</color></b>.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: Use the gravitational force of the black holes to slingshot your
-        way around the arena. You may seem a little slow orbiting the black hole,
-        but you will be launched out of it when you drop it.
+    - sentence: "Use the <b>gravitational force</b> from the <b>BLACK HOLES</b> to
+        <b><color=red>SLINGSHOT AROUND</color></b> the arena.\n\nYou\u2019ll <b>LAUNCH
+        yourself</b> out at a <b>FASTER speed</b> when the <b>black hole DISAPPEARS</b>."
       outline: 0
       highlight: {fileID: 0}
-    - sentence: "Just don't spend too much time in the black hole, or it will start
-        damaging you. Stay in for longer than that, and you risk getting sucked in.\r"
+    - sentence: "<b>Black holes</b> are helpful, but <b>DANGEROUS</b>- we've installed
+        a <b>color indicator for danger</b>. \r\n\r\n<b><color=red>* REMEMBER- PURPLE
+        IS BAD TO TREAD & RED IS DEAD! *</color></b>\r\r"
       outline: 0
       highlight: {fileID: 0}
     - sentence: There is some versatility to the black hole with it shielding you
-        from enemies.
+        from enemies. <b>UNTIL PURPLE OR RED</b>, the black hole will <b><color=red>SHIELD</color></b>
+        you from <b><color=red>enemies & obstacles</color></b>.
       outline: 0
       highlight: {fileID: 0}
-    - sentence: Lets test it out now.
+    - sentence: Give it a try!
       outline: 0
       highlight: {fileID: 0}
-    - sentence: 'To Create Black Holes: Right Mouse Click or Right Shoulder Button
+    - sentence: '<b>Create black holes: RIGHT MOUSE CLICK or RIGHT SHOULD BUTTON.
 
-        Choose
-        direction orbit Black Hole: D and F or Left Stick Left or Right'
+
+        CHOOSE
+        <color=red>ORBIT DIRECTION: D & F or Left Stick Left or Right.</color></b>'
       outline: 0
       highlight: {fileID: 0}
     unlockAcceleration: 0
