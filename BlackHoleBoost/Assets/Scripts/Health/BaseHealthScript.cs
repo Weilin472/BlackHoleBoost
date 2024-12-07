@@ -18,12 +18,19 @@ public class BaseHealthScript : MonoBehaviour
 
     public int CurrentHealth => _currentHealth;
 
+    /// <summary>
+    /// called when looses all health
+    /// </summary>
     protected virtual void OnDeath()
     {
         Debug.Log("using base version of health script, override OnDeath() if item is in object pool");
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// removes damage from healt
+    /// </summary>
+    /// <param name="damage">amount of health lost</param>
     public virtual void Damage(int damage)
     {
         if (!_invincible)
@@ -43,6 +50,10 @@ public class BaseHealthScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// heals player
+    /// </summary>
+    /// <param name="healAmount">amount of health gained</param>
     public virtual void Heal(int healAmount)
     {
         _currentHealth += healAmount;
@@ -54,6 +65,9 @@ public class BaseHealthScript : MonoBehaviour
         UIManager.Instance.SetLifeUI(_currentHealth);
     }
 
+    /// <summary>
+    /// resets health
+    /// </summary>
     protected virtual void ResetHealth()
     {
         _currentHealth = _maxHealth;

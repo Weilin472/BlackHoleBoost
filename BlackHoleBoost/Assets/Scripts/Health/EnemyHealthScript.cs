@@ -19,6 +19,10 @@ public class EnemyHealthScript : BaseHealthScript
     {
         if (!_invincible)
         {
+            if (_damageSFX != null)
+            {
+                AudioManager.Instance.PlaySFX(_damageSFX);
+            }
             _currentHealth -= damage;
             
             if (_currentHealth <= 0)
