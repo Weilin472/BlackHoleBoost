@@ -8910,7 +8910,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 482.09998, y: 165.73}
+  m_SizeDelta: {x: 457.09, y: 165.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246918456
 MonoBehaviour:
@@ -9195,15 +9195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 829c001dbaecd4c4ea8826d66a374341, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15149,10 +15149,9 @@ PrefabInstance:
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1].sentence
-      value: "In battle, <b>large asteroids will smash together</b> & <b><color=red>CREATE
-        SMALL ONES</color></b> that can be <b><color=red>PICKED UP</color></b>. \r\n\r\nOr
-        you can shoot them.\r\n\r\nWe\u2019ve set up some for you- fly over them
-        to pick them up.\r"
+      value: "In battle, <b>larger asteroids will smash together</b> & <b><color=red>CREATE
+        SMALL ONES</color></b> that can be <b><color=red>PICKED UP</color></b>. \r\n\nWe\u2019ve
+        set up some for you- fly over them to pick them up.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 8053180559532587587, guid: bc71cd94c0fcc3f40bf7868a73779ffd,
         type: 3}
@@ -15486,8 +15485,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 829c001dbaecd4c4ea8826d66a374341, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15661,17 +15660,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '>>>'
+  m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d9a9f88cbc24ed49b76c9e89b544b61, type: 2}
+  m_sharedMaterial: {fileID: -1634995411949486228, guid: 4d9a9f88cbc24ed49b76c9e89b544b61,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15776,8 +15776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4662b9f622f4fca4294534bb04b5079a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -16081,7 +16081,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 89.24878, y: 0, z: 133.66437, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
