@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3577111645972446562}
   - component: {fileID: 1091962646230154185}
   - component: {fileID: 1373716097004406380}
+  - component: {fileID: 4263537971803375485}
   m_Layer: 0
   m_Name: ShootAsteroidContainer
   m_TagString: Untagged
@@ -163,6 +164,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6780b8ab2a7b6224cb2c59add8c975ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4263537971803375485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476599835060194455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02471c8e37d3c16439eabba4c6b21a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vfx: {fileID: 4162002509640568086, guid: 8b522c714ab4cee49a2be12dcbf58931, type: 3}
 --- !u!1001 &2664352441421362110
 PrefabInstance:
   m_ObjectHideFlags: 0

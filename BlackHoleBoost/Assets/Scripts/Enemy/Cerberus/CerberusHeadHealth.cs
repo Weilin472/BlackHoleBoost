@@ -4,18 +4,21 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [11/10/2024]
+ * Last Updated: [12/06/2024]
  * [health for each head of cerberus (not inherited since we need to do things in on trigger enter)]
  */
 
 public class CerberusHeadHealth : MonoBehaviour
 {
+    private VFXInstantiate _vfxInstantiate;
+
     [SerializeField] private SmallAsteroidType _damageableType;
     private Cerberus _cerberus;
 
     private void OnEnable()
     {
         _cerberus = transform.root.gameObject.GetComponent<Cerberus>();
+        _vfxInstantiate = GetComponent<VFXInstantiate>();
     }
 
     /// <summary>
@@ -30,6 +33,7 @@ public class CerberusHeadHealth : MonoBehaviour
             {
                 _cerberus.AttackPersuit();
                 gameObject.SetActive(false);
+                _vfxInstantiate.SpawnVFX(transform.position);
             }
         }
     }

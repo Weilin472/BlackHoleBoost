@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class EnemyHealthScript : BaseHealthScript
 {
+    private VFXInstantiate _vfxInstantiate;
+
     private bool isBeingDamaged;
     private void Awake()
     {
+        _vfxInstantiate = GetComponent<VFXInstantiate>();
         ResetHealth();
     }
 
     protected override void OnDeath()
     {
+        _vfxInstantiate.SpawnVFX(transform.position);
         Destroy(gameObject);
     }
 

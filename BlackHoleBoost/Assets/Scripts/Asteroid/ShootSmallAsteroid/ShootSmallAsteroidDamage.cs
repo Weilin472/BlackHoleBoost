@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [12/05/2024]
+ * Last Updated: [12/06/2024]
  * [sets damage and side effects of asteroid]
  */
 
@@ -13,6 +13,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
     private ShootSmallAsteroid _shootSmallAsteroid;
     private ShootSmallAsteroidEventBus _shootSmallAsteroidEventBus;
     private AsteroidMove _asteroidMove;
+    private VFXInstantiate _vfxInstantiate;
 
     delegate void AsteroidEffect(Collider collider);
     private AsteroidEffect _asteroidEffect;
@@ -40,6 +41,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
         _stuckAsteroids = new List<GameObject>();
         _stuckEnemies = new List<EnemyBase>();
         _enemyOffset = new List<Vector3>();
+        _vfxInstantiate = GetComponent<VFXInstantiate>();
     }
 
     /// <summary>
@@ -97,6 +99,7 @@ public class ShootSmallAsteroidDamage : BaseDamageScript
             _numOfHits--;
             if (_numOfHits <= 0)
             {
+                _vfxInstantiate.SpawnVFX(transform.position);
                 _shootSmallAsteroid.ReturnToPool();
             }
 

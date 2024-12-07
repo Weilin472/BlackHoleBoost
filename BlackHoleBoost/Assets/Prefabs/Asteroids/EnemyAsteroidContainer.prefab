@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: -1414381720877079274}
   - component: {fileID: 8266327497934105552}
   - component: {fileID: 430437886467850719}
+  - component: {fileID: 4586353899243336406}
   m_Layer: 0
   m_Name: EnemyAsteroidContainer
   m_TagString: Asteroid
@@ -246,6 +247,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indicatorPrefab: {fileID: 3991055699993311887, guid: e1b34d8b2c3b09b4eb964714b7fc1b82,
     type: 3}
+--- !u!114 &4586353899243336406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159866683361754084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02471c8e37d3c16439eabba4c6b21a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vfx: {fileID: 4162002509640568086, guid: e8381fbd51f11d647a085d4a270ef447, type: 3}
 --- !u!1001 &2742815631339288863
 PrefabInstance:
   m_ObjectHideFlags: 0
