@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6396538071087723757}
   - component: {fileID: 7020249951829209705}
   - component: {fileID: 1059449474469021870}
+  - component: {fileID: 7786407309916163986}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Enemy
@@ -184,6 +185,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indicatorPrefab: {fileID: 3991055699993311887, guid: 944d73266ae299f44be97f1ef733101f,
     type: 3}
+--- !u!114 &7786407309916163986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647422855487545507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02471c8e37d3c16439eabba4c6b21a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vfx: {fileID: 4162002509640568086, guid: 21117a82961cdc84ab780001b6360593, type: 3}
 --- !u!1 &6187280805525261798
 GameObject:
   m_ObjectHideFlags: 0

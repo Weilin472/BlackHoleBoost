@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5760138029411008868}
   - component: {fileID: 5363334286163879499}
   - component: {fileID: 4092120627944721383}
+  - component: {fileID: 5319832954018056991}
   m_Layer: 0
   m_Name: CerberusContainer
   m_TagString: Enemy
@@ -136,6 +137,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indicatorPrefab: {fileID: 3991055699993311887, guid: 944d73266ae299f44be97f1ef733101f,
     type: 3}
+--- !u!114 &5319832954018056991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417213218052931279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02471c8e37d3c16439eabba4c6b21a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vfx: {fileID: 4162002509640568086, guid: 21117a82961cdc84ab780001b6360593, type: 3}
 --- !u!1001 &3665615063683078702
 PrefabInstance:
   m_ObjectHideFlags: 0

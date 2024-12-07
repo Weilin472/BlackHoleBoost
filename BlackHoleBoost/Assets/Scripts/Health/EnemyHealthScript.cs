@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthScript : BaseHealthScript
 {
-    private VFXInstantiate _vfxInstantiate;
+    protected VFXInstantiate _vfxInstantiate;
 
     private bool isBeingDamaged;
     private void Awake()
@@ -16,6 +16,7 @@ public class EnemyHealthScript : BaseHealthScript
     protected override void OnDeath()
     {
         _vfxInstantiate.SpawnVFX(transform.position);
+        Debug.Log("Buh");
         Destroy(gameObject);
     }
 

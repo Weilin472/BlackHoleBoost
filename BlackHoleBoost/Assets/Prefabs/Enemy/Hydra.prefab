@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2347264351549115734}
   - component: {fileID: -1625690013891500955}
   - component: {fileID: 8232234439686608507}
+  - component: {fileID: 3730789914079322133}
   m_Layer: 0
   m_Name: Hydra
   m_TagString: Enemy
@@ -181,6 +182,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indicatorPrefab: {fileID: 3991055699993311887, guid: 944d73266ae299f44be97f1ef733101f,
     type: 3}
+--- !u!114 &3730789914079322133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826317108700541650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02471c8e37d3c16439eabba4c6b21a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vfx: {fileID: 4162002509640568086, guid: 21117a82961cdc84ab780001b6360593, type: 3}
 --- !u!1 &6979293777767898141
 GameObject:
   m_ObjectHideFlags: 0
