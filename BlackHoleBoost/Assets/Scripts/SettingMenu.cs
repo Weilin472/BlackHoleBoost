@@ -9,7 +9,7 @@ public class SettingMenu : MonoBehaviour
 
     private void Start()
     {
-        Screen.SetResolution(1920, 1080, true);
+        _resolutionText.text = Screen.currentResolution.width.ToString() + "X" + Screen.currentResolution.height.ToString();
     }
     public void ClickResolutionDropDown()
     {
